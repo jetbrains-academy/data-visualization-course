@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "data-viz-jba"
+version = "0.1.0"
+description = ""
+authors = ["konstantgr <konstantin.grotov@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+jupyter = "^1.0.0"
+notebook = "^7.1.1"
+matplotlib = "^3.8.3"
+seaborn = "^0.13.2"
+numpy = "^1.26.4"
+scipy = "^1.12.0"
+pandas = "^2.2.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
