@@ -14,7 +14,6 @@ files:
     visible: true
   - name: __init__.py
     visible: false
-local_check: true
 message_incorrect: |
   In graph A, the points are located on the line y = x. There are no clear outliers.
 
