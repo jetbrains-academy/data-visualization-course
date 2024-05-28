@@ -1,4 +1,5 @@
 type: choice
+custom_name: Find plots with outliers
 is_multiple_choice: true
 options:
   - text: A
