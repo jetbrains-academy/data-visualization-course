@@ -1,10 +1,10 @@
 ## Goal
 
-The main goal of the lesson is to **plot the correlation between user score and critic score**.
+The main goal of the lesson is to **plot the correlation between the user score and the critic score**.
 
 ## Theory
 
-In seaborn there are several ways to plot relational graphs, but we will focus on two of them:
+In seaborn, there are several ways to plot relational graphs, but we will focus on two of them:
 
 1. Using [`relplot`](https://seaborn.pydata.org/generated/seaborn.relplot.html) (stands for **rel**ational **plot**).
    This function can plot both line and scatter plots.
@@ -12,11 +12,11 @@ In seaborn there are several ways to plot relational graphs, but we will focus o
    **l**inear **m**odel **plot**). This function focuses on plotting regression lines. We will talk about it a bit
    later.
 
-For now, we will work with `relplot` function. 
+For now, we will work with the `relplot` function. 
 
 Every plotting function in seaborn accepts three main arguments:
 
-* `data` – Input data structure. In this course we will have been passing pandas dataframes here.
+* `data` – Input data structure. In this course, we will pass pandas dataframes here.
 * `x` – Name of a column to visualize on x-axis.
 * `y` – Name of a column to visualize on y-axis.
 
@@ -26,10 +26,10 @@ Let's do some practice!
 
 ## Task
 
-Modify the `plot` by adding a call of the `relplot` function there. Pass `games` there as a data, `user_score` for x-axis
-and `critic_score` for y-axis to it.
+Modify the `plot` by adding a call of the `relplot` function there. Pass `games` there as a data, `user_score` as x-axis,0
+and `critic_score` as y-axis to it.
 
-Note that we preprocessed data for you, but if you want you can do it by yourself. Please see the corresponding hint
+Note that we preprocessed the data for you, but if you want, you can do this by yourself. Please see the corresponding hint
 below.
 
 ## Hints
