@@ -6,11 +6,9 @@ files:
     placeholders:
       - offset: 138
         length: 52
-        placeholder_text: ' # TODO'
+        placeholder_text: " # TODO"
         is_visible: false
   - name: tests/test_task.py
-    visible: false
-  - name: tests/__init__.py
     visible: false
   - name: data.py
     visible: false
