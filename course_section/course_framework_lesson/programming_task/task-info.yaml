@@ -1,5 +1,0 @@
-type: edu
-custom_name: Programming task
-files:
-  - name: __init__.py
-    visible: false

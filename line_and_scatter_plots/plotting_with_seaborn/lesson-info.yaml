@@ -1,9 +1,0 @@
-type: framework
-custom_name: Plotting with seaborn
-content:
-  - relplot_scatter
-  - transparency_and_color
-  - relplot_line
-  - lmplot
-  - customizing_regression_plot
-is_template_based: false

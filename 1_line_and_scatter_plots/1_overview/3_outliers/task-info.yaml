@@ -3,5 +3,3 @@ custom_name: Outliers
 files:
   - name: main.py
     visible: true
-  - name: __init__.py
-    visible: false

@@ -1,5 +1,0 @@
-type: theory
-custom_name: Theory task
-files:
-  - name: __init__.py
-    visible: false

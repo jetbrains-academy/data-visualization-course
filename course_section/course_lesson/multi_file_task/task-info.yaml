@@ -1,7 +1,0 @@
-type: output
-custom_name: Multiple file task
-files:
-  - name: __init__.py
-    visible: true
-  - name: tests/input.txt
-    visible: false
