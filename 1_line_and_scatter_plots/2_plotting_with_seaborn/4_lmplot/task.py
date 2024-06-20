@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 
-from data import read, preprocess
+from data import preprocess, read
 
 
 def plot(games: pd.DataFrame) -> sns.FacetGrid:

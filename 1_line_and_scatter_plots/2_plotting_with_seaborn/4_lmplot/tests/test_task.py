@@ -4,7 +4,7 @@ import pandas as pd
 import seaborn as sns
 
 from common.seaborn_test_mixins import BaseTestMixin
-from data import read, preprocess
+from data import preprocess, read
 from task import plot
 
 

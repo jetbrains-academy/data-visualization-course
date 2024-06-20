@@ -1,8 +1,8 @@
 from typing import Any, List, Optional
 from unittest import TestCase
 
-from matplotlib.colors import to_rgb, same_color
-from numpy.testing import assert_array_almost_equal, assert_allclose
+from matplotlib.colors import same_color, to_rgb
+from numpy.testing import assert_allclose, assert_array_almost_equal
 from seaborn import FacetGrid
 
 
