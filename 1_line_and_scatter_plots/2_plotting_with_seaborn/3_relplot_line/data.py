@@ -1,6 +1,6 @@
 import pandas as pd
 
-from common import GAMES_DATASET_PATH
+from common.paths import GAMES_DATASET_PATH
 
 
 def read() -> pd.DataFrame:
