@@ -19,5 +19,5 @@ Set the transparency of your `relplot` to `0.1` and colorize it with `green` col
 
 ## Hints
 <div class="hint" title="How the figure should look like?">
-TODO
+<img src="plot.png" alt="How the figure should look like" style="max-height: 500px">
 </div>
