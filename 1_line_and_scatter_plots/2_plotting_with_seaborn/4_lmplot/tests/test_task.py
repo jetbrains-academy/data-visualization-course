@@ -29,3 +29,10 @@ class PlotTestCase(BaseTestMixin):
     def test_3_relplot_kind(self):
         self.checkNumberOfCollections(self.fig, 2)
         self.checkNumberOfLines(self.fig, 1)
+
+    def test_4_data_position(self):
+        expected_fig = sns.lmplot(self.data, x="user_score", y="critic_score")
+        expected_line_x, expected_line_y = expected_fig.ax.lines[0].get_xydata().T
+
+        self.checkLinePosition(self.fig, expected_line_x, expected_line_y)
+        self.checkCollectionPosition(self.fig, self.data["user_score"], self.data["critic_score"])
