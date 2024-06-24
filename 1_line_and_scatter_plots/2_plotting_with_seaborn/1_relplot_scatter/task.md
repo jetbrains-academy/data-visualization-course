@@ -43,7 +43,17 @@ TODO
 </div>
 
 <div class="hint" title="How should I preprocess the data?">
-TODO
+Before using the data, we need to make several preprocessing steps:
+<ol>
+   <li>Lower column names.</li>
+   <li>Remove games with user scores to be decided (the user score is equal to <code>tbd</code>).</li>
+   <li>Drop all nans.</li>
+   <li>Convert the <code>user_score</code> column to float.</li>
+</ol>
+
+If you have some difficulties with your own preprocessing, you can
+have [a sneak to the inner file](file://1_line_and_scatter_plots/2_plotting_with_seaborn/1_relplot_scatter/data.py)
+where our preprocessing is defined.
 </div>
 
 <div class="hint" title="How the figure should look like?">
