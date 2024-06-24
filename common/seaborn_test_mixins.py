@@ -64,9 +64,9 @@ class BaseTestMixin(TestCase):
     @staticmethod
     def checkCollectionTransparency(fig: FacetGrid, expected_transparency: float, collection_number: int = 0):
         if expected_transparency == 1:
-            error_message = f"The collection must not be transparent."
+            error_message = "The collection must not be transparent."
         else:
-            error_message = f"The collection must have transparency."
+            error_message = "The collection must have transparency."
 
         assert_allclose(fig.ax.collections[collection_number].get_alpha(), expected_transparency, err_msg=error_message)
 
@@ -114,9 +114,9 @@ class BaseTestMixin(TestCase):
             actual_transparency = 1
 
         if expected_transparency == 1:
-            error_message = f"The line must not be transparent."
+            error_message = "The line must not be transparent."
         else:
-            error_message = f"The line must have transparency."
+            error_message = "The line must have transparency."
 
         assert_allclose(actual_transparency, expected_transparency, err_msg=error_message)
 
