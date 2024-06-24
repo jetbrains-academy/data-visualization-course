@@ -21,7 +21,7 @@ class PlotTestCase(BaseTestMixin):
         cls.fig = plot(data)
 
     def test_1_return_type(self):
-        self.checkReturnType(self.fig)
+        self.checkReturnType(self.fig, expected_function="relplot")
 
     def test_2_number_of_axes(self):
         self.checkNumberOfAxes(self.fig, 1)
