@@ -1,12 +1,11 @@
 import pandas as pd
 import seaborn as sns
-from seaborn.relational import relplot
 
 from data import preprocess, read
 
 
 def plot(games: pd.DataFrame) -> sns.FacetGrid:
-    return relplot(games, x="user_score", y="critic_score", kind="line")
+    return sns.relplot(games, x="user_score", y="critic_score", kind="line")
 
 
 def main():
