@@ -7,5 +7,5 @@ files:
     visible: false
   - name: tests/test_task.py
     visible: false
-  - name: plot.png
+  - name: example.png
     visible: false

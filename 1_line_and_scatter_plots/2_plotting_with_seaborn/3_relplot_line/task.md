@@ -15,5 +15,5 @@ Make `relplot` build a line plot. Note that you now don't need to make the plot 
 
 ## Hints
 <div class="hint" title="How the figure should look like?">
-<img src="plot.png" alt="How the figure should look like" style="max-height: 500px">
+<img src="example.png" alt="How the figure should look like" style="max-height: 500px">
 </div>

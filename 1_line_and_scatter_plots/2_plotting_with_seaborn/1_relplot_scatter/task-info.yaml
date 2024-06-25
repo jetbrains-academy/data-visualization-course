@@ -12,5 +12,5 @@ files:
     visible: false
   - name: data.py
     visible: false
-  - name: plot.png
+  - name: example.png
     visible: false
