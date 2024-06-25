@@ -35,7 +35,9 @@ below.
 ## Hints
 
 <div class="hint" title="How to run the code?">
-TODO
+To run the code, you should click on the green triangle next to the entry point. In case of execution errors,
+they will be shown in the console inside the IDE. 
+<img src="../../../common/resources/images/common/entry_point.png" style="max-width: 500px">
 </div>
 
 <div class="hint" title="Where to find my figure?">
