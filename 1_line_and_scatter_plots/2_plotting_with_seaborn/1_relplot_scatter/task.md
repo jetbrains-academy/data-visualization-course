@@ -12,7 +12,7 @@ In seaborn, there are several ways to plot relational graphs, but we will focus 
    **l**inear **m**odel **plot**). This function focuses on plotting regression lines. We will talk about it a bit
    later.
 
-For now, we will work with the `relplot` function. 
+For now, we will work with the `relplot` function.
 
 Every plotting function in seaborn accepts three main arguments:
 
@@ -22,15 +22,18 @@ Every plotting function in seaborn accepts three main arguments:
 
 Note that `data` is optional. In this case, `x` and `y` must be lists containing some data.
 
+The common way to import seaborn looks like this: `import seaborn as sns`.
+We did it for you, so to call `relplot` you need to write `sns.relplot`.
+
 Let's do some practice!
 
 ## Task
 
-Modify the `plot` by adding a call of the `relplot` function there. Pass `games` there as a data, `user_score` as x-axis,0
-and `critic_score` as y-axis to it.
+Modify the `plot` by adding a call of the `relplot` function there.
+Pass `games` there as data, `user_score` as x-axis, and `critic_score` as y-axis to it.
 
-Note that we preprocessed the data for you, but if you want, you can do this by yourself. Please see the corresponding hint
-below.
+Note that we preprocessed the data for you, but if you want, you can do this by yourself.
+Please see the corresponding hint below.
 
 ## Hints
 
