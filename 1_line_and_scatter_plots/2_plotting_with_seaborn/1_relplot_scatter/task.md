@@ -44,7 +44,8 @@ they will be shown in the console inside the IDE.
 </div>
 
 <div class="hint" title="Where to find my figure?">
-TODO
+After running the code, the graph will be generated next to the task.py file.
+<img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
 </div>
 
 <div class="hint" title="How should I preprocess the data?">
