@@ -6,4 +6,6 @@ summary: Here you can put the course description. You can use HTML tags inside t
 programming_language: Python
 environment: unittest
 content:
+  - intro
+  - line_and_scatter_plots
   - course_section

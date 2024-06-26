@@ -1,0 +1,25 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: A
+    is_correct: false
+  - text: B
+    is_correct: true
+  - text: C
+    is_correct: false
+  - text: D
+    is_correct: true
+files:
+  - name: main.py
+    visible: true
+  - name: __init__.py
+    visible: false
+local_check: true
+message_incorrect: |
+  In graph A, the points are located on the line y = x. There are no clear outliers.
+
+  In graph B, the points are located near the line y = -0.5x. There is one outlier in the upper right part of the graph
+
+  In graph B, the points are located inside the circle. There are no clear outliers.
+
+  In graph D, the points are located inside two ellipses. There are two outliers between them 
