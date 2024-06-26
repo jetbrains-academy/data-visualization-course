@@ -5,7 +5,7 @@ from data import read, preprocess
 
 
 def plot(games: pd.DataFrame) -> sns.FacetGrid:
-    return sns.relplot(games, x='user_score', y='critic_score', alpha=0.1, color='green')
+    return sns.relplot(games, x="user_score", y="critic_score", alpha=0.1, color="green")
 
 
 def main():
@@ -16,5 +16,5 @@ def main():
     fig.savefig("plot.png", dpi=300)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

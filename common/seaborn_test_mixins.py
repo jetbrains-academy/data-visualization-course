@@ -11,9 +11,9 @@ from seaborn import FacetGrid
 class BaseTestMixin(TestCase):
     def checkReturnType(self, obj: Any, function_name: Optional[str] = None):
         if function_name is None:
-            error_message = 'Use a figure-level function'
+            error_message = "Use a figure-level function"
         else:
-            error_message = f'Use the `{function_name}` function'
+            error_message = f"Use the `{function_name}` function"
 
         self.assertIsInstance(obj, FacetGrid, error_message)
 
@@ -22,17 +22,17 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             current_number,
-            f'The figure must have only {expected_number} axes. Please check that you pass the right parameters',
+            f"The figure must have only {expected_number} axes. Please check that you pass the right parameters",
         )
 
     def checkNumberOfCollections(self, fig: FacetGrid, expected_number: int):
-        collections = getattr(fig.ax, 'collections', [])
+        collections = getattr(fig.ax, "collections", [])
         self.assertEqual(
             expected_number,
             len(collections),
             msg=(
-                f'The figure must have only {expected_number} collection objects. '
-                f'Please check that you pass the right parameters'
+                f"The figure must have only {expected_number} collection objects. "
+                f"Please check that you pass the right parameters"
             ),
         )
 
@@ -64,13 +64,13 @@ class BaseTestMixin(TestCase):
         )
 
     def checkNumberOfLines(self, fig: FacetGrid, expected_number: int):
-        lines = getattr(fig.ax, 'lines', [])
+        lines = getattr(fig.ax, "lines", [])
         self.assertEqual(
             expected_number,
             len(lines),
             msg=(
-                f'The figure must have only {expected_number} line objects. '
-                f'Please check that you pass the right parameters'
+                f"The figure must have only {expected_number} line objects. "
+                f"Please check that you pass the right parameters"
             ),
         )
 

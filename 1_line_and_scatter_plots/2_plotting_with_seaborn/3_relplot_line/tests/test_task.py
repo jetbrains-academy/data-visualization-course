@@ -31,11 +31,11 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig, 1)
 
     def test_5_data_position(self):
-        position = self.data.groupby('user_score')['critic_score'].mean()
+        position = self.data.groupby("user_score")["critic_score"].mean()
         self.checkLinePosition(self.fig, position.index, position)
 
     def test_6_transparency(self):
         self.checkLineTransparency(self.fig, 1)
 
     def test_7_color(self):
-        self.checkLineColor(self.fig, 'C0')
+        self.checkLineColor(self.fig, "C0")

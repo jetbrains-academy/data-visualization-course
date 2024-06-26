@@ -31,4 +31,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig, 0)
 
     def test_5_data_position(self):
-        self.checkCollectionPosition(self.fig, self.data['user_score'], self.data['critic_score'])
+        self.checkCollectionPosition(self.fig, self.data["user_score"], self.data["critic_score"])

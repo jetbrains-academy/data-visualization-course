@@ -1,5 +1,5 @@
 from pathlib import Path
 
-DATASETS_PATH = Path(__file__).parent / 'resources' / 'datasets'
+DATASETS_PATH = Path(__file__).parent / "resources" / "datasets"
 
-GAMES_DATASET_PATH = DATASETS_PATH / 'games.csv'
+GAMES_DATASET_PATH = DATASETS_PATH / "games.csv"
