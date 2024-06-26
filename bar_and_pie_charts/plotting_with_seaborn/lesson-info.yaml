@@ -1,0 +1,14 @@
+type: framework
+custom_name: Plotting with seaborn
+content:
+  - 1_countplot
+  - 2_countplot_horizontal
+  - 3_countplot_sorted
+  - 4_countplot_sorted_and_filtered
+  - 5_countplot_most_popular
+  - 6_piechart_count
+  - 7_barplot_platform_global_sales
+  - 8_barplot_stacked
+  - 9_barplot_stacked_sorted
+  - 10_barplot_over_time
+is_template_based: false
