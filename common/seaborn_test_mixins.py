@@ -6,7 +6,6 @@ from numpy.testing import assert_allclose, assert_array_almost_equal
 from seaborn import FacetGrid
 
 
-# We're using camelCase here to be consistent with unittest
 class BaseTestMixin(TestCase):
     def checkReturnType(self, obj: Any, expected_function: Optional[str] = None):
         error_message = "The return type is wrong. Please use "

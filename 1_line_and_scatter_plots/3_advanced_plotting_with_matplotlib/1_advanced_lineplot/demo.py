@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib.ticker import AutoMinorLocator
 
 from data import read
 
@@ -55,7 +54,7 @@ def plot(df: pd.DataFrame):
             ax.spines[axis].set_linewidth(line_width)
 
     box, pth = main_ax.indicate_inset_zoom(inset_ax, edgecolor="k", alpha=1)
-    for p in [box] + list(pth):
+    for p in [box, *pth]:
         p.set_linestyle("dashed")
         p.set_linewidth(line_width)
 
