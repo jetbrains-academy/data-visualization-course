@@ -9,3 +9,4 @@ files:
     visible: false
   - name: example.png
     visible: false
+    propagatable: false
