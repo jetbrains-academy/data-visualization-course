@@ -8,7 +8,7 @@ def invoke_say_hello(how_many_times: int):
     print(os.linesep.join([say_hello() for _ in range(how_many_times)]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("How many times should I print Hello?")
     how_many_times = int(input())
     invoke_say_hello(how_many_times)

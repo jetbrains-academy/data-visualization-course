@@ -8,7 +8,7 @@ def invoke_say_bye(how_many_times: int):
     print(os.linesep.join([say_bye() for _ in range(how_many_times)]))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("How many times should I print Bye?")
     how_many_times = int(input())
     invoke_say_bye(how_many_times)
