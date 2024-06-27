@@ -1,11 +1,11 @@
 type: edu
-custom_name: Probability histogram
+custom_name: Advanced histogram
 files:
   - name: task.py
     visible: true
   - name: data.py
     visible: false
-  - name: tests/test_task.py
+  - name: demo.py
     visible: false
-  - name: tests/__init__.py
+  - name: tests/test_task.py
     visible: false
