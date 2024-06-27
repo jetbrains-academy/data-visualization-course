@@ -2,10 +2,10 @@ from typing import ClassVar
 
 import pandas as pd
 import seaborn as sns
-from data import preprocess, read
-from task import plot
 
 from common.seaborn_test_mixins import BaseTestMixin
+from data import preprocess, read
+from task import plot
 
 
 class PlotTestCase(BaseTestMixin):
