@@ -1,8 +1,0 @@
-[flake8]
-exclude = .venv, venv
-
-max-line-length = 120
-inline-quotes = double
-
-import-order-style = google
-application-import-names = data, common, task
