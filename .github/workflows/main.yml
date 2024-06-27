@@ -54,7 +54,11 @@ jobs:
           key: pip-cache-${{ hashFiles('./requirements*.txt') }}
 
       - name: Check the code
-        run: ruff check --output-format=github
+        run: |
+          source .venv/bin/activate
+          ruff check --output-format=github
 
       - name: Format the code
-        run: ruff format --check
+        run: |
+          source .venv/bin/activate
+          ruff format --check
