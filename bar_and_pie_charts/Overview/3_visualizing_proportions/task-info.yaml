@@ -1,9 +1,0 @@
-type: theory
-custom_name: Visualizing proportions
-files:
-  - name: main.py
-    visible: true
-  - name: __init__.py
-    visible: false
-  - name: demo.py
-    visible: false

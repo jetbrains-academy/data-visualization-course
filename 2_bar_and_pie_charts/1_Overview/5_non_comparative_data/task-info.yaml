@@ -1,0 +1,7 @@
+type: theory
+custom_name: Non-comparative data
+files:
+  - name: main.py
+    visible: true
+  - name: demo.py
+    visible: false

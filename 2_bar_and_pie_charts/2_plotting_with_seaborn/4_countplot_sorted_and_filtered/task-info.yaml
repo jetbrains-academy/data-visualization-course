@@ -1,0 +1,9 @@
+type: edu
+custom_name: Filtered count plot
+files:
+  - name: task.py
+    visible: true
+  - name: data.py
+    visible: false
+  - name: tests/test_task.py
+    visible: false
