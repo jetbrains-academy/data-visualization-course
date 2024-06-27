@@ -1,6 +1,6 @@
 import pandas as pd
 
-from common import EXPERIMENT_DATASET_PATH
+from common.paths import EXPERIMENT_DATASET_PATH
 
 
 def read() -> pd.DataFrame:
