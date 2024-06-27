@@ -55,10 +55,10 @@ jobs:
 
       - name: Check the code
         run: |
-          source .venv/bin/activate
+          source venv/bin/activate
           ruff check --output-format=github
 
       - name: Format the code
         run: |
-          source .venv/bin/activate
+          source venv/bin/activate
           ruff format --check
