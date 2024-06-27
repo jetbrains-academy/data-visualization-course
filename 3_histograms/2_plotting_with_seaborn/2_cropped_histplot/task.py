@@ -1,8 +1,8 @@
+import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
 
-from data import read, preprocess
+from data import preprocess, read
 
 
 def plot(games: pd.DataFrame):
