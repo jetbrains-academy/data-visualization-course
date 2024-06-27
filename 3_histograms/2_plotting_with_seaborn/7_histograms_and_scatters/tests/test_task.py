@@ -4,7 +4,7 @@ import pandas as pd
 import seaborn as sns
 
 from common.seaborn_test_mixins import BaseTestMixin
-from data import read, preprocess
+from data import preprocess, read
 from task import plot
 
 
@@ -32,7 +32,9 @@ class PlotTestCase(BaseTestMixin):
 
     def test_5_data_position(self):
         self.checkCollectionPosition(
-            self.fig, self.data["user_score"], self.data["critic_score"]
+            self.fig,
+            self.data["user_score"],
+            self.data["critic_score"],
         )
 
     def test_6_transparency(self):
