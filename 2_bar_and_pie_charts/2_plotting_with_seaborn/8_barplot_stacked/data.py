@@ -11,5 +11,4 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     data = data[data.User_Score != "tbd"]
     data["User_Score"] = data["User_Score"].astype("float")
     data.columns = [col.lower() for col in data.columns]
-    data.dropna(inplace=True)
-    return data
+    return data.dropna()

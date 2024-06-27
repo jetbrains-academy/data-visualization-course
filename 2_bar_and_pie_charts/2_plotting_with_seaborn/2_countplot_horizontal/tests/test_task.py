@@ -4,7 +4,7 @@ import pandas as pd
 import seaborn as sns
 
 from common.seaborn_test_mixins import BaseTestMixin
-from data import read, preprocess
+from data import preprocess, read
 from task import plot
 
 
@@ -31,10 +31,10 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig, 0)
 
     def test_5_data_position(self):
-        self.checkCollectionPosition(self.fig, self.data['user_score'], self.data['critic_score'])
+        self.checkCollectionPosition(self.fig, self.data["user_score"], self.data["critic_score"])
 
     def test_6_transparency(self):
         self.checkCollectionTransparency(self.fig, 0.1)
 
     def test_7_color(self):
-        self.checkCollectionColor(self.fig, 'green')
+        self.checkCollectionColor(self.fig, "green")

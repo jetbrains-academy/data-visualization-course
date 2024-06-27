@@ -1,7 +1,8 @@
+custom_name: Overview
 content:
   - 1_categorical_data
   - 2_comparison_of_categories
   - 3_visualizing_proportions
   - 4_change_over_time
   - 5_non_comparative_data
-  - quiz
+  - 6_quiz
