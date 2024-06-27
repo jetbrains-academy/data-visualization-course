@@ -8,4 +8,3 @@ environment: unittest
 content:
   - intro
   - line_and_scatter_plots
-  - course_section
