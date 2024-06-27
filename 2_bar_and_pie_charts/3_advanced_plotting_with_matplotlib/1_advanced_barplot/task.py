@@ -5,7 +5,6 @@ from data import read
 
 def plot(games: pd.DataFrame):
     print(games)
-    pass
 
 
 def main():

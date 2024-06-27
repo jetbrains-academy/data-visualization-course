@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 
-from data import read, preprocess
+from data import preprocess, read
 
 
 def plot(games: pd.DataFrame):
@@ -24,5 +24,5 @@ def main():
     plot(games)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
