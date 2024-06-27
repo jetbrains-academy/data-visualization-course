@@ -1,3 +1,4 @@
 README.md
-.flake8
+.ruff.toml
 requirements-dev.txt
+.idea/runConfigurations
