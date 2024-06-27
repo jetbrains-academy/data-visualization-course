@@ -2,4 +2,4 @@ custom_name: Line and Scatter Plots
 content:
   - 1_overview
   - 2_plotting_with_seaborn
-  - advanced_plotting_with_matplotlib
+  - 3_advanced_plotting_with_matplotlib
