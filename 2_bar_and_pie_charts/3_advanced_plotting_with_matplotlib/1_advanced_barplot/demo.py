@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-import pandas as pd
 from matplotlib.ticker import AutoMinorLocator
+import pandas as pd
 
 from data import read
 
@@ -52,18 +52,16 @@ def plot(df: pd.DataFrame):
             ax.spines[axis].set_linewidth(2)
 
         # Get bar coordinates and dimension
-        bars_info = [
-            (bar.get_y() - 0.11, bar.get_width()) for bar in bars
-        ]  # TODO improve
+        bars_info = [(bar.get_y() - 0.11, bar.get_width()) for bar in bars]  # TODO: improve
 
-        for bar_y, bar_width in bars_info:
+        for bar_y, _ in bars_info:
             ax.axhline(y=bar_y + 1, color="k", ls=(0, (5, 5)), lw=1)
 
     ax = axs[0]
     ax.set_xticks([0, 25, 50, 75, 100])
     ax.xaxis.set_minor_locator(AutoMinorLocator())
 
-    position_params = dict(top=True, labeltop=True, bottom=False, labelbottom=False)
+    position_params = {"top": True, "labeltop": True, "bottom": False, "labelbottom": False}
     ax.tick_params(which="minor", **position_params, axis="x", length=8, width=2)
     ax.tick_params(**position_params, axis="x", length=16, width=2)
 
@@ -75,7 +73,7 @@ def plot(df: pd.DataFrame):
     ax = axs[-1]
     ax.set_xticks([0, 25, 50, 75, 100])
 
-    position_params = dict(top=False, labeltop=False, bottom=True, labelbottom=True)
+    position_params = {"top": False, "labeltop": False, "bottom": True, "labelbottom": True}
     ax.xaxis.set_minor_locator(AutoMinorLocator())
     ax.tick_params(which="minor", **position_params, axis="x", length=8, width=2)
     ax.tick_params(**position_params, axis="x", length=16, width=2)

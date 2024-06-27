@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 
-from data import read, preprocess
+from data import preprocess, read
 
 
 def plot(games: pd.DataFrame):
@@ -21,7 +21,7 @@ def plot(games: pd.DataFrame):
     count_df["proportion"] = count_df["count"] / count_df["total"]
 
     # Sorting by proportions within each platform
-    count_df.sort_values(by=["platform", "proportion"], ascending=[True, False], inplace=True)
+    count_df = count_df.sort_values(by=["platform", "proportion"], ascending=[True, False])
 
     # Get the order of genres for each platform based on the proportions
     order = count_df.groupby("platform").apply(lambda x: x["genre"].tolist()).to_dict()
@@ -47,5 +47,5 @@ def main():
     plot(games)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
