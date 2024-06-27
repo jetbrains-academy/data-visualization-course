@@ -1,0 +1,5 @@
+custom_name: Histograms
+content:
+  - 1_Overview
+  - 2_plotting_with_seaborn
+  - 3_advanced_plotting_with_matplotlib

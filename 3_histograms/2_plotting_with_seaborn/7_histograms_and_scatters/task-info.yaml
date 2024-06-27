@@ -1,11 +1,9 @@
 type: edu
-custom_name: Histogram chart cropped
+custom_name: Combining with other visualization types
 files:
   - name: task.py
     visible: true
   - name: data.py
     visible: false
   - name: tests/test_task.py
-    visible: false
-  - name: tests/__init__.py
     visible: false
