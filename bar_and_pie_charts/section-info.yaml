@@ -1,5 +1,0 @@
-custom_name: Bar and Pie charts
-content:
-  - Overview
-  - plotting_with_seaborn
-  - advanced_plotting_with_matplotlib
