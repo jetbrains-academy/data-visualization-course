@@ -1,0 +1,64 @@
+name: Python build
+
+on: [push]
+
+env:
+  JETBRAINS_MONO_VERSION: 2.304
+  PYTHON_VERSION: "3.9"
+
+jobs:
+  setup:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache Python virtual environment
+        id: pip-cache
+        uses: actions/cache@v3
+        with:
+          path: ./venv
+          key: pip-cache-${{ hashFiles('./requirements*.txt') }}
+
+      - name: Install Python requirements
+        if: steps.pip-cache.outputs.cache-hit != 'true'
+        run: |
+          python3 -m venv venv
+          source venv/bin/activate
+          pip install -r ./requirements.txt -r ./requirements-dev.txt
+
+  code-style:
+    needs: setup
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Cache Python virtual environment
+        id: pip-cache
+        uses: actions/cache@v3
+        with:
+          path: ./venv
+          key: pip-cache-${{ hashFiles('./requirements*.txt') }}
+
+      - name: Check the code
+        run: |
+          source venv/bin/activate
+          ruff check --output-format=github
+
+      - name: Format the code
+        run: |
+          source venv/bin/activate
+          ruff format --check
