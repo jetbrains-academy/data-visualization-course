@@ -1,0 +1,5 @@
+type: theory
+custom_name: Best practices
+files:
+  - name: main.py
+    visible: true
