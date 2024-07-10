@@ -1,0 +1,5 @@
+custom_name: Theory
+content:
+  - 1_data_distribution
+  - 2_histogram_overview
+  - 3_good_and_bad_practices
