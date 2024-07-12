@@ -58,7 +58,7 @@ Before using the data, we need to make several preprocessing steps:
 </ol>
 
 If you have some difficulties with your own preprocessing, you can
-have [a sneak to the inner file](file://1_line_and_scatter_plots/2_plotting_with_seaborn/1_relplot_scatter/data.py)
+have [a sneak to the inner file](file://1_1_line_and_scatter_plots_seaborn/1_theory/1_relplot_scatter/data.py)
 where our preprocessing is defined.
 </div>
 
