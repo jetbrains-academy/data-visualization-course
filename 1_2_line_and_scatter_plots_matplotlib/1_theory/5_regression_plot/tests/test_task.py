@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import preprocess, read, aggregate
+from data import aggregate, preprocess, read
 from task import plot
 
 

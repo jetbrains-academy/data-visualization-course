@@ -1,12 +1,12 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
 from data import preprocess, read
 
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
-    ax.scatter('user_score', 'critic_score', data=games, color='green', alpha=0.1)
+    ax.scatter("user_score", "critic_score", data=games, color="green", alpha=0.1)
     return fig
 
 

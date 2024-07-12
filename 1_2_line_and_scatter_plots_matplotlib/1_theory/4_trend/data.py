@@ -19,4 +19,4 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def aggregate(data: pd.DataFrame) -> pd.DataFrame:
-    return data.groupby('user_score')['critic_score'].mean().reset_index()
+    return data.groupby("user_score")["critic_score"].mean().reset_index()

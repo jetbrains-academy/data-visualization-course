@@ -1,7 +1,7 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
-from data import preprocess, read, aggregate
+from data import aggregate, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> plt.Figure:
@@ -9,8 +9,8 @@ def plot(games: pd.DataFrame) -> plt.Figure:
 
     fig, ax = plt.subplots()
 
-    ax.scatter('user_score', 'critic_score', data=games, alpha=0.1)
-    ax.plot('user_score', 'critic_score', data=aggregated_games, color='firebrick')
+    ax.scatter("user_score", "critic_score", data=games, alpha=0.1)
+    ax.plot("user_score", "critic_score", data=aggregated_games, color="firebrick")
 
     return fig
 

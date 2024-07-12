@@ -1,14 +1,14 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
-from data import preprocess, read, aggregate
+from data import aggregate, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     aggregated_games = aggregate(games)
 
     fig, ax = plt.subplots()
-    ax.plot('user_score', 'critic_score', data=aggregated_games)
+    ax.plot("user_score", "critic_score", data=aggregated_games)
 
     return fig
 

@@ -21,7 +21,7 @@ ignore = [
 ]
 
 [lint.per-file-ignores]
-"common/seaborn_test_mixins.py" = ["N802"] # We're using camelCase here to be consistent with unittest
+"common/base_test_mixins.py" = ["N802"] # We're using camelCase here to be consistent with unittest
 
 [lint.isort]
 known-local-folder = ["data", "common", "task"]

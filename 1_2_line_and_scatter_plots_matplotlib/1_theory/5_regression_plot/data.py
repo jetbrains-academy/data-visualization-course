@@ -1,5 +1,5 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
 
 from common.paths import GAMES_DATASET_PATH
 
@@ -20,12 +20,12 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def aggregate(data: pd.DataFrame) -> pd.DataFrame:
-    coef = np.polyfit(data['user_score'].values, data['critic_score'].values, 1)
+    coef = np.polyfit(data["user_score"].values, data["critic_score"].values, 1)
     poly1d_fn = np.poly1d(coef)
 
     return pd.DataFrame(
         {
-            'user_score': data['user_score'].unique(),
-            'critic_score': poly1d_fn(data['user_score'].unique()),
-        }
+            "user_score": data["user_score"].unique(),
+            "critic_score": poly1d_fn(data["user_score"].unique()),
+        },
     )

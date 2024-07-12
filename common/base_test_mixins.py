@@ -1,8 +1,8 @@
-from typing import List, Any, Optional
+from typing import Any, List, Optional
 from unittest import TestCase
 
-import matplotlib.pyplot as plt
 from matplotlib.colors import same_color, to_rgb
+import matplotlib.pyplot as plt
 from numpy.testing import assert_allclose, assert_array_almost_equal
 
 
