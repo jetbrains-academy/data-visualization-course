@@ -3,7 +3,7 @@ from typing import ClassVar
 import pandas as pd
 import seaborn as sns
 
-from common.seaborn_test_mixins import BaseTestMixin
+from common.base_test_mixins import BaseTestMixin
 from data import preprocess, read
 from task import plot
 
@@ -21,18 +21,18 @@ class PlotTestCase(BaseTestMixin):
         cls.fig = plot(data)
 
     def test_1_return_type(self):
-        self.checkReturnType(self.fig, expected_function="sns.lmplot")
+        self.checkReturnType(self.fig, expected_type=sns.FacetGrid, expected_function="sns.lmplot")
 
     def test_2_number_of_axes(self):
-        self.checkNumberOfAxes(self.fig, 1)
+        self.checkNumberOfAxes(self.fig.axes.flat, 1)
 
     def test_3_relplot_kind(self):
-        self.checkNumberOfCollections(self.fig, 2)
-        self.checkNumberOfLines(self.fig, 1)
+        self.checkNumberOfCollections(self.fig.ax, 2)
+        self.checkNumberOfLines(self.fig.ax, 1)
 
     def test_4_data_position(self):
         expected_fig = sns.lmplot(self.data, x="user_score", y="critic_score")
         expected_line_x, expected_line_y = expected_fig.ax.lines[0].get_xydata().T
 
-        self.checkLinePosition(self.fig, expected_line_x, expected_line_y)
-        self.checkCollectionPosition(self.fig, self.data["user_score"], self.data["critic_score"])
+        self.checkLinePosition(self.fig.ax, expected_line_x, expected_line_y)
+        self.checkCollectionPosition(self.fig.ax, self.data["user_score"], self.data["critic_score"])
