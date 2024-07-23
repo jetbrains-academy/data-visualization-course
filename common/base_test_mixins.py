@@ -1,4 +1,4 @@
-from typing import Any, List, Optional
+from typing import Any, List, Optional, Literal
 from unittest import TestCase
 
 from matplotlib.colors import same_color, to_rgb
@@ -121,3 +121,65 @@ class BaseTestMixin(TestCase):
             same_color(to_rgb(expected_color), to_rgb(ax.lines[line_number].get_color())),
             msg=f"The line must be colored with '{expected_color}'.",
         )
+
+    def checkLim(self, ax: plt.Axes, expected_lim: List[float], axis: Literal["x", "y"]):
+        if axis == "x":
+            actual_lim = ax.get_xlim()
+        elif axis == "y":
+            actual_lim = ax.get_ylim()
+        else:
+            raise ValueError("Unknown axis name.")
+
+        assert_array_almost_equal(
+            actual_lim,
+            expected_lim,
+            err_msg=f'The figure should be limited from {expected_lim[0]} to {expected_lim[1]} for {axis}-axis.',
+        )
+
+    def checkLabel(self, ax: plt.Axes, expected_label: Optional[str], axis: Literal["x", "y"]):
+        if axis == 'x':
+            actual_label = ax.get_xlabel()
+        elif axis == 'y':
+            actual_label = ax.get_ylabel()
+        else:
+            raise ValueError(f"Unknown axis name.")
+
+        if expected_label is None:
+            self.assertEqual('', actual_label, f'The {axis}-axis should have no labels')
+            return
+
+        self.assertEqual(
+            actual_label,
+            expected_label,
+            f"The {axis}-axis should have the following label: '{expected_label}'",
+        )
+
+    def checkTicks(self, ax: plt.Axes, expected_ticks: List[float], axis: Literal["x", "y"], minor: bool = False):
+        if axis == 'x':
+            actual_ticks = ax.get_xticks(minor=minor)
+        elif axis == 'y':
+            actual_ticks = ax.get_yticks(minor=minor)
+        else:
+            raise ValueError(f"Unknown axis name.")
+
+        assert_array_almost_equal(
+            actual_ticks,
+            expected_ticks,
+            err_msg=f"The expected {axis}-axis tick values do not match the actual values. "
+            f"Check that you pass the correct values to the `set_{axis}ticks` function.",
+        )
+
+    def checkSpineVisibility(
+        self,
+        ax: plt.Axes,
+        position: Literal['left', 'right', 'top', 'bottom'],
+        expected_visibility: bool,
+    ):
+        actual_visibility = ax.spines[position].get_visible()
+
+        if expected_visibility:
+            error_message = f"The {position} spine must be visible."
+        else:
+            error_message = f"The {position} spine must not be visible."
+
+        self.assertEqual(actual_visibility, expected_visibility, msg=error_message)
