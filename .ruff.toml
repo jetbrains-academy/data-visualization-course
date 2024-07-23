@@ -18,6 +18,10 @@ ignore = [
     "FA100",
     # Checks for packages that are missing an __init__.py file
     "INP001",
+    # Checks for the use of string literals in exception constructors
+    "EM101",
+    # Checks for long exception messages that are not defined in the exception class itself
+    "TRY003",
 ]
 
 [lint.per-file-ignores]

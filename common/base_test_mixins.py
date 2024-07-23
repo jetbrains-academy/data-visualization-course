@@ -1,4 +1,4 @@
-from typing import Any, List, Optional, Literal
+from typing import Any, List, Literal, Optional
 from unittest import TestCase
 
 from matplotlib.colors import same_color, to_rgb
@@ -133,19 +133,19 @@ class BaseTestMixin(TestCase):
         assert_array_almost_equal(
             actual_lim,
             expected_lim,
-            err_msg=f'The figure should be limited from {expected_lim[0]} to {expected_lim[1]} for {axis}-axis.',
+            err_msg=f"The figure should be limited from {expected_lim[0]} to {expected_lim[1]} for {axis}-axis.",
         )
 
     def checkLabel(self, ax: plt.Axes, expected_label: Optional[str], axis: Literal["x", "y"]):
-        if axis == 'x':
+        if axis == "x":
             actual_label = ax.get_xlabel()
-        elif axis == 'y':
+        elif axis == "y":
             actual_label = ax.get_ylabel()
         else:
-            raise ValueError(f"Unknown axis name.")
+            raise ValueError("Unknown axis name.")
 
         if expected_label is None:
-            self.assertEqual('', actual_label, f'The {axis}-axis should have no labels')
+            self.assertEqual("", actual_label, f"The {axis}-axis should have no labels")
             return
 
         self.assertEqual(
@@ -154,13 +154,13 @@ class BaseTestMixin(TestCase):
             f"The {axis}-axis should have the following label: '{expected_label}'",
         )
 
-    def checkTicks(self, ax: plt.Axes, expected_ticks: List[float], axis: Literal["x", "y"], minor: bool = False):
-        if axis == 'x':
+    def checkTicks(self, ax: plt.Axes, expected_ticks: List[float], axis: Literal["x", "y"], *, minor: bool = False):
+        if axis == "x":
             actual_ticks = ax.get_xticks(minor=minor)
-        elif axis == 'y':
+        elif axis == "y":
             actual_ticks = ax.get_yticks(minor=minor)
         else:
-            raise ValueError(f"Unknown axis name.")
+            raise ValueError("Unknown axis name.")
 
         assert_array_almost_equal(
             actual_ticks,
@@ -172,7 +172,8 @@ class BaseTestMixin(TestCase):
     def checkSpineVisibility(
         self,
         ax: plt.Axes,
-        position: Literal['left', 'right', 'top', 'bottom'],
+        position: Literal["left", "right", "top", "bottom"],
+        *,
         expected_visibility: bool,
     ):
         actual_visibility = ax.spines[position].get_visible()
