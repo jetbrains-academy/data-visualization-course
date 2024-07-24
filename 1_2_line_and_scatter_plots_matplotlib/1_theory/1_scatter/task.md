@@ -28,7 +28,7 @@ But there are several things that you need to note:
 <hr>
 
 To start building something with matplotlib you need
-to create [`Figure`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes) and
+to create [`Figure`](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html) and
 (at least one) [`Axes`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes).
 You can think about `Figure` as a container for several `Axes` in which actual plotting is done.
 

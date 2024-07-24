@@ -12,7 +12,7 @@ and [`set_yticks`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axe
 
 Another feature that is good to be aware of is limiting the view range of x-axis and y-axis. To do it we can
 use [`set_xlim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html)
-and [`set_ylim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.ylim.html) respectively.
+and [`set_ylim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html) respectively.
 
 Our figure looks like it is "trapped" inside a box. 
 These black lines that surround the figure call 

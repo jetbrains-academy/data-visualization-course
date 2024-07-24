@@ -62,9 +62,13 @@ class BaseTestMixin(TestCase):
         if expected_transparency == 1:
             error_message = "The collection must not be transparent."
         else:
-            error_message = "The collection must have transparency."
+            error_message = f"The collection must have transparency ({expected_transparency})."
 
-        assert_allclose(ax.collections[collection_number].get_alpha(), expected_transparency, err_msg=error_message)
+        actual_alpha = ax.collections[collection_number].get_alpha()
+        if actual_alpha is None:
+            actual_alpha = 1
+
+        assert_allclose(actual_alpha, expected_transparency, err_msg=error_message)
 
     def checkCollectionColor(self, ax: plt.Axes, expected_facecolor: str, collection_number: int = 0):
         self.assertTrue(
