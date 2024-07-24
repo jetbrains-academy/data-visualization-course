@@ -20,17 +20,19 @@ class PlotTestCase(BaseTestMixin):
         cls.data = data
         cls.fig = plot(data)
 
-    def test_1_return_type(self):
+    def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=plt.Figure)
 
-    def test_2_number_of_axes(self):
+    def test_1_2_number_of_axes(self):
         self.checkNumberOfAxes(self.fig.axes, 1)
 
-    def test_3_relplot_kind(self):
+    def test_1_3_relplot_kind(self):
         self.checkNumberOfCollections(self.fig.axes[0], 1)
         self.checkNumberOfLines(self.fig.axes[0], 1)
 
-    def test_4_data_position(self):
+    def test_2_1_line_position(self):
         aggregated_data = aggregate(self.data)
         self.checkLinePosition(self.fig.axes[0], aggregated_data["user_score"], aggregated_data["critic_score"])
+
+    def test_3_1_scatter_position(self):
         self.checkCollectionPosition(self.fig.axes[0], self.data["user_score"], self.data["critic_score"])

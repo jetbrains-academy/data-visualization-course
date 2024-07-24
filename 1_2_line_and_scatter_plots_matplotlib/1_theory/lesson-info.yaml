@@ -6,5 +6,6 @@ content:
   - 3_line
   - 4_trend
   - 5_regression_plot
-  - 6_customizing_regression_plot
+  - 6_customizing_regression_plot_part_1
+  - 7_customizing_regression_plot_part_2
 is_template_based: false

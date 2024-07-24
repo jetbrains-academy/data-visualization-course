@@ -1,5 +1,5 @@
 type: edu
-custom_name: Customizing regression plot
+custom_name: Customizing regression plot. Part 1
 files:
   - name: data.py
     visible: false

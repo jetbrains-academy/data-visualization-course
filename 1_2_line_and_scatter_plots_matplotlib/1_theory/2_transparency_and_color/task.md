@@ -19,5 +19,5 @@ Set the transparency of your `scatter` to `0.1` and colorize it with `green` col
 
 ## Hints
 <div class="hint" title="How the figure should look like?">
-<img src="example.png" alt="How the figure should look like" style="max-height: 500px">
+   <img src="example.png" alt="How the figure should look like" style="max-height: 500px">
 </div>
