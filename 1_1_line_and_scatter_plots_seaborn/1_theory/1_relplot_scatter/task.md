@@ -8,9 +8,9 @@ In seaborn, there are several ways to plot relational graphs, but we will focus 
 
 1. Using [`relplot`](https://seaborn.pydata.org/generated/seaborn.relplot.html) (stands for **rel**ational **plot**).
    This function can plot both line and scatter plots.
-2. Using [`lmplot`](https://seaborn.pydata.org/generated/seaborn.lmplot.html) (stands for
-   **l**inear **m**odel **plot**). This function focuses on plotting regression lines. We will talk about it a bit
-   later.
+2. Using [`lmplot`](https://seaborn.pydata.org/generated/seaborn.lmplot.html) (stands for **l**inear **m**odel **plot**).
+   This function focuses on plotting regression lines.
+   We will talk about it a bit later.
 
 For now, we will work with the `relplot` function.
 
@@ -20,7 +20,8 @@ Every plotting function in seaborn accepts three main arguments:
 * `x` – Name of a column to visualize on x-axis.
 * `y` – Name of a column to visualize on y-axis.
 
-Note that `data` is optional. In this case, `x` and `y` must be lists containing some data.
+Note that `data` is optional.
+In this case, `x` and `y` must be lists containing some data.
 
 The common way to import seaborn looks like this: `import seaborn as sns`.
 We did it for you, so to call `relplot` you need to write `sns.relplot`.
@@ -38,30 +39,30 @@ Please see the corresponding hint below.
 ## Hints
 
 <div class="hint" title="How to run the code?">
-To run the code, you should click on the green triangle next to the entry point. In case of execution errors,
-they will be shown in the console inside the IDE. 
-<img src="../../../common/resources/images/common/entry_point.png" style="max-width: 500px">
+   To run the code, you should click on the green triangle next to the entry point.
+   In case of execution errors, they will be shown in the console inside the IDE. 
+   <img src="../../../common/resources/images/common/entry_point.png" style="max-width: 500px">
 </div>
 
 <div class="hint" title="Where to find my figure?">
-After running the code, the graph will be generated next to the task.py file.
-<img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
+   After running the code, the graph will be generated next to the task.py file.
+   <img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
 </div>
 
 <div class="hint" title="How should I preprocess the data?">
-Before using the data, we need to make several preprocessing steps:
-<ol>
-   <li>Lower column names.</li>
-   <li>Remove games with user scores to be decided (the user score is equal to <code>tbd</code>).</li>
-   <li>Drop all nans.</li>
-   <li>Convert the <code>user_score</code> column to float.</li>
-</ol>
-
-If you have some difficulties with your own preprocessing, you can
-have [a sneak to the inner file](file://1_1_line_and_scatter_plots_seaborn/1_theory/1_relplot_scatter/data.py)
-where our preprocessing is defined.
+   Before using the data, we need to make several preprocessing steps:
+   <ol>
+      <li>Lower column names.</li>
+      <li>Remove games with user scores to be decided (the user score is equal to <code>tbd</code>).</li>
+      <li>Drop all nans.</li>
+      <li>Convert the <code>user_score</code> column to float.</li>
+   </ol>
+   
+   If you have some difficulties with your own preprocessing, you can have
+   [a sneak to the inner file](file://1_1_line_and_scatter_plots_seaborn/1_theory/1_relplot_scatter/data.py)
+   where our preprocessing is defined.
 </div>
 
 <div class="hint" title="How the figure should look like?">
-<img src="example.png" alt="How the figure should look like" style="max-height: 500px">
+   <img src="example.png" alt="How the figure should look like" style="max-height: 500px">
 </div>
