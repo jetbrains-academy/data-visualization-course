@@ -1,11 +1,11 @@
 ## Theory
 
-The figure looks very overwhelming at first sight and not understandable at all. Let's tune the visualization parameters
+The figure looks overwhelming at first sight and is not understandable at all. Let's tune the visualization parameters
 a bit.
 
 ## Task
 
-Colorize the line with `firebrick` color and set the scatter transparency to `0.1`.
+Color the line `firebrick` and set the scatter transparency to `0.1`.
 
 ## Hints
 

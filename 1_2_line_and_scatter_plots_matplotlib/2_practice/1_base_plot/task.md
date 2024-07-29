@@ -1,8 +1,7 @@
 ## Task
 
-As an experiment, researchers recorded changes of the subject's `y` variable by varying the `x` variable.
-It was the secret research, so they haven't told us any additional information about it.
-But they said they found something unusual in the observations.
+During some experiment, researchers recorded the subject's `y` variable while changing the `x` variable.
+This was a secret research, so they haven't told us any additional information about it, but they said they found something unusual in the observations.
 The researchers approximated the data (`approximated_y`),
 and now they're looking for help with plotting to see this unexpected behavior in a figure.
 Let's help them!
@@ -12,7 +11,7 @@ The line trace should plot approximated data, and the scatter trace should plot 
 
 You should also make several visual adjustments:
 
-1. The line trace should bе `navy`.
+1. The line trace should bе of `navy` color.
 2. The scatter trace should be `grey` and almost transparent (`0.05`).
 3. The x-axis view should be limited to an interval from `-4` to `4`.
 4. The x-axis should have only three ticks: `-4`, `0` and `4`.
@@ -33,32 +32,32 @@ please feel free to use hints bellow where you can also find what the final figu
     <img src="example.png" alt="How the figure should look like" style="max-height: 500px">
 </div>
 
-<div class="hint" title="How to colorize the trace?">
-    To colorize line or scatter you can use the <code>color</code> argument:
+<div class="hint" title="How to color the trace?">
+    To color a line or scatter, you can use the <code>color</code> argument:
     <code>ax.line("x", "y", data=my_data, color="color_name")</code>
 </div>
 
 <div class="hint" title="How to make the trace transparent?">
-    To make line or scatter transparent you can use the <code>alpha</code> argument:
+    To make a line or scatter transparent, you can use the <code>alpha</code> argument:
     <code>ax.scatter("x", "y", data=my_data, alpha=0.5)</code>
 </div>
 
 <div class="hint" title="How to limit an axis view?">
-    To limit an axis view you can use the <code>set_xlim</code> or <code>set_ylim</code> method of the <code>Axes</code> object:
+    To limit an axis view, you can use the <code>set_xlim</code> or <code>set_ylim</code> method of the <code>Axes</code> object:
     <code>ax.set_xlim(1, 3)</code>
 </div>
 
 <div class="hint" title="How to set ticks?">
-    To set ticks you can use the <code>set_xticks</code> or <code>set_yticks</code> method of the <code>Axes</code> object:
+    To set ticks, you can use the <code>set_xticks</code> or <code>set_yticks</code> method of the <code>Axes</code> object:
     <code>ax.set_xticks([1, 2, 3])</code>
 </div>
 
-<div class="hint" title="How to set label for an axis?">
-    To set label for an axis you can use the <code>set_xlabel</code> or <code>set_ylabel</code> method of the <code>Axes</code> object:
+<div class="hint" title="How to set a label for an axis?">
+    To set a label for an axis, you can use the <code>set_xlabel</code> or <code>set_ylabel</code> method of the <code>Axes</code> object:
     <code>ax.set_xlabel("x")</code>
 </div>
 
 <div class="hint" title="How to remove spines?">
-    To remove a spine you can use the <code>set_visible</code> method of the <code>Spine</code> object:
+    To remove a spine, you can use the <code>set_visible</code> method of the <code>Spine</code> object:
     <code>ax.spines["bottom"].set_visible(False)</code>
 </div>

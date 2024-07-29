@@ -1,6 +1,6 @@
 ## Theory
 
-Much better, we can determine the big dense cluster in our dataset with this visualization. Moreover, we can determine
+Much better, we can now see the big dense cluster in our dataset with this visualization. Moreover, we can determine
 that there is some kind of linear dependency between the two scores. Let's try to make a linear approximation of the
 data to check it.
 

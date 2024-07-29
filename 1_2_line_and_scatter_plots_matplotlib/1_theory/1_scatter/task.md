@@ -19,20 +19,20 @@ Every plotting function in matplotlib accepts three main arguments:
 * `x` – Name of a column to visualize on x-axis.
 * `y` – Name of a column to visualize on y-axis.
 
-But there are several things that you need to note:
+There are several things that you need to note:
 
-1. `data` is optional. In this case, `x` and `y` must be lists containing some data.
+1. `data` is optional. If you dot provide it, `x` and `y` must be lists containing some data.
 2. You can only specify the `data` parameter as a keyword parameter.
 3. You can only specify the `x` and `y` parameter as a positional parameter.
 
 <hr>
 
 To start building something with matplotlib you need
-to create [`Figure`](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html) and
-(at least one) [`Axes`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes).
+to create a [`Figure`](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html) object and
+(at least one) [`Axes`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes) object.
 You can think about `Figure` as a container for several `Axes` in which actual plotting is done.
 
-To create `Figure` and (single) `Axes` we can use
+To create `Figure` and a (single) `Axes`, we can use
 the [`subplots`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html)
 function: `fig, ax = plt.subplots()`.
 Note that we are using the common abbreviation for `Figure` (`fig`) and `Axes` (`ax`) here.
@@ -43,15 +43,15 @@ Be aware of the difference between `Axes` and [`Axis`](https://matplotlib.org/st
 `Axes` can contain several `Axis` (usually, x-axis and y-axis).
 
 As we said earlier, the actual plotting is done in `Axes`, 
-so to plot something in the figure you should call some function from the `Axes` instance.
-For example, to plot scatter, we should write something like this: `ax.scatter('x', 'y', data=my_data)`.
+so to plot something in the figure you should call functions from the `Axes` instance.
+For example, for a scatter plot, we need to write something like this: `ax.scatter('x', 'y', data=my_data)`.
 
 Let's do some practice!
 
 ## Task
 
-1. Create the instance of `Figure` and `Axes` in the `plot` function.
-2. Plot a scatter there the x-axis is `user_score`, the y-axis is `critic_score` and the data is `games`.
+1. Create an instance of `Figure` and `Axes` in the `plot` function.
+2. Create a scatter plot, where the x-axis is `user_score`, the y-axis is `critic_score`, and the data is `games`.
 
 Note that we preprocessed the data for you, but if you want, you can do this by yourself.
 Please see the corresponding hint below.
@@ -73,14 +73,14 @@ Please see the corresponding hint below.
 <div class="hint" title="How should I preprocess the data?">
    Before using the data, we need to make several preprocessing steps:
    <ol>
-      <li>Lower column names.</li>
+      <li>Lower-case the column names.</li>
       <li>Remove games with user scores to be decided (the user score is equal to <code>tbd</code>).</li>
-      <li>Drop all nans.</li>
+      <li>Drop all NaNs.</li>
       <li>Convert the <code>user_score</code> column to float.</li>
    </ol>
    
    If you have some difficulties with your own preprocessing, you can
-   have [a sneak to the inner file](file://1_2_line_and_scatter_plots_matplotlib/1_theory/1_scatter/data.py)
+   have [a sneak peek into the file](file://1_2_line_and_scatter_plots_matplotlib/1_theory/1_scatter/data.py)
    where our preprocessing is defined.
    
    Note that your own preprocessing function will not be tested.
