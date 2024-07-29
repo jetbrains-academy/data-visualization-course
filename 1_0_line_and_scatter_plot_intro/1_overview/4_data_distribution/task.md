@@ -2,7 +2,7 @@
 
 If you want to visualize the overall patterns or the distribution of data, a scatterplot is more suitable. It allows you
 to see the spread, clusters, and concentration of data points. Line plots are more focused on displaying changes and 
-trends in the data over time or another continuous variable.
+trends in the data over time.
 
 One day Andy needed to analyze data on the size of beavers. He calculated the simplest descriptive statistics, but they 
 looked too perfect: the mean was 0 and the standard deviation was 1. Andy realized that something was wrong and decided 
