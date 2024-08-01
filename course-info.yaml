@@ -7,3 +7,7 @@ programming_language: Python
 environment: unittest
 content:
   - 0_intro
+  - 1_0_line_and_scatter_plot_intro
+  - 1_1_line_and_scatter_plots_seaborn
+  - 1_2_line_and_scatter_plots_matplotlib
+  - 2_bar_and_pie_charts
