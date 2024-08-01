@@ -8,6 +8,8 @@ ignore = [
     "D",
     # flake8-pytest-style
     "PT",
+    # flake8-fixme
+    "FIX",
     # flake8-print
     "T20",
     # Missing type annotation for self/cls in method
@@ -22,6 +24,10 @@ ignore = [
     "EM101",
     # Checks for long exception messages that are not defined in the exception class itself
     "TRY003",
+    # Checks that a TODO comment includes an author.
+    "TD002",
+    # Checks that a TODO comment is associated with a link to a relevant issue or ticket.
+    "TD003",
 ]
 
 [lint.per-file-ignores]
