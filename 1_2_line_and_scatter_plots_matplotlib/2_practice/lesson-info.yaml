@@ -1,0 +1,6 @@
+type: framework
+custom_name: Practice
+content:
+  - 1_base_plot
+  - 2_advanced_inset_axes
+is_template_based: false

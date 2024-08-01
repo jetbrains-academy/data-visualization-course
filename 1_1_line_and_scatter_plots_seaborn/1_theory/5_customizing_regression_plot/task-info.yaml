@@ -1,0 +1,12 @@
+type: edu
+custom_name: Customizing regression plot
+files:
+  - name: task.py
+    visible: true
+  - name: data.py
+    visible: false
+  - name: tests/test_task.py
+    visible: false
+  - name: example.png
+    visible: false
+    propagatable: false

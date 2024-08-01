@@ -1,0 +1,9 @@
+type: framework
+custom_name: Theory
+content:
+  - 1_relplot_scatter
+  - 2_transparency_and_color
+  - 3_relplot_line
+  - 4_lmplot
+  - 5_customizing_regression_plot
+is_template_based: false
