@@ -37,7 +37,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkLineColor(self.fig.axes[0], expected_color="navy")
 
     def test_02_3_line_transparency(self):
-        self.checkLineTransparency(self.fig.axes[0], expected_transparency=1)
+        self.checkLineTransparency(self.fig.axes[0], expected_alpha=1)
 
     def test_03_1_scatter_position(self):
         self.checkCollectionPosition(self.fig.axes[0], expected_x=self.data["x"], expected_y=self.data["y"])
@@ -46,7 +46,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkCollectionColor(self.fig.axes[0], expected_facecolor="grey")
 
     def test_03_3_scatter_transparency(self):
-        self.checkCollectionTransparency(self.fig.axes[0], expected_transparency=0.05)
+        self.checkCollectionTransparency(self.fig.axes[0], expected_alpha=0.05)
 
     def test_04_1_x_lim(self):
         self.checkLim(self.fig.axes[0], expected_lim=[-4, 4], axis="x")
@@ -90,7 +90,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkLineColor(self.fig.axes[0].child_axes[0], expected_color="navy")
 
     def test_08_3_inset_axes_line_transparency(self):
-        self.checkLineTransparency(self.fig.axes[0].child_axes[0], expected_transparency=1)
+        self.checkLineTransparency(self.fig.axes[0].child_axes[0], expected_alpha=1)
 
     def test_09_1_inset_axes_scatter_position(self):
         self.checkCollectionPosition(
@@ -103,7 +103,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkCollectionColor(self.fig.axes[0].child_axes[0], expected_facecolor="grey")
 
     def test_09_3_inset_axes_scatter_transparency(self):
-        self.checkCollectionTransparency(self.fig.axes[0].child_axes[0], expected_transparency=0.05)
+        self.checkCollectionTransparency(self.fig.axes[0].child_axes[0], expected_alpha=0.05)
 
     def test_10_1_inset_axes_x_lim(self):
         self.checkLim(self.fig.axes[0].child_axes[0], expected_lim=[0.5, 1.5], axis="x")
