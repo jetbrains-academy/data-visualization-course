@@ -19,7 +19,6 @@ class BaseTestMixin(TestCase):
 
     # ----------------------------------------------------------------------
 
-    # TODO: check expected_function everywhere
     def checkReturnType(self, obj: Any, expected_type: Any, expected_function: Optional[str] = None):
         error_message = "The return type is wrong."
 
