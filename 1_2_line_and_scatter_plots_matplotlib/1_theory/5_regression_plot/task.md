@@ -11,7 +11,7 @@ Please see the corresponding hint below.
 
 Previously, we used only one type of visualization, but what if we want to build a scatter plot along with the line?
 With Matplotlib, we can easily do this—just
-call another method from `Axes`, and it will be plotted on the top of the previous ones.
+call another method from `Axes`, and it will be plotted on top of the previous ones.
 
 ## Task
 
