@@ -10,7 +10,7 @@ This parameter accepts a float value between 0 and 1.
 Let's also explore another useful parameter, `color`,
 which allows you to change the color of plotted points, lines and shapes.
 This parameter can accept a variety of inputs, such as:
-* A RGB or RGBA tuple of float values, e.g., `(0.1, 0.2, 0.5)` or `(0.1, 0.2, 0.5, 0.3)`.
+* An RGB or RGBA tuple of float values, e.g., `(0.1, 0.2, 0.5)` or `(0.1, 0.2, 0.5, 0.3)`.
 * A case-insensitive hex RGB or RGBA string, e.g., `#0f0f0f` or `#0f0f0f80`.
 * Simple color names like `red`, `green`, `blue`, etc.
 * [X11 color names](https://en.wikipedia.org/wiki/X11_color_names#Color_name_chart).
