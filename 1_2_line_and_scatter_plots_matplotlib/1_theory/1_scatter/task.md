@@ -1,66 +1,66 @@
 ## Goal
 
-The main goal of the lesson is to **plot the correlation between the user score and the critic score**.
+The main goal of the lesson is to **plot the correlation between user scores and critic scores**.
 
 ## Theory
 
-In matplotlib, there are several ways to plot relational graphs, but we will focus on two of them:
+In Matplotlib, there are several ways to plot relational graphs, but we will focus on two of them:
 
 1. Using [`scatter`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html).
-   This function can build scatter plots.
+   This function creates scatter plots.
 2. Using [`plot`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html).
-   This function can build line plots.
+   This function creates line plots.
 
 For now, we will work with the `scatter` function.
 
-Every plotting function in matplotlib accepts three main arguments:
+Every plotting function in Matplotlib accepts three main arguments:
 
-* `data` – Input data structure. In this course, we will pass pandas dataframes here.
-* `x` – Name of a column to visualize on x-axis.
-* `y` – Name of a column to visualize on y-axis.
+* `data`: The input data structure. In this course, we will pass Pandas DataFrames here.
+* `x`: The name of the column to visualize on the x-axis.
+* `y`: The name of the column to visualize on the y-axis.
 
-There are several things that you need to note:
+There are a few important things to note:
 
-1. `data` is optional. If you dot provide it, `x` and `y` must be lists containing some data.
-2. You can only specify the `data` parameter as a keyword parameter.
-3. You can only specify the `x` and `y` parameter as a positional parameter.
+1. `data` is optional. If you dot provide it, `x` and `y` must be lists containing data.
+2. You can only specify the `data` parameter as a keyword argument.
+3. You must specify the `x` and `y` parameters as positional arguments.
 
 <hr>
 
-To start building something with matplotlib you need
+To start building plots with Matplotlib, you need
 to create a [`Figure`](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html) object and
-(at least one) [`Axes`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes) object.
-You can think about `Figure` as a container for several `Axes` in which actual plotting is done.
+at least one [`Axes`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes) object.
+You can think of the `Figure` as a container for several `Axes`, where the actual plotting is done.
 
-To create `Figure` and a (single) `Axes`, we can use
+To create a `Figure` and a single `Axes`, you can use
 the [`subplots`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html)
 function: `fig, ax = plt.subplots()`.
-Note that we are using the common abbreviation for `Figure` (`fig`) and `Axes` (`ax`) here.
-We are also using the common alias for matplotlib (`plt`),
+Here, we use the common abbreviations for `Figure` (`fig`) and `Axes` (`ax`).
+We are also using the common alias for Matplotlib (`plt`),
 which we defined during import: `import matplotlib.pyplot as plt`.
 
 Be aware of the difference between `Axes` and [`Axis`](https://matplotlib.org/stable/api/axis_api.html#axis-objects):
-`Axes` can contain several `Axis` (usually, x-axis and y-axis).
+an `Axes` object can contain several `Axis` objects (usually the x-axis and y-axis).
 
-As we said earlier, the actual plotting is done in `Axes`, 
-so to plot something in the figure you should call functions from the `Axes` instance.
-For example, for a scatter plot, we need to write something like this: `ax.scatter('x', 'y', data=my_data)`.
+As we mentioned earlier, the actual plotting is done within the `Axes`. 
+To plot something in the figure, you should call functions from the `Axes` instance.
+For example, to create a scatter plot, you would write something like this: `ax.scatter('x', 'y', data=my_data)`.
 
-Let's do some practice!
+Now, let's do some practice!
 
 ## Task
 
 1. Create an instance of `Figure` and `Axes` in the `plot` function.
-2. Create a scatter plot, where the x-axis is `user_score`, the y-axis is `critic_score`, and the data is `games`.
+2. Create a scatter plot where the x-axis represents `user_score`, the y-axis represents `critic_score`, and the data is `games`.
 
-Note that we preprocessed the data for you, but if you want, you can do this by yourself.
+Note that we have preprocessed the data for you, but if you prefer, you can do this yourself.
 Please see the corresponding hint below.
 
 ## Hints
 
 <div class="hint" title="How to run the code?">
-   To run the code, you should click on the green triangle next to the entry point. In case of execution errors,
-   they will be shown in the console inside the IDE. 
+   To run the code, click the green triangle next to the entry point. If any execution errors occur,
+   they will be displayed in the console inside the IDE. 
    <img src="../../../common/resources/images/common/entry_point.png" style="max-width: 500px">
 </div>
 
@@ -71,21 +71,21 @@ Please see the corresponding hint below.
 </div>
 
 <div class="hint" title="How should I preprocess the data?">
-   Before using the data, we need to make several preprocessing steps:
+   Before using the data, you need to perform several preprocessing steps:
    <ol>
-      <li>Lower-case the column names.</li>
-      <li>Remove games with user scores to be decided (the user score is equal to <code>tbd</code>).</li>
-      <li>Drop all NaNs.</li>
-      <li>Convert the <code>user_score</code> column to float.</li>
+      <li>Convert column names to lowercase.</li>
+      <li>Remove games with user scores listed as "to be decided" (i.e., where the user score is <code>tbd</code>).</li>
+      <li>Drop all NaN values.</li>
+      <li>Convert the <code>user_score</code> column to a float.</li>
    </ol>
    
-   If you have some difficulties with your own preprocessing, you can
-   have [a sneak peek into the file](file://1_2_line_and_scatter_plots_matplotlib/1_theory/1_scatter/data.py)
+   If you encounter difficulties with your own preprocessing, you can
+   take [a peek at the file](file://1_2_line_and_scatter_plots_matplotlib/1_theory/1_scatter/data.py)
    where our preprocessing is defined.
    
    Note that your own preprocessing function will not be tested.
 </div>
 
-<div class="hint" title="How the figure should look like?">
-   <img src="example.png" alt="How the figure should look like" style="max-height: 500px">
+<div class="hint" title="What should the figure look like?">
+   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
 </div>
