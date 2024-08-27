@@ -16,12 +16,16 @@ For now, we will work with the `relplot` function.
 
 Every plotting function in Seaborn accepts three main arguments:
 
-* `data`: The input data structure. In this course, we will pass Pandas DataFrames here.
+* `data`: The input data structure (for example, Pandas DataFrame or some mapping).
 * `x`: The name of the column to visualize on the x-axis.
 * `y`: The name of the column to visualize on the y-axis.
 
 Note that the `data` argument is optional.
 If you do not provide it, `x` and `y` must be lists containing the data to plot.
+
+While using Seaborn, we recommend passing `data` as a positional argument
+and any other arguments (including `x` and `y`) as keyword arguments.
+For example: `sns.relplot(my_data, x="column_x", y="column_y", some_argument="some_value")`.
 
 The common way to import Seaborn is as follows: `import seaborn as sns`.
 We've already done this for you, so to call `relplot`, you simply need to write `sns.relplot`.

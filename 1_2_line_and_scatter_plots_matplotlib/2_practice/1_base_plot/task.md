@@ -9,17 +9,20 @@ Let's assist them!
 Our figure should consist of two traces: a line trace and a scatter trace.
 The line trace should plot the approximated data, while the scatter trace should plot the actual data.
 
-You should also make several visual adjustments:
-
+You should make several visual adjustments to the figure:
 1. The line trace should bе `navy`.
 2. The scatter trace should be `grey` and almost transparent (`0.05`).
-3. Limit the x-axis view to the interval from `-4` to `4`.
-4. The x-axis should have only three ticks: `-4`, `0`, and `4`.
-5. Label the x-axis as `x`.
-6. Limit the y-axis view to the interval from `-2` to `2`.
-7. The y-axis should have only three ticks: `-1.5`, `0`, and `1.5`.
-8. Label the y-axis as `y`.
-9. Remove the top and right spines.
+3. Remove the top and right spines.
+
+You should also make some modifications to the x-axis:
+1. Limit the x-axis view to the interval from `-4` to `4`.
+2. The x-axis should have only three ticks: `-4`, `0`, and `4`.
+3. Label the x-axis as `x`.
+
+And make similar changes to the y-axis:
+1. Limit the y-axis view to the interval from `-2` to `2`.
+2. The y-axis should have only three ticks: `-1.5`, `0`, and `1.5`.
+3. Label the y-axis as `y`.
 
 Note that you don't need to preprocess the data.
 
