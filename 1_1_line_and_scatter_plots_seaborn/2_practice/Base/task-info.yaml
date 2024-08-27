@@ -8,6 +8,11 @@ files:
     visible: false
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 126
+        length: 157
+        placeholder_text: ' # TODO'
+        is_visible: false
   - name: example.png
     visible: false
     propagatable: false
