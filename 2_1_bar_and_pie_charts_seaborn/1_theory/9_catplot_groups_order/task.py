@@ -1,10 +1,10 @@
 import pandas as pd
 import seaborn as sns
 
-from data import add_decades, extract_sales_region, preprocess, read, get_sorted_regions
+from data import add_decades, extract_sales_region, get_sorted_regions, preprocess, read
 
 
-def plot(games: pd.DataFrame):
+def plot(games: pd.DataFrame) -> sns.FacetGrid:
     games = add_decades(games)
     games = extract_sales_region(games)
 

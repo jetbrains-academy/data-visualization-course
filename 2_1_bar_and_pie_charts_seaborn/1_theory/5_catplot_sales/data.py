@@ -1,5 +1,3 @@
-from typing import List
-
 import pandas as pd
 
 from common.paths import GAMES_DATASET_PATH
@@ -12,7 +10,7 @@ def read() -> pd.DataFrame:
 
 
 def filter_platforms(data: pd.DataFrame) -> pd.DataFrame:
-    return data[data['platform'].isin(['PS4', 'XOne', 'PC', 'WiiU'])]
+    return data[data["platform"].isin(["PS4", "XOne", "PC", "WiiU"])]
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
