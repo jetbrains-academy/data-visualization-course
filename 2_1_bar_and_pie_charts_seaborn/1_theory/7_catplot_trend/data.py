@@ -1,6 +1,4 @@
-import pandas as pd
 import numpy as np
-
 import pandas as pd
 
 from common.paths import GAMES_DATASET_PATH
@@ -12,7 +10,7 @@ def read() -> pd.DataFrame:
     return pd.read_csv(GAMES_DATASET_PATH)
 
 
-def add_decades(data: pd.DataFrame):
+def add_decades(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
 
     decade_bins = (
@@ -24,9 +22,7 @@ def add_decades(data: pd.DataFrame):
     decade_labels = np.array(decade_bins[:-1]) + 1
 
     data["decade"] = pd.cut(data["year_of_release"], bins=decade_bins, labels=decade_labels, right=True)
-    data = data[data["decade"].notna()]
-
-    return data
+    return data[data["decade"].notna()]
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:

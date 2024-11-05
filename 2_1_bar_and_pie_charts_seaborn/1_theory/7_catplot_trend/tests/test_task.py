@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 
 from common.base_test_mixins import BaseTestMixin
-from data import preprocess, read, add_decades
+from data import add_decades, preprocess, read
 from task import plot
 
 
@@ -31,7 +31,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfCollections(self.fig.ax, 0)
         self.checkNumberOfLines(self.fig.ax, 0)  # Error bars
 
-        number_of_decades = add_decades(self.data)['decade'].nunique()
+        number_of_decades = add_decades(self.data)["decade"].nunique()
 
         # Bars
         self.checkNumberOfContainers(self.fig.ax, 1)
@@ -48,6 +48,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
             self.fig.ax,
-            list(map(str, add_decades(self.data)['decade'].cat.categories)),
+            list(map(str, add_decades(self.data)["decade"].cat.categories)),
             axis="x",
         )

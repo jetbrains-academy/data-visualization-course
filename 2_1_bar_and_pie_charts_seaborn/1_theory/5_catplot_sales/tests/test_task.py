@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 
 from common.base_test_mixins import BaseTestMixin
-from data import preprocess, read, filter_platforms
+from data import filter_platforms, preprocess, read
 from task import plot
 
 
@@ -37,7 +37,10 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfBars(self.fig.ax, filter_platforms(self.data)["platform"].nunique())
 
     def test_2_1_bar_position(self):
-        self.checkBarsPosition(self.fig.ax, filter_platforms(self.data).groupby("platform", sort=False)["global_sales"].mean().to_list())
+        self.checkBarsPosition(
+            self.fig.ax,
+            filter_platforms(self.data).groupby("platform", sort=False)["global_sales"].mean().to_list(),
+        )
 
     def test_2_2_bar_layout(self):
         self.checkBarsLayout(self.fig.ax, expected_layout="vertical")
@@ -45,6 +48,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
             self.fig.ax,
-            filter_platforms(self.data)['platform'].unique().to_list(),
+            filter_platforms(self.data)["platform"].unique().to_list(),
             axis="x",
         )

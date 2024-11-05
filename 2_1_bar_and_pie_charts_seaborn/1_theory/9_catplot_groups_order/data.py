@@ -1,5 +1,4 @@
 import numpy as np
-
 import pandas as pd
 
 from common.paths import GAMES_DATASET_PATH
@@ -11,7 +10,7 @@ def read() -> pd.DataFrame:
     return pd.read_csv(GAMES_DATASET_PATH)
 
 
-def add_decades(data: pd.DataFrame):
+def add_decades(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
 
     decade_bins = (
@@ -23,12 +22,10 @@ def add_decades(data: pd.DataFrame):
     decade_labels = np.array(decade_bins[:-1]) + 1
 
     data["decade"] = pd.cut(data["year_of_release"], bins=decade_bins, labels=decade_labels, right=True)
-    data = data[data["decade"].notna()]
-
-    return data
+    return data[data["decade"].notna()]
 
 
-def extract_sales_region(data: pd.DataFrame):
+def extract_sales_region(data: pd.DataFrame) -> pd.DataFrame:
     sales_columns = {"eu_sales", "jp_sales", "na_sales", "other_sales"}
     other_columns = set(data.columns.unique()).difference(sales_columns)
 
@@ -39,7 +36,7 @@ def extract_sales_region(data: pd.DataFrame):
 
 
 def get_sorted_regions(data: pd.DataFrame) -> pd.DataFrame:
-    return data.groupby('region')['sales'].sum().sort_values().index.tolist()
+    return data.groupby("region")["sales"].sum().sort_values().index.tolist()
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
