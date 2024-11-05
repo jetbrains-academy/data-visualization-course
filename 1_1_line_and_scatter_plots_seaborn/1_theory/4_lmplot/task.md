@@ -10,6 +10,9 @@ The area around the line represents an error bar, indicating how well the aggreg
 There are [several types of error bars](https://seaborn.pydata.org/tutorial/error_bars.html), which can be set with
 the `errorbar` parameter.
 
+We will learn more about `estimator` and `errorbar` 
+in the [next Seaborn section](course://2_1_bar_and_pie_charts_seaborn/1_theory/3_countplot_stats).
+
 So, how do we plot a straight line that shows a trend?
 For that, we can use the Seaborn function [`lmplot`](https://seaborn.pydata.org/generated/seaborn.lmplot.html),
 which plots the data along with a linear regression model fit.
