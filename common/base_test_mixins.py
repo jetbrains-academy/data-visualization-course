@@ -1,8 +1,9 @@
-from typing import Any, List, Literal, Optional
+from typing import Any, List, Literal, Optional, Type
 from unittest import TestCase
 
-from matplotlib.colors import same_color, to_rgb
 import matplotlib.pyplot as plt
+from matplotlib.colors import same_color, to_rgb
+from matplotlib.container import Container
 from numpy.testing import assert_allclose
 
 
@@ -184,6 +185,29 @@ class BaseTestMixin(TestCase):
             ),
         )
 
+    def checkTickLabels(
+        self,
+        ax: plt.Axes,
+        expected_tick_labels: List[str],
+        axis: Literal["x", "y"],
+        *,
+        minor: bool = False,
+    ):
+        if axis == "x":
+            actual_tick_labels = ax.get_xticklabels(minor=minor)
+        elif axis == "y":
+            actual_tick_labels = ax.get_yticklabels(minor=minor)
+        else:
+            raise ValueError("Unknown axis name.")
+
+        actual_tick_labels = [label.get_text() for label in actual_tick_labels]
+
+        self.assertListEqual(
+            expected_tick_labels,
+            actual_tick_labels,
+            msg=f"The expected {axis}-axis tick values do not match the actual values."
+        )
+
     def checkSpineVisibility(
         self,
         ax: plt.Axes,
@@ -199,3 +223,50 @@ class BaseTestMixin(TestCase):
             error_message = f"The {position} spine must not be visible."
 
         self.assertEqual(expected_visibility, actual_visibility, msg=error_message)
+
+    def checkNumberOfContainers(self, ax: plt.Axes, expected_number: int):
+        containers = getattr(ax, "containers", [])
+        self.assertEqual(
+            expected_number,
+            len(containers),
+            f"The figure must have only {expected_number} containers.",
+        )
+
+    def checkContainerType(self, ax: plt.Axes, expected_type: Type[Container], *, container_number: int = 0):
+        container = ax.containers[container_number]
+        self.assertIsInstance(container, expected_type, f"The container must be {expected_type}.")
+
+    def checkNumberOfBars(self, ax: plt.Axes, expected_number: int, container_number: int = 0):
+        datavalues = ax.containers[container_number].datavalues
+
+        self.assertEqual(
+            expected_number,
+            len(datavalues),
+            f"The figure must have only {expected_number} bars.",
+        )
+
+    def checkBarsPosition(self, ax: plt.Axes, expected_position: List[float], *, container_number: int = 0):
+        actual_position = ax.containers[container_number].datavalues
+
+        self.assertAlmostAllEqual(
+            expected_position,
+            actual_position,
+            msg="The expected x-axis values do not match the actual values.",
+        )
+
+    def checkBarsLayout(
+        self,
+        ax: plt.Axes,
+        *,
+        expected_layout: Literal["horizontal", "vertical"],
+        container_number: int = 0,
+    ):
+        actual_layout = ax.containers[container_number].orientation
+        if actual_layout is None:
+            self.fail("The bars must be placed either horizontally or vertically.")
+
+        self.assertEqual(
+            expected_layout,
+            actual_layout,
+            f"The bars must be oriented in the {expected_layout} direction.",
+        )
