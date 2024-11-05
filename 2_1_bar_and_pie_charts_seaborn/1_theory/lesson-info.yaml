@@ -1,0 +1,13 @@
+type: framework
+custom_name: Theory
+content:
+  - 1_countplot
+  - 2_countplot_layout
+  - 3_countplot_stats
+  - 4_countplot_order
+  - 5_catplot_sales
+  - 6_catplot_estimator
+  - 7_catplot_trend
+  - 8_catplot_grouping
+  - 9_catplot_groups_order
+is_template_based: false

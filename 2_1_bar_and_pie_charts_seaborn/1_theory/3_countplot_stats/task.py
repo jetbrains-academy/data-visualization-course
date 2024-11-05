@@ -1,0 +1,20 @@
+import pandas as pd
+import seaborn as sns
+
+from data import preprocess, read
+
+
+def plot(games: pd.DataFrame) -> sns.FacetGrid:
+    return sns.catplot(data=games, y="platform", stat="percent", kind="count")
+
+
+def main():
+    games = read()
+    games = preprocess(games)
+
+    fig = plot(games)
+    fig.savefig("plot.png", dpi=300)
+
+
+if __name__ == "__main__":
+    main()
