@@ -1,9 +1,9 @@
 from typing import Any, List, Literal, Optional, Type
 from unittest import TestCase
 
-import matplotlib.pyplot as plt
 from matplotlib.colors import same_color, to_rgb
 from matplotlib.container import Container
+import matplotlib.pyplot as plt
 from numpy.testing import assert_allclose
 
 
@@ -205,7 +205,7 @@ class BaseTestMixin(TestCase):
         self.assertListEqual(
             expected_tick_labels,
             actual_tick_labels,
-            msg=f"The expected {axis}-axis tick values do not match the actual values."
+            msg=f"The expected {axis}-axis tick values do not match the actual values.",
         )
 
     def checkSpineVisibility(

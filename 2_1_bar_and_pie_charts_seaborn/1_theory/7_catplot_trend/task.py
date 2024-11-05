@@ -4,7 +4,7 @@ import seaborn as sns
 from data import add_decades, preprocess, read
 
 
-def plot(games: pd.DataFrame):
+def plot(games: pd.DataFrame) -> sns.FacetGrid:
     games = add_decades(games)
 
     return sns.catplot(

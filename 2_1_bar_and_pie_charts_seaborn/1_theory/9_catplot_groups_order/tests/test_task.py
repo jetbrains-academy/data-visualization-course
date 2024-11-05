@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 
 from common.base_test_mixins import BaseTestMixin
-from data import preprocess, read, add_decades, extract_sales_region, get_sorted_regions
+from data import add_decades, extract_sales_region, get_sorted_regions, preprocess, read
 from task import plot
 
 
@@ -46,7 +46,7 @@ class PlotTestCase(BaseTestMixin):
         for i, region in enumerate(get_sorted_regions(data)):
             self.checkBarsPosition(
                 self.fig.ax,
-                data[data['region'] == region].groupby("decade", observed=True)["sales"].sum().to_list(),
+                data[data["region"] == region].groupby("decade", observed=True)["sales"].sum().to_list(),
                 container_number=i,
             )
 
@@ -56,6 +56,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
             self.fig.ax,
-            list(map(str, add_decades(self.data)['decade'].cat.categories)),
+            list(map(str, add_decades(self.data)["decade"].cat.categories)),
             axis="x",
         )

@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 
 from common.base_test_mixins import BaseTestMixin
-from data import preprocess, read, filter_platforms, get_sorted_platforms
+from data import filter_platforms, get_sorted_platforms, preprocess, read
 from task import plot
 
 
@@ -39,7 +39,11 @@ class PlotTestCase(BaseTestMixin):
     def test_2_1_bar_position(self):
         self.checkBarsPosition(
             self.fig.ax,
-            filter_platforms(self.data).groupby("platform", sort=False)["global_sales"].median().sort_values().to_list(),
+            filter_platforms(self.data)
+            .groupby("platform", sort=False)["global_sales"]
+            .median()
+            .sort_values()
+            .to_list(),
         )
 
     def test_2_2_bar_layout(self):

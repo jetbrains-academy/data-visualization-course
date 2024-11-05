@@ -46,4 +46,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkBarsLayout(self.fig.ax, expected_layout="horizontal")
 
     def test_2_3_bar_labels(self):
-        self.checkTickLabels(self.fig.ax, self.data["platform"].value_counts(sort=False).index.to_list(), axis='y')
+        self.checkTickLabels(self.fig.ax, self.data["platform"].value_counts(sort=False).index.to_list(), axis="y")

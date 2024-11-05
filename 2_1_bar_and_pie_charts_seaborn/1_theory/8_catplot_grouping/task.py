@@ -4,7 +4,7 @@ import seaborn as sns
 from data import add_decades, extract_sales_region, preprocess, read
 
 
-def plot(games: pd.DataFrame):
+def plot(games: pd.DataFrame) -> sns.FacetGrid:
     games = add_decades(games)
     games = extract_sales_region(games)
 
