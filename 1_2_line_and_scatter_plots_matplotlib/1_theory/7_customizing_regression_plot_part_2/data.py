@@ -14,12 +14,7 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     data.columns = [col.lower() for col in data.columns]
 
     data = data[data["user_score"] != "tbd"]
-    data = data.dropna(
-        subset=[
-            "critic_score",
-            "user_score"
-        ]
-    )
+    data = data.dropna(subset=["critic_score", "user_score"])
 
     data["user_score"] = data["user_score"].astype("float")
 
