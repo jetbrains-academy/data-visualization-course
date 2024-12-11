@@ -1,0 +1,15 @@
+type: edu
+custom_name: Pie Chart
+files:
+  - name: task.py
+    visible: true
+  - name: data.py
+    visible: false
+  - name: tests/test_task.py
+    visible: false
+  - name: tests/__init__.py
+    visible: false
+    propagatable: false
+  - name: example.png
+    visible: false
+    propagatable: false

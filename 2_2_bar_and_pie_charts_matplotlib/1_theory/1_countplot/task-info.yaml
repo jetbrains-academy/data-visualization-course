@@ -1,0 +1,17 @@
+type: edu
+custom_name: "Bar Chart. Part #1"
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 308
+        length: 114
+        placeholder_text: "return  # TODO"
+        is_visible: false
+  - name: data.py
+    visible: false
+  - name: tests/test_task.py
+    visible: false
+  - name: example.png
+    visible: false
+    propagatable: false
