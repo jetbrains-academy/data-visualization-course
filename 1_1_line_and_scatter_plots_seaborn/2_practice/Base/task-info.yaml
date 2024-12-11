@@ -9,9 +9,9 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 126
-        length: 157
-        placeholder_text: ' # TODO'
+      - offset: 131
+        length: 162
+        placeholder_text: " # TODO"
         is_visible: false
   - name: example.png
     visible: false

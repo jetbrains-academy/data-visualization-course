@@ -21,7 +21,7 @@ Every plotting function in Seaborn accepts three main arguments:
 * `y`: The name of the column to visualize on the y-axis.
 
 Note that the `data` argument is optional.
-If you do not provide it, `x` and `y` must be lists containing the data to plot.
+If you do not provide it, `x` and `y` must be collections containing the data to plot.
 
 While using Seaborn, we recommend passing `data` as a positional argument
 and any other arguments (including `x` and `y`) as keyword arguments.
@@ -63,7 +63,7 @@ Please see the corresponding hint below.
    </ol>
    
    If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](file://1_1_line_and_scatter_plots_seaborn/1_theory/1_relplot_scatter/data.py)
+   [a peek at the inner file](data.py)   
    where our preprocessing is defined.
 </div>
 

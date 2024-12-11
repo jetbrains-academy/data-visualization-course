@@ -4,16 +4,17 @@ import seaborn as sns
 from data import read
 
 
-def plot(games: pd.DataFrame) -> sns.FacetGrid:
+def plot(experiment: pd.DataFrame) -> sns.FacetGrid:
     return sns.lmplot(
         x="x",
         y="y",
-        data=games,
+        data=experiment,
         scatter_kws={"color": "grey", "alpha": 0.05},
         line_kws={"color": "navy"},
     )
 
 
+# Please solve the task in the plot function and do not modify this one
 def main():
     games = read()
 

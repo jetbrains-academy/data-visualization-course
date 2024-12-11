@@ -8,6 +8,7 @@ def plot(games: pd.DataFrame) -> sns.FacetGrid:
     return sns.relplot(games, x="user_score", y="critic_score", kind="line")
 
 
+# Please solve the task in the plot function and do not modify this one
 def main():
     games = read()
     games = preprocess(games)

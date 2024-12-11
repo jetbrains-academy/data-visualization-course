@@ -13,6 +13,7 @@ def plot(games: pd.DataFrame) -> plt.Figure:
     return fig
 
 
+# Please solve the task in the plot function and do not modify this one
 def main():
     games = read()
     games = preprocess(games)

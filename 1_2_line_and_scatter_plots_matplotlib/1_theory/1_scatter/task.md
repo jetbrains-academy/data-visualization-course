@@ -21,7 +21,7 @@ Every plotting function in Matplotlib accepts three main arguments:
 
 There are a few important things to note:
 
-1. `data` is optional. If you do not provide it, `x` and `y` must be lists containing data.
+1. `data` is optional. If you do not provide it, `x` and `y` must be collections containing data.
 2. You can only specify the `data` parameter as a keyword argument.
 3. You must specify the `x` and `y` parameters as positional arguments.
 
@@ -83,7 +83,7 @@ Please see the corresponding hint below.
    </ol>
    
    If you encounter difficulties with your own preprocessing, you can
-   take [a peek at the file](file://1_2_line_and_scatter_plots_matplotlib/1_theory/1_scatter/data.py)
+   take [a peek at the file](data.py)
    where our preprocessing is defined.
    
    Note that your own preprocessing function will not be tested.
