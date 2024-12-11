@@ -1,0 +1,52 @@
+from typing import ClassVar
+
+import matplotlib.pyplot as plt
+import pandas as pd
+from matplotlib.patches import Wedge
+
+from common.base_test_mixins import BaseTestMixin
+from data import preprocess, read, aggregate, filter_platforms
+from task import plot
+
+
+class PlotTestCase(BaseTestMixin):
+    data: ClassVar[pd.DataFrame]
+    fig: ClassVar[plt.Figure]
+
+    @classmethod
+    def setUpClass(cls):
+        data = read()
+        data = preprocess(data)
+
+        cls.data = data
+        cls.fig = plot(data)
+
+    def test_1_1_return_type(self):
+        self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="plt.bar")
+
+    def test_1_2_number_of_axes(self):
+        self.checkNumberOfAxes(self.fig.axes, 1)
+
+    def test_1_3_pie_kind(self):
+        self.checkNumberOfCollections(self.fig.axes[0], 0)
+        self.checkNumberOfLines(self.fig.axes[0], 0)
+        self.checkNumberOfContainers(self.fig.axes[0], 0)
+
+        self.checkNumberOfPatches(self.fig.axes[0], 4)
+        for i in range(4):
+            self.checkPatchesType(self.fig.axes[0], Wedge, patch_number=i)
+
+    def test_2_1_pie_position(self):
+        self.checkPiePosition(
+            self.fig.axes[0],
+            expected_position=aggregate(filter_platforms(self.data))["count"].to_list(),
+        )
+
+    def test_2_2_pie_labels(self):
+        self.checkPieLabels(
+            self.fig.axes[0],
+            expected_labels=aggregate(filter_platforms(self.data))["platform"].to_list(),
+        )
+
+    def test_3_title(self):
+        self.checkTitle(self.fig.axes[0], "Proportion of games per platform")

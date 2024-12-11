@@ -4,6 +4,7 @@ from unittest import TestCase
 from matplotlib.colors import same_color, to_rgb
 from matplotlib.container import Container
 import matplotlib.pyplot as plt
+from matplotlib.patches import Patch
 from numpy.testing import assert_allclose
 
 
@@ -150,6 +151,19 @@ class BaseTestMixin(TestCase):
             msg=f"The figure should be limited from {expected_lim[0]} to {expected_lim[1]} for {axis}-axis.",
         )
 
+    def checkTitle(self, ax: plt.Axes, expected_title: Optional[str]):
+        actual_title = ax.get_title()
+
+        if expected_title is None:
+            self.assertEqual("", actual_title, f"The figure should have no title")
+            return
+
+        self.assertEqual(
+            expected_title,
+            actual_title,
+            f"The figure should be titled as '{expected_title}'",
+        )
+
     def checkLabel(self, ax: plt.Axes, expected_label: Optional[str], axis: Literal["x", "y"]):
         if axis == "x":
             actual_label = ax.get_xlabel()
@@ -236,6 +250,18 @@ class BaseTestMixin(TestCase):
         container = ax.containers[container_number]
         self.assertIsInstance(container, expected_type, f"The container must be {expected_type}.")
 
+    def checkNumberOfPatches(self, ax: plt.Axes, expected_number: int):
+        patches = getattr(ax, "patches", [])
+        self.assertEqual(
+            expected_number,
+            len(patches),
+            f"The figure must have only {expected_number} patches.",
+        )
+
+    def checkPatchesType(self, ax: plt.Axes, expected_type: Type[Patch], *, patch_number: int = 0):
+        patch = ax.patches[patch_number]
+        self.assertIsInstance(patch, expected_type, f"The patches must be {expected_type}.")
+
     def checkNumberOfBars(self, ax: plt.Axes, expected_number: int, container_number: int = 0):
         datavalues = ax.containers[container_number].datavalues
 
@@ -270,3 +296,33 @@ class BaseTestMixin(TestCase):
             actual_layout,
             f"The bars must be oriented in the {expected_layout} direction.",
         )
+
+    def checkBarsColor(self, ax: plt.Axes, *, expected_facecolors: List[str], container_number: int = 0):
+        actual_colors = [bar.get_facecolor() for bar in ax.containers[container_number]]
+
+        self.assertTrue(
+            all([same_color(actual, expected) for actual, expected in zip(actual_colors, expected_facecolors)]),
+            msg=f"The bars must be colored in '{expected_facecolors}'.",
+        )
+
+    def checkPiePosition(self, ax: plt.Axes, expected_position: List[float]):
+        expected_patches, _ = ax.pie(expected_position)
+        actual_patches = ax.patches
+
+        for actual_wedge, expected_wedge in zip(actual_patches, expected_patches):
+            self.assertTrue(
+                actual_wedge.center == expected_wedge.center
+                and actual_wedge.r == expected_wedge.r
+                and actual_wedge.theta1 == expected_wedge.theta1
+                and actual_wedge.theta2 == expected_wedge.theta2
+                and actual_wedge.width == expected_wedge.width,
+                ""  # TODO
+            )
+
+    def checkPieLabels(self, ax: plt.Axes, expected_labels: List[str]):
+        for actual_patch, expected_label in zip(ax.patches, expected_labels):
+            self.assertEqual(
+                expected_label,
+                actual_patch.get_label(),
+                f"The pie labels must be '{expected_label}'.",
+            )

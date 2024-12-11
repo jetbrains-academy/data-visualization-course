@@ -1,3 +1,15 @@
 type: framework
 custom_name: Theory
+content:
+  - 1_countplot
+  - 2_countplot_layout
+  - 3_countplot_customization
+  - 4_piechart
+  - 5_piechart_autopct
+  - 6_piechart_customization
+  - 7_grouped_bar_chart
+  - 8_grouped_bar_chart_several_traces
+  - 9_grouped_bar_chart_several_traces_attempt_2
+  - 10_grouped_bar_chart_legend
+  - 11_grouped_bar_chart_customization
 is_template_based: false
