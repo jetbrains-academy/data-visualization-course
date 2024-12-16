@@ -70,7 +70,7 @@ class TestCase(BaseTestMixin):
         self.checkTicks(self.fig.axes[0], [], "x")
 
     def test_3_4_y_ticks(self):
-        expected_positions = [i for i in range(15)]
+        expected_positions = list(range(15))
         expected_labels = []
         for category in self.sorted_categories:
             expected_labels.extend(get_category_products(self.data, category))
