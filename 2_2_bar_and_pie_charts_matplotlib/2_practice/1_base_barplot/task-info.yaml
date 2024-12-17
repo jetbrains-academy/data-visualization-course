@@ -5,12 +5,12 @@ files:
     visible: true
     placeholders:
       - offset: 255
-        length: 223
+        length: 227
         placeholder_text: "... # TODO"
         is_visible: false
-      - offset: 608
-        length: 701
-        placeholder_text: "return # TODO"
+      - offset: 611
+        length: 698
+        placeholder_text: "... # TODO"
         is_visible: false
   - name: data.py
     visible: false
