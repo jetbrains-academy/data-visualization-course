@@ -3,8 +3,8 @@ from unittest import TestCase
 
 from matplotlib.colors import same_color, to_rgb
 from matplotlib.container import Container
-import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
+import matplotlib.pyplot as plt
 from numpy.testing import assert_allclose
 
 
@@ -155,7 +155,7 @@ class BaseTestMixin(TestCase):
         actual_title = ax.get_title()
 
         if expected_title is None:
-            self.assertEqual("", actual_title, f"The figure should have no title")
+            self.assertEqual("", actual_title, "The figure should have no title")
             return
 
         self.assertEqual(
@@ -301,7 +301,7 @@ class BaseTestMixin(TestCase):
         actual_colors = [bar.get_facecolor() for bar in ax.containers[container_number]]
 
         self.assertTrue(
-            all([same_color(actual, expected) for actual, expected in zip(actual_colors, expected_facecolors)]),
+            all(same_color(actual, expected) for actual, expected in zip(actual_colors, expected_facecolors)),
             msg=f"The bars must be colored in '{expected_facecolors}'.",
         )
 

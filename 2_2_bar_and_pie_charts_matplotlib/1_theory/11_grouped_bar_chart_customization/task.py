@@ -1,18 +1,16 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
 from data import (
+    aggregate,
+    get_all_regions,
+    get_decades,
+    get_number_of_decades,
+    get_number_of_regions,
+    get_region_sales,
     preprocess,
     read,
-    aggregate,
-    get_number_of_decades,
-    get_region_sales,
-    get_all_regions,
-    get_number_of_regions,
-    get_decades,
 )
-
-
 
 
 def plot_region(ax: plt.Axes, data: pd.DataFrame, region: str, trace: int = 0):
@@ -38,7 +36,7 @@ def plot(games: pd.DataFrame) -> plt.Figure:
 
     ax.set_xlabel("Decade")
     ax.set_ylabel("Sales")
-    ax.set_title('Total sales over decades for each region')
+    ax.set_title("Total sales over decades for each region")
 
     number_of_groups = get_number_of_decades(games)
     group_size = get_number_of_regions(games) + 1

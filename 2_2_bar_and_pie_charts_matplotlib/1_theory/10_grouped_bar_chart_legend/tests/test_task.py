@@ -5,7 +5,7 @@ from matplotlib.container import BarContainer
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import preprocess, read, aggregate, filter_platforms
+from data import aggregate, filter_platforms, preprocess, read
 from task import plot
 
 

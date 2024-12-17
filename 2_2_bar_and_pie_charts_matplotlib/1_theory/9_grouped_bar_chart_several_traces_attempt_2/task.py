@@ -1,23 +1,21 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
 from data import (
+    aggregate,
+    get_all_regions,
+    get_number_of_decades,
+    get_number_of_regions,
+    get_region_sales,
     preprocess,
     read,
-    aggregate,
-    get_number_of_decades,
-    get_region_sales,
-    get_all_regions,
-    get_number_of_regions,
 )
-
-
 
 
 def plot_region(ax: plt.Axes, data: pd.DataFrame, region: str, trace: int = 0):
     number_of_groups = get_number_of_decades(data)
     group_size = get_number_of_regions(data) + 1
-    
+
     region_sales = get_region_sales(data, region)
 
     ax.bar(
