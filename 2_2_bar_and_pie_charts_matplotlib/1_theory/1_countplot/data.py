@@ -10,7 +10,7 @@ def read() -> pd.DataFrame:
 
 
 def aggregate(games: pd.DataFrame) -> pd.DataFrame:
-    return games['platform'].value_counts().reset_index()
+    return games["platform"].value_counts().reset_index()
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:

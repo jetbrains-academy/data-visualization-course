@@ -1,12 +1,12 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
-from data import preprocess, read, aggregate, filter_platforms
-
+from data import aggregate, filter_platforms, preprocess, read
 
 
 def plot_region(ax: plt.Axes, data: pd.DataFrame, region: str, trace: int = 0):
-    ...  # TODO
+    # TODO: do not implement this function until the corresponding task
+    pass
 
 
 def plot(games: pd.DataFrame) -> plt.Figure:
@@ -18,7 +18,7 @@ def plot(games: pd.DataFrame) -> plt.Figure:
     ax.pie(
         "count",
         labels="platform",
-        autopct='%.2f%%',
+        autopct="%.2f%%",
         colors=["gray", "blue", "green", "cyan"],
         explode=[0.01, 0.01, 0.01, 0.01],
         data=games,

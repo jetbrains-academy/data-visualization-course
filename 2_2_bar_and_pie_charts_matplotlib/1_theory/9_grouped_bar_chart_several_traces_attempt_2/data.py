@@ -22,16 +22,16 @@ def get_number_of_decades(data: pd.DataFrame) -> int:
     return data["decade"].nunique()
 
 
-def get_number_of_regions(data: pd.DataFrame):
+def get_number_of_regions(data: pd.DataFrame) -> int:
     return data["region"].nunique()
 
 
-def get_region_sales(data: pd.DataFrame, region: str):
+def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
     return data[data["region"] == region]["sales"]
 
 
 def get_all_regions(data: pd.DataFrame) -> Set:
-    return set(data['region'].unique())
+    return set(data["region"].unique())
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:

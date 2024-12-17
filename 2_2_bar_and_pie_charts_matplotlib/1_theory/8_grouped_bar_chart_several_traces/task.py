@@ -1,9 +1,7 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
-from data import preprocess, read, aggregate, get_number_of_decades, get_region_sales, get_all_regions
-
-
+from data import aggregate, get_all_regions, get_number_of_decades, get_region_sales, preprocess, read
 
 
 def plot_region(ax: plt.Axes, data: pd.DataFrame, region: str, trace: int = 0):

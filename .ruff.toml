@@ -31,7 +31,10 @@ ignore = [
 ]
 
 [lint.per-file-ignores]
-"common/base_test_mixins.py" = ["N802"] # We're using camelCase here to be consistent with unittest
+# We're using camelCase here to be consistent with unittest
+"common/base_test_mixins.py" = ["N802"]
+# We have a function that should be defined in the first step, but unused for some time
+"2_2_bar_and_pie_charts_matplotlib/1_theory/[1-8]_*" = ["ARG001"]
 
 [lint.isort]
 known-local-folder = ["data", "common", "task"]
