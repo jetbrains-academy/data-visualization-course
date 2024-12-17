@@ -34,7 +34,7 @@ def get_all_regions(data: pd.DataFrame) -> Set[str]:
     return set(data["region"].unique())
 
 
-def get_decades(data: pd.DataFrame) -> Set[int]:
+def get_all_decades(data: pd.DataFrame) -> Set[int]:
     return set(data["decade"].unique())
 
 
