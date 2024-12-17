@@ -4,7 +4,7 @@ import pandas as pd
 from data import (
     aggregate,
     get_all_regions,
-    get_decades,
+    get_all_decades,
     get_number_of_decades,
     get_number_of_regions,
     get_region_sales,
@@ -41,7 +41,7 @@ def plot(games: pd.DataFrame) -> plt.Figure:
     number_of_groups = get_number_of_decades(games)
     group_size = get_number_of_regions(games) + 1
 
-    ax.set_xticks([x + 1.5 for x in range(0, number_of_groups * group_size, group_size)], get_decades(games))
+    ax.set_xticks([x + 1.5 for x in range(0, number_of_groups * group_size, group_size)], get_all_decades(games))
 
     ax.legend()
 
