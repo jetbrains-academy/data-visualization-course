@@ -1,11 +1,11 @@
 from typing import ClassVar
 
+from matplotlib.patches import Wedge
 import matplotlib.pyplot as plt
 import pandas as pd
-from matplotlib.patches import Wedge
 
 from common.base_test_mixins import BaseTestMixin
-from data import preprocess, read, aggregate, filter_platforms
+from data import aggregate, filter_platforms, preprocess, read
 from task import plot
 
 
