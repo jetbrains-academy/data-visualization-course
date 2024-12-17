@@ -30,10 +30,8 @@ def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
     return data[data["region"] == region]["sales"]
 
 
-
-
-def get_all_decades(data: pd.DataFrame):
-    return set(data['decade'].unique())
+def get_all_regions(data: pd.DataFrame) -> Set[str]:
+    return set(data['region'].unique())
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
