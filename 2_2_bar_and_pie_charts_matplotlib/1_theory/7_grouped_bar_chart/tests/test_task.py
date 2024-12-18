@@ -38,7 +38,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_1_bar_values(self):
         aggregated_data = aggregate(self.data)
-        expected_values = aggregated_data[aggregated_data['region'] == 'na']['sales'].to_list()
+        expected_values = aggregated_data[aggregated_data["region"] == "na"]["sales"].to_list()
         self.checkBarValues(self.fig.axes[0], expected_values)
 
     def test_2_2_bar_width(self):
