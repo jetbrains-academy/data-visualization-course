@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import aggregate, preprocess, read, get_all_regions, get_number_of_decades, get_number_of_regions
+from data import aggregate, get_all_regions, get_number_of_decades, get_number_of_regions, preprocess, read
 from task import plot
 
 
@@ -63,7 +63,7 @@ class PlotTestCase(BaseTestMixin):
                         i,
                         get_number_of_decades(aggregated_data) * (get_number_of_regions(aggregated_data) + 1),
                         get_number_of_regions(aggregated_data) + 1,
-                    )
+                    ),
                 ),
                 container_number=i,
                 width=1,

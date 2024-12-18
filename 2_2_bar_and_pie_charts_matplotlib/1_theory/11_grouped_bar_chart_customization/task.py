@@ -3,8 +3,8 @@ import pandas as pd
 
 from data import (
     aggregate,
-    get_all_regions,
     get_all_decades,
+    get_all_regions,
     get_number_of_decades,
     get_number_of_regions,
     get_region_sales,

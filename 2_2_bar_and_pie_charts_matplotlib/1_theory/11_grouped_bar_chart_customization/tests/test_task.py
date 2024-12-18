@@ -5,7 +5,15 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import aggregate, preprocess, read, get_all_regions, get_number_of_decades, get_number_of_regions, get_all_decades
+from data import (
+    aggregate,
+    get_all_decades,
+    get_all_regions,
+    get_number_of_decades,
+    get_number_of_regions,
+    preprocess,
+    read,
+)
 from task import plot
 
 
@@ -63,7 +71,7 @@ class PlotTestCase(BaseTestMixin):
                         i,
                         get_number_of_decades(aggregated_data) * (get_number_of_regions(aggregated_data) + 1),
                         get_number_of_regions(aggregated_data) + 1,
-                    )
+                    ),
                 ),
                 container_number=i,
                 width=1,
@@ -89,10 +97,10 @@ class PlotTestCase(BaseTestMixin):
                     get_number_of_regions(aggregated_data) + 1,
                 )
             ],
-            axis='x',
+            axis="x",
         )
 
-        self.checkTickLabels(self.fig.axes[0], list(map(str, get_all_decades(aggregated_data))), axis='x')
+        self.checkTickLabels(self.fig.axes[0], list(map(str, get_all_decades(aggregated_data))), axis="x")
 
     def test_4_labels(self):
         self.checkLabel(self.fig.axes[0], "Decade", "x")
