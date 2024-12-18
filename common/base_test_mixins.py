@@ -44,11 +44,8 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} collections.",
         )
 
-    def checkLegendExists(self, ax: plt.Axes, exists: bool = True):
-        if exists:
-            self.assertIsNotNone(ax.get_legend(), "Legend must exist.")
-        else:
-            self.assertIsNone(ax.get_legend(), "Legend must not exist.")
+    def checkLegendExists(self, ax: plt.Axes):
+        self.assertIsNotNone(ax.get_legend(), "Legend must exist.")
 
     def checkLegendLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
         actual_labels = [label.get_text() for label in ax.get_legend().texts]
