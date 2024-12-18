@@ -61,10 +61,6 @@ Please see the corresponding hint below.
       <li>Drop all NaN values.</li>
       <li>Convert the <code>user_score</code> column to a float.</li>
    </ol>
-   
-   If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](data.py)   
-   where our preprocessing is defined.
 </div>
 
 <div class="hint" title="What should the figure look like?">

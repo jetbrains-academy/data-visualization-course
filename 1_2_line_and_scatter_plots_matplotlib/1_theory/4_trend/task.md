@@ -33,10 +33,4 @@ If you prefer, you can aggregate the data yourself. Please refer to the correspo
    <li>Use the mean function to aggregate the <code>critic_score</code> column. </li>
    <li>Reset the index to convert the series into a DataFrame.</li>
    </ol>
-    
-   If you encounter difficulties with your own aggregation, you can
-   take [a peek at the file](file://1_2_line_and_scatter_plots_matplotlib/1_theory/4_trend/data.py)
-   where our preprocessing is defined.
-
-   Note that your own aggregation function will not be tested.
 </div>

@@ -37,9 +37,5 @@ Add the scatter plot to the same figure.
       <li>Create a new DataFrame where the <code>user_score</code> column contains only unique values, and the <code>critic_score</code> is the result of applying the function from the second step to the new <code>user_score</code> column.</li>
    </ol>
 
-   If you encounter difficulties with your own preprocessing, you can
-   take [a peek at the inner file](file://1_2_line_and_scatter_plots_matplotlib/1_theory/5_regression_plot/data.py)
-   where our preprocessing is defined.
-
    Note that your own aggregation function will not be tested.
 </div>

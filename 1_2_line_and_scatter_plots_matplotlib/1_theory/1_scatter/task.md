@@ -81,11 +81,7 @@ Please see the corresponding hint below.
       <li>Drop all NaN values.</li>
       <li>Convert the <code>user_score</code> column to a float.</li>
    </ol>
-   
-   If you encounter difficulties with your own preprocessing, you can
-   take [a peek at the file](data.py)
-   where our preprocessing is defined.
-   
+
    Note that your own preprocessing function will not be tested.
 </div>
 
