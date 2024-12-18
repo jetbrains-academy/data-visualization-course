@@ -78,7 +78,11 @@ Please see the corresponding hint below.
    <ol>
       <li>Convert column names to lowercase.</li>
       <li>Remove games with user scores listed as "to be decided" (i.e., where the user score is <code>tbd</code>).</li>
-      <li>Drop all NaN values.</li>
+      <li>Drop all NaN values from the following columns:</li>
+      <ul>
+         <li><code>critic_score</code></li>
+         <li><code>user_score</code></li>
+      </ul>
       <li>Convert the <code>user_score</code> column to a float.</li>
    </ol>
 
