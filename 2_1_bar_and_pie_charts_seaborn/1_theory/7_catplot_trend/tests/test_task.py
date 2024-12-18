@@ -40,10 +40,10 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_1_bar_position(self):
         data = add_decades(self.data)
-        self.checkBarsPosition(self.fig.ax, data.groupby("decade", observed=True)["global_sales"].sum().to_list())
+        self.checkBarValues(self.fig.ax, data.groupby("decade", observed=True)["global_sales"].sum().to_list())
 
     def test_2_2_bar_layout(self):
-        self.checkBarsLayout(self.fig.ax, expected_layout="vertical")
+        self.checkBarLayout(self.fig.ax, expected_layout="vertical")
 
     def test_2_3_bar_labels(self):
         self.checkTickLabels(

@@ -44,14 +44,14 @@ class PlotTestCase(BaseTestMixin):
         data = add_decades(self.data)
         data = extract_sales_region(data)
         for i, region in enumerate(get_sorted_regions(data)):
-            self.checkBarsPosition(
+            self.checkBarValues(
                 self.fig.ax,
                 data[data["region"] == region].groupby("decade", observed=True)["sales"].sum().to_list(),
                 container_number=i,
             )
 
     def test_2_2_bar_layout(self):
-        self.checkBarsLayout(self.fig.ax, expected_layout="vertical")
+        self.checkBarLayout(self.fig.ax, expected_layout="vertical")
 
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
