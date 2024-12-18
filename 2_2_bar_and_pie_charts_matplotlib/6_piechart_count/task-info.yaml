@@ -1,7 +1,0 @@
-type: edu
-custom_name: Pie chart
-files:
-  - name: task.py
-    visible: true
-  - name: data.py
-    visible: false
