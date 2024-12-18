@@ -37,10 +37,10 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfBars(self.fig.axes[0], self.data["platform"].nunique())
 
     def test_2_1_bar_position(self):
-        self.checkBarsPosition(self.fig.axes[0], aggregate(self.data)["count"].to_list())
+        self.checkBarValues(self.fig.axes[0], aggregate(self.data)["count"].to_list())
 
     def test_2_2_bar_layout(self):
-        self.checkBarsLayout(self.fig.axes[0], expected_layout="horizontal")
+        self.checkBarLayout(self.fig.axes[0], expected_layout="horizontal")
 
     def test_2_3_bar_labels(self):
         self.checkTickLabels(self.fig.axes[0], aggregate(self.data)["platform"].to_list(), axis="y")
