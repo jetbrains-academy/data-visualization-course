@@ -17,6 +17,7 @@ Finally, let's add a title to our figure and tighten its layout.
 1. Color the wedges in the following way: `PC` with `grey`, `PS4` with `blue`, `XOne` with `green`, `WiiU` with `cyan`.
 2. Offset each wedge to `0.01`.
 3. Set the figure title to `Proportion of games per platform`
+4. Tighten the layout
 
 ## Hints
 
