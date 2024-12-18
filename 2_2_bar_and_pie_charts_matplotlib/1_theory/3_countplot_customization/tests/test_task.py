@@ -37,20 +37,20 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfBars(self.fig.axes[0], filter_platforms(self.data)["platform"].nunique())
 
     def test_2_1_bar_position(self):
-        self.checkBarsPosition(self.fig.axes[0], aggregate(filter_platforms(self.data))["count"].to_list())
+        self.checkBarValues(self.fig.axes[0], aggregate(filter_platforms(self.data))["count"].to_list())
 
     def test_2_2_bar_layout(self):
-        self.checkBarsLayout(self.fig.axes[0], expected_layout="horizontal")
+        self.checkBarLayout(self.fig.axes[0], expected_layout="horizontal")
 
     def test_2_3_bar_labels(self):
         self.checkTickLabels(self.fig.axes[0], aggregate(filter_platforms(self.data))["platform"].to_list(), axis="y")
 
     def test_2_4_bar_colors(self):
-        self.checkBarsColor(self.fig.axes[0], expected_facecolors=["gray", "blue", "green", "cyan"])
+        self.checkBarColor(self.fig.axes[0], expected_facecolors=["gray", "blue", "green", "cyan"])
 
     def test_3_labels(self):
         self.checkLabel(self.fig.axes[0], "Count", "x")
         self.checkLabel(self.fig.axes[0], "Platform", "y")
 
-    def test_5_title(self):
+    def test_4_title(self):
         self.checkTitle(self.fig.axes[0], "Number of games per platform")
