@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import aggregate, preprocess, read, get_all_regions
+from data import aggregate, get_all_regions, preprocess, read
 from task import plot
 
 
@@ -43,7 +43,7 @@ class PlotTestCase(BaseTestMixin):
         aggregated_data = aggregate(self.data)
 
         for i, region in enumerate(get_all_regions(aggregated_data)):
-            expected_values = aggregated_data[aggregated_data['region'] == region]['sales'].to_list()
+            expected_values = aggregated_data[aggregated_data["region"] == region]["sales"].to_list()
             self.checkBarValues(self.fig.axes[0], expected_values, container_number=i)
 
     def test_2_2_bar_width(self):
