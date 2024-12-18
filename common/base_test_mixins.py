@@ -44,6 +44,20 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} collections.",
         )
 
+    def checkLegendExists(self, ax: plt.Axes, exists: bool = True):
+        if exists:
+            self.assertIsNotNone(ax.get_legend(), "Legend must exist.")
+        else:
+            self.assertIsNone(ax.get_legend(), "Legend must not exist.")
+
+    def checkLegendLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
+        actual_labels = [label.get_text() for label in ax.get_legend().texts]
+        self.assertListEqual(
+            expected_labels,
+            actual_labels,
+            msg=f"The legend labels must be equal to {expected_labels}.",
+        )
+
     def checkCollectionPosition(
         self,
         ax: plt.Axes,
@@ -182,6 +196,9 @@ class BaseTestMixin(TestCase):
             f"The {axis}-axis should be labeled as '{expected_label}'",
         )
 
+    def checkLabelPosition(self, ax: plt.Axes, expected_positions: List[float], axis: Literal["x", "y"]):
+        pass
+
     def checkTicks(self, ax: plt.Axes, expected_ticks: List[float], axis: Literal["x", "y"], *, minor: bool = False):
         if axis == "x":
             actual_ticks = ax.get_xticks(minor=minor)
@@ -271,16 +288,42 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} bars.",
         )
 
-    def checkBarsPosition(self, ax: plt.Axes, expected_position: List[float], *, container_number: int = 0):
+    def checkBarValues(self, ax: plt.Axes, expected_values: List[float], *, container_number: int = 0):
         actual_position = ax.containers[container_number].datavalues
 
         self.assertAlmostAllEqual(
-            expected_position,
+            expected_values,
             actual_position,
-            msg="The expected x-axis values do not match the actual values.",
+            msg="The expected values do not match the actual values.",
         )
 
-    def checkBarsLayout(
+    def checkBarWidth(self, ax: plt.Axes, expected_width: float, *, container_number: int = 0):
+        actual_widths = [bar.get_width() for bar in ax.containers[container_number]]
+        expected_widths = [expected_width] * len(actual_widths)
+
+        self.assertAlmostAllEqual(
+            expected_widths,
+            actual_widths,
+            msg=f"The bar width should be equal to {expected_width}.",
+        )
+
+    def checkBarPositions(
+        self,
+        ax: plt.Axes,
+        expected_positions: List[float],
+        *,
+        width: float = 0.8,
+        container_number: int = 0,
+    ):
+        actual_positions = [bar.get_x() + width / 2 for bar in ax.containers[container_number]]
+
+        self.assertAlmostAllEqual(
+            expected_positions,
+            actual_positions,
+            msg=f"The bar positions should be equal to {expected_positions}.",
+        )
+
+    def checkBarLayout(
         self,
         ax: plt.Axes,
         *,
@@ -297,7 +340,7 @@ class BaseTestMixin(TestCase):
             f"The bars must be oriented in the {expected_layout} direction.",
         )
 
-    def checkBarsColor(self, ax: plt.Axes, *, expected_facecolors: List[str], container_number: int = 0):
+    def checkBarColor(self, ax: plt.Axes, *, expected_facecolors: List[str], container_number: int = 0):
         actual_colors = [bar.get_facecolor() for bar in ax.containers[container_number]]
 
         self.assertTrue(
@@ -305,18 +348,32 @@ class BaseTestMixin(TestCase):
             msg=f"The bars must be colored in '{expected_facecolors}'.",
         )
 
-    def checkPiePosition(self, ax: plt.Axes, expected_position: List[float]):
+    def checkPiePosition(self, ax: plt.Axes, *, expected_position: List[float]):
         expected_patches, _ = ax.pie(expected_position)
         actual_patches = ax.patches
 
         for actual_wedge, expected_wedge in zip(actual_patches, expected_patches):
             self.assertTrue(
-                actual_wedge.center == expected_wedge.center
-                and actual_wedge.r == expected_wedge.r
+                actual_wedge.r == expected_wedge.r
                 and actual_wedge.theta1 == expected_wedge.theta1
-                and actual_wedge.theta2 == expected_wedge.theta2
-                and actual_wedge.width == expected_wedge.width,
-                ""  # TODO
+                and actual_wedge.theta2 == expected_wedge.theta2,
+                "The expected bar values do not match the actual values.",
+            )
+
+    def checkPieExplode(
+        self,
+        ax: plt.Axes,
+        *,
+        expected_position: List[float],
+        expected_explode: Optional[List[float]] = None,
+    ):
+        expected_patches, _ = ax.pie(expected_position, explode=expected_explode)
+        actual_patches = ax.patches
+
+        for actual_wedge, expected_wedge in zip(actual_patches, expected_patches):
+            self.assertTrue(
+                expected_wedge.center == actual_wedge.center,
+                "The expected explode values do not match the actual values.",
             )
 
     def checkPieLabels(self, ax: plt.Axes, expected_labels: List[str]):
@@ -324,5 +381,20 @@ class BaseTestMixin(TestCase):
             self.assertEqual(
                 expected_label,
                 actual_patch.get_label(),
-                f"The pie labels must be '{expected_label}'.",
+                f"The pie label must be '{expected_label}'.",
+            )
+
+    def checkPieColors(self, ax: plt.Axes, expected_colors: List[str]):
+        for actual_patch, expected_color in zip(ax.patches, expected_colors):
+            self.assertTrue(
+                same_color(actual_patch.get_facecolor(), expected_color),
+                f"The bars must be colored in '{expected_colors}'.",
+            )
+
+    def checkPieNumericLabels(self, ax: plt.Axes, expected_labels: List[str]):
+        for actual_label, expected_label in zip(ax.texts[1::2], expected_labels):
+            self.assertEqual(
+                expected_label,
+                actual_label.get_text(),
+                f"The numeric label must be '{expected_label}'.",
             )
