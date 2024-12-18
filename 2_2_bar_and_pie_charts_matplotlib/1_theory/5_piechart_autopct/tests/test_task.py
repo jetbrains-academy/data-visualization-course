@@ -48,5 +48,15 @@ class PlotTestCase(BaseTestMixin):
             expected_labels=aggregate(filter_platforms(self.data))["platform"].to_list(),
         )
 
+    def test_2_3_pie_numeric_labels(self):
+        expected_count = aggregate(filter_platforms(self.data))["count"]
+        expected_count = expected_count / sum(expected_count) * 100
+        expected_labels = expected_count.apply(lambda count: "%.2f%%" % count)  # noqa: UP031
+
+        self.checkPieNumericLabels(
+            self.fig.axes[0],
+            expected_labels=expected_labels.to_list(),
+        )
+
     def test_3_title(self):
-        self.checkTitle(self.fig.axes[0], "Proportion of games per platform")
+        self.checkTitle(self.fig.axes[0], None)
