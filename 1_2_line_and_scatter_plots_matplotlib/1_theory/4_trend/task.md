@@ -33,4 +33,6 @@ If you prefer, you can aggregate the data yourself. Please refer to the correspo
    <li>Use the mean function to aggregate the <code>critic_score</code> column. </li>
    <li>Reset the index to convert the series into a DataFrame.</li>
    </ol>
+
+   Note that your own aggregation function will not be tested.
 </div>
