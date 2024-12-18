@@ -58,7 +58,7 @@ class PlotTestCase(BaseTestMixin):
         aggregated_data = aggregate(self.data)
 
         for i in range(len(get_all_regions(aggregated_data))):
-            self.checkBarWidth(self.fig.axes[0], 1)
+            self.checkBarWidth(self.fig.axes[0], 1, container_number=i)
 
     def test_2_3_bar_positions(self):
         aggregated_data = aggregate(self.data)
