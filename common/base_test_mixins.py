@@ -1,4 +1,4 @@
-from typing import Any, List, Literal, Optional, Type
+from typing import Any, List, Literal, Optional, Type, Tuple
 from unittest import TestCase
 
 from matplotlib.colors import same_color, to_rgb
@@ -47,6 +47,13 @@ class BaseTestMixin(TestCase):
     def checkLegendExists(self, ax: plt.Axes):
         self.assertIsNotNone(ax.get_legend(), "Legend must exist.")
 
+    def checkNumberOfLegendItems(self, ax: plt.Axes, *, expected_number: int):
+        self.assertEqual(
+            expected_number,
+            len(ax.get_legend().texts),
+            f"The number of legend items must be {expected_number}.",
+        )
+
     def checkLegendLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
         actual_labels = [label.get_text() for label in ax.get_legend().texts]
         self.assertListEqual(
@@ -54,6 +61,11 @@ class BaseTestMixin(TestCase):
             actual_labels,
             msg=f"The legend labels must be equal to {expected_labels}.",
         )
+
+    def checkLegendHandleColors(self, ax: plt.Axes, *, expected_handle_colors: List[str]):
+        actual_handle_colors = [handle.get_facecolor() for handle in ax.get_legend().legend_handles]
+        for actual_color, expected_color in zip (actual_handle_colors, expected_handle_colors):
+            self.assertTrue(same_color(actual_color, expected_color), msg="The legend handle colors do not match.")
 
     def checkCollectionPosition(
         self,
@@ -220,15 +232,26 @@ class BaseTestMixin(TestCase):
         axis: Literal["x", "y"],
         *,
         minor: bool = False,
+        where: Literal["primary", "secondary"] = "primary",
     ):
         if axis == "x":
-            actual_tick_labels = ax.get_xticklabels(minor=minor)
+            axis_obj = ax.xaxis
         elif axis == "y":
-            actual_tick_labels = ax.get_yticklabels(minor=minor)
+            axis_obj = ax.yaxis
         else:
             raise ValueError("Unknown axis name.")
 
-        actual_tick_labels = [label.get_text() for label in actual_tick_labels]
+        if minor:
+            ticks = axis_obj.get_minor_ticks()
+        else:
+            ticks = axis_obj.get_major_ticks()
+
+        if where == "primary":
+            actual_tick_labels = [tick.label1.get_text() for tick in ticks if tick.label1.get_visible()]
+        elif where == "secondary":
+            actual_tick_labels = [tick.label2.get_text() for tick in ticks if tick.label2.get_visible()]
+        else:
+            raise ValueError("Unknown tick position.")
 
         self.assertListEqual(
             expected_tick_labels,
@@ -310,14 +333,20 @@ class BaseTestMixin(TestCase):
         expected_positions: List[float],
         *,
         width: float = 0.8,
+        axis: Literal["x", "y"],
         container_number: int = 0,
     ):
-        actual_positions = [bar.get_x() + width / 2 for bar in ax.containers[container_number]]
+        if axis == "x":
+            actual_positions = [bar.get_x() + width / 2 for bar in ax.containers[container_number]]
+        elif axis == "y":
+            actual_positions = [bar.get_y() + width / 2 for bar in ax.containers[container_number]]
+        else:
+            raise ValueError("Unknown axis name.")
 
         self.assertAlmostAllEqual(
             expected_positions,
             actual_positions,
-            msg=f"The bar positions should be equal to {expected_positions}.",
+            msg=f"The bar#{container_number} positions should be equal to {expected_positions}.",
         )
 
     def checkBarLayout(
@@ -395,3 +424,12 @@ class BaseTestMixin(TestCase):
                 actual_label.get_text(),
                 f"The numeric label must be '{expected_label}'.",
             )
+
+    def checkNumberOfTextObjects(self, ax: plt.Axes, expected_number: int):
+        self.assertEqual(expected_number, len(ax.texts), f"The number of text objects must be {expected_number}.")
+
+    def checkTextObjects(self, ax: plt.Axes, expected_texts: List[Tuple[float, float, str]]):
+        actual_texts = sorted(text.get_position() + (text.get_text(),) for text in ax.texts)
+        expected_texts = sorted(expected_texts)
+
+        self.assertListEqual(expected_texts, actual_texts, "")
