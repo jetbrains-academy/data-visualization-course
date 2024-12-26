@@ -1,46 +1,55 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from data import get_categories_sorted, get_category_products, get_category_size, get_category_votes, read
+from data import get_categories, get_category_product_names, get_category_size, get_category_votes, read
 
 
-def plot_region(ax: plt.Axes, data: pd.DataFrame, category: str, color: str, trace: int = 0):
-    category_votes = get_category_votes(data, category)
-    category_size = get_category_size(data, category)
+def plot_category(ax: plt.Axes, votes: pd.DataFrame, category: str, color: str, offset: int = 0):
+    category_votes = get_category_votes(votes, category)
+    category_size = get_category_size(votes, category)
 
     ax.barh(
-        [x + trace for x in range(category_size)],
+        [x + offset for x in range(category_size)],
         category_votes,
         color=color,
+        label=category,
     )
 
 
 def plot(votes: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
-    categories_sorted = get_categories_sorted()
 
     colors = {
-        "salad": "green",
-        "cheese": "firebrick",
-        "bread": "navy",
+        "bread": "sienna",
+        "cheese": "goldenrod",
+        "salad": "forestgreen",
     }
 
-    all_y_coordinates = []
-    all_labels = []
+    y_tick_coordinates = []
+    y_tick_labels = []
 
-    for i, category in enumerate(categories_sorted):
+    offset = 0
+    for category in get_categories(votes):
         category_size = get_category_size(votes, category)
-        plot_region(ax, votes, category, colors[category], i * category_size)
 
-        all_labels.extend(get_category_products(votes, category))
-        all_y_coordinates.extend([i * category_size + x for x in range(category_size)])
+        plot_category(ax, votes, category, colors[category], offset)
 
-    ax.set_xticks([])
-    ax.set_title("Respondents, %")
-    ax.set_xlabel("Respondents, %")
+        y_tick_labels.extend(get_category_product_names(votes, category))
+        y_tick_coordinates.extend([x + offset for x in range(category_size)])
+
+        offset += category_size
+
+    ax.set_yticks(y_tick_coordinates, y_tick_labels)
+    ax.set_ylabel("Product name")
+
     ax.set_xlim(0, 100)
-    ax.set_yticks(all_y_coordinates)
-    ax.set_yticklabels(all_labels)
+    ax.set_xticks(range(0, 101, 25))
+    ax.set_xlabel("Respondents, %")
+
+    ax.set_title("Distribution of votes per category")
+    ax.legend()
+
+    fig.tight_layout()
 
     return fig
 
@@ -49,7 +58,7 @@ def main():
     votes = read()
 
     fig = plot(votes)
-    fig.savefig("plot.png", dpi=300, bbox_inches="tight")
+    fig.savefig("plot.png", dpi=300)
 
 
 if __name__ == "__main__":

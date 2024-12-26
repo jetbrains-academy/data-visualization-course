@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import get_categories_sorted, get_category_products, get_category_votes, read
+from data import get_categories, get_category_product_names, get_category_size, get_category_votes, read
 from task import plot
 
 
@@ -18,7 +18,6 @@ class TestCase(BaseTestMixin):
         data = read()
         cls.fig = plot(data)
         cls.data = data
-        cls.sorted_categories = get_categories_sorted()
 
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="plt.barh")
@@ -31,51 +30,61 @@ class TestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig.axes[0], 0)
 
         self.checkNumberOfContainers(self.fig.axes[0], 3)
-        self.checkContainerType(self.fig.axes[0], BarContainer)
-        for container in self.fig.axes[0].containers:
-            self.assertEqual(
-                len(container.datavalues),
-                5,
-                "Each container must have exactly 5 bars.",
+        for i in range(3):
+            self.checkContainerType(self.fig.axes[0], BarContainer, container_number=i)
+
+    def test_1_4_bar_layout(self):
+        self.checkBarLayout(self.fig.axes[0], expected_layout="horizontal")
+
+    def test_2_1_bar_values(self):
+        for i, category in enumerate(get_categories(self.data)):
+            expected_positions = get_category_votes(self.data, category)
+            self.checkBarValues(self.fig.axes[0], expected_positions, container_number=i)
+
+    def test_2_2_bar_position(self):
+        offset = 0
+        for i, category in enumerate(get_categories(self.data)):
+            category_size = get_category_size(self.data, category)
+
+            self.checkBarPositions(
+                self.fig.axes[0],
+                list(range(offset, offset + category_size)),
+                axis="y",
+                container_number=i,
             )
 
-    # TODO: Add test for bars positions
-    def test_2_1_bar_position(self):
-        for index in range(3):
-            expected_positions = get_category_votes(self.data, self.sorted_categories[index])
-            self.checkBarsPosition(self.fig.axes[0], expected_positions, container_number=index)
+            offset += category_size
 
-    def test_2_2_bar_layout(self):
-        self.checkBarsLayout(self.fig.axes[0], expected_layout="horizontal")
+    def test_2_3_bar_colors(self):
+        for i, color in enumerate(["goldenrod", "sienna", "forestgreen"]):
+            expected_colors = [color] * 5
+            self.checkBarColor(self.fig.axes[0], expected_facecolors=expected_colors, container_number=i)
 
-    def test_2_3_bar_labels(self):
-        all_labels = []
-        for category in self.sorted_categories:
-            all_labels.extend(get_category_products(self.data, category))
-        self.checkTickLabels(self.fig.axes[0], all_labels, axis="y")
+    def test_3_1_y_ticks(self):
+        expected_labels = []
+        number_of_products = 0
+        for category in get_categories(self.data):
+            expected_labels.extend(get_category_product_names(self.data, category))
+            number_of_products += get_category_size(self.data, category)
 
-    def test_2_4_bar_colors(self):
-        expected_colors = []
-        for color in ["green", "firebrick", "navy"]:
-            expected_colors.extend([color] * 5)
-        self.checkBarsColor(self.fig.axes[0], expected_facecolors=expected_colors)
+        self.checkTicks(self.fig.axes[0], list(range(number_of_products)), axis="y")
+        self.checkTickLabels(self.fig.axes[0], expected_labels, axis="y")
 
-    def test_3_1_labels(self):
-        self.checkLabel(self.fig.axes[0], "Respondents, %", "x")
+    def test_3_2_y_label(self):
+        self.checkLabel(self.fig.axes[0], "Product name", axis="y")
 
-    def test_3_2_x_lim(self):
+    def test_4_1_x_lim(self):
         self.checkLim(self.fig.axes[0], [0, 100], "x")
 
-    def test_3_3_x_ticks(self):
-        self.checkTicks(self.fig.axes[0], [], "x")
+    def test_4_2_x_ticks(self):
+        self.checkTicks(self.fig.axes[0], list(range(0, 101, 25)), axis="x")
+        self.checkTickLabels(self.fig.axes[0], list(map(str, range(0, 101, 25))), axis="x")
 
-    def test_3_4_y_ticks(self):
-        expected_positions = list(range(15))
-        expected_labels = []
-        for category in self.sorted_categories:
-            expected_labels.extend(get_category_products(self.data, category))
-        self.checkTicks(self.fig.axes[0], expected_positions, "y")
-        self.checkTickLabels(self.fig.axes[0], expected_labels, "y")
+    def test_4_3_x_label(self):
+        self.checkLabel(self.fig.axes[0], "Respondents, %", "x")
 
-    def test_4_title(self):
-        self.checkTitle(self.fig.axes[0], "Respondents, %")
+    def test_5_title(self):
+        self.checkTitle(self.fig.axes[0], "Distribution of votes per category")
+
+    def test_6_legend(self):
+        self.checkLegendExists(self.fig.axes[0])
