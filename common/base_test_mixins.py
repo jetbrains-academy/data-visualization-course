@@ -1,4 +1,4 @@
-from typing import Any, List, Literal, Optional, Type, Tuple
+from typing import Any, List, Literal, Optional, Tuple, Type
 from unittest import TestCase
 
 from matplotlib.colors import same_color, to_rgb
@@ -64,7 +64,7 @@ class BaseTestMixin(TestCase):
 
     def checkLegendHandleColors(self, ax: plt.Axes, *, expected_handle_colors: List[str]):
         actual_handle_colors = [handle.get_facecolor() for handle in ax.get_legend().legend_handles]
-        for actual_color, expected_color in zip (actual_handle_colors, expected_handle_colors):
+        for actual_color, expected_color in zip(actual_handle_colors, expected_handle_colors):
             self.assertTrue(same_color(actual_color, expected_color), msg="The legend handle colors do not match.")
 
     def checkCollectionPosition(
@@ -241,10 +241,7 @@ class BaseTestMixin(TestCase):
         else:
             raise ValueError("Unknown axis name.")
 
-        if minor:
-            ticks = axis_obj.get_minor_ticks()
-        else:
-            ticks = axis_obj.get_major_ticks()
+        ticks = axis_obj.get_minor_ticks() if minor else axis_obj.get_major_ticks()
 
         if where == "primary":
             actual_tick_labels = [tick.label1.get_text() for tick in ticks if tick.label1.get_visible()]
@@ -429,7 +426,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(expected_number, len(ax.texts), f"The number of text objects must be {expected_number}.")
 
     def checkTextObjects(self, ax: plt.Axes, expected_texts: List[Tuple[float, float, str]]):
-        actual_texts = sorted(text.get_position() + (text.get_text(),) for text in ax.texts)
+        actual_texts = sorted((*text.get_position(), text.get_text()) for text in ax.texts)
         expected_texts = sorted(expected_texts)
 
         self.assertListEqual(expected_texts, actual_texts, "")
