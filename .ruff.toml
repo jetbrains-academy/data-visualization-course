@@ -28,6 +28,8 @@ ignore = [
     "TD002",
     # Checks that a TODO comment is associated with a link to a relevant issue or ticket.
     "TD003",
+    # Checks for function definitions that include too many arguments.
+    "PLR0913",
 ]
 
 [lint.per-file-ignores]
