@@ -11,4 +11,5 @@ files:
     visible: false
     propagatable: false
   - name: example.png
-    visible: true
+    visible: false
+    propagatable: false
