@@ -98,9 +98,9 @@ class TestCase(BaseTestMixin):
         self.checkNumberOfTextObjects(self.fig.axes[0], 15)
 
     def test_6_2_text(self):
-        expected_x = (self.data['votes'] + 1).to_list()
+        expected_x = (self.data["votes"] + 1).to_list()
         expected_y = list(range(15))
-        expected_text = self.data['votes'].apply(lambda x: f"{round(x, 1)}").to_list()
+        expected_text = self.data["votes"].apply(lambda x: f"{round(x, 1)}").to_list()
         self.checkTextObjects(self.fig.axes[0], list(zip(expected_x, expected_y, expected_text)))
 
     def test_7_1_legend(self):
