@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import get_categories, get_category_product_names, get_category_size, get_category_votes, read
+from data import get_categories, get_category_product_names, get_category_size, get_category_votes, read, preprocess
 from task import plot
 
 
@@ -16,8 +16,16 @@ class TestCase(BaseTestMixin):
     @classmethod
     def setUpClass(cls):
         data = read()
+        data = preprocess(data)
+
         cls.fig = plot(data)
         cls.data = data
+
+        cls.category_colors = {
+            "bread": "sienna",
+            "cheese": "goldenrod",
+            "salad": "forestgreen",
+        }
 
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="plt.barh")
@@ -56,8 +64,8 @@ class TestCase(BaseTestMixin):
             offset += category_size
 
     def test_2_3_bar_colors(self):
-        for i, color in enumerate(["goldenrod", "sienna", "forestgreen"]):
-            expected_colors = [color] * 5
+        for i, (category, color) in enumerate(self.category_colors.items()):
+            expected_colors = [color] * get_category_size(self.data, category)
             self.checkBarColor(self.fig.axes[0], expected_facecolors=expected_colors, container_number=i)
 
     def test_3_1_y_ticks(self):

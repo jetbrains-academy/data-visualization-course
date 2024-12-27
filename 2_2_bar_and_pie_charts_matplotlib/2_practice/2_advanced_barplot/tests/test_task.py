@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import get_categories, get_category_product_names, get_category_size, get_category_votes, read
+from data import get_categories, get_category_product_names, get_category_size, get_category_votes, read, preprocess
 from task import plot
 
 
@@ -16,8 +16,16 @@ class TestCase(BaseTestMixin):
     @classmethod
     def setUpClass(cls):
         data = read()
+        data = preprocess(data)
+
         cls.fig = plot(data)
         cls.data = data
+
+        cls.category_colors = {
+            "bread": "sienna",
+            "cheese": "goldenrod",
+            "salad": "forestgreen",
+        }
 
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="plt.barh")
@@ -56,8 +64,8 @@ class TestCase(BaseTestMixin):
             offset += category_size
 
     def test_2_3_bar_colors(self):
-        for i, color in enumerate(["goldenrod", "sienna", "forestgreen"]):
-            expected_colors = [color] * 5
+        for i, (category, color) in enumerate(self.category_colors.items()):
+            expected_colors = [color] * get_category_size(self.data, category)
             self.checkBarColor(self.fig.axes[0], expected_facecolors=expected_colors, container_number=i)
 
     def test_3_1_y_ticks(self):
@@ -95,11 +103,11 @@ class TestCase(BaseTestMixin):
         self.checkTitle(self.fig.axes[0], "Distribution of votes per category")
 
     def test_6_1_number_of_text(self):
-        self.checkNumberOfTextObjects(self.fig.axes[0], 15)
+        self.checkNumberOfTextObjects(self.fig.axes[0], 18)
 
     def test_6_2_text(self):
         expected_x = (self.data["votes"] + 1).to_list()
-        expected_y = list(range(15))
+        expected_y = list(range(18))
         expected_text = self.data["votes"].apply(lambda x: f"{round(x, 1)}").to_list()
         self.checkTextObjects(self.fig.axes[0], list(zip(expected_x, expected_y, expected_text)))
 
@@ -110,5 +118,9 @@ class TestCase(BaseTestMixin):
         self.checkNumberOfLegendItems(self.fig.axes[0], expected_number=3)
 
     def test_7_3_legend_items(self):
-        self.checkLegendLabels(self.fig.axes[0], expected_labels=["salad", "bread", "cheese"])
-        self.checkLegendHandleColors(self.fig.axes[0], expected_handle_colors=["forestgreen", "sienna", "goldenrod"])
+        self.checkLegendLabels(self.fig.axes[0], expected_labels=list(reversed(self.category_colors.keys())))
+
+        self.checkLegendHandleColors(
+            self.fig.axes[0],
+            expected_handle_colors=list(reversed(self.category_colors.values())),
+        )

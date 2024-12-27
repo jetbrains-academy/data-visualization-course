@@ -4,11 +4,11 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 160
+      - offset: 172
         length: 350
         placeholder_text: ""
         is_visible: false
-      - offset: 562
+      - offset: 574
         length: 860
         placeholder_text: "return  # TODO"
         is_visible: false
