@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from data import get_categories, get_category_product_names, get_category_size, get_category_votes, read, preprocess
+from data import get_categories, get_category_product_names, get_category_size, get_category_votes, preprocess, read
 
 
 def plot_category(ax: plt.Axes, votes: pd.DataFrame, category: str, color: str, offset: int = 0):

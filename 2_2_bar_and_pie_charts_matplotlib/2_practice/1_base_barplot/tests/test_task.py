@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import get_categories, get_category_product_names, get_category_size, get_category_votes, read, preprocess
+from data import get_categories, get_category_product_names, get_category_size, get_category_votes, preprocess, read
 from task import plot
 
 

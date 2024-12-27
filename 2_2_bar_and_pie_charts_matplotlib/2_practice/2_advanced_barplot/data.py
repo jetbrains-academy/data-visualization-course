@@ -8,7 +8,7 @@ def read() -> pd.DataFrame:
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
-    preprocessed_data = data.groupby(['category', 'product']).count() / data['participant'].nunique() * 100
+    preprocessed_data = data.groupby(["category", "product"]).count() / data["participant"].nunique() * 100
     preprocessed_data = preprocessed_data.rename(columns={"participant": "votes"})
     return preprocessed_data.reset_index()
 
