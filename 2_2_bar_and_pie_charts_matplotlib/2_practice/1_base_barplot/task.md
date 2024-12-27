@@ -24,7 +24,8 @@ The other requirements are:
 8. Add the legend.
 9. Tighten the layout.
 
-Note that you don't need to preprocess the data.
+Note that we preprocessed the data for you, but if you prefer, you can do this yourself.
+Please see the corresponding hint below.
 
 You could also use the following hidden function:
 1. `get_category_votes` to get all votes for the specific category.
@@ -39,6 +40,20 @@ like.
 
 <div class="hint" title="What should the figure look like?">
     <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
+</div>
+
+<div class="hint" title="How should I preprocess the data?">
+   Before using the data, we need to perform several preprocessing steps:
+   <ol>
+      <li>Calculate the number of votes for each category and product using
+      the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code>groupby</code></a>
+      and <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.count.html"><code>count</code></a> functions.</li>
+      <li>Normalize the data by dividing it to the number of participants and multiply it by 100 to get the percentage.
+      You can find the number of participants using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html"><code>nunique</code></a> function.</li>
+      <li>Rename the <code>participants</code> column to <code>votes</code> using
+      the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html"><code>rename</code></a> function.</li>
+      <li>Reset the index using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html"><code>reset_index</code></a> function.</li>
+   </ol>
 </div>
 
 <div class="hint" title="How to set the colors for the bars?">
