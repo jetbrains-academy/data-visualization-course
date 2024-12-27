@@ -1,7 +1,7 @@
 ## Task
 
 At a recent tasting event, participants were invited to sample an assortment of breads, cheeses, and salads.
-Everyone had the chance to vote for as many items as they liked, sharing their favorites among the diverse offerings.
+Everyone had the chance to vote for up to 3 products per category, sharing their favorites among the diverse offerings.
 The organizers of a tasting event received all the responses,
 calculated themselves the percentage of votes for each product in each category
 (so that they know the corresponding distribution along cheese, bread, and salad).
@@ -9,8 +9,8 @@ Now they want us to help with plotting the data.
 Let's help them!
 
 To interpret the data,
-the organizers want to see the distribution of votes for each category in a single horizontal bar chart.
-So you should plot categories from bottom to top as follows: `cheese`, `bread`, and `salad`.
+the organizers want to see the distribution of votes (`votes`) for each category (`category`) in a single horizontal bar chart.
+So you should plot categories from bottom to top as follows: `bread`, `cheese`, and `salad`.
 
 The other requirements are:
 

@@ -34,5 +34,3 @@ files:
   - name: example.png
     visible: false
     propagatable: false
-  - name: plot.png
-    visible: true
