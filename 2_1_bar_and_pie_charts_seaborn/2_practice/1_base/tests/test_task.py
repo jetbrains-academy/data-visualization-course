@@ -5,7 +5,7 @@ import pandas as pd
 import seaborn as sns
 
 from common.base_test_mixins import BaseTestMixin
-from data import read, get_product_order
+from data import get_product_order, read
 from task import plot
 
 
@@ -43,7 +43,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_1_bar_position(self):
         for i, category in enumerate(self.data["category"].unique()):
-            expected_values = self.data[self.data['category'] == category].groupby('product', sort=False).size()
+            expected_values = self.data[self.data["category"] == category].groupby("product", sort=False).size()
             self.checkBarValues(self.fig.ax, expected_values.to_list(), container_number=i)
 
     def test_2_2_bar_layout(self):
