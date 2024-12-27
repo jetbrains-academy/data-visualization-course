@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 
-from data import read, get_product_order
+from data import get_product_order, read
 
 
 def plot(votes: pd.DataFrame) -> sns.FacetGrid:

@@ -10,9 +10,6 @@ files:
   - name: tests/test_task.py
     visible: false
     propagatable: false
-  - name: __init__.py
-    visible: false
-    propagatable: false
   - name: tests/__init__.py
     visible: false
     propagatable: false
