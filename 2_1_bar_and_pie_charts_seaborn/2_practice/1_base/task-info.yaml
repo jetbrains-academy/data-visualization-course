@@ -1,0 +1,23 @@
+type: edu
+custom_name: Base
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 138
+        length: 147
+        placeholder_text: "return  # TODO"
+  - name: tests/test_task.py
+    visible: false
+    propagatable: false
+  - name: __init__.py
+    visible: false
+    propagatable: false
+  - name: tests/__init__.py
+    visible: false
+    propagatable: false
+  - name: data.py
+    visible: false
+  - name: example.png
+    visible: false
+    propagatable: false
