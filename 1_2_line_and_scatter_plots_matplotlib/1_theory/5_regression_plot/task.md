@@ -13,6 +13,12 @@ Previously, we used only one type of visualization, but what if we want to build
 With Matplotlib, we can easily do this—just
 call another method from `Axes`, and it will be plotted on top of the previous ones.
 
+For example, you can do it something like this:
+```python
+ax.plot("x1", "y1", data=my_data)
+ax.scatter("x2", "y2", data=my_data)
+```
+
 ## Task
 
 Add the scatter plot to the same figure.
@@ -30,10 +36,6 @@ Add the scatter plot to the same figure.
       <li>Create a regression function using <a href="https://numpy.org/doc/stable/reference/generated/numpy.poly1d"><code>poly1d</code></a>. This function will accept <code>user_score</code> and return the approximate <code>critic_score</code>.</li>
       <li>Create a new DataFrame where the <code>user_score</code> column contains only unique values, and the <code>critic_score</code> is the result of applying the function from the second step to the new <code>user_score</code> column.</li>
    </ol>
-
-   If you encounter difficulties with your own preprocessing, you can
-   take [a peek at the inner file](file://1_2_line_and_scatter_plots_matplotlib/1_theory/5_regression_plot/data.py)
-   where our preprocessing is defined.
 
    Note that your own aggregation function will not be tested.
 </div>

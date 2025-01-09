@@ -16,12 +16,16 @@ For now, we will work with the `relplot` function.
 
 Every plotting function in Seaborn accepts three main arguments:
 
-* `data`: The input data structure. In this course, we will pass Pandas DataFrames here.
+* `data`: The input data structure (for example, Pandas DataFrame or some mapping).
 * `x`: The name of the column to visualize on the x-axis.
 * `y`: The name of the column to visualize on the y-axis.
 
 Note that the `data` argument is optional.
-If you do not provide it, `x` and `y` must be lists containing the data to plot.
+If you do not provide it, `x` and `y` must be collections containing the data to plot.
+
+While using Seaborn, we recommend passing `data` as a positional argument
+and any other arguments (including `x` and `y`) as keyword arguments.
+For example: `sns.relplot(my_data, x="column_x", y="column_y", some_argument="some_value")`.
 
 The common way to import Seaborn is as follows: `import seaborn as sns`.
 We've already done this for you, so to call `relplot`, you simply need to write `sns.relplot`.
@@ -54,13 +58,13 @@ Please see the corresponding hint below.
    <ol>
       <li>Convert column names to lowercase.</li>
       <li>Remove games with undecided user scores (where the user score is equal to <code>tbd</code>).</li>
-      <li>Drop all NaN values.</li>
+      <li>Drop all NaN values from the following columns:</li>
+      <ul>
+         <li><code>critic_score</code></li>
+         <li><code>user_score</code></li>
+      </ul>
       <li>Convert the <code>user_score</code> column to a float.</li>
    </ol>
-   
-   If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](file://1_1_line_and_scatter_plots_seaborn/1_theory/1_relplot_scatter/data.py)
-   where our preprocessing is defined.
 </div>
 
 <div class="hint" title="What should the figure look like?">

@@ -15,15 +15,18 @@ For now, we will work with the `scatter` function.
 
 Every plotting function in Matplotlib accepts three main arguments:
 
-* `data`: The input data structure. In this course, we will pass Pandas DataFrames here.
+* `data`: The input data structure. (for example, Pandas DataFrame or some mapping).
 * `x`: The name of the column to visualize on the x-axis.
 * `y`: The name of the column to visualize on the y-axis.
 
 There are a few important things to note:
 
-1. `data` is optional. If you dot provide it, `x` and `y` must be lists containing data.
+1. `data` is optional. If you do not provide it, `x` and `y` must be collections containing data.
 2. You can only specify the `data` parameter as a keyword argument.
 3. You must specify the `x` and `y` parameters as positional arguments.
+
+While using Matplotlib, we recommend passing any other arguments as keyword arguments.
+For example: `plt.scatter("column_x", "column_y", data=my_data, some_argument="some_value")`.
 
 <hr>
 
@@ -75,14 +78,14 @@ Please see the corresponding hint below.
    <ol>
       <li>Convert column names to lowercase.</li>
       <li>Remove games with user scores listed as "to be decided" (i.e., where the user score is <code>tbd</code>).</li>
-      <li>Drop all NaN values.</li>
+      <li>Drop all NaN values from the following columns:</li>
+      <ul>
+         <li><code>critic_score</code></li>
+         <li><code>user_score</code></li>
+      </ul>
       <li>Convert the <code>user_score</code> column to a float.</li>
    </ol>
-   
-   If you encounter difficulties with your own preprocessing, you can
-   take [a peek at the file](file://1_2_line_and_scatter_plots_matplotlib/1_theory/1_scatter/data.py)
-   where our preprocessing is defined.
-   
+
    Note that your own preprocessing function will not be tested.
 </div>
 
