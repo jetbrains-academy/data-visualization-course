@@ -1,6 +1,14 @@
 # Comparison of categories
 
-If your data involves discrete or qualitative variables, a bar or pie chart can offer a clear representation of the
-differences or similarities between categories. But they work best only when dealing with a limited number of
-categories, as too many categories can make the chart cluttered and difficult to interpret. If you have a large number
-of categories, consider grouping or summarizing them to maintain clarity in the visual representation.
+When working with discrete or qualitative variables, bar or pie charts are effective for visualizing differences or
+similarities between categories. They work best with a limited number of categories to prevent clutter and improve
+interpretability. If you have a large number of categories, consider grouping or summarizing them for clarity. Bar
+charts are particularly useful for displaying proportions or percentages within categories, as the scaled height of the
+bars facilitates easy comparison and clear visualization of distribution.
+
+Introducing Bruno, a data analyst, whose early career challenge involved assisting a local farm. The farm had to scale
+back
+production after some of their cattle escaped.
+The farm wanted to focus on producing only the most popular types of cheeses. Andy organized a tasting day and used bar
+charts to visualize the popularity of each cheese type among participants, effectively guiding the farm’s decision on
+which cheeses to continue producing.

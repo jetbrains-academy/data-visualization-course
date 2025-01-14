@@ -1,5 +1,0 @@
-type: theory
-custom_name: Proportions within categories
-files:
-  - name: main.py
-    visible: true
