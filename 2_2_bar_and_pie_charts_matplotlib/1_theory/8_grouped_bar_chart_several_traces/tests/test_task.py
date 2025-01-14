@@ -20,7 +20,7 @@ class PlotTestCase(BaseTestMixin):
 
         cls.data = data
         cls.fig = plot(data)
-        cls.ordered_regions = ['other', 'jp', 'na', 'eu']
+        cls.ordered_regions = ["other", "jp", "na", "eu"]
 
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="plt.bar")

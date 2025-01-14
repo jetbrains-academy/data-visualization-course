@@ -26,7 +26,7 @@ class PlotTestCase(BaseTestMixin):
 
         cls.data = data
         cls.fig = plot(data)
-        cls.ordered_regions = ['other', 'jp', 'na', 'eu']
+        cls.ordered_regions = ["other", "jp", "na", "eu"]
         cls.number_of_regions = len(cls.ordered_regions)
 
     def test_1_1_return_type(self):

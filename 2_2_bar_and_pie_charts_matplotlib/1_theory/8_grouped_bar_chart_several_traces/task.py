@@ -13,7 +13,7 @@ def plot_region(ax: plt.Axes, data: pd.DataFrame, region: str, trace: int = 0):
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     games = aggregate(games)
-    regions_ordered = ['other', 'jp', 'na', 'eu']
+    regions_ordered = ["other", "jp", "na", "eu"]
 
     fig, ax = plt.subplots()
 
