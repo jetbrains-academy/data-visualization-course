@@ -67,7 +67,8 @@ class PlotTestCase(BaseTestMixin):
                 ),
                 container_number=i,
                 width=1,
-                axis="x")
+                axis="x",
+            )
 
     def test_2_4_bar_layout(self):
         self.checkBarLayout(self.fig.axes[0], expected_layout="vertical")

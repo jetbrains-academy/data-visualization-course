@@ -73,7 +73,8 @@ class PlotTestCase(BaseTestMixin):
                 ),
                 container_number=i,
                 width=1,
-                axis="x")
+                axis="x",
+            )
 
     def test_2_4_bar_layout(self):
         self.checkBarLayout(self.fig.axes[0], expected_layout="vertical")
@@ -90,10 +91,10 @@ class PlotTestCase(BaseTestMixin):
             [
                 x + 1.5
                 for x in range(
-                0,
-                get_number_of_decades(aggregated_data) * self.number_of_regions,
-                self.number_of_regions + 1,
-            )
+                    0,
+                    get_number_of_decades(aggregated_data) * self.number_of_regions,
+                    self.number_of_regions + 1,
+                )
             ],
             axis="x",
         )
