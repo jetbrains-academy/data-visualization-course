@@ -22,8 +22,8 @@ Finally, let's add a title to our figure and tighten its layout.
 ## Hints
 
 <div class="hint" title="How to set a title for a figure?">
-    To set a title for a figure, you can use the <code>set_title</code> method of the <code>Figure</code> object:
-    <code>fig.set_title("Title")</code>.
+    To set a title for a figure, you can use the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html"><code>set_title</code></a> method:
+    <code>ax.set_title("Title")</code>.
 </div>
 
 <div class="hint" title="What should the figure look like?">

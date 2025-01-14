@@ -205,9 +205,6 @@ class BaseTestMixin(TestCase):
             f"The {axis}-axis should be labeled as '{expected_label}'",
         )
 
-    def checkLabelPosition(self, ax: plt.Axes, expected_positions: List[float], axis: Literal["x", "y"]):
-        pass
-
     def checkTicks(self, ax: plt.Axes, expected_ticks: List[float], axis: Literal["x", "y"], *, minor: bool = False):
         if axis == "x":
             actual_ticks = ax.get_xticks(minor=minor)
@@ -240,6 +237,11 @@ class BaseTestMixin(TestCase):
             axis_obj = ax.yaxis
         else:
             raise ValueError("Unknown axis name.")
+
+        # As far as I understand, ticks are lazy, so you need to create them to be able to get them.
+        # To do it, we have to call this private function.
+        # I know it's a bad thing to do, but I believe it is the optional solution.
+        axis_obj._update_ticks()  # noqa: SLF001
 
         ticks = axis_obj.get_minor_ticks() if minor else axis_obj.get_major_ticks()
 

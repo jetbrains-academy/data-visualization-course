@@ -13,6 +13,8 @@ class PlotTestCase(BaseTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
+    aggregated_data: ClassVar[pd.DataFrame]
+
     @classmethod
     def setUpClass(cls):
         data = read()
@@ -21,8 +23,10 @@ class PlotTestCase(BaseTestMixin):
         cls.data = data
         cls.fig = plot(data)
 
+        cls.aggregated_data = aggregate(filter_platforms(data))
+
     def test_1_1_return_type(self):
-        self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="plt.bar")
+        self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="ax.pie")
 
     def test_1_2_number_of_axes(self):
         self.checkNumberOfAxes(self.fig.axes, 1)
@@ -37,19 +41,13 @@ class PlotTestCase(BaseTestMixin):
             self.checkPatchesType(self.fig.axes[0], Wedge, patch_number=i)
 
     def test_2_1_pie_position(self):
-        self.checkPiePosition(
-            self.fig.axes[0],
-            expected_position=aggregate(filter_platforms(self.data))["count"].to_list(),
-        )
+        self.checkPiePosition(self.fig.axes[0], expected_position=self.aggregated_data["count"].to_list())
 
     def test_2_2_pie_labels(self):
-        self.checkPieLabels(
-            self.fig.axes[0],
-            expected_labels=aggregate(filter_platforms(self.data))["platform"].to_list(),
-        )
+        self.checkPieLabels(self.fig.axes[0], expected_labels=self.aggregated_data["platform"].to_list())
 
     def test_2_3_pie_numeric_labels(self):
-        expected_count = aggregate(filter_platforms(self.data))["count"]
+        expected_count = self.aggregated_data["count"]
         expected_count = expected_count / sum(expected_count) * 100
         expected_labels = expected_count.apply(lambda count: "%.2f%%" % count)  # noqa: UP031
 
@@ -58,11 +56,11 @@ class PlotTestCase(BaseTestMixin):
             expected_labels=expected_labels.to_list(),
         )
 
-    def test_2_4_pie_color(self):
+    def test_2_4_pie_colors(self):
         self.checkPieColors(self.fig.axes[0], expected_colors=["gray", "blue", "green", "cyan"])
 
     def test_2_5_pie_explode(self):
-        aggregated_data = aggregate(filter_platforms(self.data))["count"]
+        aggregated_data = self.aggregated_data["count"]
         self.checkPieExplode(
             self.fig.axes[0],
             expected_position=aggregated_data.to_list(),

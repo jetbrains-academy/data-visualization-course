@@ -9,14 +9,6 @@ def read() -> pd.DataFrame:
     return pd.read_csv(GAMES_DATASET_PATH)
 
 
-def aggregate(games: pd.DataFrame) -> pd.DataFrame:
-    return games["platform"].value_counts().reset_index()
-
-
-def filter_platforms(data: pd.DataFrame) -> pd.DataFrame:
-    return data[data["platform"].isin(["PS4", "XOne", "PC", "WiiU"])]
-
-
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
 
@@ -37,3 +29,11 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     data["year_of_release"] = data["year_of_release"].astype("int")
 
     return data
+
+
+def aggregate(games: pd.DataFrame) -> pd.DataFrame:
+    return games["platform"].value_counts().reset_index()
+
+
+def filter_platforms(data: pd.DataFrame) -> pd.DataFrame:
+    return data[data["platform"].isin(["PS4", "XOne", "PC", "WiiU"])]

@@ -7,9 +7,9 @@ The main goal of the lesson is to **plot the descriptive statistics about differ
 ## Theory
 
 In Matplotlib there are several functions for plotting categorical charts:
-1. [`bar`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar): it builds vertical bar charts.
-2. [`barh`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.barh): it is similar to `bar` but builds horizontal bar charts.
-3. [`pie`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.pie): it builds pie charts.
+1. [`bar`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar) — builds vertical bar charts.
+2. [`barh`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.barh) — similar to `bar` but builds horizontal bar charts.
+3. [`pie`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.pie) — builds pie charts.
 
 For now, we will start with the `bar` function.
 
@@ -22,16 +22,15 @@ Unfortunately, Matplotlib doesn't aggregate the data for us, so we need to do it
 
 ## Task
 
-1. Use the hidden `aggeregate` function to calculate the number of games (the `count` column)
-   for each platform (the `platform` column) in descending order.
-   
+1. Use the hidden `aggeregate` function to calculate the number of games (`count`)
+   for each platform (`platform`) in descending order.
+
    If you prefer, you can aggregate the data yourself. Please refer to the corresponding hint below.
 
-2. Use the `bar` function to plot bar chart. 
+2. Use the `bar` function to plot a bar chart. 
    Pass `platform` there as the x-axis, `count` as the height and `games` as the data.
 
-Note that we preprocessed the data for you, but if you prefer, you can do this yourself.
-Please see the corresponding hint below.
+Note that we preprocessed the data for you. To learn how we do it, please see the corresponding hint below.
 
 ## Hints
 <div class="hint" title="How to run the code?">
@@ -45,7 +44,7 @@ Please see the corresponding hint below.
    <img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
 </div>
 
-<div class="hint" title="How should I preprocess the data?">
+<div class="hint" title="How the data was preprocessed?">
    Before using the data, we need to perform several preprocessing steps:
    <ol>
       <li>Convert column names to lowercase.</li>
@@ -61,22 +60,16 @@ Please see the corresponding hint below.
       </ul>
       <li>Convert the <code>year_of_release</code> column to an integer.</li>
    </ol>
-   
-   If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](file://2_2_bar_and_pie_charts_matplotlib/1_theory/1_countplot/data.py)
-   where our preprocessing is defined.
 </div>
 
 <div class="hint" title="How should I aggregate the data?">
    To calculate the total number of games per platform: 
    <ol>
-      <li>Count the number of rows for the <code>platform</code> column using <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts</code></a> function</li>
-      <li>Convert the result to DataFrame using <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.reset_index.html"><code>reset_index</code></a> function</li>
+      <li>Use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts</code></a> function on the <code>platform</code> column to calculate the number of rows for each platform.</li>
+      <li>Convert the result to <code>DataFrame</code> using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.reset_index.html"><code>reset_index</code></a> function.</li>
    </ol>
-   
-   If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](file://2_2_bar_and_pie_charts_matplotlib/1_theory/1_countplot/data.py)
-   where our preprocessing is defined.
+
+   Note that your own function will not be tested.
 </div>
 
 <div class="hint" title="What should the figure look like?"> 

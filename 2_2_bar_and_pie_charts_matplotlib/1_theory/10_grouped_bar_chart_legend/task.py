@@ -12,11 +12,11 @@ from data import (
 )
 
 
-def plot_region(ax: plt.Axes, data: pd.DataFrame, region: str, trace: int = 0):
-    number_of_groups = get_number_of_decades(data)
-    group_size = get_number_of_regions(data) + 1
+def plot_region(ax: plt.Axes, games: pd.DataFrame, region: str, trace: int = 0):
+    number_of_groups = get_number_of_decades(games)
+    group_size = get_number_of_regions(games) + 1
 
-    region_sales = get_region_sales(data, region)
+    region_sales = get_region_sales(games, region)
 
     ax.bar(
         [x + trace for x in range(0, number_of_groups * group_size, group_size)],
@@ -39,6 +39,7 @@ def plot(games: pd.DataFrame) -> plt.Figure:
     return fig
 
 
+# Please solve the task in the plot function and do not modify this one
 def main():
     games = read()
     games = preprocess(games)
