@@ -8,9 +8,7 @@ from common.base_test_mixins import BaseTestMixin
 from data import (
     aggregate,
     get_all_decades,
-    get_all_regions,
     get_number_of_decades,
-    get_number_of_regions,
     preprocess,
     read,
 )
@@ -28,6 +26,8 @@ class PlotTestCase(BaseTestMixin):
 
         cls.data = data
         cls.fig = plot(data)
+        cls.ordered_regions = ['other', 'jp', 'na', 'eu']
+        cls.number_of_regions = len(cls.ordered_regions)
 
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="plt.bar")
@@ -43,46 +43,46 @@ class PlotTestCase(BaseTestMixin):
 
         # Bars
         self.checkNumberOfContainers(self.fig.axes[0], 4)
-        for i in range(len(get_all_regions(aggregated_data))):
+        for i in range(len(self.ordered_regions)):
             self.checkContainerType(self.fig.axes[0], BarContainer, container_number=i)
             self.checkNumberOfBars(self.fig.axes[0], aggregated_data["decade"].nunique(), container_number=i)
 
     def test_2_1_bar_values(self):
         aggregated_data = aggregate(self.data)
 
-        for i, region in enumerate(get_all_regions(aggregated_data)):
+        for i, region in enumerate(self.ordered_regions):
             expected_values = aggregated_data[aggregated_data["region"] == region]["sales"].to_list()
             self.checkBarValues(self.fig.axes[0], expected_values, container_number=i)
 
     def test_2_2_bar_width(self):
         aggregated_data = aggregate(self.data)
 
-        for i in range(len(get_all_regions(aggregated_data))):
+        for i in range(len(self.ordered_regions)):
             self.checkBarWidth(self.fig.axes[0], 1, container_number=i)
 
     def test_2_3_bar_positions(self):
         aggregated_data = aggregate(self.data)
 
-        for i in range(len(get_all_regions(aggregated_data))):
+        for i in range(len(self.ordered_regions)):
             self.checkBarPositions(
                 self.fig.axes[0],
                 list(
                     range(
                         i,
-                        get_number_of_decades(aggregated_data) * (get_number_of_regions(aggregated_data) + 1),
-                        get_number_of_regions(aggregated_data) + 1,
+                        get_number_of_decades(aggregated_data) * (self.number_of_regions + 1),
+                        self.number_of_regions + 1,
                     ),
                 ),
                 container_number=i,
                 width=1,
-            )
+                axis="x")
 
     def test_2_4_bar_layout(self):
         self.checkBarLayout(self.fig.axes[0], expected_layout="vertical")
 
     def test_2_5_bar_legend(self):
         self.checkLegendExists(self.fig.axes[0])
-        self.checkLegendLabels(self.fig.axes[0], expected_labels=list(get_all_regions(aggregate(self.data))))
+        self.checkLegendLabels(self.fig.axes[0], expected_labels=self.ordered_regions)
 
     def test_3_xticks(self):
         aggregated_data = aggregate(self.data)
@@ -92,10 +92,10 @@ class PlotTestCase(BaseTestMixin):
             [
                 x + 1.5
                 for x in range(
-                    0,
-                    get_number_of_decades(aggregated_data) * get_number_of_regions(aggregated_data),
-                    get_number_of_regions(aggregated_data) + 1,
-                )
+                0,
+                get_number_of_decades(aggregated_data) * self.number_of_regions,
+                self.number_of_regions + 1,
+            )
             ],
             axis="x",
         )

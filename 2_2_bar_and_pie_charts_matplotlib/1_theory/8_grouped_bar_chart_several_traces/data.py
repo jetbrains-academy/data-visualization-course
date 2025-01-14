@@ -26,10 +26,6 @@ def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
     return data[data["region"] == region]["sales"]
 
 
-def get_all_regions(data: pd.DataFrame) -> Set:
-    return set(data["region"].unique())
-
-
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
 

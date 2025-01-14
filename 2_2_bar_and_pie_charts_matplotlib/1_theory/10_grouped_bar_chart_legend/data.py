@@ -22,16 +22,8 @@ def get_number_of_decades(data: pd.DataFrame) -> int:
     return data["decade"].nunique()
 
 
-def get_number_of_regions(data: pd.DataFrame) -> int:
-    return data["region"].nunique()
-
-
 def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
     return data[data["region"] == region]["sales"]
-
-
-def get_all_regions(data: pd.DataFrame) -> Set[str]:
-    return set(data["region"].unique())
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
@@ -60,7 +52,8 @@ def __add_decades(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
 
     decade_bins = (
-        np.array(range(data["year_of_release"].min() // 10 * 10, data["year_of_release"].max() // 10 * 10 + 11, 10)) - 1
+            np.array(
+                range(data["year_of_release"].min() // 10 * 10, data["year_of_release"].max() // 10 * 10 + 11, 10)) - 1
     )
 
     # Dropping the last decade because of incomplete sales data
