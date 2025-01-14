@@ -7,11 +7,22 @@ To do it, you can use the `autopct` argument.
 It accepts a format string and applies it to each wedge size.
 For example, if we pass there `%.1f%%`, we will get `32.2%` for the wedge size `32.24`,
 because the format string consists of two parts:
+
 1. `%.1f` will be converted to `32.2`.
 2. `%%` will be converted to `%`.
 
-To learn more about the format string language, 
-please refer to the [documentation](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting).
+Additional formatting details:
+
+- **Float-point numbers**: The `%.1f` in the format string specifies that the number should be presented with one
+  decimal
+  point. You can adjust this to display more or fewer decimal places, e.g., `%.2f` for two decimal places or `%.0f` for
+  none,
+  effectively rounding to the nearest whole number.
+- **Percentage sign**: The `%%` in the format string is used to display the percentage sign. This is because the `%`
+  character
+  is a special character in Python strings, so if you want to display it, you need to use `%%`.
+
+To learn more about the format string language, please refer to the [documentation](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting).
 
 You can also pass a function to `autopct`, that accepts wedge size and returns a string.
 
