@@ -49,8 +49,6 @@ class PlotTestCase(BaseTestMixin):
             self.checkBarValues(self.fig.axes[0], expected_values, container_number=i)
 
     def test_2_2_bar_width(self):
-        aggregated_data = aggregate(self.data)
-
         for i in range(len(self.ordered_regions)):
             self.checkBarWidth(self.fig.axes[0], 1, container_number=i)
 
@@ -71,5 +69,5 @@ class PlotTestCase(BaseTestMixin):
                 width=1,
                 axis="x")
 
-        def test_2_4_bar_layout(self):
-            self.checkBarLayout(self.fig.axes[0], expected_layout="vertical")
+    def test_2_4_bar_layout(self):
+        self.checkBarLayout(self.fig.axes[0], expected_layout="vertical")

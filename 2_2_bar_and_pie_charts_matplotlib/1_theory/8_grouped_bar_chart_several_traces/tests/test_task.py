@@ -48,14 +48,10 @@ class PlotTestCase(BaseTestMixin):
             self.checkBarValues(self.fig.axes[0], expected_values, container_number=i)
 
     def test_2_2_bar_width(self):
-        aggregated_data = aggregate(self.data)
-
         for i in range(len(self.ordered_regions)):
             self.checkBarWidth(self.fig.axes[0], 0.8, container_number=i)
 
     def test_2_3_bar_positions(self):
-        aggregated_data = aggregate(self.data)
-
         for i in range(len(self.ordered_regions)):
             self.checkBarPositions(self.fig.axes[0], list(range(4)), container_number=i, axis="x")
 

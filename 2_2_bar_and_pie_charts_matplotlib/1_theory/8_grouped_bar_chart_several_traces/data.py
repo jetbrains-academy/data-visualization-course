@@ -1,5 +1,3 @@
-from typing import Set
-
 import numpy as np
 import pandas as pd
 
@@ -52,7 +50,8 @@ def __add_decades(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
 
     decade_bins = (
-        np.array(range(data["year_of_release"].min() // 10 * 10, data["year_of_release"].max() // 10 * 10 + 11, 10)) - 1
+            np.array(
+                range(data["year_of_release"].min() // 10 * 10, data["year_of_release"].max() // 10 * 10 + 11, 10)) - 1
     )
 
     # Dropping the last decade because of incomplete sales data
