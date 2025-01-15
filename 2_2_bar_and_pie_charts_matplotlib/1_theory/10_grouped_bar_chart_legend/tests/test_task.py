@@ -42,7 +42,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig.axes[0], 0)
 
         # Bars
-        self.checkNumberOfContainers(self.fig.axes[0], 4)
+        self.checkNumberOfContainers(self.fig.axes[0], self.number_of_regions)
         for i in range(self.number_of_regions):
             self.checkContainerType(self.fig.axes[0], BarContainer, container_number=i)
             self.checkNumberOfBars(self.fig.axes[0], self.aggregated_data["decade"].nunique(), container_number=i)
@@ -78,3 +78,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_5_bar_legend(self):
         self.checkLegendExists(self.fig.axes[0])
         self.checkLegendLabels(self.fig.axes[0], expected_labels=list(self.regions))
+
+    def test_3_title(self):
+        self.checkTitle(self.fig.axes[0], None)

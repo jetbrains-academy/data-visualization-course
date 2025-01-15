@@ -413,7 +413,7 @@ class BaseTestMixin(TestCase):
         for actual_patch, expected_color in zip(ax.patches, expected_colors):
             self.assertTrue(
                 same_color(actual_patch.get_facecolor(), expected_color),
-                f"The bars must be colored in '{expected_colors}'.",
+                f"The wedges must be colored in '{expected_colors}'.",
             )
 
     def checkPieNumericLabels(self, ax: plt.Axes, expected_labels: List[str]):

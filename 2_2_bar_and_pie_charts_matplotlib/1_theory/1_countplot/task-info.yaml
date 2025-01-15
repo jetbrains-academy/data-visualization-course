@@ -4,6 +4,9 @@ files:
   - name: task.py
     visible: true
     placeholders:
+      - offset: 53
+        length: 44
+        placeholder_text: "from data import preprocess, read"
       - offset: 313
         length: 114
         placeholder_text: "return  # TODO"

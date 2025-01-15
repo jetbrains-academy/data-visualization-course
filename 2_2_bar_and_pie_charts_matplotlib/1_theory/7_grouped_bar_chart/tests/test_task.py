@@ -54,3 +54,6 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_4_bar_positions(self):
         self.checkBarPositions(self.fig.axes[0], list(range(self.number_of_decades)), axis="x")
+
+    def test_3_title(self):
+        self.checkTitle(self.fig.axes[0], None)

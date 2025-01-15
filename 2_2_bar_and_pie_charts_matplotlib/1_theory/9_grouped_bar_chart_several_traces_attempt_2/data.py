@@ -62,7 +62,7 @@ def __extract_sales_region(data: pd.DataFrame) -> pd.DataFrame:
 def aggregate(games: pd.DataFrame) -> pd.DataFrame:
     games = __add_decades(games)
     games = __extract_sales_region(games)
-    return games.groupby(["decade", "region"])["sales"].sum().reset_index()
+    return games.groupby(["decade", "region"], observed=True)["sales"].sum().reset_index()
 
 
 def get_number_of_decades(data: pd.DataFrame) -> int:

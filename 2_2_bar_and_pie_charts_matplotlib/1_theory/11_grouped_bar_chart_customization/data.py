@@ -1,4 +1,4 @@
-from typing import List, Set
+from typing import List
 
 import numpy as np
 import pandas as pd
@@ -62,7 +62,7 @@ def __extract_sales_region(data: pd.DataFrame) -> pd.DataFrame:
 def aggregate(games: pd.DataFrame) -> pd.DataFrame:
     games = __add_decades(games)
     games = __extract_sales_region(games)
-    return games.groupby(["decade", "region"])["sales"].sum().reset_index()
+    return games.groupby(["decade", "region"], observed=True)["sales"].sum().reset_index()
 
 
 def get_number_of_decades(data: pd.DataFrame) -> int:
@@ -77,9 +77,9 @@ def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
     return data[data["region"] == region]["sales"]
 
 
-def get_all_decades(data: pd.DataFrame) -> Set[int]:
-    return set(data["decade"].unique())
-
-
 def get_all_regions(data: pd.DataFrame) -> List[str]:
     return data.groupby("region")["sales"].sum().sort_values(ascending=False).index.tolist()
+
+
+def get_all_decades(data: pd.DataFrame) -> List[int]:
+    return list(data["decade"].unique())

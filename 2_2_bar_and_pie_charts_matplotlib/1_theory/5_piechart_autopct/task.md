@@ -3,7 +3,7 @@
 By looking at this figure, we can't tell exactly how much is each wedge,
 so it would be convenient to place these numbers on the pie chart.
 
-To do it, you can use the `autopct` argument.
+To do it, we can use the `autopct` argument.
 It accepts a format string and applies it to each wedge size.
 For example, if we pass there `%.1f%%`, we will get `32.2%` for the wedge size `32.24`,
 because the format string consists of two parts:

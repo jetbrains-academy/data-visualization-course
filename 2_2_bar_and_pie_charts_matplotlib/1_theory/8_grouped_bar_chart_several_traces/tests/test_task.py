@@ -40,7 +40,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig.axes[0], 0)
 
         # Bars
-        self.checkNumberOfContainers(self.fig.axes[0], 4)
+        self.checkNumberOfContainers(self.fig.axes[0], len(self.regions))
         for i in range(len(self.regions)):
             self.checkContainerType(self.fig.axes[0], BarContainer, container_number=i)
             self.checkNumberOfBars(self.fig.axes[0], self.aggregated_data["decade"].nunique(), container_number=i)
@@ -60,3 +60,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_4_bar_positions(self):
         for i in range(len(self.regions)):
             self.checkBarPositions(self.fig.axes[0], list(range(self.number_of_decades)), container_number=i, axis="x")
+
+    def test_3_title(self):
+        self.checkTitle(self.fig.axes[0], None)

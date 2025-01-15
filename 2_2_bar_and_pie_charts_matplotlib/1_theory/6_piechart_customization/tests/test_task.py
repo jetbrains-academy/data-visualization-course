@@ -60,11 +60,10 @@ class PlotTestCase(BaseTestMixin):
         self.checkPieColors(self.fig.axes[0], expected_colors=["gray", "blue", "green", "cyan"])
 
     def test_2_5_pie_explode(self):
-        aggregated_data = self.aggregated_data["count"]
         self.checkPieExplode(
             self.fig.axes[0],
-            expected_position=aggregated_data.to_list(),
-            expected_explode=[0.01] * len(aggregated_data),
+            expected_position=self.aggregated_data["count"].to_list(),
+            expected_explode=[0.01] * len(self.aggregated_data["count"]),
         )
 
     def test_3_title(self):

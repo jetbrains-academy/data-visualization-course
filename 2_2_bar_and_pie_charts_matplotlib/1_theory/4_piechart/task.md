@@ -7,7 +7,7 @@ To make a pie chart using Matplotlib, we might use
 the [`pie`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.pie.html) function.
 It accepts three main arguments:
 * `x` — a collection of wedge sizes.
-* `labels` — a collection of labels for each wedge.
+* `labels` — a collection of labels for each wedge. It must be a keyword argument.
 * `data` — the input data structure.
 
 Please note that we don't need to normalize the passed values,
