@@ -67,6 +67,7 @@ class PlotTestCase(BaseTestMixin):
                 ),
                 container_number=i,
                 width=1,
+                axis="x",
             )
 
     def test_2_4_bar_layout(self):
