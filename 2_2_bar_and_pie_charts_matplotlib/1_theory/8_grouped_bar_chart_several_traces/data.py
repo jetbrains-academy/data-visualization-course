@@ -28,8 +28,7 @@ def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
 
 def get_all_regions(data: pd.DataFrame) -> List[str]:
     region_sales = data.groupby("region")["sales"].sum()
-    sorted_regions = region_sales.sort_values(ascending=False).index.tolist()
-    return sorted_regions
+    return region_sales.sort_values(ascending=False).index.tolist()
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:

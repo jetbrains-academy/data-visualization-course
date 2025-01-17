@@ -32,8 +32,7 @@ def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
 
 def get_all_regions(data: pd.DataFrame) -> List[str]:
     region_sales = data.groupby("region")["sales"].sum()
-    sorted_regions = region_sales.sort_values(ascending=False).index.tolist()
-    return sorted_regions
+    return region_sales.sort_values(ascending=False).index.tolist()
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
@@ -62,8 +61,7 @@ def __add_decades(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
 
     decade_bins = (
-            np.array(
-                range(data["year_of_release"].min() // 10 * 10, data["year_of_release"].max() // 10 * 10 + 11, 10)) - 1
+        np.array(range(data["year_of_release"].min() // 10 * 10, data["year_of_release"].max() // 10 * 10 + 11, 10)) - 1
     )
 
     # Dropping the last decade because of incomplete sales data
