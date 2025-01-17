@@ -56,7 +56,7 @@ class PlotTestCase(BaseTestMixin):
         aggregated_data = aggregate(self.data)
 
         for i in range(len(get_all_regions(aggregated_data))):
-            self.checkBarPositions(self.fig.axes[0], list(range(4)), container_number=i)
+            self.checkBarPositions(self.fig.axes[0], list(range(4)), container_number=i, axis="x")
 
     def test_2_4_bar_layout(self):
         self.checkBarLayout(self.fig.axes[0], expected_layout="vertical")

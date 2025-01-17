@@ -1,4 +1,4 @@
-from typing import Set
+from typing import List, Set
 
 import numpy as np
 import pandas as pd
@@ -30,12 +30,13 @@ def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
     return data[data["region"] == region]["sales"]
 
 
-def get_all_regions(data: pd.DataFrame) -> Set[str]:
-    return set(data["region"].unique())
-
-
 def get_all_decades(data: pd.DataFrame) -> Set[int]:
     return set(data["decade"].unique())
+
+
+def get_all_regions(data: pd.DataFrame) -> List[str]:
+    region_sales = data.groupby("region")["sales"].sum()
+    return region_sales.sort_values(ascending=False).index.tolist()
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
