@@ -86,22 +86,19 @@ class TestCase(BaseTestMixin):
     def test_3_2_y_label(self):
         self.checkLabel(self.fig.axes[0], "Product name", axis="y")
 
-    def test_4_1_x_lim(self):
-        self.checkLim(self.fig.axes[0], [0, 100], "x")
-
-    def test_4_2_x_major_ticks(self):
+    def test_4_1_x_major_ticks(self):
         self.checkTicks(self.fig.axes[0], list(range(0, 101, 25)), axis="x")
         self.checkTickLabels(self.fig.axes[0], list(map(str, range(0, 101, 25))), axis="x")
         self.checkTickLabels(self.fig.axes[0], list(map(str, range(0, 101, 25))), axis="x", where="secondary")
 
-    def test_4_3_x_minor_ticks(self):
+    def test_4_2_x_minor_ticks(self):
         expected_positions = [x for x in range(0, 101, 5) if x not in range(0, 101, 25)]
 
         self.checkTicks(self.fig.axes[0], expected_positions, axis="x", minor=True)
         self.checkTickLabels(self.fig.axes[0], [""] * len(expected_positions), axis="x", minor=True)
         self.checkTickLabels(self.fig.axes[0], [""] * len(expected_positions), axis="x", minor=True, where="secondary")
 
-    def test_4_4_x_label(self):
+    def test_4_3_x_label(self):
         self.checkLabel(self.fig.axes[0], "Respondents, %", "x")
 
     def test_5_title(self):
@@ -112,7 +109,7 @@ class TestCase(BaseTestMixin):
 
     def test_6_2_text_values(self):
         expected_x = (self.data["votes"] + 1).to_list()
-        expected_y = list(range(18))
+        expected_y = list(range(self.data["product"].nunique()))
         expected_text = self.data["votes"].apply(lambda x: f"{round(x, 1)}").to_list()
         self.checkTextObjects(self.fig.axes[0], list(zip(expected_x, expected_y, expected_text)))
 
@@ -120,7 +117,7 @@ class TestCase(BaseTestMixin):
         self.checkLegendExists(self.fig.axes[0])
 
     def test_7_2_legend_number_of_items(self):
-        self.checkNumberOfLegendItems(self.fig.axes[0], expected_number=3)
+        self.checkNumberOfLegendItems(self.fig.axes[0], expected_number=len(self.categories))
 
     def test_7_3_legend_items(self):
         self.checkLegendLabels(self.fig.axes[0], expected_labels=list(reversed(self.category_colors.keys())))

@@ -86,18 +86,24 @@ class TestCase(BaseTestMixin):
     def test_3_2_y_label(self):
         self.checkLabel(self.fig.axes[0], "Product name", axis="y")
 
-    def test_4_1_x_lim(self):
-        self.checkLim(self.fig.axes[0], [0, 100], "x")
-
-    def test_4_2_x_ticks(self):
+    def test_4_1_x_ticks(self):
         self.checkTicks(self.fig.axes[0], list(range(0, 101, 25)), axis="x")
         self.checkTickLabels(self.fig.axes[0], list(map(str, range(0, 101, 25))), axis="x")
 
-    def test_4_3_x_label(self):
+    def test_4_2_x_label(self):
         self.checkLabel(self.fig.axes[0], "Respondents, %", "x")
 
     def test_5_title(self):
         self.checkTitle(self.fig.axes[0], "Distribution of votes per category")
 
-    def test_6_legend(self):
+    def test_6_1_legend_exists(self):
         self.checkLegendExists(self.fig.axes[0])
+
+    def test_6_2_legend_number_of_items(self):
+        self.checkNumberOfLegendItems(self.fig.axes[0], expected_number=len(self.categories))
+
+    def test_6_3_legend_labels(self):
+        self.checkLegendLabels(self.fig.axes[0], expected_labels=self.categories)
+
+    def test_6_4_legend_handle_colors(self):
+        self.checkLegendHandleColors(self.fig.axes[0], expected_handle_colors=list(self.category_colors.values()))

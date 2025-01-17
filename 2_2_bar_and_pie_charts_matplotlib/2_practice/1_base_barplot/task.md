@@ -18,9 +18,8 @@ The requirements for the y-axis:
 2. Set the y-axis label as `Product name`.
 
 The requirements for the x-axis:
-1. Limit the x-axis view to the interval from `0` to `100`.
-2. The x-axis should have only these ticks: `0`, `25`, `50`, `75` and `100`.
-3. Set the x-axis label as `Respondents, %`.
+1. The x-axis should have only these ticks: `0`, `25`, `50`, `75` and `100`.
+2. Set the x-axis label as `Respondents, %`.
 
 You also should make some visual adjustments to the figure:
 1. Set the chart title as `Distribution of votes per category`.
