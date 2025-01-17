@@ -4,9 +4,14 @@ files:
   - name: task.py
     visible: true
     placeholders:
+      - offset: 43
+        length: 40
+        placeholder_text: from data import read
+        is_visible: false
       - offset: 138
         length: 147
         placeholder_text: "return  # TODO"
+        is_visible: false
   - name: tests/test_task.py
     visible: false
     propagatable: false
@@ -17,4 +22,3 @@ files:
     visible: false
   - name: example.png
     visible: false
-    propagatable: false
