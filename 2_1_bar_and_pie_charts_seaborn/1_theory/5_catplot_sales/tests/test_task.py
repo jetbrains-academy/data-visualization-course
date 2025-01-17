@@ -52,6 +52,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
             self.fig.ax,
-            self.filtered_data["platform"].unique().to_list(),
+            list(self.filtered_data["platform"].unique()),
             axis="x",
         )
