@@ -11,7 +11,16 @@ because the format string consists of two parts:
 1. `%.1f` will be converted to `32.2`.
 2. `%%` will be converted to `%`.
 
-Additional formatting details:
+Please refer to the corresponding hint bellow for more details on formatting float numbers. You can also pass a function
+to `autopct`, that accepts wedge size and returns a string.
+
+## Task
+
+Add wedge sizes to the pie chart. They should be rounded to **two decimal places** and have the `%` symbol at the end.
+
+## Hints
+
+<div class="hint" title="Additional formating details">
 
 - **Float-point numbers**: The `%.1f` in the format string specifies that the number should be presented with one
   decimal
@@ -22,15 +31,10 @@ Additional formatting details:
   character
   is a special character in Python strings, so if you want to display it, you need to use `%%`.
 
-To learn more about the format string language, please refer to the [documentation](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting).
+To learn more about the format string language, please refer to
+the [documentation](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting).
 
-You can also pass a function to `autopct`, that accepts wedge size and returns a string.
-
-## Task
-
-Add wedge sizes to the pie chart. They should be rounded to **two decimal places** and have the `%` symbol at the end.
-
-## Hints
+</div>
 
 <div class="hint" title="How to round wedge sized to two decimal places">
    You could you the format string from the example, but with <code>%.2f</code> instead of <code>%.1f</code>.
