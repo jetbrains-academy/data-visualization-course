@@ -1,3 +1,5 @@
+from typing import List
+
 import numpy as np
 import pandas as pd
 
@@ -22,6 +24,12 @@ def get_number_of_decades(data: pd.DataFrame) -> int:
 
 def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
     return data[data["region"] == region]["sales"]
+
+
+def get_all_regions(data: pd.DataFrame) -> List[str]:
+    region_sales = data.groupby("region")["sales"].sum()
+    sorted_regions = region_sales.sort_values(ascending=False).index.tolist()
+    return sorted_regions
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:

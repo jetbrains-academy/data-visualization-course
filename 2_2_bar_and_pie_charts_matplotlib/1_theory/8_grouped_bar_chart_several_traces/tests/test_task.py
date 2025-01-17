@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from common.base_test_mixins import BaseTestMixin
-from data import aggregate, preprocess, read
+from data import aggregate, get_all_regions, preprocess, read
 from task import plot
 
 
@@ -20,7 +20,6 @@ class PlotTestCase(BaseTestMixin):
 
         cls.data = data
         cls.fig = plot(data)
-        cls.ordered_regions = ["other", "jp", "na", "eu"]
 
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="plt.bar")
@@ -36,23 +35,27 @@ class PlotTestCase(BaseTestMixin):
 
         # Bars
         self.checkNumberOfContainers(self.fig.axes[0], 4)
-        for i in range(len(self.ordered_regions)):
+        for i in range(len(get_all_regions(aggregated_data))):
             self.checkContainerType(self.fig.axes[0], BarContainer, container_number=i)
             self.checkNumberOfBars(self.fig.axes[0], aggregated_data["decade"].nunique(), container_number=i)
 
     def test_2_1_bar_values(self):
         aggregated_data = aggregate(self.data)
 
-        for i, region in enumerate(self.ordered_regions):
+        for i, region in enumerate(get_all_regions(aggregated_data)):
             expected_values = aggregated_data[aggregated_data["region"] == region]["sales"].to_list()
             self.checkBarValues(self.fig.axes[0], expected_values, container_number=i)
 
     def test_2_2_bar_width(self):
-        for i in range(len(self.ordered_regions)):
+        aggregated_data = aggregate(self.data)
+
+        for i in range(len(get_all_regions(aggregated_data))):
             self.checkBarWidth(self.fig.axes[0], 0.8, container_number=i)
 
     def test_2_3_bar_positions(self):
-        for i in range(len(self.ordered_regions)):
+        aggregated_data = aggregate(self.data)
+
+        for i in range(len(get_all_regions(aggregated_data))):
             self.checkBarPositions(self.fig.axes[0], list(range(4)), container_number=i, axis="x")
 
     def test_2_4_bar_layout(self):

@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from data import aggregate, get_number_of_decades, get_region_sales, preprocess, read
+from data import aggregate, get_all_regions, get_number_of_decades, get_region_sales, preprocess, read
 
 
 def plot_region(ax: plt.Axes, data: pd.DataFrame, region: str, trace: int = 0):
@@ -13,11 +13,10 @@ def plot_region(ax: plt.Axes, data: pd.DataFrame, region: str, trace: int = 0):
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     games = aggregate(games)
-    regions_ordered = ["other", "jp", "na", "eu"]
 
     fig, ax = plt.subplots()
 
-    for region in regions_ordered:
+    for region in get_all_regions(games):
         plot_region(ax, games, region)
 
     return fig
