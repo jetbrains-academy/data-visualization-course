@@ -5,8 +5,8 @@ so the figure is not understandable due to overlapping of labels in the x-axis.
 We can solve it either via reducing the number of groups 
 or just changing the layout of the figure by relocating labels from the x-axis to the y-axis.
 
-Seaborn makes it easy to change layout: you just need to swap `x` and `y`. 
-But in case of a count plot, you need to replace `x` with `y` or vice versa,
+Seaborn makes it easy to change layout: we just need to swap `x` and `y`. 
+But in case of a count plot, we need to replace `x` with `y` or vice versa,
 as this kind of plot accepts only one axis per time.
 
 ## Task

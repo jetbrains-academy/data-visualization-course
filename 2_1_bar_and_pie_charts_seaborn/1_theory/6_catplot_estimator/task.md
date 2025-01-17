@@ -1,6 +1,6 @@
 ## Theory
 
-Now we can see global sales per platform, but now each bar has a strange line called *error bar*.
+Now we can see global sales per platform, but each bar has a strange line called *error bar*.
 
 As for each platform we have many global sales data, 
 Seaborn aggregates them to plot a single value for each platform 
@@ -17,32 +17,29 @@ To control aggregation, you can use the `estimator` argument, which accepts:
 By default, Seaborn uses `mean` as an estimator.
 
 There are [several types of error bars](https://seaborn.pydata.org/tutorial/error_bars.html),
-which can be set with the `errorbar` parameter. To disable it, you just need to pass `None` as a value
+which can be set with the `errorbar` parameter.
+To disable it, we just need to pass `None` as a value
 
 ## Task
 
 1. Change the estimator to `median` and remove the error bar.
 2. Sort the platforms using the hidden `get_sorted_platforms` function.
 
-If you prefer, you can sort the platforms yourself. Please refer to the corresponding hint below.
+   If you prefer, you can sort the platforms yourself. Please refer to the corresponding hint below.
 
 ## Hints
+
+<div class="hint" title="What should the figure look like?">
+   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
+</div>
 
 <div class="hint" title="How should I sort the platforms?">
     To sort the platforms you need to:
     <ol>
-        <li>Group the data by the <code>platform</code> column.</li>
+        <li>Group the data by the <code>platform</code> column using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code>groupby</code></a> function.</li>
         <li>Calculate median using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.median.html"><code>median</code></a> function on the <code>global_sales</code> column.</li>
         <li>Sort the values using <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_values.html"><code>sort_values</code></a> function.</li>
         <li>Use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.index.html"><code>index</code></a> property to receive sorted platform names.</li>
         <li>Convert the <code>Index</code> object to a list using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Index.to_list.html"><code>to_list</code></a> function.</li>
     </ol>
-    
-   If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](file://2_1_bar_and_pie_charts_seaborn/1_theory/6_catplot_estimator/data.py)
-   where our preprocessing is defined.
-</div>
-
-<div class="hint" title="What should the figure look like?">
-   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
 </div>
