@@ -4,6 +4,10 @@ files:
   - name: task.py
     visible: true
     placeholders:
+      - offset: 53
+        length: 116
+        placeholder_text: "from data import preprocess, read"
+        is_visible: false
       - offset: 172
         length: 350
         placeholder_text: ""

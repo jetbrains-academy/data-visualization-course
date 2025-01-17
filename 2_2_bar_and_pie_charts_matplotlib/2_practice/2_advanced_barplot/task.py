@@ -39,23 +39,21 @@ def plot(votes: pd.DataFrame) -> plt.Figure:
 
         plot_category(ax, votes, category, colors[category], offset)
 
-        positions = [x + offset for x in range(category_size)]
-
         y_tick_labels.extend(get_category_product_names(votes, category))
-        y_tick_coordinates.extend(positions)
+        y_tick_coordinates.extend([x + offset for x in range(category_size)])
 
         offset += category_size
 
     ax.set_yticks(y_tick_coordinates, y_tick_labels)
     ax.set_ylabel("Product name")
 
-    ax.get_xticks()
-
     ax.set_xlim(0, 100)
     ax.set_xticks(range(0, 101, 25))
     ax.set_xticks(range(0, 101, 5), minor=True)
     ax.set_xlabel("Respondents, %")
     ax.tick_params(top=True, labeltop=True, axis="x", which="both")
+
+    ax.get_legend()
 
     ax.set_title("Distribution of votes per category")
 
@@ -67,6 +65,7 @@ def plot(votes: pd.DataFrame) -> plt.Figure:
     return fig
 
 
+# Please solve the task in the plot function and do not modify this one
 def main():
     votes = read()
     votes = preprocess(votes)
