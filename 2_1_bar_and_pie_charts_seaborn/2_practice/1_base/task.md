@@ -52,10 +52,10 @@ Note that these changes will not be tested and might break existing tests.
     To make the bar horizontal, you can change the <code>x</code> argument to <code>y</code>.
 </div>
 
-<div class="hint" title="How to add the legend?">
-    To add the legend, you can use the <code>hue</code> argument.
+<div class="hint" title="How to group the bars by category and add the legend?">
+    To group the bars by category and add the legend, you can use the <code>hue</code> argument.
 </div>
 
-<div class="hint" title="How to group the bars by category?">
-    To group the bars by category, you could use the <code>order</code> argument.
+<div class="hint" title="How to change the order of the products?">
+    To change the order, you could use the <code>order</code> argument.
 </div>
