@@ -41,7 +41,7 @@ And the last thing, it will be great to have captions for axes and the figure.
 <div class="hint" title="How to set a label for an axis?">
     To set a label for an axis,
     you can use the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html"><code>set_xlabel</code></a>
-    or <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html"><code>set_ylabel</code></a> method:
+    or <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html"><code>set_ylabel</code></a> method:
     <code>ax.set_xlabel("x")</code>.
 </div>
 
