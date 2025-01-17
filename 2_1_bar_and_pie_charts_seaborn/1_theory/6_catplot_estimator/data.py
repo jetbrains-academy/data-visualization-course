@@ -1,3 +1,5 @@
+from typing import List
+
 import pandas as pd
 
 from common.paths import GAMES_DATASET_PATH
@@ -7,14 +9,6 @@ pd.options.mode.copy_on_write = True
 
 def read() -> pd.DataFrame:
     return pd.read_csv(GAMES_DATASET_PATH)
-
-
-def filter_platforms(data: pd.DataFrame) -> pd.DataFrame:
-    return data[data["platform"].isin(["PS4", "XOne", "PC", "WiiU"])]
-
-
-def get_sorted_platforms(data: pd.DataFrame) -> pd.DataFrame:
-    return data.groupby(["platform"])["global_sales"].median().sort_values().index.tolist()
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
@@ -37,3 +31,11 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     data["year_of_release"] = data["year_of_release"].astype("int")
 
     return data
+
+
+def filter_platforms(data: pd.DataFrame) -> pd.DataFrame:
+    return data[data["platform"].isin(["PS4", "XOne", "PC", "WiiU"])]
+
+
+def get_sorted_platforms(data: pd.DataFrame) -> List[str]:
+    return data.groupby(["platform"])["global_sales"].median().sort_values().index.tolist()
