@@ -3,7 +3,7 @@
 Now the figure looks good, but there is still some space for improvements.
 
 First, let's color the wedges with brand colors.
-You can do it exactly the same as we did with the bar chart.
+We can do it exactly the same as we did with the bar chart.
 But please be aware that for some reason the argument that colors pie chart is called <code>color**s**</code> not `color`!
 
 Second, now the wedges look too packed. It would be nice to have a little space between them.
@@ -22,8 +22,12 @@ Finally, let's add a title to our figure and tighten its layout.
 ## Hints
 
 <div class="hint" title="How to set a title for a figure?">
-    To set a title for a figure, you can use the <code>set_title</code> method of the <code>Figure</code> object:
-    <code>fig.set_title("Title")</code>.
+    To set a title for a figure, you can use the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html"><code>set_title</code></a> method:
+    <code>ax.set_title("Title")</code>.
+</div>
+
+<div class="hint" title="How to tighten the layout?">
+   To tighten the layout, you can use the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.tight_layout.html"><code>tight_layout</code></a> method: <code>fig.tight_layout()</code> method.
 </div>
 
 <div class="hint" title="What should the figure look like?">

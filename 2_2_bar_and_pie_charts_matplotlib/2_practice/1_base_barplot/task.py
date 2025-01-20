@@ -42,7 +42,6 @@ def plot(votes: pd.DataFrame) -> plt.Figure:
     ax.set_yticks(y_tick_coordinates, y_tick_labels)
     ax.set_ylabel("Product name")
 
-    ax.set_xlim(0, 100)
     ax.set_xticks(range(0, 101, 25))
     ax.set_xlabel("Respondents, %")
 
@@ -54,6 +53,7 @@ def plot(votes: pd.DataFrame) -> plt.Figure:
     return fig
 
 
+# Please solve the task in the plot function and do not modify this one
 def main():
     votes = read()
     votes = preprocess(votes)

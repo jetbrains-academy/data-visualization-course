@@ -15,6 +15,10 @@ If you prefer, you can sort the platforms yourself. Please refer to the correspo
 
 ## Hints
 
+<div class="hint" title="What should the figure look like?">
+   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
+</div>
+
 <div class="hint" title="How should I sort the platforms?">
     To sort the platforms you can use
     the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts</code></a> function
@@ -24,13 +28,4 @@ If you prefer, you can sort the platforms yourself. Please refer to the correspo
         <li>After that, use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.index.html"><code>index</code></a> property to receive sorted platform names.</li>
         <li>Finally, convert the <code>Index</code> object to a list using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Index.to_list.html"><code>to_list</code></a> function.</li>
     </ol>
-    
-   If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](file://2_1_bar_and_pie_charts_seaborn/1_theory/4_countplot_order/data.py)
-   where our preprocessing is defined.
-    
-</div>
-
-<div class="hint" title="What should the figure look like?">
-   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
 </div>

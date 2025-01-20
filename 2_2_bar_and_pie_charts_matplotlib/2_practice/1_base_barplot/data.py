@@ -1,3 +1,5 @@
+from typing import List
+
 import pandas as pd
 
 from common.paths import FOOD_DATASET_PATH
@@ -25,5 +27,5 @@ def get_category_size(data: pd.DataFrame, category: str) -> int:
     return len(data[data["category"] == category])
 
 
-def get_categories(data: pd.DataFrame) -> list:
+def get_categories(data: pd.DataFrame) -> List:
     return list(data["category"].unique())

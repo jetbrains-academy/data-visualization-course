@@ -3,27 +3,6 @@ custom_name: Advanced
 files:
   - name: task.py
     visible: true
-    placeholders:
-      - offset: 160
-        length: 521
-        placeholder_text: ""
-        dependency:
-          section: 2_2_bar_and_pie_charts_matplotlib
-          lesson: 2_practice
-          task: 1_base_barplot
-          file: task.py
-          placeholder: 1
-        is_visible: false
-      - offset: 733
-        length: 1080
-        placeholder_text: "return  # TODO"
-        dependency:
-          section: 2_2_bar_and_pie_charts_matplotlib
-          lesson: 2_practice
-          task: 1_base_barplot
-          file: task.py
-          placeholder: 2
-        is_visible: false
   - name: data.py
     visible: false
   - name: tests/test_task.py
