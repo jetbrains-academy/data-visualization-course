@@ -58,6 +58,7 @@ def __extract_sales_region(data: pd.DataFrame) -> pd.DataFrame:
 
     return data
 
+
 def aggregate(games: pd.DataFrame) -> pd.DataFrame:
     games = __add_decades(games)
     games = __extract_sales_region(games)
