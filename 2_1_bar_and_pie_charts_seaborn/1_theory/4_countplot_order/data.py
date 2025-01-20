@@ -11,10 +11,6 @@ def read() -> pd.DataFrame:
     return pd.read_csv(GAMES_DATASET_PATH)
 
 
-def get_sorted_platforms(data: pd.DataFrame) -> List[str]:
-    return data["platform"].value_counts(sort=True, ascending=True).index.to_list()
-
-
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
 
@@ -35,3 +31,7 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     data["year_of_release"] = data["year_of_release"].astype("int")
 
     return data
+
+
+def get_sorted_platforms(data: pd.DataFrame) -> List[str]:
+    return data["platform"].value_counts(sort=True, ascending=True).index.to_list()

@@ -5,6 +5,10 @@ The main goal of the lesson is to **plot the descriptive statistics about differ
 2. Total global sales per platform
 3. Total sales per decade for each region
 
+Seaborn doesn't allow plotting pie charts, so the lesson will be focused only on building bar charts.
+If you want to learn how to plot a pie chart,
+please see [the Matplotlib lesson](course://2_2_bar_and_pie_charts_matplotlib/1_theory/1_countplot).
+
 ## Theory
 
 In Seaborn there is one universal function that can build almost any kind of categorical plot:
@@ -23,11 +27,10 @@ We described them in detail in the
 
 ## Task
 
-Modify the `plot` by adding a call to the `catplot` function.
+Use the `catplot` function to build a simple count plot.
 Pass `games` there as the data, `platform` as the x-axis, and `count` as the kind.
 
-Note that we preprocessed the data for you, but if you prefer, you can do this yourself.
-Please see the corresponding hint below.
+Note that we preprocessed the data for you. To learn how we do it, please see the corresponding hint below.
 
 ## Hints
 <div class="hint" title="How to run the code?">
@@ -41,7 +44,7 @@ Please see the corresponding hint below.
    <img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
 </div>
 
-<div class="hint" title="How should I preprocess the data?">
+<div class="hint" title="How the data was preprocessed?">
    Before using the data, we need to perform several preprocessing steps:
    <ol>
       <li>Convert column names to lowercase.</li>
@@ -57,10 +60,6 @@ Please see the corresponding hint below.
       </ul>
       <li>Convert the <code>year_of_release</code> column to an integer.</li>
    </ol>
-   
-   If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](file://2_1_bar_and_pie_charts_seaborn/1_theory/1_countplot/data.py)
-   where our preprocessing is defined.
 </div>
 
 <div class="hint" title="What should the figure look like?"> 

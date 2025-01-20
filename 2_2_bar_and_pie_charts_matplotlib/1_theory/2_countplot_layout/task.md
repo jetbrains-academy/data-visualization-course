@@ -11,11 +11,11 @@ The only differences with the previous `bar` function are:
 1. `barh` plots horizontal bar chart while `bar` builds vertical bar charts.
 2. Since the layout has changed, the first argument is now called `y` and the second argument is now called `width`.
 
-After doing this, you will see that the labels are still very close to each other.
+After doing this, we will see that the labels are still very close to each other.
 To fix this, we could use 
 the [`fig.tight_layout`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.tight_layout.html) function,
 which adjust the padding between and around elements of the figure.
-Please note that you should call this function AFTER plotting all the necessary data on the plot.
+Please note that we should call this function AFTER plotting all the necessary data on the plot.
 
 ## Task
 

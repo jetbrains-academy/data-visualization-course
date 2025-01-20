@@ -11,17 +11,23 @@ If it sounds too complex for you, then let's jump into the task to see how it wo
 
 ## Task
 
-1. Using the hidden `extract_sales_region` extract a sales region and a value
+1. Use the hidden `extract_sales_region` to extract a sales region and a value
    from the `eu_sales`, `jp_sales`, `na_sales` and `other_sales` columns.
    
    This function unpivot the data by creating four new rows for each game with two new columns:
    `region` (can be `eu`, `jp`, `na` or `other`) and `sales`.
+
+   If you prefer, you can extract the regions yourself. Please refer to the corresponding hint below.
+
 2. Plot the `sales` column along the y-axis instead of `global_sales`.
 3. Pass the `region` value to the `hue` argument. 
 
-If you prefer, you can extract the regions yourself. Please refer to the corresponding hint below.
 
 ## Hints
+
+<div class="hint" title="What should the figure look like?">
+   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
+</div>
 
 <div class="hint" title="How should I plot total number of global sales?">
    To plot total number of global sales you should use the <code>estimator</code> argument 
@@ -30,12 +36,4 @@ If you prefer, you can extract the regions yourself. Please refer to the corresp
 
 <div class="hint" title="How should I extract the regions?">
     To extract the regions you could use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.melt.html"><code>melt</code></a> function.
-    
-   If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](file://2_1_bar_and_pie_charts_seaborn/1_theory/8_catplot_grouping/data.py)
-   where our preprocessing is defined.
-</div>
-
-<div class="hint" title="What should the figure look like?">
-   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
 </div>

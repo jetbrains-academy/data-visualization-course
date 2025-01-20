@@ -41,14 +41,14 @@ class PlotTestCase(BaseTestMixin):
                 container_number=i,
             )
 
-    def test_2_1_bar_position(self):
+    def test_2_1_bar_layout(self):
+        for i in range(self.data["category"].nunique()):
+            self.checkBarLayout(self.fig.ax, expected_layout="horizontal", container_number=i)
+
+    def test_2_2_bar_position(self):
         for i, category in enumerate(self.data["category"].unique()):
             expected_values = self.data[self.data["category"] == category].groupby("product", sort=False).size()
             self.checkBarValues(self.fig.ax, expected_values.to_list(), container_number=i)
-
-    def test_2_2_bar_layout(self):
-        for i in range(self.data["category"].nunique()):
-            self.checkBarLayout(self.fig.ax, expected_layout="horizontal", container_number=i)
 
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
@@ -56,3 +56,9 @@ class PlotTestCase(BaseTestMixin):
             get_product_order(self.data),
             axis="y",
         )
+
+    def test_3_1_number_of_legend_items(self):
+        self.checkNumberOfLegendItems(self.fig, expected_number=self.data["category"].nunique())
+
+    def test_3_2_legend_labels(self):
+        self.checkLegendLabels(self.fig, expected_labels=list(self.data["category"].unique()))

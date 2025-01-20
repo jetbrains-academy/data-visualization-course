@@ -19,14 +19,14 @@ And the last thing, it will be great to have captions for axes and the figure.
 
 ## Task
 
-1. Using the hidden `filter_platforms` function filter all platforms out except for `WiiU`, `PS4`, `XOne` and `PC`.
+1. Use the hidden `filter_platforms` function to filter all platforms out except for `WiiU`, `PS4`, `XOne` and `PC`.
    
    If you prefer, you can do it yourself. Please refer to the corresponding hint below.
 
-2. Color the bars in the following way: `PC` with `grey`, `PS4` with `blue`, `XOne` with `green`, `WiiU` with `cyan`.
-3. Set the x-axis label to `Count`
-4. Set the y-axis label to `Platform`
-5. Set the figure title to `Number of games per platform`
+2. Color the bars in the following way: `WiiU` with `cyan`, `PS4` with `blue`, `XOne` with `green` and `PC` with `grey`.
+3. Set the x-axis label to `Count`.
+4. Set the y-axis label to `Platform`.
+5. Set the figure title to `Number of games per platform`.
 
 ## Hints
 
@@ -34,16 +34,20 @@ And the last thing, it will be great to have captions for axes and the figure.
     To filter out the unnecessary platforms you can use
     the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html"><code>is_in</code></a> function
     on the <code>platform</code> column.
+
+   Note that your own function will not be tested.
 </div>
 
 <div class="hint" title="How to set a label for an axis?">
-    To set a label for an axis, you can use the <code>set_xlabel</code> or <code>set_ylabel</code> method of the <code>Axes</code> object:
+    To set a label for an axis,
+    you can use the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html"><code>set_xlabel</code></a>
+    or <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html"><code>set_ylabel</code></a> method:
     <code>ax.set_xlabel("x")</code>.
 </div>
 
 <div class="hint" title="How to set a title for a figure?">
-    To set a title for a figure, you can use the <code>set_title</code> method of the <code>Figure</code> object:
-    <code>fig.set_title("Title")</code>.
+    To set a title for a figure, you can use the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html"><code>set_title</code></a> method:
+    <code>ax.set_title("Title")</code>.
 </div>
 
 <div class="hint" title="What should the figure look like?">

@@ -14,6 +14,7 @@ def plot(votes: pd.DataFrame) -> sns.FacetGrid:
     )
 
 
+# Please solve the task in the plot function and do not modify this one
 def main():
     votes = read()
 

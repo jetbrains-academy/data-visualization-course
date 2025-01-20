@@ -12,29 +12,6 @@ def read() -> pd.DataFrame:
     return pd.read_csv(GAMES_DATASET_PATH)
 
 
-def aggregate(games: pd.DataFrame) -> pd.DataFrame:
-    games = __add_decades(games)
-    games = __extract_sales_region(games)
-    return games.groupby(["decade", "region"])["sales"].sum().reset_index()
-
-
-def get_number_of_decades(data: pd.DataFrame) -> int:
-    return data["decade"].nunique()
-
-
-def get_number_of_regions(data: pd.DataFrame) -> int:
-    return data["region"].nunique()
-
-
-def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
-    return data[data["region"] == region]["sales"]
-
-
-def get_all_regions(data: pd.DataFrame) -> List[str]:
-    region_sales = data.groupby("region")["sales"].sum()
-    return region_sales.sort_values(ascending=False).index.tolist()
-
-
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     data = data.copy()
 
@@ -80,3 +57,25 @@ def __extract_sales_region(data: pd.DataFrame) -> pd.DataFrame:
     data["region"] = data["region"].str.replace("_sales", "")
 
     return data
+
+
+def aggregate(games: pd.DataFrame) -> pd.DataFrame:
+    games = __add_decades(games)
+    games = __extract_sales_region(games)
+    return games.groupby(["decade", "region"], observed=True)["sales"].sum().reset_index()
+
+
+def get_number_of_decades(data: pd.DataFrame) -> int:
+    return data["decade"].nunique()
+
+
+def get_number_of_regions(data: pd.DataFrame) -> int:
+    return data["region"].nunique()
+
+
+def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
+    return data[data["region"] == region]["sales"]
+
+
+def get_all_regions(data: pd.DataFrame) -> List[str]:
+    return data.groupby("region")["sales"].sum().sort_values(ascending=False).index.tolist()

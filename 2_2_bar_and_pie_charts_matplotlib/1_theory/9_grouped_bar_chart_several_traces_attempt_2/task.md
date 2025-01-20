@@ -1,6 +1,6 @@
 ## Theory
 
-As you can see, something is definitely changed on our figure: we plotted several traces but can see only some of them.
+As we can see, something is definitely changed on our figure: we plotted several traces but can see only some of them.
 This happened because we plotted them on the same x-axis coordinates, so they overlap each other.
 
 To fix this, we need to increase the distance between decades to fit every region.
