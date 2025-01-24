@@ -1,11 +1,13 @@
-from typing import Any, List, Literal, Optional, Tuple, Type
+from typing import Any, List, Literal, Optional, Tuple, Type, Union
 from unittest import TestCase
 
 from matplotlib.colors import same_color, to_rgb
 from matplotlib.container import Container
+from matplotlib.legend import Legend
 from matplotlib.patches import Patch
 import matplotlib.pyplot as plt
 from numpy.testing import assert_allclose
+import seaborn as sns
 
 
 class BaseTestMixin(TestCase):
@@ -44,26 +46,40 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} collections.",
         )
 
+    @staticmethod
+    def __get_legend(obj: Union[plt.Axes, sns.FacetGrid]) -> Legend:
+        if isinstance(obj, plt.Axes):
+            return obj.get_legend()
+
+        if isinstance(obj, sns.FacetGrid):
+            return obj.legend
+
+        raise TypeError("Unknown object type.")
+
+    # It seems that in seaborn,
+    # the legend always exists and also has a visibility property set to "true" for some reason.
+    # So this function only works with matplotlib.
+    # But anyway this function is just additional to the "main" functions bellow.
     def checkLegendExists(self, ax: plt.Axes):
         self.assertIsNotNone(ax.get_legend(), "Legend must exist.")
 
-    def checkNumberOfLegendItems(self, ax: plt.Axes, *, expected_number: int):
+    def checkNumberOfLegendItems(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_number: int):
         self.assertEqual(
             expected_number,
-            len(ax.get_legend().texts),
+            len(self.__get_legend(obj).texts),
             f"The number of legend items must be {expected_number}.",
         )
 
-    def checkLegendLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
-        actual_labels = [label.get_text() for label in ax.get_legend().texts]
+    def checkLegendLabels(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_labels: List[str]):
+        actual_labels = [label.get_text() for label in self.__get_legend(obj).texts]
         self.assertListEqual(
             expected_labels,
             actual_labels,
             msg=f"The legend labels must be equal to {expected_labels}.",
         )
 
-    def checkLegendHandleColors(self, ax: plt.Axes, *, expected_handle_colors: List[str]):
-        actual_handle_colors = [handle.get_facecolor() for handle in ax.get_legend().legend_handles]
+    def checkLegendHandleColors(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_handle_colors: List[str]):
+        actual_handle_colors = [handle.get_facecolor() for handle in self.__get_legend(obj).legend_handles]
         for actual_color, expected_color in zip(actual_handle_colors, expected_handle_colors):
             self.assertTrue(same_color(actual_color, expected_color), msg="The legend handle colors do not match.")
 
@@ -205,9 +221,6 @@ class BaseTestMixin(TestCase):
             f"The {axis}-axis should be labeled as '{expected_label}'",
         )
 
-    def checkLabelPosition(self, ax: plt.Axes, expected_positions: List[float], axis: Literal["x", "y"]):
-        pass
-
     def checkTicks(self, ax: plt.Axes, expected_ticks: List[float], axis: Literal["x", "y"], *, minor: bool = False):
         if axis == "x":
             actual_ticks = ax.get_xticks(minor=minor)
@@ -240,6 +253,11 @@ class BaseTestMixin(TestCase):
             axis_obj = ax.yaxis
         else:
             raise ValueError("Unknown axis name.")
+
+        # As far as I understand, ticks are lazy, so you need to create them to be able to get them.
+        # To do it, we have to call this private function.
+        # I know it's a bad thing to do, but I believe it is the optional solution.
+        axis_obj._update_ticks()  # noqa: SLF001
 
         ticks = axis_obj.get_minor_ticks() if minor else axis_obj.get_major_ticks()
 
@@ -411,7 +429,7 @@ class BaseTestMixin(TestCase):
         for actual_patch, expected_color in zip(ax.patches, expected_colors):
             self.assertTrue(
                 same_color(actual_patch.get_facecolor(), expected_color),
-                f"The bars must be colored in '{expected_colors}'.",
+                f"The wedges must be colored in '{expected_colors}'.",
             )
 
     def checkPieNumericLabels(self, ax: plt.Axes, expected_labels: List[str]):

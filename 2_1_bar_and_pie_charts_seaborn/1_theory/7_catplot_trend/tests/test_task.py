@@ -21,6 +21,8 @@ class PlotTestCase(BaseTestMixin):
         cls.data = data
         cls.fig = plot(data)
 
+        cls.data = add_decades(data)
+
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=sns.FacetGrid, expected_function="sns.catplot")
 
@@ -31,7 +33,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfCollections(self.fig.ax, 0)
         self.checkNumberOfLines(self.fig.ax, 0)  # Error bars
 
-        number_of_decades = add_decades(self.data)["decade"].nunique()
+        number_of_decades = self.data["decade"].nunique()
 
         # Bars
         self.checkNumberOfContainers(self.fig.ax, 1)
@@ -39,8 +41,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfBars(self.fig.ax, number_of_decades)
 
     def test_2_1_bar_position(self):
-        data = add_decades(self.data)
-        self.checkBarValues(self.fig.ax, data.groupby("decade", observed=True)["global_sales"].sum().to_list())
+        self.checkBarValues(self.fig.ax, self.data.groupby("decade", observed=True)["global_sales"].sum().to_list())
 
     def test_2_2_bar_layout(self):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")
@@ -48,6 +49,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
             self.fig.ax,
-            list(map(str, add_decades(self.data)["decade"].cat.categories)),
+            list(map(str, self.data["decade"].cat.categories)),
             axis="x",
         )

@@ -13,6 +13,8 @@ class PlotTestCase(BaseTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
 
+    filtered_data: ClassVar[pd.DataFrame]
+
     @classmethod
     def setUpClass(cls):
         data = read()
@@ -20,6 +22,8 @@ class PlotTestCase(BaseTestMixin):
 
         cls.data = data
         cls.fig = plot(data)
+
+        cls.filtered_data = filter_platforms(data)
 
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=sns.FacetGrid, expected_function="sns.catplot")
@@ -29,17 +33,17 @@ class PlotTestCase(BaseTestMixin):
 
     def test_1_3_catplot_kind(self):
         self.checkNumberOfCollections(self.fig.ax, 0)
-        self.checkNumberOfLines(self.fig.ax, filter_platforms(self.data)["platform"].nunique())  # Error bars
+        self.checkNumberOfLines(self.fig.ax, self.filtered_data["platform"].nunique())  # Error bars
 
         # Bars
         self.checkNumberOfContainers(self.fig.ax, 1)
         self.checkContainerType(self.fig.ax, BarContainer)
-        self.checkNumberOfBars(self.fig.ax, filter_platforms(self.data)["platform"].nunique())
+        self.checkNumberOfBars(self.fig.ax, self.filtered_data["platform"].nunique())
 
     def test_2_1_bar_position(self):
         self.checkBarValues(
             self.fig.ax,
-            filter_platforms(self.data).groupby("platform", sort=False)["global_sales"].mean().to_list(),
+            self.filtered_data.groupby("platform", sort=False)["global_sales"].mean().to_list(),
         )
 
     def test_2_2_bar_layout(self):
@@ -48,6 +52,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
             self.fig.ax,
-            filter_platforms(self.data)["platform"].unique().to_list(),
+            list(self.filtered_data["platform"].unique()),
             axis="x",
         )

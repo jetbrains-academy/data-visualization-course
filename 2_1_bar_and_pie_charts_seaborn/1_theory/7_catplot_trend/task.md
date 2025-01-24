@@ -19,6 +19,10 @@ If you prefer, you can add the decades yourself. Please refer to the correspondi
 
 ## Hints
 
+<div class="hint" title="What should the figure look like?">
+   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
+</div>
+
 <div class="hint" title="How should I plot total number of global sales?">
    To plot total number of global sales you should use the <code>estimator</code> argument 
    and pass there the <code>sum</code> value.
@@ -26,13 +30,4 @@ If you prefer, you can add the decades yourself. Please refer to the correspondi
 
 <div class="hint" title="How should I add the decades?">
     To add the decades you could use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.cut.html"><code>cut</code></a> function.
-    
-   If you have some difficulties with your own preprocessing, you can take
-   [a peek at the inner file](file://2_1_bar_and_pie_charts_seaborn/1_theory/6_catplot_estimator/data.py)
-   where our preprocessing is defined.
-</div>
-
-
-<div class="hint" title="What should the figure look like?">
-   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
 </div>
