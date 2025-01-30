@@ -13,7 +13,9 @@ content:
   - 2_0_bar_and_pie_charts_intro
   - 2_1_bar_and_pie_charts_seaborn
   - 2_2_bar_and_pie_charts_matplotlib
-  - 3_histograms
+  - 3_0_histograms_intro
+  - 3_1_histograms_seaborn
+  - 3_2_histograms_matplotlib
 additional_files:
   - name: requirements.txt
   - name: LICENSE
