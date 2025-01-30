@@ -1,4 +1,4 @@
-from typing import Any, List, Literal, Optional, Tuple, Type, Union
+from typing import Any, ClassVar, List, Literal, Optional, Tuple, Type, Union
 from unittest import TestCase
 
 import matplotlib.colors as mcolors
@@ -13,18 +13,16 @@ import seaborn as sns
 
 class BaseTestMixin(TestCase):
     longMessage = False
-    named_colors = {name: mcolors.to_rgb(name) for name in mcolors.CSS4_COLORS}
+    named_colors: ClassVar[dict] = {name: mcolors.to_rgb(name) for name in mcolors.CSS4_COLORS}
 
     # Add tab10 colors for checking default colors assigned to plots
-    tab10_colors = {f"C{i}": to_rgb(name) for i, name in enumerate(mcolors.TABLEAU_COLORS)}
+    tab10_colors: ClassVar[dict] = {f"C{i}": to_rgb(name) for i, name in enumerate(mcolors.TABLEAU_COLORS)}
     named_colors.update(tab10_colors)
 
-    def rgba_to_names(self, colors):
+    def rgba_to_names(self, colors: Any) -> List[str]:
         if not isinstance(colors, list):
             colors = [colors]
-        result = [next((name for name, value in self.named_colors.items() if value == rgba), rgba) for rgba in colors]
-
-        return result
+        return [next((name for name, value in self.named_colors.items() if value == rgba), rgba) for rgba in colors]
 
     def assertAlmostAllEqual(self, expected: Any, actual: Any, msg: str):
         # The numpy error message is not compatible with the plugin,
@@ -38,10 +36,11 @@ class BaseTestMixin(TestCase):
         try:
             self.assertListEqual(list1, list2)
         except AssertionError as e:
-            raise self.failureException(f"{msg}\n\nExpected: {list1}\nActual: {list2}\n\n{e!s}") from None
+            error_string = f"{msg}\n\nExpected: {list1}\nActual: {list2}\n\n{e!s}"
+            raise self.failureException(error_string) from None
 
     @staticmethod
-    def addExpectedAndActualToMessage(expected: Any, actual: Any, msg: str):
+    def addExpectedAndActualToMessage(expected: Any, actual: Any, msg: str) -> str:
         return f"{msg}\n\nExpected: {expected}\nActual: {actual}"
 
     # ----------------------------------------------------------------------
@@ -54,7 +53,9 @@ class BaseTestMixin(TestCase):
             error_message += f" Please use `{expected_function}`."
 
         self.assertIsInstance(
-            obj, expected_type, self.addExpectedAndActualToMessage(expected_type, type(obj), error_message)
+            obj,
+            expected_type,
+            self.addExpectedAndActualToMessage(expected_type, type(obj), error_message),
         )
 
     def checkNumberOfAxes(self, axes: List[plt.Axes], expected_number: int):
@@ -114,7 +115,9 @@ class BaseTestMixin(TestCase):
             expected_handle_colors_rgb,
             actual_handle_colors,
             self.addExpectedAndActualToMessage(
-                expected_handle_colors, actual_handle_colors_names, "The bar colors do not match."
+                expected_handle_colors,
+                actual_handle_colors_names,
+                "The bar colors do not match.",
             ),
         )
 
@@ -154,7 +157,9 @@ class BaseTestMixin(TestCase):
             error_message = "The collection must not be transparent."
         else:
             error_message = self.addExpectedAndActualToMessage(
-                expected_alpha, actual_alpha, f"The collection must have transparency = {expected_alpha}."
+                expected_alpha,
+                actual_alpha,
+                f"The collection must have transparency = {expected_alpha}.",
             )
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
@@ -209,7 +214,9 @@ class BaseTestMixin(TestCase):
             error_message = "The line must not be transparent."
         else:
             error_message = self.addExpectedAndActualToMessage(
-                expected_alpha, actual_alpha, f"The line must have transparency = {expected_alpha}."
+                expected_alpha,
+                actual_alpha,
+                f"The line must have transparency = {expected_alpha}.",
             )
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
@@ -219,7 +226,9 @@ class BaseTestMixin(TestCase):
         self.assertTrue(
             same_color(to_rgb(expected_color), actual_color),
             msg=self.addExpectedAndActualToMessage(
-                expected_color, self.rgba_to_names(actual_color), f"The line must be colored in '{expected_color}'."
+                expected_color,
+                self.rgba_to_names(actual_color),
+                f"The line must be colored in '{expected_color}'.",
             ),
         )
 
@@ -352,7 +361,9 @@ class BaseTestMixin(TestCase):
             container,
             expected_type,
             self.addExpectedAndActualToMessage(
-                expected_type, type(container), f"Incorrect chart type. You should plot {string_expected_type}."
+                expected_type,
+                type(container),
+                f"Incorrect chart type. You should plot {string_expected_type}.",
             ),
         )
 
@@ -371,7 +382,9 @@ class BaseTestMixin(TestCase):
             patch,
             expected_type,
             self.addExpectedAndActualToMessage(
-                expected_type, type(patch), f"Incorrect chart type. You should plot {string_expected_type}."
+                expected_type,
+                type(patch),
+                f"Incorrect chart type. You should plot {string_expected_type}.",
             ),
         )
 
@@ -450,7 +463,9 @@ class BaseTestMixin(TestCase):
             expected_colors_rgb,
             actual_colors,
             self.addExpectedAndActualToMessage(
-                expected_facecolors, actual_colors_names, "The bar colors do not match."
+                expected_facecolors,
+                actual_colors_names,
+                "The bar colors do not match.",
             ),
         )
 
