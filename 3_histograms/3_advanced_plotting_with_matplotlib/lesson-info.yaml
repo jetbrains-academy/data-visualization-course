@@ -1,5 +1,0 @@
-type: framework
-custom_name: Advanced plotting with Matplotlib
-content:
-  - 1_advanced_histogram
-is_template_based: false

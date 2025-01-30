@@ -1,7 +1,0 @@
-type: theory
-custom_name: Distributions and Histogram
-files:
-  - name: main.py
-    visible: true
-  - name: demo.py
-    visible: false
