@@ -1,0 +1,11 @@
+type: edu
+custom_name: Base
+files:
+  - name: task.py
+    visible: true
+  - name: data.py
+    visible: false
+  - name: demo.py
+    visible: false
+  - name: tests/test_task.py
+    visible: false
