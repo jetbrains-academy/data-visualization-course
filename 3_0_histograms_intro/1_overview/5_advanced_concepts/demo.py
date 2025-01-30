@@ -1,5 +1,5 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy import stats
 
 # Generate sample weather data
@@ -16,23 +16,23 @@ density = stats.gaussian_kde(temperatures)
 x_range = np.linspace(temperatures.min(), temperatures.max(), 100)
 ax1.plot(x_range, density(x_range))
 ax1.hist(temperatures, bins=30, density=True, alpha=0.5)
-ax1.set_title('Density Estimation\nof Temperature')
-ax1.set_xlabel('Temperature (°C)')
-ax1.set_ylabel('Density')
+ax1.set_title("Density Estimation\nof Temperature")
+ax1.set_xlabel("Temperature (°C)")
+ax1.set_ylabel("Density")
 
 # 2. Cumulative Histogram
 sorted_rainfall = np.sort(rainfall)
 cumulative = np.arange(1, len(sorted_rainfall) + 1) / len(sorted_rainfall)
 ax2.plot(sorted_rainfall, cumulative)
-ax2.set_title('Cumulative Distribution\nof Rainfall')
-ax2.set_xlabel('Rainfall (mm)')
-ax2.set_ylabel('Cumulative Proportion')
+ax2.set_title("Cumulative Distribution\nof Rainfall")
+ax2.set_xlabel("Rainfall (mm)")
+ax2.set_ylabel("Cumulative Proportion")
 
 # 3. 2D Histogram
-ax3.hist2d(temperatures, humidity, bins=30, cmap='viridis')
-ax3.set_title('2D Histogram of\nTemperature vs Humidity')
-ax3.set_xlabel('Temperature (°C)')
-ax3.set_ylabel('Humidity (%)')
+ax3.hist2d(temperatures, humidity, bins=30, cmap="viridis")
+ax3.set_title("2D Histogram of\nTemperature vs Humidity")
+ax3.set_xlabel("Temperature (°C)")
+ax3.set_ylabel("Humidity (%)")
 
 plt.tight_layout()
 
