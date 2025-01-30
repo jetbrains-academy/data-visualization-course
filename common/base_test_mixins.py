@@ -1,6 +1,7 @@
 from typing import Any, List, Literal, Optional, Tuple, Type, Union
 from unittest import TestCase
 
+import matplotlib.colors as mcolors
 from matplotlib.colors import same_color, to_rgb
 from matplotlib.container import Container
 from matplotlib.legend import Legend
@@ -12,6 +13,18 @@ import seaborn as sns
 
 class BaseTestMixin(TestCase):
     longMessage = False
+    named_colors = {name: mcolors.to_rgb(name) for name in mcolors.CSS4_COLORS}
+
+    # Add tab10 colors for checking default colors assigned to plots
+    tab10_colors = {f"C{i}": to_rgb(name) for i, name in enumerate(mcolors.TABLEAU_COLORS)}
+    named_colors.update(tab10_colors)
+
+    def rgba_to_names(self, colors):
+        if not isinstance(colors, list):
+            colors = [colors]
+        result = [next((name for name, value in self.named_colors.items() if value == rgba), rgba) for rgba in colors]
+
+        return result
 
     def assertAlmostAllEqual(self, expected: Any, actual: Any, msg: str):
         # The numpy error message is not compatible with the plugin,
@@ -21,15 +34,28 @@ class BaseTestMixin(TestCase):
         except AssertionError as e:
             raise self.failureException(msg + str(e)) from None
 
+    def assertListEqualMessage(self, list1: list, list2: list, msg: str):
+        try:
+            self.assertListEqual(list1, list2)
+        except AssertionError as e:
+            raise self.failureException(f"{msg}\n\nExpected: {list1}\nActual: {list2}\n\n{e!s}") from None
+
+    @staticmethod
+    def addExpectedAndActualToMessage(expected: Any, actual: Any, msg: str):
+        return f"{msg}\n\nExpected: {expected}\nActual: {actual}"
+
     # ----------------------------------------------------------------------
 
     def checkReturnType(self, obj: Any, expected_type: Any, expected_function: Optional[str] = None):
-        error_message = "The return type is wrong."
+        string_expected_type = expected_type.__name__
+        error_message = f"The return type is wrong. You should return {string_expected_type}."
 
         if expected_function is not None:
-            error_message += f" Please use`{expected_function}`."
+            error_message += f" Please use `{expected_function}`."
 
-        self.assertIsInstance(obj, expected_type, error_message)
+        self.assertIsInstance(
+            obj, expected_type, self.addExpectedAndActualToMessage(expected_type, type(obj), error_message)
+        )
 
     def checkNumberOfAxes(self, axes: List[plt.Axes], expected_number: int):
         self.assertEqual(
@@ -72,16 +98,25 @@ class BaseTestMixin(TestCase):
 
     def checkLegendLabels(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_labels: List[str]):
         actual_labels = [label.get_text() for label in self.__get_legend(obj).texts]
-        self.assertListEqual(
+        self.assertListEqualMessage(
             expected_labels,
             actual_labels,
             msg=f"The legend labels must be equal to {expected_labels}.",
         )
 
     def checkLegendHandleColors(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_handle_colors: List[str]):
-        actual_handle_colors = [handle.get_facecolor() for handle in self.__get_legend(obj).legend_handles]
-        for actual_color, expected_color in zip(actual_handle_colors, expected_handle_colors):
-            self.assertTrue(same_color(actual_color, expected_color), msg="The legend handle colors do not match.")
+        actual_handle_colors = [to_rgb(handle.get_facecolor()) for handle in self.__get_legend(obj).legend_handles]
+        actual_handle_colors_names = self.rgba_to_names(actual_handle_colors)
+
+        expected_handle_colors_rgb = [to_rgb(color) for color in expected_handle_colors]
+
+        self.assertListEqual(
+            expected_handle_colors_rgb,
+            actual_handle_colors,
+            self.addExpectedAndActualToMessage(
+                expected_handle_colors, actual_handle_colors_names, "The bar colors do not match."
+            ),
+        )
 
     def checkCollectionPosition(
         self,
@@ -118,14 +153,21 @@ class BaseTestMixin(TestCase):
         if expected_alpha == 1:
             error_message = "The collection must not be transparent."
         else:
-            error_message = f"The collection must have transparency = {expected_alpha} (actual: {actual_alpha})"
+            error_message = self.addExpectedAndActualToMessage(
+                expected_alpha, actual_alpha, f"The collection must have transparency = {expected_alpha}."
+            )
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
     def checkCollectionColor(self, ax: plt.Axes, expected_facecolor: str, collection_number: int = 0):
+        actual_color = to_rgb(ax.collections[collection_number].get_facecolor())
         self.assertTrue(
-            same_color(to_rgb(expected_facecolor), to_rgb(ax.collections[collection_number].get_facecolor())),
-            msg=f"The collection must be colored in '{expected_facecolor}'.",
+            same_color(to_rgb(expected_facecolor), actual_color),
+            msg=self.addExpectedAndActualToMessage(
+                expected_facecolor,
+                self.rgba_to_names(actual_color),
+                f"The collection must be colored in '{expected_facecolor}'.",
+            ),
         )
 
     def checkNumberOfLines(self, ax: plt.Axes, expected_number: int):
@@ -166,14 +208,19 @@ class BaseTestMixin(TestCase):
         if expected_alpha == 1:
             error_message = "The line must not be transparent."
         else:
-            error_message = f"The line must have transparency = {expected_alpha} (actual: {actual_alpha})."
+            error_message = self.addExpectedAndActualToMessage(
+                expected_alpha, actual_alpha, f"The line must have transparency = {expected_alpha}."
+            )
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
     def checkLineColor(self, ax: plt.Axes, expected_color: str, line_number: int = 0):
+        actual_color = to_rgb(ax.lines[line_number].get_color())
         self.assertTrue(
-            same_color(to_rgb(expected_color), to_rgb(ax.lines[line_number].get_color())),
-            msg=f"The line must be colored in '{expected_color}'.",
+            same_color(to_rgb(expected_color), actual_color),
+            msg=self.addExpectedAndActualToMessage(
+                expected_color, self.rgba_to_names(actual_color), f"The line must be colored in '{expected_color}'."
+            ),
         )
 
     def checkLim(self, ax: plt.Axes, expected_lim: List[float], axis: Literal["x", "y"]):
@@ -194,13 +241,13 @@ class BaseTestMixin(TestCase):
         actual_title = ax.get_title()
 
         if expected_title is None:
-            self.assertEqual("", actual_title, "The figure should have no title")
+            self.assertEqual("", actual_title, "The figure should have no title.")
             return
 
         self.assertEqual(
             expected_title,
             actual_title,
-            f"The figure should be titled as '{expected_title}'",
+            f"The figure should be titled as '{expected_title}'.",
         )
 
     def checkLabel(self, ax: plt.Axes, expected_label: Optional[str], axis: Literal["x", "y"]):
@@ -212,7 +259,7 @@ class BaseTestMixin(TestCase):
             raise ValueError("Unknown axis name.")
 
         if expected_label is None:
-            self.assertEqual("", actual_label, f"The {axis}-axis should have no labels")
+            self.assertEqual("", actual_label, f"The {axis}-axis should have no labels.")
             return
 
         self.assertEqual(
@@ -268,7 +315,7 @@ class BaseTestMixin(TestCase):
         else:
             raise ValueError("Unknown tick position.")
 
-        self.assertListEqual(
+        self.assertListEqualMessage(
             expected_tick_labels,
             actual_tick_labels,
             msg=f"The expected {axis}-axis tick values do not match the actual values.",
@@ -300,7 +347,14 @@ class BaseTestMixin(TestCase):
 
     def checkContainerType(self, ax: plt.Axes, expected_type: Type[Container], *, container_number: int = 0):
         container = ax.containers[container_number]
-        self.assertIsInstance(container, expected_type, f"The container must be {expected_type}.")
+        string_expected_type = expected_type.__name__
+        self.assertIsInstance(
+            container,
+            expected_type,
+            self.addExpectedAndActualToMessage(
+                expected_type, type(container), f"Incorrect chart type. You should plot {string_expected_type}."
+            ),
+        )
 
     def checkNumberOfPatches(self, ax: plt.Axes, expected_number: int):
         patches = getattr(ax, "patches", [])
@@ -312,7 +366,14 @@ class BaseTestMixin(TestCase):
 
     def checkPatchesType(self, ax: plt.Axes, expected_type: Type[Patch], *, patch_number: int = 0):
         patch = ax.patches[patch_number]
-        self.assertIsInstance(patch, expected_type, f"The patches must be {expected_type}.")
+        string_expected_type = expected_type.__name__
+        self.assertIsInstance(
+            patch,
+            expected_type,
+            self.addExpectedAndActualToMessage(
+                expected_type, type(patch), f"Incorrect chart type. You should plot {string_expected_type}."
+            ),
+        )
 
     def checkNumberOfBars(self, ax: plt.Axes, expected_number: int, container_number: int = 0):
         datavalues = ax.containers[container_number].datavalues
@@ -329,7 +390,7 @@ class BaseTestMixin(TestCase):
         self.assertAlmostAllEqual(
             expected_values,
             actual_position,
-            msg="The expected values do not match the actual values.",
+            msg="The expected bar values do not match the actual values.",
         )
 
     def checkBarWidth(self, ax: plt.Axes, expected_width: float, *, container_number: int = 0):
@@ -382,23 +443,53 @@ class BaseTestMixin(TestCase):
         )
 
     def checkBarColor(self, ax: plt.Axes, *, expected_facecolors: List[str], container_number: int = 0):
-        actual_colors = [bar.get_facecolor() for bar in ax.containers[container_number]]
-
-        self.assertTrue(
-            all(same_color(actual, expected) for actual, expected in zip(actual_colors, expected_facecolors)),
-            msg=f"The bars must be colored in '{expected_facecolors}'.",
+        actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
+        actual_colors_names = self.rgba_to_names(actual_colors)
+        expected_colors_rgb = [to_rgb(color) for color in expected_facecolors]
+        self.assertListEqual(
+            expected_colors_rgb,
+            actual_colors,
+            self.addExpectedAndActualToMessage(
+                expected_facecolors, actual_colors_names, "The bar colors do not match."
+            ),
         )
 
     def checkPiePosition(self, ax: plt.Axes, *, expected_position: List[float]):
-        expected_patches, _ = ax.pie(expected_position)
+        fig, ax_test = plt.subplots()
+        expected_patches, _ = ax_test.pie(expected_position)
         actual_patches = ax.patches
 
-        for actual_wedge, expected_wedge in zip(actual_patches, expected_patches):
-            self.assertTrue(
-                actual_wedge.r == expected_wedge.r
-                and actual_wedge.theta1 == expected_wedge.theta1
-                and actual_wedge.theta2 == expected_wedge.theta2,
-                "The expected bar values do not match the actual values.",
+        for i, wedge_pair in enumerate(zip(actual_patches, expected_patches)):
+            actual_wedge, expected_wedge = wedge_pair
+            label = actual_wedge.get_label()
+            if label == "":
+                label = str(i + 1)
+            self.assertAlmostEqual(
+                actual_wedge.r,
+                expected_wedge.r,
+                msg=self.addExpectedAndActualToMessage(
+                    expected_wedge.r,
+                    actual_wedge.r,
+                    f"The expected {label} wedge radius does not match the actual value.",
+                ),
+            )
+            self.assertAlmostEqual(
+                actual_wedge.theta1,
+                expected_wedge.theta1,
+                msg=self.addExpectedAndActualToMessage(
+                    expected_wedge.theta1,
+                    actual_wedge.theta1,
+                    f"The expected {label} wedge start angle does not match the actual value.",
+                ),
+            )
+            self.assertAlmostEqual(
+                actual_wedge.theta2,
+                expected_wedge.theta2,
+                msg=self.addExpectedAndActualToMessage(
+                    expected_wedge.theta2,
+                    actual_wedge.theta2,
+                    f"The expected {label} wedge end angle does not match the actual value.",
+                ),
             )
 
     def checkPieExplode(
@@ -408,29 +499,46 @@ class BaseTestMixin(TestCase):
         expected_position: List[float],
         expected_explode: Optional[List[float]] = None,
     ):
-        expected_patches, _ = ax.pie(expected_position, explode=expected_explode)
+        fig, ax_test = plt.subplots()
+        expected_patches, _ = ax_test.pie(expected_position, explode=expected_explode)
         actual_patches = ax.patches
 
-        for actual_wedge, expected_wedge in zip(actual_patches, expected_patches):
-            self.assertTrue(
-                expected_wedge.center == actual_wedge.center,
-                "The expected explode values do not match the actual values.",
+        for i, patch_pair in enumerate(zip(actual_patches, expected_patches)):
+            actual_patch, expected_patch = patch_pair
+            label = actual_patch.get_label()
+            if label == "":
+                label = str(i + 1)
+            self.assertAlmostEqual(
+                expected_patch.center,
+                actual_patch.center,
+                msg=self.addExpectedAndActualToMessage(
+                    expected_patch.center,
+                    actual_patch.center,
+                    f"The expected {label} wedge explode value does not match the actual value.",
+                ),
             )
 
     def checkPieLabels(self, ax: plt.Axes, expected_labels: List[str]):
-        for actual_patch, expected_label in zip(ax.patches, expected_labels):
+        for i, patch_label_pair in enumerate(zip(ax.patches, expected_labels)):
+            actual_patch, expected_label = patch_label_pair
+            label = actual_patch.get_label()
+            if label == "":
+                label = str(i + 1)
             self.assertEqual(
                 expected_label,
                 actual_patch.get_label(),
-                f"The pie label must be '{expected_label}'.",
+                f"The {label} pie label must be '{expected_label}'.",
             )
 
     def checkPieColors(self, ax: plt.Axes, expected_colors: List[str]):
-        for actual_patch, expected_color in zip(ax.patches, expected_colors):
-            self.assertTrue(
-                same_color(actual_patch.get_facecolor(), expected_color),
-                f"The wedges must be colored in '{expected_colors}'.",
-            )
+        actual_colors = [to_rgb(patch.get_facecolor()) for patch in ax.patches]
+        actual_colors_names = self.rgba_to_names(actual_colors)
+        expected_colors_rgb = [to_rgb(color) for color in expected_colors]
+        self.assertListEqual(
+            expected_colors_rgb,
+            actual_colors,
+            self.addExpectedAndActualToMessage(expected_colors, actual_colors_names, "The pie colors do not match."),
+        )
 
     def checkPieNumericLabels(self, ax: plt.Axes, expected_labels: List[str]):
         for actual_label, expected_label in zip(ax.texts[1::2], expected_labels):
@@ -447,4 +555,4 @@ class BaseTestMixin(TestCase):
         actual_texts = sorted((*text.get_position(), text.get_text()) for text in ax.texts)
         expected_texts = sorted(expected_texts)
 
-        self.assertListEqual(expected_texts, actual_texts, "")
+        self.assertListEqualMessage(expected_texts, actual_texts, "The text objects do not match.")
