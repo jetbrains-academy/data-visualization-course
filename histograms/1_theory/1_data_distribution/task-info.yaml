@@ -1,5 +1,0 @@
-type: theory
-custom_name: Data Distributions
-files:
-  - name: main.py
-    visible: true

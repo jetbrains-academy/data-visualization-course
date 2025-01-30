@@ -1,5 +1,0 @@
-type: theory
-custom_name: Histogram overview
-files:
-  - name: main.py
-    visible: true
