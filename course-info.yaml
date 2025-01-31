@@ -13,4 +13,64 @@ content:
   - 2_0_bar_and_pie_charts_intro
   - 2_1_bar_and_pie_charts_seaborn
   - 2_2_bar_and_pie_charts_matplotlib
-yaml_version: 1
+additional_files:
+  - name: .idea/inspectionProfiles/profiles_settings.xml
+  - name: common/paths.py
+  - name: common/resources/images/common/entry_point.png
+    is_binary: true
+  - name: common/resources/images/common/output_location.png
+    is_binary: true
+  - name: common/resources/images/common/entry_point_dark.png
+    is_binary: true
+  - name: common/resources/images/common/output_location_dark.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_1.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_2.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_3.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_4.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_c.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_d.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Trend_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Trend_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Trend_c.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Outliers_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Outliers_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Outliers_c.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Outliers_d.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Distribution_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Distribution_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Relationship_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Relationship_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Relationship_c.png
+    is_binary: true
+  - name: common/resources/datasets/food.csv
+  - name: common/resources/datasets/games.csv
+  - name: common/resources/datasets/experiment.csv
+  - name: common/__init__.py
+  - name: common/base_test_mixins.py
+  - name: LICENSE
+  - name: requirements.txt
+yaml_version: 2
