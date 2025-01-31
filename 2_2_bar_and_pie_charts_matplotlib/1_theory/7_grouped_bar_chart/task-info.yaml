@@ -8,7 +8,6 @@ files:
   - name: example.png
     visible: false
     propagatable: false
-    is_binary: true
   - name: tests/test_task.py
     visible: false
   - name: tests/__init__.py

@@ -22,4 +22,3 @@ files:
     visible: false
   - name: example.png
     visible: false
-    is_binary: true

@@ -12,4 +12,3 @@ files:
   - name: example.png
     visible: false
     propagatable: false
-    is_binary: true
