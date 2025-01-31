@@ -3,7 +3,7 @@
 Now it is a little bit better, but it is still not convenient for exploration.
 To understand more easily which platforms are more popular, we can reorder them.
 
-The order of categories is controlled by the `order` argument. 
+The order of categories is controlled by the `order` argument.
 It accepts a list of names in what order to show them.
 
 ## Task
@@ -17,6 +17,11 @@ If you prefer, you can sort the platforms yourself. Please refer to the correspo
 
 <div class="hint" title="What should the figure look like?">
    <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
+</div>
+
+<div class="hint" title="How to import hidden functions?">
+    To import it, you can place the cursor on the underlined hidden function name in your code, then press &shortcut:ShowIntentionActions;, and
+    select <code>Import "function_name"</code>.
 </div>
 
 <div class="hint" title="How should I sort the platforms?">
