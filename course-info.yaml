@@ -13,4 +13,20 @@ content:
   - 2_0_bar_and_pie_charts_intro
   - 2_1_bar_and_pie_charts_seaborn
   - 2_2_bar_and_pie_charts_matplotlib
+additional_files:
+  - name: common/resources/images/common/hidden_function_import.gif
+    is_binary: true
+  - name: common/resources/images/common/hidden_function_import_dark.gif
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_1.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_2.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_3.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_4.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
+    is_binary: true
+  - name: common/resources/datasets/food.csv
 yaml_version: 2
