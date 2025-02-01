@@ -10,3 +10,52 @@ content:
   - 1_0_line_and_scatter_plots_intro
   - 1_1_line_and_scatter_plots_seaborn
   - 1_2_line_and_scatter_plots_matplotlib
+additional_files:
+  - name: requirements.txt
+  - name: LICENSE
+  - name: common/resources/images/common/entry_point.png
+    is_binary: true
+  - name: common/resources/images/common/entry_point_dark.png
+    is_binary: true
+  - name: common/resources/images/common/output_location.png
+    is_binary: true
+  - name: common/resources/images/common/output_location_dark.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Distribution_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Distribution_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Outliers_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Outliers_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Outliers_c.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Outliers_d.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Relationship_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Relationship_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Relationship_c.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Trend_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Trend_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/1_Trend_c.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_c.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_d.png
+    is_binary: true
+  - name: common/resources/datasets/experiment.csv
+  - name: common/resources/datasets/games.csv
+  - name: common/__init__.py
+  - name: common/base_test_mixins.py
+  - name: common/paths.py
+yaml_version: 2
