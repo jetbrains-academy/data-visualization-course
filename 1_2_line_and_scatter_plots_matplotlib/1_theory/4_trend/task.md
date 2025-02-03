@@ -27,9 +27,9 @@ If you prefer, you can aggregate the data yourself. Please refer to the correspo
 
 <div class="hint" title="How to import hidden functions?">
     To import it, you can place the cursor on the underlined hidden function name in your code, then press &shortcut:ShowIntentionActions;, and
-    select <code>Import "function_name"</code>.
+    select <samp>Import 'function_name from data'</samp>:
+    <img src="../../../common/resources/images/common/hidden_function_import.gif" alt="What the figure should look like" style="max-height: 500px">
 </div>
-
 
 <div class="hint" title="How should I aggregate the data?">
    To aggregate the data, you can use Pandas:

@@ -17,6 +17,10 @@ additional_files:
     is_binary: true
   - name: common/resources/images/common/entry_point_dark.png
     is_binary: true
+  - name: common/resources/images/common/hidden_function_import_dark.gif
+    is_binary: true
+  - name: common/resources/images/common/hidden_function_import.gif
+    is_binary: true
   - name: common/resources/images/common/output_location.png
     is_binary: true
   - name: common/resources/images/common/output_location_dark.png
