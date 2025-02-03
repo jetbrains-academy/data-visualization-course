@@ -47,7 +47,12 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_2_bar_position(self):
         for i, category in enumerate(self.data["category"].unique()):
-            expected_values = self.data[self.data["category"] == category].groupby("product", sort=False).size()
+            expected_values = (
+                self.data[self.data["category"] == category]
+                .groupby("product", sort=False)
+                .size()
+                .sort_index(ascending=False)
+            )
             self.checkBarValues(self.fig.ax, expected_values.to_list(), container_number=i)
 
     def test_2_3_bar_labels(self):
