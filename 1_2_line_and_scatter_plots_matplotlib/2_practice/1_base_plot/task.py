@@ -6,11 +6,9 @@ from data import read
 
 def configure_axes(ax: plt.Axes):
     ax.set_xticks([-4, 0, 4])
-    ax.set_xlim(-4, 4)
     ax.set_xlabel("x")
 
     ax.set_yticks([-1.5, 0, 1.5])
-    ax.set_ylim(-2, 2)
     ax.set_ylabel("y")
 
     ax.spines[["right", "top"]].set_visible(False)
