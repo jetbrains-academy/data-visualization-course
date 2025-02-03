@@ -30,11 +30,13 @@ Plot the regression line and add the scatter plot to it.
 </div>
 
 <div class="hint" title="How does linear regression work?">
-    Linear regression finds the best-fitting straight line through the data by minimizing the difference between 
-    predicted and actual values. This is done by minimizing the squared errors between the line and the data points. 
-    The equation of the line is: <code>y = mx + b</code>, where <code>m</code> is the slope and <code>b</code> is the
-    intercept. Note again, that in converse with Seaborn, Matplotlib does not provide a built-in method for linear regression,
-    so you need to aggregate data yourself.
+   Linear regression finds the best-fitting straight line through the data by minimizing the difference between 
+   predicted and actual values. This is done by minimizing the squared errors between the line and the data points. 
+   The equation of the line is: <code>y = mx + b</code>, where <code>m</code> is the slope and <code>b</code> is the
+   intercept.
+    
+   Note again, that Matplotlib does not provide a built-in method for linear regression, 
+   so you need to aggregate data yourself.
 </div>
 
 <div class="hint" title="How should I aggregate the data?">
