@@ -9,27 +9,33 @@ Now they want us to help with plotting the data.
 Let's help them!
 
 To interpret the data,
-the organizers want to see the distribution of votes (`votes`) for each category (`category`) in a single horizontal bar chart.
+the organizers want to see the distribution of votes (`votes`) for each category (`category`) in a single horizontal bar
+chart.
 So you should plot categories from bottom to top and color them accordingly:
-`bread` - `sienna`, `cheese` - `goldenrod`, `salad` - `forestgreen`
+`bread` - `sienna`, `cheese` - `goldenrod`, `salad` - `forestgreen`. Product names within each category should be sorted
+in ascending lexicographical order (from bottom to top).
 
 The requirements for the y-axis:
+
 1. Each bar should have the corresponding product name on the left side of the bar (i.e. `cheddar`).
 2. Set the y-axis label as `Product name`.
 
 The requirements for the x-axis:
+
 1. The x-axis should have only these ticks: `0`, `25`, `50`, `75` and `100`.
 2. Set the x-axis label as `Respondents, %`.
 
 You also should make some visual adjustments to the figure:
+
 1. Set the chart title as `Distribution of votes per category`.
 2. Add the legend.
 3. Tighten the layout.
 
 Note that we preprocessed the data for you. To learn how we do it, please see the corresponding hint below.
 
-You could use the following hidden function:
-1. `get_category_votes` to get all votes for the specific category.
+You could use the following hidden functions:
+
+1. `get_category_votes` to get all votes for the specific category in ascending lexicographical order.
 2. `get_category_product_names` to get all product names for the specific category.
 3. `get_category_size` to get a number of products in the specific category.
 4. `get_categories` to get a list of categories.

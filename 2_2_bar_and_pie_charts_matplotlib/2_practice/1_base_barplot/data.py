@@ -16,7 +16,7 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def get_category_votes(data: pd.DataFrame, category: str) -> pd.Series:
-    return data[data["category"] == category]["votes"]
+    return data[data["category"] == category]["votes"].sort_values(ascending=True)
 
 
 def get_category_product_names(data: pd.DataFrame, category: str) -> pd.DataFrame:
