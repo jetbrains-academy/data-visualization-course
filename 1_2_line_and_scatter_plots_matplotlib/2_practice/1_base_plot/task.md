@@ -15,14 +15,12 @@ You should make several visual adjustments to the figure:
 3. Remove the top and right spines.
 
 You should also make some modifications to the x-axis:
-1. Limit the x-axis view to the interval from `-4` to `4`.
-2. The x-axis should have only three ticks: `-4`, `0`, and `4`.
-3. Label the x-axis as `x`.
+1. The x-axis should have only three ticks: `-4`, `0`, and `4`.
+2. Label the x-axis as `x`.
 
 And make similar changes to the y-axis:
-1. Limit the y-axis view to the interval from `-2` to `2`.
-2. The y-axis should have only three ticks: `-1.5`, `0`, and `1.5`.
-3. Label the y-axis as `y`.
+1. The y-axis should have only three ticks: `-1.5`, `0`, and `1.5`.
+2. Label the y-axis as `y`.
 
 Note that you don't need to preprocess the data.
 
@@ -43,11 +41,6 @@ please feel free to use the hints below, where you can also find what the final 
 <div class="hint" title="How to make the trace transparent?">
     To make the line or scatter plot transparent, you can use the <code>alpha</code> argument:
     <code>ax.scatter("x", "y", data=my_data, alpha=0.5)</code>.
-</div>
-
-<div class="hint" title="How to limit an axis view?">
-    To limit an axis view, you can use the <code>set_xlim</code> or <code>set_ylim</code> method of the <code>Axes</code> object:
-    <code>ax.set_xlim(1, 3)</code>.
 </div>
 
 <div class="hint" title="How to set ticks?">

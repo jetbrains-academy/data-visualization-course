@@ -1,10 +1,19 @@
 ## Task
 
-As we can see in the figure, there is a small spike in our data.
-The researchers asked us to plot this detail more closely on the same figure, so let's do that.
+Researchers have received the figure we created for them and were very pleased with the results. But they asked us to make a
+few adjustments to the figure.
+
+First of all, researchers asked us to limit `x` axis view to the interval from `-4` to `4`, and `y` axis view to the
+interval from `-2` to `2`.
+You can do it
+using the [`set_xlim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html)
+or [`set_ylim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html) functions.
+
+They also noticed a small spike in our data and asked us to plot this detail more closely on the same figure, so let's do that.
 
 To achieve this, we can use _inset axes_. Please consult
-the [documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.inset_axes.html) page to figure out how to do this.
+the [documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.inset_axes.html) page to figure out
+how to do this.
 
 You can place the inset axes anywhere you like and adjust the size as needed.
 For example, you can place it at coordinates `(0.15, 0.7)` and set the size to `(0.3, 0.3)`.
@@ -35,6 +44,11 @@ Note that these changes will not be tested and might break existing tests.
 
 <div class="hint" title="What should the figure look like?">
     <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
+</div>
+
+<div class="hint" title="How to limit an axis view?">
+    To limit an axis view, you can use the <code>set_xlim</code> or <code>set_ylim</code> method of the <code>Axes</code> object:
+    <code>ax.set_xlim(1, 3)</code>.
 </div>
 
 <div class="hint" title="How to add the inset axes?">

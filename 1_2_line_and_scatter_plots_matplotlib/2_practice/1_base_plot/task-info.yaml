@@ -11,13 +11,14 @@ files:
     visible: true
     placeholders:
       - offset: 77
-        length: 437
+        length: 391
         placeholder_text: ""
         is_visible: false
-      - offset: 568
+      - offset: 522
         length: 95
         placeholder_text: "return  # TODO"
         is_visible: false
   - name: example.png
     visible: false
     propagatable: false
+    is_binary: true

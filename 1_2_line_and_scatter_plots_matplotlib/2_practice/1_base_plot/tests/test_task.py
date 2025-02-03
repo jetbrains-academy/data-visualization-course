@@ -53,20 +53,14 @@ class PlotTestCase(BaseTestMixin):
         self.checkSpineVisibility(self.fig.axes[0], position="left", expected_visibility=True)
         self.checkSpineVisibility(self.fig.axes[0], position="right", expected_visibility=False)
 
-    def test_05_1_x_lim(self):
-        self.checkLim(self.fig.axes[0], expected_lim=[-4, 4], axis="x")
-
-    def test_05_2_x_ticks(self):
+    def test_05_1_x_ticks(self):
         self.checkTicks(self.fig.axes[0], expected_ticks=[-4, 0, 4], axis="x")
 
-    def test_05_3_x_label(self):
+    def test_05_2_x_label(self):
         self.checkLabel(self.fig.axes[0], expected_label="x", axis="x")
 
-    def test_06_1_y_lim(self):
-        self.checkLim(self.fig.axes[0], expected_lim=[-2, 2], axis="y")
-
-    def test_06_2_y_ticks(self):
+    def test_06_1_y_ticks(self):
         self.checkTicks(self.fig.axes[0], expected_ticks=[-1.5, 0, 1.5], axis="y")
 
-    def test_06_3_y_label(self):
+    def test_06_2_y_label(self):
         self.checkLabel(self.fig.axes[0], expected_label="y", axis="y")
