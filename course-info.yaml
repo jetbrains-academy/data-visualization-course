@@ -60,8 +60,19 @@ additional_files:
     is_binary: true
   - name: common/resources/images/line_and_scatter_plots/Quiz_d.png
     is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_1.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_2.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_3.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_4.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
+    is_binary: true
   - name: common/resources/datasets/experiment.csv
   - name: common/resources/datasets/games.csv
+  - name: common/resources/datasets/food.csv
   - name: common/__init__.py
   - name: common/base_test_mixins.py
   - name: common/paths.py
