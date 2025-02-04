@@ -1,24 +1,24 @@
 ## Goal
 
-The main goal of the lesson is to **plot the descriptive statistics about different game platforms and global sales**:
-1. Number of different platforms (as bar chart and pie chart)
+The main goal of the lesson is to **plot descriptive statistics about different game platforms and their global sales**:
+1. Number of different platforms (as a bar chart and pie chart)
 2. Total sales per decade for each region
 
 ## Theory
 
-In Matplotlib there are several functions for plotting categorical charts:
-1. [`bar`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar) — builds vertical bar charts.
-2. [`barh`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.barh) — similar to `bar` but builds horizontal bar charts.
-3. [`pie`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.pie) — builds pie charts.
+In Matplotlib, there are several functions for plotting categorical charts:
+1. [`bar`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.bar) — Builds vertical bar charts.
+2. [`barh`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.barh) — Similar to `bar` but builds horizontal bar charts.
+3. [`pie`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.bar.html#matplotlib.axes.Axes.pie) — Builds pie charts.
 
 For now, we will start with the `bar` function.
 
-As other Matplotlib functions, `bar` accepts three main arguments: 
-`x`, `height` (similar to `y` in other plot types) and `data`.
+Like other Matplotlib functions, `bar` accepts three main arguments: 
+`x`, `height` (similar to `y` in other plot types), and `data`.
 We described them in detail in the 
 "[Line and Scatter Plots](course://1_2_line_and_scatter_plots_matplotlib/1_theory/1_scatter)" section.
 
-Unfortunately, Matplotlib doesn't aggregate the data for us, so we need to do it ourselves.
+Unfortunately, Matplotlib doesn't aggregate the data for us, so we need to do it manually.
 
 ## Task
 
@@ -28,14 +28,14 @@ Unfortunately, Matplotlib doesn't aggregate the data for us, so we need to do it
    If you prefer, you can aggregate the data yourself. Please refer to the corresponding hint below.
 
 2. Use the `bar` function to plot a bar chart. 
-   Pass `platform` there as the x-axis, `count` as the height and `games` as the data.
+   Set `platform` as the x-axis, `count` as the height and `games` as the data.
 
-Note that we preprocessed the data for you. To learn how we do it, please see the corresponding hint below.
+Note that we have preprocessed the data for you. To learn how we do it, refer to the corresponding hint below.
 
 ## Hints
 <div class="hint" title="How to run the code?">
    To run the code, click the green triangle next to the entry point.
-   In case of execution errors, they will be displayed in the console inside the IDE. 
+   If there are any execution errors, they will be displayed in the console inside the IDE. 
    <img src="../../../common/resources/images/common/entry_point.png" style="max-width: 500px">
 </div>
 
@@ -44,7 +44,7 @@ Note that we preprocessed the data for you. To learn how we do it, please see th
    <img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
 </div>
 
-<div class="hint" title="How the data was preprocessed?">
+<div class="hint" title="How was the data preprocessed?">
    Before using the data, we need to perform several preprocessing steps:
    <ol>
       <li>Convert column names to lowercase.</li>
@@ -66,10 +66,10 @@ Note that we preprocessed the data for you. To learn how we do it, please see th
    To calculate the total number of games per platform: 
    <ol>
       <li>Use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts</code></a> function on the <code>platform</code> column to calculate the number of rows for each platform.</li>
-      <li>Convert the result to <code>DataFrame</code> using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.reset_index.html"><code>reset_index</code></a> function.</li>
+      <li>Convert the result into <code>DataFrame</code> using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.reset_index.html"><code>reset_index</code></a> function.</li>
    </ol>
 
-   Note that your own function will not be tested.
+   Note that your custom function will not be tested.
 </div>
 
 <div class="hint" title="What should the figure look like?"> 
