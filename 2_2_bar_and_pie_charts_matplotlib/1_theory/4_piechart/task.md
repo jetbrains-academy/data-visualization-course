@@ -1,24 +1,24 @@
 ## Theory
 
-Now we have no so many classes, and it could be more convenient to represent the same data in the form of pie chart,
-because the proportion is more relevant for us rather than the absolute values.
+Now that we have fewer categories, it may be more convenient to represent the same data as a pie chart.
+This is because proportions are more relevant to us than the absolute values.
 
-To make a pie chart using Matplotlib, we might use 
+To make a pie chart using Matplotlib, we can use 
 the [`pie`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.pie.html) function.
 It accepts three main arguments:
-* `x` — a collection of wedge sizes.
-* `labels` — a collection of labels for each wedge. It must be a keyword argument.
-* `data` — the input data structure.
+* `x` — A collection of wedge sizes.
+* `labels` — A collection of labels for each wedge (must be passed as a keyword argument).
+* `data` — The input data structure.
 
-Please note that we don't need to normalize the passed values,
-since Matplotlib will automatically divide each element of `x` by `sum(x)`.
+Please note that you don't need to normalize the passed values,
+as Matplotlib will automatically divide each element of `x` by `sum(x)`.
 
 ## Task
 
-1. Replace the call of the `barh` function with the `pie` function.
-2. Pass there `count` as the wedge sizes and `platform` as the labels and `games` as the data.
+1. Replace the call to the `barh` function with the `pie` function.
+2. Pass `count` as the wedge sizes, `platform` as the labels, and `games` as the data.
 
-Please note that you don't need to customize the figure for now.
+Please note that you don't need to customize the figure at this stage.
 
 ## Hints
 
