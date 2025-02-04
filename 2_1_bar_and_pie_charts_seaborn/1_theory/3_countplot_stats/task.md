@@ -1,18 +1,18 @@
 ## Theory
 
 Finally, we can see all the platform names, 
-but it is not clear from the current data what percentage each platform occupies among the others.
+but the current data does not clearly show what percentage each platform represents compared to the others.
 
-Luckily, count plot has a special argument called `stat`, that changes the calculated statistics.
+Luckily, the count plot has a special argument called `stat`, which modifies the calculated statistics.
 This argument accepts the following values:
-1. `count`: number of observations per category.
-2. `proportion`: similar to `count`, but normalized so that all bars sum to `1`.
-3. `percent`: similar to `count`, but normalized so that all bars sum to `100`.
-4. `probability`: alias to `proportion`.
+1. `count`: The number of observations per category.
+2. `proportion`: Similar to `count`, but normalized so that all bars sum to `1`.
+3. `percent`: Similar to `count`, but normalized so that all bars sum to `100`.
+4. `probability`: An alias for `proportion`.
 
 ## Task
 
-Change the statistic to `percent`.
+Update the statistic by setting it to `percent`.
 
 ## Hints
 
