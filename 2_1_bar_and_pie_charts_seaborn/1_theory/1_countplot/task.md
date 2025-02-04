@@ -1,36 +1,36 @@
 ## Goal
 
-The main goal of the lesson is to **plot the descriptive statistics about different game platforms and global sales**:
+The main goal of this lesson is to **plot descriptive statistics about different game platforms and their global sales**:
 1. Number of different platforms
 2. Total global sales per platform
 3. Total sales per decade for each region
 
-Seaborn doesn't allow plotting pie charts, so the lesson will be focused only on building bar charts.
+Seaborn doesn't support plotting pie charts, so this lesson will focus exclusively on building bar charts.
 If you want to learn how to plot a pie chart,
 please see [the Matplotlib lesson](course://2_2_bar_and_pie_charts_matplotlib/1_theory/1_countplot).
 
 ## Theory
 
-In Seaborn there is one universal function that can build almost any kind of categorical plot:
+In Seaborn, there is a universal function that can build almost any kind of categorical plot:
 [`catplot`](https://seaborn.pydata.org/generated/seaborn.catplot.html).
-As [`relplot`](https://seaborn.pydata.org/generated/seaborn.relplot.html), it accepts special argument, `kind`, 
-that defines which type of plot will be built. 
+Similar to [`relplot`](https://seaborn.pydata.org/generated/seaborn.relplot.html), it accepts a special argument, `kind`, 
+which defines the type of plot to be built. 
 
 In this section, we will focus on two kinds of categorical plots:
-1. `bar`: it can plot general purpose bar charts 
-2. `count`: it can plot a special form of a bar chart called **count plot**,
-   where y-axis represents number of observations for each category.
+1. `bar`: Used to create general-purpose bar charts 
+2. `count`: Used to create a special type of bar chart called a **count plot**,
+   where the y-axis represents the number of observations for each category
 
-As other Seaborn functions, `catplot` accepts three main arguments: `data`, `x` and `y`.
+Like other Seaborn functions, `catplot` accepts three main arguments: `data`, `x`, and `y`.
 We described them in detail in the 
 "[Line and Scatter Plots](course://1_1_line_and_scatter_plots_seaborn/1_theory/1_relplot_scatter)" section.
 
 ## Task
 
 Use the `catplot` function to build a simple count plot.
-Pass `games` there as the data, `platform` as the x-axis, and `count` as the kind.
+Pass `games` as the data, `platform` as the x-axis, and `count` as the kind.
 
-Note that we preprocessed the data for you. To learn how we do it, please see the corresponding hint below.
+Note that we have preprocessed the data for you. To learn how we did this, please see the corresponding hint below.
 
 ## Hints
 <div class="hint" title="How to run the code?">
@@ -44,7 +44,7 @@ Note that we preprocessed the data for you. To learn how we do it, please see th
    <img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
 </div>
 
-<div class="hint" title="How the data was preprocessed?">
+<div class="hint" title="How was the data preprocessed?">
    Before using the data, we need to perform several preprocessing steps:
    <ol>
       <li>Convert column names to lowercase.</li>
