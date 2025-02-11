@@ -12,13 +12,14 @@ To interpret the data,
 the organizers want to see the distribution of votes (`votes`) for each category (`category`) in a single horizontal bar
 chart.
 So you should plot categories from bottom to top and color them accordingly:
-`bread` - `sienna`, `cheese` - `goldenrod`, `salad` - `forestgreen`. Product names within each category should be sorted
-in ascending lexicographical order (from bottom to top).
+`bread` - `sienna`, `cheese` - `goldenrod`, `salad` - `forestgreen`.
 
 The requirements for the y-axis:
 
 1. Each bar should have the corresponding product name on the left side of the bar (i.e. `cheddar`).
 2. Set the y-axis label as `Product name`.
+3. Product names within each category should be sorted
+   in ascending lexicographical order (from bottom to top).
 
 The requirements for the x-axis:
 
