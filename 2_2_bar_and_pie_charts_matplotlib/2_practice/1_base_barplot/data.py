@@ -16,11 +16,11 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def get_category_votes(data: pd.DataFrame, category: str) -> pd.Series:
-    return data[data["category"] == category]["votes"].sort_values(ascending=True)
+    return data[data["category"] == category].sort_values(by="product")["votes"]
 
 
 def get_category_product_names(data: pd.DataFrame, category: str) -> pd.DataFrame:
-    return data[data["category"] == category]["product"]
+    return data[data["category"] == category]["product"].sort_values(ascending=True)
 
 
 def get_category_size(data: pd.DataFrame, category: str) -> int:
