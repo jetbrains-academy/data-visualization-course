@@ -10,15 +10,24 @@ import matplotlib.pyplot as plt
 from numpy.testing import assert_allclose
 import seaborn as sns
 
-colors_to_avoid = ["aqua", "darkgray", "darkslategray", "dimgray", "fuchsia", "gray", "lightgray",
-                   "lightslategray",
-                   "slategray"]
+colors_to_avoid = [
+    "aqua",
+    "darkgray",
+    "darkslategray",
+    "dimgray",
+    "fuchsia",
+    "gray",
+    "lightgray",
+    "lightslategray",
+    "slategray",
+]
 
 
 class BaseTestMixin(TestCase):
     longMessage = False
-    named_colors: ClassVar[dict] = {name: mcolors.to_rgb(name) for name in mcolors.CSS4_COLORS if
-                                    name not in colors_to_avoid}
+    named_colors: ClassVar[dict] = {
+        name: mcolors.to_rgb(name) for name in mcolors.CSS4_COLORS if name not in colors_to_avoid
+    }
 
     # Add tab10 colors for checking default colors assigned to plots
     tab10_colors: ClassVar[dict] = {f"C{i}": to_rgb(name) for i, name in enumerate(mcolors.TABLEAU_COLORS)}
@@ -70,7 +79,7 @@ class BaseTestMixin(TestCase):
 
         if expected_function is not None:
             if "plt" in expected_function:
-                error_message += f" Please return the figure from `plt.subplots`"
+                error_message += " Please return the figure from `plt.subplots`"
             else:
                 error_message += f" Please use `{expected_function}`."
 
@@ -132,11 +141,11 @@ class BaseTestMixin(TestCase):
         self.assertColorList(expected_handle_colors, actual_handle_colors, "The legend colors do not match.")
 
     def checkCollectionPosition(
-            self,
-            ax: plt.Axes,
-            expected_x: List[float],
-            expected_y: List[float],
-            collection_number: int = 0,
+        self,
+        ax: plt.Axes,
+        expected_x: List[float],
+        expected_y: List[float],
+        collection_number: int = 0,
     ):
         actual_x, actual_y = ax.collections[collection_number].get_offsets().T
 
@@ -172,8 +181,11 @@ class BaseTestMixin(TestCase):
 
     def checkCollectionColor(self, ax: plt.Axes, expected_facecolor: str, collection_number: int = 0):
         actual_color = to_rgb(ax.collections[collection_number].get_facecolor())
-        self.assertSingleColor(expected_facecolor, actual_color,
-                               f"The collection must be colored in '{expected_facecolor}', but got '{self.rgb_to_names(actual_color)}'.")
+        self.assertSingleColor(
+            expected_facecolor,
+            actual_color,
+            f"The collection must be colored in '{expected_facecolor}', but got '{self.rgb_to_names(actual_color)}'.",
+        )
 
     def checkNumberOfLines(self, ax: plt.Axes, expected_number: int):
         lines = getattr(ax, "lines", [])
@@ -219,8 +231,11 @@ class BaseTestMixin(TestCase):
 
     def checkLineColor(self, ax: plt.Axes, expected_color: str, line_number: int = 0):
         actual_color = to_rgb(ax.lines[line_number].get_color())
-        self.assertSingleColor(expected_color, actual_color,
-                               f"The line must be colored in '{expected_color}', but got '{self.rgb_to_names(actual_color)}'.")
+        self.assertSingleColor(
+            expected_color,
+            actual_color,
+            f"The line must be colored in '{expected_color}', but got '{self.rgb_to_names(actual_color)}'.",
+        )
 
     def checkLim(self, ax: plt.Axes, expected_lim: List[float], axis: Literal["x", "y"]):
         if axis == "x":
@@ -285,13 +300,13 @@ class BaseTestMixin(TestCase):
         )
 
     def checkTickLabels(
-            self,
-            ax: plt.Axes,
-            expected_tick_labels: List[str],
-            axis: Literal["x", "y"],
-            *,
-            minor: bool = False,
-            where: Literal["primary", "secondary"] = "primary",
+        self,
+        ax: plt.Axes,
+        expected_tick_labels: List[str],
+        axis: Literal["x", "y"],
+        *,
+        minor: bool = False,
+        where: Literal["primary", "secondary"] = "primary",
     ):
         if axis == "x":
             axis_obj = ax.xaxis
@@ -321,11 +336,11 @@ class BaseTestMixin(TestCase):
         )
 
     def checkSpineVisibility(
-            self,
-            ax: plt.Axes,
-            position: Literal["left", "right", "top", "bottom"],
-            *,
-            expected_visibility: bool,
+        self,
+        ax: plt.Axes,
+        position: Literal["left", "right", "top", "bottom"],
+        *,
+        expected_visibility: bool,
     ):
         actual_visibility = ax.spines[position].get_visible()
 
@@ -407,13 +422,13 @@ class BaseTestMixin(TestCase):
         )
 
     def checkBarPositions(
-            self,
-            ax: plt.Axes,
-            expected_positions: List[float],
-            *,
-            width: float = 0.8,
-            axis: Literal["x", "y"],
-            container_number: int = 0,
+        self,
+        ax: plt.Axes,
+        expected_positions: List[float],
+        *,
+        width: float = 0.8,
+        axis: Literal["x", "y"],
+        container_number: int = 0,
     ):
         if axis == "x":
             actual_positions = [bar.get_x() + width / 2 for bar in ax.containers[container_number]]
@@ -429,11 +444,11 @@ class BaseTestMixin(TestCase):
         )
 
     def checkBarLayout(
-            self,
-            ax: plt.Axes,
-            *,
-            expected_layout: Literal["horizontal", "vertical"],
-            container_number: int = 0,
+        self,
+        ax: plt.Axes,
+        *,
+        expected_layout: Literal["horizontal", "vertical"],
+        container_number: int = 0,
     ):
         actual_layout = ax.containers[container_number].orientation
         if actual_layout is None:
@@ -489,11 +504,11 @@ class BaseTestMixin(TestCase):
             )
 
     def checkPieExplode(
-            self,
-            ax: plt.Axes,
-            *,
-            expected_position: List[float],
-            expected_explode: Optional[List[float]] = None,
+        self,
+        ax: plt.Axes,
+        *,
+        expected_position: List[float],
+        expected_explode: Optional[List[float]] = None,
     ):
         fig, ax_test = plt.subplots()
         expected_patches, _ = ax_test.pie(expected_position, explode=expected_explode)
