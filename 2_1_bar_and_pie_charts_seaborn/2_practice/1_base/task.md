@@ -9,7 +9,7 @@ Let's help them!
 To interpret the data,
 the organizers want to see the distribution of votes for each category (`category`) in a single horizontal bar
 chart.
-So you should plot categories from top to bottom as follows: `salad`, `cheese`, and `bread`.
+So you should plot categories from top to bottom as follows: `bread`, `cheese`, and `salad`.
 
 The other requirements are:
 

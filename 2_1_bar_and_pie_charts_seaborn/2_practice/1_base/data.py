@@ -14,8 +14,7 @@ def get_product_order(data: pd.DataFrame) -> List:
         data.drop_duplicates(subset=["category", "product"])
         .sort_values(
             by=["category", "product"],
-            ascending=[False, False],
-            kind="stable",
+            ascending=[True, False],
         )["product"]
         .to_list()
     )
