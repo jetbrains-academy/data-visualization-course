@@ -24,12 +24,12 @@ class TestCase(BaseTestMixin):
         cls.fig = plot(data)
         cls.data = data
 
-        cls.categories = get_categories(cls.data)
+        cls.categories = list(reversed(get_categories(cls.data)))
 
         cls.category_colors = {
-            "bread": "sienna",
-            "cheese": "goldenrod",
             "salad": "forestgreen",
+            "cheese": "goldenrod",
+            "bread": "sienna",
         }
 
     def test_1_1_return_type(self):
@@ -51,7 +51,7 @@ class TestCase(BaseTestMixin):
 
     def test_2_1_bar_values(self):
         for i, category in enumerate(self.categories):
-            expected_positions = get_category_votes(self.data, category)
+            expected_positions = list(reversed(get_category_votes(self.data, category)))
             self.checkBarValues(self.fig.axes[0], expected_positions, container_number=i)
 
     def test_2_2_bar_position(self):
@@ -77,7 +77,7 @@ class TestCase(BaseTestMixin):
         expected_labels = []
         number_of_products = 0
         for category in self.categories:
-            expected_labels.extend(get_category_product_names(self.data, category))
+            expected_labels.extend(reversed(get_category_product_names(self.data, category)))
             number_of_products += get_category_size(self.data, category)
 
         self.checkTicks(self.fig.axes[0], list(range(number_of_products)), axis="y")
@@ -108,9 +108,16 @@ class TestCase(BaseTestMixin):
         self.checkNumberOfTextObjects(self.fig.axes[0], 18)
 
     def test_6_2_text_values(self):
-        expected_x = (self.data["votes"] + 1).to_list()
+        expected_x = []
+        expected_text = []
+
+        for category in self.categories:
+            expected_votes = list(reversed(get_category_votes(self.data, category)))
+            expected_x.extend(vote + 1 for vote in expected_votes)
+            expected_text.extend(f"{round(vote, 1)}" for vote in expected_votes)
+
         expected_y = list(range(self.data["product"].nunique()))
-        expected_text = self.data["votes"].apply(lambda x: f"{round(x, 1)}").to_list()
+
         self.checkTextObjects(self.fig.axes[0], list(zip(expected_x, expected_y, expected_text)))
 
     def test_7_1_legend(self):

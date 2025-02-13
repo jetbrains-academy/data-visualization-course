@@ -5,7 +5,7 @@ from data import get_categories, get_category_product_names, get_category_size, 
 
 
 def plot_category(ax: plt.Axes, votes: pd.DataFrame, category: str, color: str, offset: int = 0):
-    category_votes = get_category_votes(votes, category)
+    category_votes = list(reversed(get_category_votes(votes, category)))
     category_size = get_category_size(votes, category)
 
     ax.barh(
@@ -29,12 +29,12 @@ def plot(votes: pd.DataFrame) -> plt.Figure:
     y_tick_labels = []
 
     offset = 0
-    for category in get_categories(votes):
+    for category in reversed(get_categories(votes)):
         category_size = get_category_size(votes, category)
 
         plot_category(ax, votes, category, colors[category], offset)
 
-        y_tick_labels.extend(get_category_product_names(votes, category))
+        y_tick_labels.extend(reversed(get_category_product_names(votes, category)))
         y_tick_coordinates.extend([x + offset for x in range(category_size)])
 
         offset += category_size

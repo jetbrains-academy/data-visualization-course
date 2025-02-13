@@ -8,8 +8,9 @@ so let's focus only on modern platforms like `WiiU`, `PS4`, `XOne` and `PC`.
 Second, each of these platforms has its own brand color,
 so it would be convenient to color each bar accordingly.
 To change a color of bars, we should use the `color` argument. It accepts:
+
 1. A single color. In this case, each bar will be colored in the specified color.
-2. A collection of colors. In this case, these colors will be applied to the corresponding bars. 
+2. A collection of colors. In this case, these colors will be applied to the corresponding bars.
    But note that since our bar chart is horizontal, colors will be applied from bottom to top.
 
 We have described the format in which colors might be defined in detail in the
@@ -20,7 +21,7 @@ And the last thing, it will be great to have captions for axes and the figure.
 ## Task
 
 1. Use the hidden `filter_platforms` function to filter all platforms out except for `WiiU`, `PS4`, `XOne` and `PC`.
-   
+
    If you prefer, you can do it yourself. Please refer to the corresponding hint below.
 
 2. Color the bars in the following way: `WiiU` with `cyan`, `PS4` with `blue`, `XOne` with `green` and `PC` with `grey`.
@@ -35,7 +36,13 @@ And the last thing, it will be great to have captions for axes and the figure.
     the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html"><code>is_in</code></a> function
     on the <code>platform</code> column.
 
-   Note that your own function will not be tested.
+Note that your own function will not be tested.
+</div>
+
+<div class="hint" title="How to import hidden functions?">
+    To import it, you can place the cursor on the underlined hidden function name in your code, then press &shortcut:ShowIntentionActions;, and
+    select <samp>Import 'function_name from data'</samp>:
+   <img src="../../../common/resources/images/common/hidden_function_import.gif" alt="How to import hidden functions" style="max-height: 500px">
 </div>
 
 <div class="hint" title="How to set a label for an axis?">

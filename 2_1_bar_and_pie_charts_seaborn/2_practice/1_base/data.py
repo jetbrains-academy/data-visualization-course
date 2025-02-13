@@ -11,5 +11,8 @@ def read() -> pd.DataFrame:
 
 def get_product_order(data: pd.DataFrame) -> List:
     return (
-        data.drop_duplicates(subset=["category", "product"]).sort_values("category", kind="stable")["product"].to_list()
+        data.drop_duplicates(subset=["category", "product"])
+        .groupby("category", sort=False)
+        .apply(lambda group: group["product"].sort_values())
+        .to_list()
     )
