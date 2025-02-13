@@ -4,22 +4,22 @@ At a recent tasting event, participants were invited to sample an assortment of 
 Everyone had the chance to vote for up to 3 products per category, sharing their favorites among the diverse offerings.
 The organizers of a tasting event received all the responses,
 calculated themselves the percentage of votes for each product in each category
-(so that they know the corresponding distribution along cheese, bread, and salad).
+(so that they know the corresponding distribution along bread, cheese, and salad).
 Now they want us to help with plotting the data.
 Let's help them!
 
 To interpret the data,
 the organizers want to see the distribution of votes (`votes`) for each category (`category`) in a single horizontal bar
 chart.
-So you should plot categories from bottom to top and color them accordingly:
+So you should plot categories from top to bottom in the same order as they appear in the data
+and color them accordingly:
 `bread` - `sienna`, `cheese` - `goldenrod`, `salad` - `forestgreen`.
 
 The requirements for the y-axis:
 
 1. Each bar should have the corresponding product name on the left side of the bar (i.e. `cheddar`).
 2. Set the y-axis label as `Product name`.
-3. Product names within each category should be sorted
-   in ascending lexicographical order (from bottom to top).
+3. Product names within each category should be sorted in alphabetical order (from top to bottom).
 
 The requirements for the x-axis:
 
@@ -36,10 +36,10 @@ Note that we preprocessed the data for you. To learn how we do it, please see th
 
 You could use the following hidden functions:
 
-1. `get_category_votes` to get all votes for the specific category in ascending lexicographical order.
-2. `get_category_product_names` to get all product names for the specific category.
+1. `get_category_product_names` to get all product names for the specific category in alphabetical order (from top to bottom).
+2. `get_category_votes` to get all votes for the specific category in the same order as the product names.
 3. `get_category_size` to get a number of products in the specific category.
-4. `get_categories` to get a list of categories.
+4. `get_categories` to get a list of categories in the order they appear in the data.
 
 If you get stuck, please feel free to use the hints below, where you can also find what the final figure should look
 like.

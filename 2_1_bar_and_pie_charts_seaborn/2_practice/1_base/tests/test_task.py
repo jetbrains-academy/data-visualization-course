@@ -51,7 +51,7 @@ class PlotTestCase(BaseTestMixin):
                 self.data[self.data["category"] == category]
                 .groupby("product", sort=False)
                 .size()
-                .sort_index(ascending=False)
+                .sort_index()
             )
             self.checkBarValues(self.fig.ax, expected_values.to_list(), container_number=i)
 

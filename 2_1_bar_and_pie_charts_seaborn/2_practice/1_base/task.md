@@ -9,15 +9,14 @@ Let's help them!
 To interpret the data,
 the organizers want to see the distribution of votes for each category (`category`) in a single horizontal bar
 chart.
-So you should plot categories from top to bottom as follows: `bread`, `cheese`, and `salad`.
+So you should plot categories from top to bottom in the same order as they appear in the data: `bread`, `cheese`, and `salad`.
 
 The other requirements are:
 
 1. The bar chart should be horizontal.
 2. The bars should be grouped by category.
-3. The products should be in the same order as in the data.
+3. Product names within each category should be sorted in alphabetical order (from top to bottom).
 4. The bar chart should have the legend.
-5. Product names within each category should be sorted in descending lexicographical order (from top to bottom).
 
 Note that you don't need to preprocess the data.
 
