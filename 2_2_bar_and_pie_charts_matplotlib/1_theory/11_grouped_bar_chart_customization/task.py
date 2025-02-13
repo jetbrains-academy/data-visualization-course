@@ -36,7 +36,7 @@ def plot(games: pd.DataFrame) -> plt.Figure:
 
     ax.set_xlabel("Decade")
     ax.set_ylabel("Sales")
-    ax.set_title("Total sales over decades for each region")
+    ax.set_title("Total sales for each region over decades")
 
     number_of_groups = get_number_of_decades(games)
     group_size = get_number_of_regions(games) + 1

@@ -1,45 +1,45 @@
 ## Task
 
 At a recent tasting event, participants were invited to sample an assortment of breads, cheeses, and salads.
-Everyone had the chance to vote for up to 3 products per category, sharing their favorites among the diverse offerings.
-The organizers of a tasting event received all the responses,
-calculated themselves the percentage of votes for each product in each category
-(so that they know the corresponding distribution along bread, cheese, and salad).
+Everyone had the chance to vote for up to 3 products per category, sharing their favorites from the diverse offerings.
+The organizers collected all the responses and
+calculated the percentage of votes for each product within each category
+(to uderstand the distribution across bread, cheese, and salad).
 Now they want us to help with plotting the data.
 Let's help them!
 
 To interpret the data,
 the organizers want to see the distribution of votes (`votes`) for each category (`category`) in a single horizontal bar
 chart.
-So you should plot categories from top to bottom in the same order as they appear in the data
+So, you should plot the categories from top to bottom in the same order as they appear in the data
 and color them accordingly:
 `bread` - `sienna`, `cheese` - `goldenrod`, `salad` - `forestgreen`.
 
-The requirements for the y-axis:
+Y-axis requirements:
 
-1. Each bar should have the corresponding product name on the left side of the bar (i.e. `cheddar`).
-2. Set the y-axis label as `Product name`.
+1. Each bar should have the corresponding product name on the left side (i.e. `cheddar`).
+2. Set the y-axis label to `Product name`.
 3. Product names within each category should be sorted in alphabetical order (from top to bottom).
 
-The requirements for the x-axis:
+X-axis requirements:
 
-1. The x-axis should have only these ticks: `0`, `25`, `50`, `75` and `100`.
-2. Set the x-axis label as `Respondents, %`.
+1. The x-axis should have only these ticks: `0`, `25`, `50`, `75`, and `100`.
+2. Set the x-axis label to `Respondents, %`.
 
-You also should make some visual adjustments to the figure:
+You should also make some visual adjustments to the figure:
 
-1. Set the chart title as `Distribution of votes per category`.
-2. Add the legend.
+1. Set the chart title to `Distribution of votes per category`.
+2. Add a legend.
 3. Tighten the layout.
 
-Note that we preprocessed the data for you. To learn how we do it, please see the corresponding hint below.
+Note that we've preprocessed the data for you. To learn how we did it, refer to the corresponding hint below.
 
-You could use the following hidden functions:
+You can use the following hidden functions:
 
-1. `get_category_product_names` to get all product names for the specific category in alphabetical order (from top to bottom).
-2. `get_category_votes` to get all votes for the specific category in the same order as the product names.
-3. `get_category_size` to get a number of products in the specific category.
-4. `get_categories` to get a list of categories in the order they appear in the data.
+1. `get_category_product_names`: Retrieves all product names for a specific category in alphabetical order (from top to bottom).
+2. `get_category_votes`: Retrieves all votes for a specific category in the same order as the product names.
+3. `get_category_size`: Calculates the number of products in a specific category.
+4. `get_categories`: Retrieves a list of all categories in the order they appear in the data.
 
 If you get stuck, please feel free to use the hints below, where you can also find what the final figure should look
 like.
@@ -56,7 +56,7 @@ like.
       <li>Calculate the number of votes for each category and product using
       the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code>groupby</code></a>
       and <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.count.html"><code>count</code></a> functions.</li>
-      <li>Normalize the data by dividing it to the number of participants and multiply it by 100 to get the percentage.
+      <li>Normalize the data by dividing it by the number of participants, then multiply it by 100 to get the percentage.
       We can find the number of participants using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html"><code>nunique</code></a> function.</li>
       <li>Rename the <code>participants</code> column to <code>votes</code> using
       the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html"><code>rename</code></a> function.</li>

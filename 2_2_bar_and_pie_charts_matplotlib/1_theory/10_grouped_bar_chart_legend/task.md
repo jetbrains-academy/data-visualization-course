@@ -1,17 +1,17 @@
 ## Theory
 
 Great!
-Now we finally have all regions plotted together!
-But it is not clear which trace belongs to which region. 
-The legend could help fix this.
+Now we finally have all the regions plotted together.
+However, it's not clear which trace corresponds to which region. 
+Adding a legend could solve this issue.
 
-To tell Matplotlib to add the legend to our figure,
-we should call the [`ax.legend`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html#matplotlib.axes.Axes.legend) functon.
-To tell Matplotlib to add the legend to our figure we should call the `ax.layout` function.
+To add a legend to our figure in Matplotlib,
+we need to call the [`ax.legend`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html#matplotlib.axes.Axes.legend) functon.
 
-But after doing that, we will see that nothing happened.
-This is because Matplotlib doesn't know the region names.
-To fix this, we should pass the name to the `bar` function via the `label` argument.
+
+However, if we do this without further adjustment, nothing will happen.
+This is because Matplotlib doesn't know the names of the regions.
+To fix this, we must pass the region name to the `bar` function using the `label` argument.
 
 ## Task
 
