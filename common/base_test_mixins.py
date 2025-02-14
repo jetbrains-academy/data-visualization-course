@@ -182,6 +182,7 @@ class BaseTestMixin(TestCase):
     def checkCollectionTransparency(self, ax: plt.Axes, *, expected_alpha: float, collection_number: int = 0):
         actual_alpha = ax.collections[collection_number].get_alpha()
         if actual_alpha is None:
+            # If alpha is None, then it by default equals 1
             actual_alpha = 1
 
         if expected_alpha == 1:
