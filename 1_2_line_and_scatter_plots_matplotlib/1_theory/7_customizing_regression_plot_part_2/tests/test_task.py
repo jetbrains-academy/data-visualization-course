@@ -50,8 +50,8 @@ class PlotTestCase(BaseTestMixin):
         self.checkCollectionTransparency(self.fig.axes[0], expected_alpha=0.1)
 
     def test_4_labels(self):
-        self.checkLabel(self.fig.axes[0], "User Score", "x")
-        self.checkLabel(self.fig.axes[0], "Critic Score", "y")
+        self.checkLabel(self.fig.axes[0], expected_label="User Score", axis="x")
+        self.checkLabel(self.fig.axes[0], expected_label="Critic Score", axis="y")
 
     def test_5_ticks(self):
         self.checkTicks(self.fig.axes[0], list(range(11)), axis="x")

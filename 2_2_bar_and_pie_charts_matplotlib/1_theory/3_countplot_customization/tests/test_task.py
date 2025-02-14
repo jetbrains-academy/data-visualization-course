@@ -55,8 +55,8 @@ class PlotTestCase(BaseTestMixin):
         self.checkBarColor(self.fig.axes[0], expected_facecolors=["gray", "blue", "green", "cyan"])
 
     def test_3_labels(self):
-        self.checkLabel(self.fig.axes[0], "Count", "x")
-        self.checkLabel(self.fig.axes[0], "Platform", "y")
+        self.checkLabel(self.fig.axes[0], expected_label="Count", axis="x")
+        self.checkLabel(self.fig.axes[0], expected_label="Platform", axis="y")
 
     def test_4_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Number of games per platform")

@@ -305,13 +305,16 @@ class BaseTestMixin(TestCase):
             raise ValueError("Unknown axis name.")
 
         if expected_label is None:
-            self.assertEqual("", actual_label, f"The {axis}-axis should have no labels.")
+            self.assertTrue(
+                actual_label == "",
+                msg=f"The {axis}-axis should have no label, but got <samp>{actual_label}</samp> instead.",
+            )
             return
 
         self.assertEqual(
             expected_label,
             actual_label,
-            f"The {axis}-axis should be labeled as '{expected_label}'",
+            f"The {axis}-axis should be labeled as <samp>{expected_label}</samp>.",
         )
 
     def checkTicks(self, ax: plt.Axes, expected_ticks: List[float], axis: Literal["x", "y"], *, minor: bool = False):

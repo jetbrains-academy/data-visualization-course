@@ -102,8 +102,8 @@ class PlotTestCase(BaseTestMixin):
         self.checkTickLabels(self.fig.axes[0], list(map(str, self.decades)), axis="x")
 
     def test_4_labels(self):
-        self.checkLabel(self.fig.axes[0], "Decade", "x")
-        self.checkLabel(self.fig.axes[0], "Sales", "y")
+        self.checkLabel(self.fig.axes[0], expected_label="Decade", axis="x")
+        self.checkLabel(self.fig.axes[0], expected_label="Sales", axis="y")
 
     def test_5_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Total sales for each region over decades")

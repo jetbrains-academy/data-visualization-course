@@ -84,7 +84,7 @@ class TestCase(BaseTestMixin):
         self.checkTickLabels(self.fig.axes[0], expected_labels, axis="y")
 
     def test_3_2_y_label(self):
-        self.checkLabel(self.fig.axes[0], "Product name", axis="y")
+        self.checkLabel(self.fig.axes[0], expected_label="Product name", axis="y")
 
     def test_4_1_x_major_ticks(self):
         self.checkTicks(self.fig.axes[0], list(range(0, 101, 25)), axis="x")
@@ -99,7 +99,7 @@ class TestCase(BaseTestMixin):
         self.checkTickLabels(self.fig.axes[0], [""] * len(expected_positions), axis="x", minor=True, where="secondary")
 
     def test_4_3_x_label(self):
-        self.checkLabel(self.fig.axes[0], "Respondents, %", "x")
+        self.checkLabel(self.fig.axes[0], expected_label="Respondents, %", axis="x")
 
     def test_5_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Distribution of votes per category")

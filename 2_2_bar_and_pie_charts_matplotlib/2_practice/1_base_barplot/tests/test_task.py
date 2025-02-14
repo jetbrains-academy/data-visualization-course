@@ -84,14 +84,14 @@ class TestCase(BaseTestMixin):
         self.checkTickLabels(self.fig.axes[0], expected_labels, axis="y")
 
     def test_3_2_y_label(self):
-        self.checkLabel(self.fig.axes[0], "Product name", axis="y")
+        self.checkLabel(self.fig.axes[0], expected_label="Product name", axis="y")
 
     def test_4_1_x_ticks(self):
         self.checkTicks(self.fig.axes[0], list(range(0, 101, 25)), axis="x")
         self.checkTickLabels(self.fig.axes[0], list(map(str, range(0, 101, 25))), axis="x")
 
     def test_4_2_x_label(self):
-        self.checkLabel(self.fig.axes[0], "Respondents, %", "x")
+        self.checkLabel(self.fig.axes[0], expected_label="Respondents, %", axis="x")
 
     def test_5_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Distribution of votes per category")
