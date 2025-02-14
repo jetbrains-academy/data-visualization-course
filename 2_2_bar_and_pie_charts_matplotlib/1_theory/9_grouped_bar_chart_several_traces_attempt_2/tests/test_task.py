@@ -38,7 +38,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfAxes(self.fig.axes, expected_number=1)
 
     def test_1_3_bar_kind(self):
-        self.checkNumberOfCollections(self.fig.axes[0], 0)
+        self.checkNumberOfCollections(self.fig.axes[0], expected_number=0)
         self.checkNumberOfLines(self.fig.axes[0], 0)
 
         # Bars

@@ -107,7 +107,7 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} axes.",
         )
 
-    def checkNumberOfCollections(self, ax: plt.Axes, expected_number: int):
+    def checkNumberOfCollections(self, ax: plt.Axes, *, expected_number: int):
         collections = getattr(ax, "collections", [])
         self.assertEqual(
             expected_number,

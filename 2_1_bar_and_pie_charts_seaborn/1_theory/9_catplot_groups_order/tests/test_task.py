@@ -35,7 +35,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfAxes(self.fig.axes.flat, expected_number=1)
 
     def test_1_3_catplot_kind(self):
-        self.checkNumberOfCollections(self.fig.ax, 0)
+        self.checkNumberOfCollections(self.fig.ax, expected_number=0)
         self.checkNumberOfLines(self.fig.ax, 0)  # Error bars
 
         number_of_decades = self.data["decade"].nunique()
