@@ -27,7 +27,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_1_3_relplot_kind(self):
         self.checkNumberOfCollections(self.fig.ax, expected_number=2)
-        self.checkNumberOfLines(self.fig.ax, 1)
+        self.checkNumberOfLines(self.fig.ax, expected_number=1)
 
     def test_2_1_line_position(self):
         expected_fig = sns.lmplot(self.data, x="x", y="y")

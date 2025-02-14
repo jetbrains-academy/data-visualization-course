@@ -77,7 +77,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_07_2_inset_axes_kind(self):
         self.checkNumberOfCollections(self.fig.axes[0].child_axes[0], expected_number=1)
-        self.checkNumberOfLines(self.fig.axes[0].child_axes[0], 1)
+        self.checkNumberOfLines(self.fig.axes[0].child_axes[0], expected_number=1)
 
     def test_08_1_inset_axes_line_position(self):
         self.checkLinePosition(

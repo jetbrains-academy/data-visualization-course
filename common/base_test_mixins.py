@@ -199,7 +199,7 @@ class BaseTestMixin(TestCase):
             f"The collection must be colored in '{expected_facecolor}', but got '{self.rgb_to_names(actual_color)}'.",
         )
 
-    def checkNumberOfLines(self, ax: plt.Axes, expected_number: int):
+    def checkNumberOfLines(self, ax: plt.Axes, *, expected_number: int):
         lines = getattr(ax, "lines", [])
         self.assertEqual(
             expected_number,

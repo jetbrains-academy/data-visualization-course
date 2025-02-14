@@ -28,7 +28,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_1_3_relplot_kind(self):
         self.checkNumberOfCollections(self.fig.ax, expected_number=1)
-        self.checkNumberOfLines(self.fig.ax, 0)
+        self.checkNumberOfLines(self.fig.ax, expected_number=0)
 
     def test_2_1_scatter_position(self):
         self.checkCollectionPosition(self.fig.ax, expected_x=self.data["user_score"], expected_y=self.data["critic_score"])

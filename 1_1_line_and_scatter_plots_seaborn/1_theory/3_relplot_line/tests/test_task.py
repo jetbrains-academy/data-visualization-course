@@ -28,7 +28,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_1_3_relplot_kind(self):
         self.checkNumberOfCollections(self.fig.ax, expected_number=1)
-        self.checkNumberOfLines(self.fig.ax, 1)
+        self.checkNumberOfLines(self.fig.ax, expected_number=1)
 
     def test_2_1_line_position(self):
         position = self.data.groupby("user_score")["critic_score"].mean()

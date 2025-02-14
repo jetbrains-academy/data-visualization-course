@@ -33,7 +33,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_1_3_pie_kind(self):
         self.checkNumberOfCollections(self.fig.axes[0], expected_number=0)
-        self.checkNumberOfLines(self.fig.axes[0], 0)
+        self.checkNumberOfLines(self.fig.axes[0], expected_number=0)
         self.checkNumberOfContainers(self.fig.axes[0], 0)
 
         self.checkNumberOfPatches(self.fig.axes[0], 4)

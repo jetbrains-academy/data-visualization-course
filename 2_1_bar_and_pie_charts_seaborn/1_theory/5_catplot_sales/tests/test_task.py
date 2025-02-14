@@ -33,7 +33,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_1_3_catplot_kind(self):
         self.checkNumberOfCollections(self.fig.ax, expected_number=0)
-        self.checkNumberOfLines(self.fig.ax, self.filtered_data["platform"].nunique())  # Error bars
+        self.checkNumberOfLines(self.fig.ax, expected_number=self.filtered_data["platform"].nunique())  # Error bars
 
         # Bars
         self.checkNumberOfContainers(self.fig.ax, 1)

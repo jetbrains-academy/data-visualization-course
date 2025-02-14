@@ -28,7 +28,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_1_3_catplot_kind(self):
         self.checkNumberOfCollections(self.fig.ax, expected_number=0)
-        self.checkNumberOfLines(self.fig.ax, 0)
+        self.checkNumberOfLines(self.fig.ax, expected_number=0)
 
         # Bars
         self.checkNumberOfContainers(self.fig.ax, self.data["category"].nunique())
