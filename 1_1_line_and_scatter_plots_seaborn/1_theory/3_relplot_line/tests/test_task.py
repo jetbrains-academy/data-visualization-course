@@ -32,7 +32,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_1_line_position(self):
         position = self.data.groupby("user_score")["critic_score"].mean()
-        self.checkLinePosition(self.fig.ax, position.index, position)
+        self.checkLinePosition(self.fig.ax, expected_x=position.index, expected_y=position)
 
     def test_2_2_line_transparency(self):
         self.checkLineTransparency(self.fig.ax, 1)

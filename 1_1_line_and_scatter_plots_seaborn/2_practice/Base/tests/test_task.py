@@ -32,7 +32,7 @@ class PlotTestCase(BaseTestMixin):
     def test_2_1_line_position(self):
         expected_fig = sns.lmplot(self.data, x="x", y="y")
         expected_line_x, expected_line_y = expected_fig.ax.lines[0].get_xydata().T
-        self.checkLinePosition(self.fig.ax, expected_line_x, expected_line_y)
+        self.checkLinePosition(self.fig.ax, expected_x=expected_line_x, expected_y=expected_line_y)
 
     def test_2_2_line_color(self):
         self.checkLineColor(self.fig.ax, "navy")

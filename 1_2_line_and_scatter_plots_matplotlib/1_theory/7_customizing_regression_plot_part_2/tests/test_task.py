@@ -32,7 +32,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_1_line_position(self):
         aggregated_data = aggregate(self.data)
-        self.checkLinePosition(self.fig.axes[0], aggregated_data["user_score"], aggregated_data["critic_score"])
+        self.checkLinePosition(self.fig.axes[0], expected_x=aggregated_data["user_score"], expected_y=aggregated_data["critic_score"])
 
     def test_2_2_line_color(self):
         self.checkLineColor(self.fig.axes[0], "firebrick")

@@ -31,7 +31,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig.axes[0], expected_number=1)
 
     def test_2_1_line_position(self):
-        self.checkLinePosition(self.fig.axes[0], self.data["user_score"], self.data["critic_score"])
+        self.checkLinePosition(self.fig.axes[0], expected_x=self.data["user_score"], expected_y=self.data["critic_score"])
 
     def test_2_2_line_transparency(self):
         self.checkLineTransparency(self.fig.axes[0], 1)

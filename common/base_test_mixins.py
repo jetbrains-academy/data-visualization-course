@@ -207,7 +207,7 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} lines.",
         )
 
-    def checkLinePosition(self, ax: plt.Axes, expected_x: List[float], expected_y: List[float], line_number: int = 0):
+    def checkLinePosition(self, ax: plt.Axes, *, expected_x: List[float], expected_y: List[float], line_number: int = 0):
         actual_x, actual_y = ax.lines[line_number].get_xydata().T
 
         self.assertAllClose(
