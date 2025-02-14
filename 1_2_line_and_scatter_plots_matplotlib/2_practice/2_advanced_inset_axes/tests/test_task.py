@@ -61,7 +61,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkLabel(self.fig.axes[0], expected_label="x", axis="x")
 
     def test_05_3_x_lim(self):
-        self.checkLim(self.fig.axes[0], expected_lim=[-4, 4], axis="x")
+        self.checkLim(self.fig.axes[0], expected_lim=(-4, 4), axis="x")
 
     def test_06_1_y_ticks(self):
         self.checkTicks(self.fig.axes[0], expected_ticks=[-1.5, 0, 1.5], axis="y")
@@ -70,7 +70,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkLabel(self.fig.axes[0], expected_label="y", axis="y")
 
     def test_06_3_y_lim(self):
-        self.checkLim(self.fig.axes[0], expected_lim=[-2, 2], axis="y")
+        self.checkLim(self.fig.axes[0], expected_lim=(-2, 2), axis="y")
 
     def test_07_1_number_of_inset_axes(self):
         self.checkNumberOfAxes(self.fig.axes[0].child_axes, expected_number=1)
@@ -106,7 +106,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkCollectionTransparency(self.fig.axes[0].child_axes[0], expected_alpha=0.05)
 
     def test_10_1_inset_axes_x_lim(self):
-        self.checkLim(self.fig.axes[0].child_axes[0], expected_lim=[0.5, 1.5], axis="x")
+        self.checkLim(self.fig.axes[0].child_axes[0], expected_lim=(0.5, 1.5), axis="x")
 
     def test_10_2_inset_axes_x_ticks(self):
         self.checkTicks(self.fig.axes[0].child_axes[0], expected_ticks=[0.5, 1.5], axis="x")
@@ -115,7 +115,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkLabel(self.fig.axes[0].child_axes[0], expected_label=None, axis="x")
 
     def test_11_1_inset_axes_y_lim(self):
-        self.checkLim(self.fig.axes[0].child_axes[0], expected_lim=[0.6, 1.1], axis="y")
+        self.checkLim(self.fig.axes[0].child_axes[0], expected_lim=(0.6, 1.1), axis="y")
 
     def test_11_2_inset_axes_y_ticks(self):
         self.checkTicks(self.fig.axes[0].child_axes[0], expected_ticks=[0.6, 1.1], axis="y")

@@ -250,7 +250,7 @@ class BaseTestMixin(TestCase):
             f"The line must be colored in '{expected_color}', but got '{self.rgb_to_names(actual_color)}'.",
         )
 
-    def checkLim(self, ax: plt.Axes, expected_lim: List[float], axis: Literal["x", "y"]):
+    def checkLim(self, ax: plt.Axes, *, expected_lim: Tuple[float, float], axis: Literal["x", "y"]):
         if axis == "x":
             actual_lim = ax.get_xlim()
         elif axis == "y":
@@ -258,11 +258,27 @@ class BaseTestMixin(TestCase):
         else:
             raise ValueError("Unknown axis name.")
 
-        self.assertAllClose(
-            expected_lim,
-            actual_lim,
-            msg=f"The figure should be limited from {expected_lim[0]} to {expected_lim[1]} for {axis}-axis.",
+        expected_left_bound, expected_right_bound = expected_lim
+        actual_left_bound, actual_right_bound = actual_lim
+
+        msg = (
+            f"The figure should be limited from <samp>{expected_left_bound}</samp> to "
+            f"<samp>{expected_right_bound}</samp> for {axis}-axis, "
+            f"but limited from <samp>{actual_left_bound}</samp> to <samp>{actual_right_bound}</samp> instead."
         )
+
+        self.assertAlmostEqual(
+            expected_left_bound,
+            actual_left_bound,
+            msg=msg,
+        )
+
+        self.assertAlmostEqual(
+            expected_right_bound,
+            actual_right_bound,
+            msg=msg,
+        )
+
 
     def checkTitle(self, ax: plt.Axes, expected_title: Optional[str]):
         actual_title = ax.get_title()
