@@ -144,7 +144,7 @@ class BaseTestMixin(TestCase):
         self.assertAllEqual(
             expected_labels,
             actual_labels,
-            msg=f"The legend labels must be equal to {expected_labels}.",
+            msg=f"The actual legend labels does not match the expected ones.",
         )
 
     def checkLegendHandleColors(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_handle_colors: List[str]):
