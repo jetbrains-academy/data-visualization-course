@@ -20,7 +20,7 @@ class PlotTestCase(BaseTestMixin):
         cls.fig = plot(data)
 
     def test_1_1_return_type(self):
-        self.checkReturnType(self.fig, expected_type=sns.FacetGrid)
+        self.checkReturnType(self.fig, expected_type=sns.FacetGrid, expected_function="sns.lmplot")
 
     def test_1_2_number_of_axes(self):
         self.checkNumberOfAxes(self.fig.axes.flat, 1)

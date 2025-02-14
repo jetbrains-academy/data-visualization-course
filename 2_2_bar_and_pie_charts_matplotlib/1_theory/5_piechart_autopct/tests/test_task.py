@@ -26,7 +26,7 @@ class PlotTestCase(BaseTestMixin):
         cls.aggregated_data = aggregate(filter_platforms(data))
 
     def test_1_1_return_type(self):
-        self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="ax.pie")
+        self.checkReturnType(self.fig, expected_type=plt.Figure)
 
     def test_1_2_number_of_axes(self):
         self.checkNumberOfAxes(self.fig.axes, 1)

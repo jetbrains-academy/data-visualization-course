@@ -73,15 +73,26 @@ class BaseTestMixin(TestCase):
 
     # ----------------------------------------------------------------------
 
-    def checkReturnType(self, obj: Any, expected_type: Any, expected_function: Optional[str] = None):
-        string_expected_type = expected_type.__name__
-        error_message = f"The return type is wrong. You should return {string_expected_type}, but got {type(obj)}."
+    def checkReturnType(self, obj: Any, *, expected_type: Any, expected_function: Optional[str] = None):
+        error_message = (
+            f"The return type is wrong: "
+            f"you should return <samp>{expected_type.__name__}</samp>, but got <samp>{type(obj).__name__}</samp>."
+        )
 
-        if expected_function is not None:
-            if "plt" in expected_function:
-                error_message += " Please return the figure from `plt.subplots`"
-            else:
-                error_message += f" Please use `{expected_function}`."
+        if expected_type == plt.Figure:
+            if expected_function is not None:
+                raise ValueError("Expected function should not be specified for plt.Figure.")
+
+            error_message += " Please return <samp>Figure</samp> obtained from <samp>plt.subplots</samp>."
+
+        elif expected_type == sns.FacetGrid:
+            if expected_function is None:
+                raise ValueError("Expected function should be specified for sns.FacetGrid.")
+
+            error_message += f" Please return the result of calling <samp>{expected_function}</samp>."
+
+        else:
+            raise ValueError("Unknown return type.")
 
         self.assertIsInstance(
             obj,
