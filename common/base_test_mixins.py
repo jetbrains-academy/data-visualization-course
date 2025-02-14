@@ -48,7 +48,7 @@ class BaseTestMixin(TestCase):
         try:
             self.assertListEqual(expected, actual)
         except AssertionError as e:
-            error_string = f"{msg}\n\nExpected: {expected}\nActual: {actual}\n\n{e!s}"
+            error_string = f"{msg} Please see the full feedback for more information.\n\nExpected: {expected}\nActual: {actual}\n\n{e!s}"
             raise self.failureException(error_string) from None
 
     @staticmethod
