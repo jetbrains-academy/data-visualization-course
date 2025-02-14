@@ -179,15 +179,15 @@ class BaseTestMixin(TestCase):
             ),
         )
 
-    def checkCollectionTransparency(self, ax: plt.Axes, expected_alpha: float, collection_number: int = 0):
+    def checkCollectionTransparency(self, ax: plt.Axes, *, expected_alpha: float, collection_number: int = 0):
         actual_alpha = ax.collections[collection_number].get_alpha()
         if actual_alpha is None:
             actual_alpha = 1
 
         if expected_alpha == 1:
-            error_message = "The collection must not be transparent."
+            error_message = f"The collection must not be transparent, but got <samp>{actual_alpha}</samp>."
         else:
-            error_message = f"The collection must have transparency = {expected_alpha}, but got {actual_alpha}."
+            error_message = f"The collection must have transparency equal to <samp>{expected_alpha}</samp>, but got <samp>{actual_alpha}</samp>."
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 

@@ -47,4 +47,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkCollectionColor(self.fig.axes[0], "C0")
 
     def test_3_3_transparency(self):
-        self.checkCollectionTransparency(self.fig.axes[0], 0.1)
+        self.checkCollectionTransparency(self.fig.axes[0], expected_alpha=0.1)
