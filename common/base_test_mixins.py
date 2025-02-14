@@ -154,6 +154,7 @@ class BaseTestMixin(TestCase):
     def checkCollectionPosition(
         self,
         ax: plt.Axes,
+        *,
         expected_x: List[float],
         expected_y: List[float],
         collection_number: int = 0,

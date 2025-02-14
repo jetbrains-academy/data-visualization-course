@@ -31,4 +31,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig.ax, 0)
 
     def test_2_1_scatter_position(self):
-        self.checkCollectionPosition(self.fig.ax, self.data["user_score"], self.data["critic_score"])
+        self.checkCollectionPosition(self.fig.ax, expected_x=self.data["user_score"], expected_y=self.data["critic_score"])

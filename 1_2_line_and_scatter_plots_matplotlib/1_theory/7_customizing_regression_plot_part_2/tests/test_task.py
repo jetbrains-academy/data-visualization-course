@@ -41,7 +41,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkLineTransparency(self.fig.axes[0], 1)
 
     def test_3_1_scatter_position(self):
-        self.checkCollectionPosition(self.fig.axes[0], self.data["user_score"], self.data["critic_score"])
+        self.checkCollectionPosition(self.fig.axes[0], expected_x=self.data["user_score"], expected_y=self.data["critic_score"])
 
     def test_3_2_scatter_color(self):
         self.checkCollectionColor(self.fig.axes[0], "C0")
