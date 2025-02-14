@@ -228,16 +228,16 @@ class BaseTestMixin(TestCase):
             ),
         )
 
-    def checkLineTransparency(self, ax: plt.Axes, expected_alpha: float, line_number: int = 0):
+    def checkLineTransparency(self, ax: plt.Axes, *, expected_alpha: float, line_number: int = 0):
         actual_alpha = ax.lines[line_number].get_alpha()
         if actual_alpha is None:
             # If alpha is None, then it by default equals 1
             actual_alpha = 1
 
         if expected_alpha == 1:
-            error_message = "The line must not be transparent."
+            error_message = f"The line must not be transparent, but got <samp>{actual_alpha}</samp>."
         else:
-            error_message = f"The line must have transparency = {expected_alpha}, but got {actual_alpha}."
+            error_message = f"The line must have transparency equal to <samp>{expected_alpha}</samp>, but got <samp>{actual_alpha}</samp>."
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 

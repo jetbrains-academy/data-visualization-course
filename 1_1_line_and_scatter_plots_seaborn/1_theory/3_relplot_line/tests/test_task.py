@@ -35,7 +35,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkLinePosition(self.fig.ax, expected_x=position.index, expected_y=position)
 
     def test_2_2_line_transparency(self):
-        self.checkLineTransparency(self.fig.ax, 1)
+        self.checkLineTransparency(self.fig.ax, expected_alpha=1)
 
     def test_2_3_line_color(self):
         self.checkLineColor(self.fig.ax, "C0")
