@@ -80,4 +80,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkLegendLabels(self.fig.axes[0], expected_labels=list(self.regions))
 
     def test_3_title(self):
-        self.checkTitle(self.fig.axes[0], None)
+        self.checkTitle(self.fig.axes[0], expected_title=None)

@@ -106,4 +106,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkLabel(self.fig.axes[0], "Sales", "y")
 
     def test_5_title(self):
-        self.checkTitle(self.fig.axes[0], "Total sales for each region over decades")
+        self.checkTitle(self.fig.axes[0], expected_title="Total sales for each region over decades")

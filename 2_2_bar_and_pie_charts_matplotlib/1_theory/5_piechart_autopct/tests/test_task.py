@@ -60,4 +60,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkPieColors(self.fig.axes[0], expected_colors=["C0", "C1", "C2", "C3"])
 
     def test_3_title(self):
-        self.checkTitle(self.fig.axes[0], None)
+        self.checkTitle(self.fig.axes[0], expected_title=None)

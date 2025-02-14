@@ -67,4 +67,4 @@ class PlotTestCase(BaseTestMixin):
         )
 
     def test_3_title(self):
-        self.checkTitle(self.fig.axes[0], "Proportion of games per platform")
+        self.checkTitle(self.fig.axes[0], expected_title="Proportion of games per platform")

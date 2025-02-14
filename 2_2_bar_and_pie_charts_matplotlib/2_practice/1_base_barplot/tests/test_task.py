@@ -94,7 +94,7 @@ class TestCase(BaseTestMixin):
         self.checkLabel(self.fig.axes[0], "Respondents, %", "x")
 
     def test_5_title(self):
-        self.checkTitle(self.fig.axes[0], "Distribution of votes per category")
+        self.checkTitle(self.fig.axes[0], expected_title="Distribution of votes per category")
 
     def test_6_1_legend_exists(self):
         self.checkLegendExists(self.fig.axes[0])

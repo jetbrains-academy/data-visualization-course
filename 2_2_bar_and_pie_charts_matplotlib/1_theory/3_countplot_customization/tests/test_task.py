@@ -59,4 +59,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkLabel(self.fig.axes[0], "Platform", "y")
 
     def test_4_title(self):
-        self.checkTitle(self.fig.axes[0], "Number of games per platform")
+        self.checkTitle(self.fig.axes[0], expected_title="Number of games per platform")

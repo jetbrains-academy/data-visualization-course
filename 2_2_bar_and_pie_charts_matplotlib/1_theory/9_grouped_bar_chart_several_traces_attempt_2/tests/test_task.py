@@ -70,4 +70,4 @@ class PlotTestCase(BaseTestMixin):
             )
 
     def test_3_title(self):
-        self.checkTitle(self.fig.axes[0], None)
+        self.checkTitle(self.fig.axes[0], expected_title=None)

@@ -280,17 +280,20 @@ class BaseTestMixin(TestCase):
         )
 
 
-    def checkTitle(self, ax: plt.Axes, expected_title: Optional[str]):
+    def checkTitle(self, ax: plt.Axes, *, expected_title: Optional[str]):
         actual_title = ax.get_title()
 
         if expected_title is None:
-            self.assertEqual("", actual_title, "The figure should have no title.")
+            self.assertTrue(
+                actual_title == "",
+                msg=f"The figure should have no title, but got <samp>{actual_title}</samp> instead.",
+            )
             return
 
         self.assertEqual(
             expected_title,
             actual_title,
-            f"The figure should be titled as '{expected_title}'.",
+            f"The figure should be titled as <samp>{expected_title}</samp>.",
         )
 
     def checkLabel(self, ax: plt.Axes, expected_label: Optional[str], axis: Literal["x", "y"]):
