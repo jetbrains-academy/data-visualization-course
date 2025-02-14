@@ -42,7 +42,7 @@ class BaseTestMixin(TestCase):
         try:
             assert_allclose(actual, expected)
         except AssertionError as e:
-            raise self.failureException(msg + str(e)) from None
+            raise self.failureException(f"{msg} Please see the full feedback for more information.\n\n{e!s}") from None
 
     def assertAllEqual(self, expected: list, actual: list, msg: str):
         try:
