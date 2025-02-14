@@ -73,7 +73,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkLim(self.fig.axes[0], expected_lim=[-2, 2], axis="y")
 
     def test_07_1_number_of_inset_axes(self):
-        self.checkNumberOfAxes(self.fig.axes[0].child_axes, 1)
+        self.checkNumberOfAxes(self.fig.axes[0].child_axes, expected_number=1)
 
     def test_07_2_inset_axes_kind(self):
         self.checkNumberOfCollections(self.fig.axes[0].child_axes[0], 1)

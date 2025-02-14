@@ -100,7 +100,7 @@ class BaseTestMixin(TestCase):
             error_message,
         )
 
-    def checkNumberOfAxes(self, axes: List[plt.Axes], expected_number: int):
+    def checkNumberOfAxes(self, axes: List[plt.Axes], *, expected_number: int):
         self.assertEqual(
             expected_number,
             len(axes),

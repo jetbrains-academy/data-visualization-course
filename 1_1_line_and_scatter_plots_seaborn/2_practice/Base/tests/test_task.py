@@ -23,7 +23,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkReturnType(self.fig, expected_type=sns.FacetGrid, expected_function="sns.lmplot")
 
     def test_1_2_number_of_axes(self):
-        self.checkNumberOfAxes(self.fig.axes.flat, 1)
+        self.checkNumberOfAxes(self.fig.axes.flat, expected_number=1)
 
     def test_1_3_relplot_kind(self):
         self.checkNumberOfCollections(self.fig.ax, 2)

@@ -45,7 +45,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkReturnType(self.fig, expected_type=plt.Figure)
 
     def test_1_2_number_of_axes(self):
-        self.checkNumberOfAxes(self.fig.axes, 1)
+        self.checkNumberOfAxes(self.fig.axes, expected_number=1)
 
     def test_1_3_bar_kind(self):
         self.checkNumberOfCollections(self.fig.axes[0], 0)
