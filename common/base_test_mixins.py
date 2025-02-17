@@ -296,7 +296,7 @@ class BaseTestMixin(TestCase):
             f"The figure should be titled as <samp>{expected_title}</samp>.",
         )
 
-    def checkLabel(self, ax: plt.Axes, expected_label: Optional[str], axis: Literal["x", "y"]):
+    def checkLabel(self, ax: plt.Axes, *, expected_label: Optional[str], axis: Literal["x", "y"]):
         if axis == "x":
             actual_label = ax.get_xlabel()
         elif axis == "y":
