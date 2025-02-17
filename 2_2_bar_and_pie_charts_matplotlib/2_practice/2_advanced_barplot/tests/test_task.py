@@ -118,7 +118,7 @@ class TestCase(BaseTestMixin):
 
         expected_y = list(range(self.data["product"].nunique()))
 
-        self.checkTextObjects(self.fig.axes[0], list(zip(expected_x, expected_y, expected_text)))
+        self.checkTextObjects(self.fig.axes[0], expected_texts=list(zip(expected_x, expected_y, expected_text)))
 
     def test_7_1_legend(self):
         self.checkLegendExists(self.fig.axes[0])
