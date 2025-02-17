@@ -59,7 +59,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_4_bar_positions(self):
         for i in range(len(self.regions)):
-            self.checkBarPositions(self.fig.axes[0], expected_positions=list(range(self.number_of_decades)), container_number=i, axis="x")
+            self.checkBarPosition(self.fig.axes[0], expected_position=list(range(self.number_of_decades)), container_number=i, axis="x")
 
     def test_3_title(self):
         self.checkTitle(self.fig.axes[0], expected_title=None)

@@ -59,9 +59,9 @@ class TestCase(BaseTestMixin):
         for i, category in enumerate(self.categories):
             category_size = get_category_size(self.data, category)
 
-            self.checkBarPositions(
+            self.checkBarPosition(
                 self.fig.axes[0],
-                expected_positions=list(range(offset, offset + category_size)),
+                expected_position=list(range(offset, offset + category_size)),
                 axis="y",
                 container_number=i,
             )

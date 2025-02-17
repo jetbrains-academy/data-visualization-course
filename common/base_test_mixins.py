@@ -443,11 +443,11 @@ class BaseTestMixin(TestCase):
             msg=f"The expected bar width does not match the actual widths.",
         )
 
-    def checkBarPositions(
+    def checkBarPosition(
         self,
         ax: plt.Axes,
         *,
-        expected_positions: List[float],
+        expected_position: List[float],
         width: float = 0.8,
         axis: Literal["x", "y"],
         container_number: int = 0,
@@ -460,7 +460,7 @@ class BaseTestMixin(TestCase):
             raise ValueError("Unknown axis name.")
 
         self.assertAllClose(
-            expected_positions,
+            expected_position,
             actual_positions,
             msg=f"The actual position of the bars in container #{container_number} does not match the expected one.",
         )
