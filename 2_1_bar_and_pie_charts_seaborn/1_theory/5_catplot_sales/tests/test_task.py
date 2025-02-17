@@ -36,7 +36,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig.ax, expected_number=self.filtered_data["platform"].nunique())  # Error bars
 
         # Bars
-        self.checkNumberOfContainers(self.fig.ax, 1)
+        self.checkNumberOfContainers(self.fig.ax, expected_number=1)
         self.checkContainerType(self.fig.ax, BarContainer)
         self.checkNumberOfBars(self.fig.ax, self.filtered_data["platform"].nunique())
 

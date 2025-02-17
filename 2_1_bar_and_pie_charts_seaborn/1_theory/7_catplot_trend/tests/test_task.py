@@ -36,7 +36,7 @@ class PlotTestCase(BaseTestMixin):
         number_of_decades = self.data["decade"].nunique()
 
         # Bars
-        self.checkNumberOfContainers(self.fig.ax, 1)
+        self.checkNumberOfContainers(self.fig.ax, expected_number=1)
         self.checkContainerType(self.fig.ax, BarContainer)
         self.checkNumberOfBars(self.fig.ax, number_of_decades)
 

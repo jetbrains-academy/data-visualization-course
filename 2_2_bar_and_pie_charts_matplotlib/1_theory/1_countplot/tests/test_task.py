@@ -36,7 +36,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig.axes[0], expected_number=0)
 
         # Bars
-        self.checkNumberOfContainers(self.fig.axes[0], 1)
+        self.checkNumberOfContainers(self.fig.axes[0], expected_number=1)
         self.checkContainerType(self.fig.axes[0], BarContainer)
         self.checkNumberOfBars(self.fig.axes[0], self.data["platform"].nunique())
 

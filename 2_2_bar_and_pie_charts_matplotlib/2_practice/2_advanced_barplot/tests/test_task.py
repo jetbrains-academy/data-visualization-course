@@ -42,7 +42,7 @@ class TestCase(BaseTestMixin):
         self.checkNumberOfCollections(self.fig.axes[0], expected_number=0)
         self.checkNumberOfLines(self.fig.axes[0], expected_number=0)
 
-        self.checkNumberOfContainers(self.fig.axes[0], 3)
+        self.checkNumberOfContainers(self.fig.axes[0], expected_number=3)
         for i in range(3):
             self.checkContainerType(self.fig.axes[0], BarContainer, container_number=i)
 

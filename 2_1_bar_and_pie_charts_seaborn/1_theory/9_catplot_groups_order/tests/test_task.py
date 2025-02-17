@@ -42,7 +42,7 @@ class PlotTestCase(BaseTestMixin):
         number_of_regions = self.data["region"].nunique()
 
         # Bars
-        self.checkNumberOfContainers(self.fig.ax, number_of_regions)
+        self.checkNumberOfContainers(self.fig.ax, expected_number=number_of_regions)
         for i in range(number_of_regions):
             self.checkContainerType(self.fig.ax, BarContainer, container_number=i)
             self.checkNumberOfBars(self.fig.ax, number_of_decades, container_number=i)

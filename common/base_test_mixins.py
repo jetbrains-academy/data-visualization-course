@@ -383,7 +383,7 @@ class BaseTestMixin(TestCase):
 
         self.assertTrue(expected_visibility == actual_visibility, msg=error_message)
 
-    def checkNumberOfContainers(self, ax: plt.Axes, expected_number: int):
+    def checkNumberOfContainers(self, ax: plt.Axes, *, expected_number: int):
         containers = getattr(ax, "containers", [])
         self.assertEqual(
             expected_number,
