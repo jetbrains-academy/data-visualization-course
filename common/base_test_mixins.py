@@ -317,7 +317,7 @@ class BaseTestMixin(TestCase):
             f"The {axis}-axis should be labeled as <samp>{expected_label}</samp>.",
         )
 
-    def checkTicks(self, ax: plt.Axes, expected_ticks: List[float], axis: Literal["x", "y"], *, minor: bool = False):
+    def checkTicks(self, ax: plt.Axes, *, expected_ticks: List[float], axis: Literal["x", "y"], minor: bool = False):
         if axis == "x":
             actual_ticks = ax.get_xticks(minor=minor)
         elif axis == "y":
@@ -328,10 +328,7 @@ class BaseTestMixin(TestCase):
         self.assertAllClose(
             expected_ticks,
             actual_ticks,
-            msg=(
-                f"The expected {axis}-axis tick values do not match the actual values. "
-                f"Check that you pass the correct values to the `set_{axis}ticks` function."
-            ),
+            msg=f"The expected {axis}-axis tick values do not match the actual values.",
         )
 
     def checkTickLabels(

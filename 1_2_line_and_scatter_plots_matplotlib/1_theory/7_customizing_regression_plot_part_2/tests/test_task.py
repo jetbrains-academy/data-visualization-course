@@ -54,8 +54,8 @@ class PlotTestCase(BaseTestMixin):
         self.checkLabel(self.fig.axes[0], expected_label="Critic Score", axis="y")
 
     def test_5_ticks(self):
-        self.checkTicks(self.fig.axes[0], list(range(11)), axis="x")
-        self.checkTicks(self.fig.axes[0], list(range(0, 101, 10)), axis="y")
+        self.checkTicks(self.fig.axes[0], expected_ticks=list(range(11)), axis="x")
+        self.checkTicks(self.fig.axes[0], expected_ticks=list(range(0, 101, 10)), axis="y")
 
     def test_6_spines_visibility(self):
         self.checkSpineVisibility(self.fig.axes[0], position="top", expected_visibility=False)

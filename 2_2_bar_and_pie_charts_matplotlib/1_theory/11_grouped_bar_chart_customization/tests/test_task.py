@@ -88,7 +88,7 @@ class PlotTestCase(BaseTestMixin):
 
         self.checkTicks(
             self.fig.axes[0],
-            [
+            expected_ticks=[
                 x + 1.5
                 for x in range(
                     0,
