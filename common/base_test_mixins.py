@@ -564,17 +564,9 @@ class BaseTestMixin(TestCase):
             self.assertAlmostEqual(expected_center_x, actual_center_x, msg=msg)
             self.assertAlmostEqual(expected_center_y, actual_center_y, msg=msg)
 
-    def checkPieLabels(self, ax: plt.Axes, expected_labels: List[str]):
-        for i, (actual_patch, expected_label) in enumerate(zip(ax.patches, expected_labels)):
-            label = actual_patch.get_label()
-            if not label:
-                label = str(i + 1)
-
-            self.assertEqual(
-                expected_label,
-                actual_patch.get_label(),
-                f"The {label} pie label must be '{expected_label}'.",
-            )
+    def checkPieLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
+        actual_labels = [actual_patch.get_label() for actual_patch in ax.patches]
+        self.assertAllEqual(expected_labels, actual_labels, msg="The expected pie labels do not match the actual ones.")
 
     def checkPieColors(self, ax: plt.Axes, expected_colors: List[str]):
         actual_colors = [to_rgb(patch.get_facecolor()) for patch in ax.patches]
