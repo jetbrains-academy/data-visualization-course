@@ -63,7 +63,7 @@ class PlotTestCase(BaseTestMixin):
         for i in range(self.number_of_regions):
             self.checkBarPositions(
                 self.fig.axes[0],
-                list(
+                expected_positions=list(
                     range(
                         i,
                         self.number_of_decades * (self.number_of_regions + 1),

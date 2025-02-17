@@ -61,7 +61,7 @@ class TestCase(BaseTestMixin):
 
             self.checkBarPositions(
                 self.fig.axes[0],
-                list(range(offset, offset + category_size)),
+                expected_positions=list(range(offset, offset + category_size)),
                 axis="y",
                 container_number=i,
             )

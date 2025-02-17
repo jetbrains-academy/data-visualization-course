@@ -446,8 +446,8 @@ class BaseTestMixin(TestCase):
     def checkBarPositions(
         self,
         ax: plt.Axes,
-        expected_positions: List[float],
         *,
+        expected_positions: List[float],
         width: float = 0.8,
         axis: Literal["x", "y"],
         container_number: int = 0,
@@ -462,7 +462,7 @@ class BaseTestMixin(TestCase):
         self.assertAllClose(
             expected_positions,
             actual_positions,
-            msg=f"The bar#{container_number} positions should be equal to {expected_positions}.",
+            msg=f"The actual position of the bars in container #{container_number} does not match the expected one.",
         )
 
     def checkBarLayout(
