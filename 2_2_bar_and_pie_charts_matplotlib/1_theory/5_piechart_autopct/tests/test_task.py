@@ -38,7 +38,7 @@ class PlotTestCase(BaseTestMixin):
 
         self.checkNumberOfPatches(self.fig.axes[0], expected_number=4)
         for i in range(4):
-            self.checkPatchesType(self.fig.axes[0], Wedge, patch_number=i)
+            self.checkPatchType(self.fig.axes[0], expected_type=Wedge, patch_number=i)
 
     def test_2_1_pie_position(self):
         self.checkPiePosition(self.fig.axes[0], expected_position=self.aggregated_data["count"].to_list())

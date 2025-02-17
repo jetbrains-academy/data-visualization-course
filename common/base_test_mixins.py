@@ -407,17 +407,12 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} patches.",
         )
 
-    def checkPatchesType(self, ax: plt.Axes, expected_type: Type[Patch], *, patch_number: int = 0):
+    def checkPatchType(self, ax: plt.Axes, *, expected_type: Type[Patch], patch_number: int = 0):
         patch = ax.patches[patch_number]
-        string_expected_type = expected_type.__name__
         self.assertIsInstance(
             patch,
             expected_type,
-            self.addExpectedAndActualToMessage(
-                expected_type,
-                type(patch),
-                f"Incorrect chart type. You should plot {string_expected_type}, but got {type(patch).__name__}.",
-            ),
+            f"Incorrect chart type: you should plot <samp>{expected_type.__name__}</samp>, but got <samp>{type(patch).__name__}</samp>.",
         )
 
     def checkNumberOfBars(self, ax: plt.Axes, expected_number: int, container_number: int = 0):
