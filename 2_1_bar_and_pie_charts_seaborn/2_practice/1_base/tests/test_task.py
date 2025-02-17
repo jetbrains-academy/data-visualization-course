@@ -33,7 +33,7 @@ class PlotTestCase(BaseTestMixin):
         # Bars
         self.checkNumberOfContainers(self.fig.ax, expected_number=self.data["category"].nunique())
         for i, category in enumerate(self.data["category"].unique()):
-            self.checkContainerType(self.fig.ax, BarContainer, container_number=i)
+            self.checkContainerType(self.fig.ax, expected_type=BarContainer, container_number=i)
 
             self.checkNumberOfBars(
                 self.fig.ax,

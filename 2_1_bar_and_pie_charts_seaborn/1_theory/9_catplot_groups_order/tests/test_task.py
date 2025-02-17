@@ -44,7 +44,7 @@ class PlotTestCase(BaseTestMixin):
         # Bars
         self.checkNumberOfContainers(self.fig.ax, expected_number=number_of_regions)
         for i in range(number_of_regions):
-            self.checkContainerType(self.fig.ax, BarContainer, container_number=i)
+            self.checkContainerType(self.fig.ax, expected_type=BarContainer, container_number=i)
             self.checkNumberOfBars(self.fig.ax, number_of_decades, container_number=i)
 
     def test_2_1_bar_position(self):

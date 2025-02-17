@@ -39,7 +39,7 @@ class PlotTestCase(BaseTestMixin):
 
         # Bars
         self.checkNumberOfContainers(self.fig.axes[0], expected_number=1)
-        self.checkContainerType(self.fig.axes[0], BarContainer)
+        self.checkContainerType(self.fig.axes[0], expected_type=BarContainer)
         self.checkNumberOfBars(self.fig.axes[0], self.filtered_data["platform"].nunique())
 
     def test_2_1_bar_layout(self):

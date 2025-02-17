@@ -44,7 +44,7 @@ class TestCase(BaseTestMixin):
 
         self.checkNumberOfContainers(self.fig.axes[0], expected_number=3)
         for i in range(3):
-            self.checkContainerType(self.fig.axes[0], BarContainer, container_number=i)
+            self.checkContainerType(self.fig.axes[0], expected_type=BarContainer, container_number=i)
 
     def test_1_4_bar_layout(self):
         self.checkBarLayout(self.fig.axes[0], expected_layout="horizontal")

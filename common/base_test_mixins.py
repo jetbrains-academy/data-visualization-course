@@ -391,17 +391,12 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} containers.",
         )
 
-    def checkContainerType(self, ax: plt.Axes, expected_type: Type[Container], *, container_number: int = 0):
+    def checkContainerType(self, ax: plt.Axes, *, expected_type: Type[Container], container_number: int = 0):
         container = ax.containers[container_number]
-        string_expected_type = expected_type.__name__
         self.assertIsInstance(
             container,
             expected_type,
-            self.addExpectedAndActualToMessage(
-                expected_type,
-                type(container),
-                f"Incorrect chart type. You should plot {string_expected_type}, but got {type(container).__name__}.",
-            ),
+            f"Incorrect chart type: you should plot <samp>{expected_type.__name__}</samp>, but got <samp>{type(container).__name__}</samp>.",
         )
 
     def checkNumberOfPatches(self, ax: plt.Axes, expected_number: int):
