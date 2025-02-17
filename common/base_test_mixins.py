@@ -1,4 +1,4 @@
-from typing import Any, ClassVar, List, Literal, Optional, Tuple, Type, Union
+from typing import Any, ClassVar, Dict, List, Literal, Optional, Tuple, Type, Union
 from unittest import TestCase
 
 import matplotlib.colors as mcolors
@@ -10,15 +10,15 @@ import matplotlib.pyplot as plt
 from numpy.testing import assert_allclose
 import seaborn as sns
 
-
 ColorName = str
 RGBColor = tuple[float, float, float]
+
 
 class BaseTestMixin(TestCase):
     # We don't want default messages to be included along with our custom ones
     longMessage = False
 
-    __named_colors: ClassVar[dict[ColorName, RGBColor]] = {
+    __named_colors: ClassVar[Dict[ColorName, RGBColor]] = {
         name: mcolors.to_rgb(name)
         for name in mcolors.CSS4_COLORS
         # We prefer to use "grey" instead of "gray",
@@ -55,7 +55,10 @@ class BaseTestMixin(TestCase):
         self.assertListEqual(
             expected_colors_rgb,
             actual_colors,
-            msg=f"{msg} Please see the full feedback for more information\n\nExpected: {expected_colors}\nActual: {actual_colors_names}",
+            msg=(
+                f"{msg} Please see the full feedback for more information\n\n"
+                f"Expected: {expected_colors}\nActual: {actual_colors_names}"
+            ),
         )
 
     def assertSingleColor(self, expected_color: str, actual_color: tuple, msg: str):
