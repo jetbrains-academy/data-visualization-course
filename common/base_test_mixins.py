@@ -576,7 +576,7 @@ class BaseTestMixin(TestCase):
         actual_labels = [actual_label.get_text() for actual_label in ax.texts[1::2]]
         self.assertAllEqual(expected_labels, actual_labels, msg="The expected numeric pie labels do not match the actual ones.")
 
-    def checkNumberOfTextObjects(self, ax: plt.Axes, expected_number: int):
+    def checkNumberOfTextObjects(self, ax: plt.Axes, *, expected_number: int):
         self.assertEqual(expected_number, len(ax.texts), f"The number of text objects must be {expected_number}.")
 
     def checkTextObjects(self, ax: plt.Axes, expected_texts: List[Tuple[float, float, str]]):

@@ -105,7 +105,7 @@ class TestCase(BaseTestMixin):
         self.checkTitle(self.fig.axes[0], expected_title="Distribution of votes per category")
 
     def test_6_1_number_of_text_objects(self):
-        self.checkNumberOfTextObjects(self.fig.axes[0], 18)
+        self.checkNumberOfTextObjects(self.fig.axes[0], expected_number=18)
 
     def test_6_2_text_values(self):
         expected_x = []
