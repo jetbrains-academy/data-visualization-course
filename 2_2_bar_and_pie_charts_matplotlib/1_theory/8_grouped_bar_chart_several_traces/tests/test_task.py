@@ -55,7 +55,7 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_3_bar_width(self):
         for i in range(len(self.regions)):
-            self.checkBarWidth(self.fig.axes[0], 0.8, container_number=i)
+            self.checkBarWidth(self.fig.axes[0], expected_width=0.8, container_number=i)
 
     def test_2_4_bar_positions(self):
         for i in range(len(self.regions)):

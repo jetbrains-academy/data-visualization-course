@@ -433,14 +433,14 @@ class BaseTestMixin(TestCase):
             msg="The expected bar values do not match the actual values.",
         )
 
-    def checkBarWidth(self, ax: plt.Axes, expected_width: float, *, container_number: int = 0):
+    def checkBarWidth(self, ax: plt.Axes, *, expected_width: float, container_number: int = 0):
         actual_widths = [bar.get_width() for bar in ax.containers[container_number]]
         expected_widths = [expected_width] * len(actual_widths)
 
         self.assertAllClose(
             expected_widths,
             actual_widths,
-            msg=f"The bar width should be equal to {expected_width}.",
+            msg=f"The expected bar width does not match the actual widths.",
         )
 
     def checkBarPositions(

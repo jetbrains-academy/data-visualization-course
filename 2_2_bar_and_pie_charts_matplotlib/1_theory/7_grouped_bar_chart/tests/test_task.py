@@ -50,7 +50,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkBarValues(self.fig.axes[0], expected_values=expected_values)
 
     def test_2_3_bar_width(self):
-        self.checkBarWidth(self.fig.axes[0], 0.8)
+        self.checkBarWidth(self.fig.axes[0], expected_width=0.8)
 
     def test_2_4_bar_positions(self):
         self.checkBarPositions(self.fig.axes[0], list(range(self.number_of_decades)), axis="x")
