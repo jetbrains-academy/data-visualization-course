@@ -47,7 +47,7 @@ class PlotTestCase(BaseTestMixin):
         for i, region in enumerate(self.data["region"].unique()):
             self.checkBarValues(
                 self.fig.ax,
-                self.data[self.data["region"] == region].groupby("decade", observed=True)["sales"].sum().to_list(),
+                expected_values=self.data[self.data["region"] == region].groupby("decade", observed=True)["sales"].sum().to_list(),
                 container_number=i,
             )
 

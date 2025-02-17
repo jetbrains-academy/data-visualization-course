@@ -43,7 +43,7 @@ class PlotTestCase(BaseTestMixin):
     def test_2_1_bar_position(self):
         self.checkBarValues(
             self.fig.ax,
-            self.filtered_data.groupby("platform", sort=False)["global_sales"].mean().to_list(),
+            expected_values=self.filtered_data.groupby("platform", sort=False)["global_sales"].mean().to_list(),
         )
 
     def test_2_2_bar_layout(self):

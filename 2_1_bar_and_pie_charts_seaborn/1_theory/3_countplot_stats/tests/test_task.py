@@ -39,7 +39,7 @@ class PlotTestCase(BaseTestMixin):
     def test_2_1_bar_position(self):
         self.checkBarValues(
             self.fig.ax,
-            (self.data["platform"].value_counts(sort=False, normalize=True) * 100).to_list(),
+            expected_values=(self.data["platform"].value_counts(sort=False, normalize=True) * 100).to_list(),
         )
 
     def test_2_2_bar_layout(self):

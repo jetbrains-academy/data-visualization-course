@@ -41,7 +41,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfBars(self.fig.ax, expected_number=number_of_decades)
 
     def test_2_1_bar_position(self):
-        self.checkBarValues(self.fig.ax, self.data.groupby("decade", observed=True)["global_sales"].sum().to_list())
+        self.checkBarValues(self.fig.ax, expected_values=self.data.groupby("decade", observed=True)["global_sales"].sum().to_list())
 
     def test_2_2_bar_layout(self):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")

@@ -424,7 +424,7 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} bars.",
         )
 
-    def checkBarValues(self, ax: plt.Axes, expected_values: List[float], *, container_number: int = 0):
+    def checkBarValues(self, ax: plt.Axes, *, expected_values: List[float], container_number: int = 0):
         actual_position = ax.containers[container_number].datavalues
 
         self.assertAllClose(

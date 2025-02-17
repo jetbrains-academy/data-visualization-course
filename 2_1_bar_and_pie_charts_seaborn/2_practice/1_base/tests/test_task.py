@@ -50,7 +50,7 @@ class PlotTestCase(BaseTestMixin):
             expected_values = (
                 self.data[self.data["category"] == category].groupby("product", sort=False).size().sort_index()
             )
-            self.checkBarValues(self.fig.ax, expected_values.to_list(), container_number=i)
+            self.checkBarValues(self.fig.ax, expected_values=expected_values.to_list(), container_number=i)
 
     def test_2_3_bar_labels(self):
         self.checkTickLabels(

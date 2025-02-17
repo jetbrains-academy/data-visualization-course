@@ -52,7 +52,7 @@ class TestCase(BaseTestMixin):
     def test_2_1_bar_values(self):
         for i, category in enumerate(self.categories):
             expected_positions = list(reversed(get_category_votes(self.data, category)))
-            self.checkBarValues(self.fig.axes[0], expected_positions, container_number=i)
+            self.checkBarValues(self.fig.axes[0], expected_values=expected_positions, container_number=i)
 
     def test_2_2_bar_position(self):
         offset = 0

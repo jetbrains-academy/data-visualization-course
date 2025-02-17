@@ -63,7 +63,7 @@ class PlotTestCase(BaseTestMixin):
     def test_2_2_bar_values(self):
         for i, region in enumerate(self.regions):
             expected_values = self.aggregated_data[self.aggregated_data["region"] == region]["sales"].to_list()
-            self.checkBarValues(self.fig.axes[0], expected_values, container_number=i)
+            self.checkBarValues(self.fig.axes[0], expected_values=expected_values, container_number=i)
 
     def test_2_3_bar_width(self):
         for i in range(self.number_of_regions):

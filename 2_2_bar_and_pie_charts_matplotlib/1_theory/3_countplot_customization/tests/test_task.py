@@ -46,7 +46,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkBarLayout(self.fig.axes[0], expected_layout="horizontal")
 
     def test_2_1_bar_values(self):
-        self.checkBarValues(self.fig.axes[0], self.aggregated_data["count"].to_list())
+        self.checkBarValues(self.fig.axes[0], expected_values=self.aggregated_data["count"].to_list())
 
     def test_2_3_bar_labels(self):
         self.checkTickLabels(self.fig.axes[0], expected_tick_labels=self.aggregated_data["platform"].to_list(), axis="y")
