@@ -496,10 +496,16 @@ class BaseTestMixin(TestCase):
             if not label:
                 label = str(i + 1)
 
+            msg = (
+                f"The expected wedge#{label} position does not match the actual one. "
+                f"Please see the full feedback for more information.\n\n"
+            )
+
             self.assertAlmostEqual(
                 actual_wedge.r,
                 expected_wedge.r,
                 msg=(
+                    msg +
                     f"The wedge#{label} radius should be equal to <samp>{expected_wedge.r}</samp>, "
                     f"but got <samp>{actual_wedge.r}</samp>."
                 ),
@@ -509,6 +515,7 @@ class BaseTestMixin(TestCase):
                 actual_wedge.theta1,
                 expected_wedge.theta1,
                 msg=(
+                    msg +
                     f"The wedge#{label} start angle should be equal to <samp>{expected_wedge.theta1}</samp>, "
                     f"but got <samp>{actual_wedge.theta1}</samp>."
                 ),
@@ -518,8 +525,9 @@ class BaseTestMixin(TestCase):
                 actual_wedge.theta2,
                 expected_wedge.theta2,
                 msg=(
+                    msg +
                     f"The wedge#{label} end angle should be equal to <samp>{expected_wedge.theta2}</samp>, "
-                    f"but got <samp>{actual_wedge.theta2}</samp>"
+                    f"but got <samp>{actual_wedge.theta2}</samp>."
                 )
             )
 
