@@ -399,7 +399,7 @@ class BaseTestMixin(TestCase):
             f"Incorrect chart type: you should plot <samp>{expected_type.__name__}</samp>, but got <samp>{type(container).__name__}</samp>.",
         )
 
-    def checkNumberOfPatches(self, ax: plt.Axes, expected_number: int):
+    def checkNumberOfPatches(self, ax: plt.Axes, *, expected_number: int):
         patches = getattr(ax, "patches", [])
         self.assertEqual(
             expected_number,

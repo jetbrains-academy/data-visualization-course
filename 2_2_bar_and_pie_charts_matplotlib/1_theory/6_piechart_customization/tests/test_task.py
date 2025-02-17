@@ -36,7 +36,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfLines(self.fig.axes[0], expected_number=0)
         self.checkNumberOfContainers(self.fig.axes[0], expected_number=0)
 
-        self.checkNumberOfPatches(self.fig.axes[0], 4)
+        self.checkNumberOfPatches(self.fig.axes[0], expected_number=4)
         for i in range(4):
             self.checkPatchesType(self.fig.axes[0], Wedge, patch_number=i)
 
