@@ -100,7 +100,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(axes),
-            f"The figure must have only {expected_number} axes.",
+            f"The figure must have only <samp>{expected_number}</samp> axes.",
         )
 
     def checkNumberOfCollections(self, ax: plt.Axes, *, expected_number: int):
@@ -108,7 +108,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(collections),
-            f"The figure must have only {expected_number} collections.",
+            f"The figure must have only <samp>{expected_number}</samp> collections.",
         )
 
     @staticmethod
@@ -132,7 +132,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(self.__get_legend(obj).texts),
-            f"The number of legend items must be {expected_number}.",
+            f"The number of legend items must be <samp>{expected_number}</samp>.",
         )
 
     def checkLegendLabels(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_labels: List[str]):
@@ -140,7 +140,7 @@ class BaseTestMixin(TestCase):
         self.assertAllEqual(
             expected_labels,
             actual_labels,
-            msg="The actual legend labels does not match the expected ones.",
+            msg="The actual legend labels do not match the expected ones.",
         )
 
     def checkLegendHandleColors(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_handle_colors: List[str]):
@@ -213,7 +213,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(lines),
-            f"The figure must have only {expected_number} lines.",
+            f"The figure must have only <samp>{expected_number}</samp> lines.",
         )
 
     def checkLinePosition(
@@ -409,7 +409,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(containers),
-            f"The figure must have only {expected_number} containers.",
+            f"The figure must have only <samp>{expected_number}</samp> containers.",
         )
 
     def checkContainerType(self, ax: plt.Axes, *, expected_type: Type[Container], container_number: int = 0):
@@ -428,7 +428,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(patches),
-            f"The figure must have only {expected_number} patches.",
+            f"The figure must have only <samp>{expected_number}</samp> patches.",
         )
 
     def checkPatchType(self, ax: plt.Axes, *, expected_type: Type[Patch], patch_number: int = 0):
@@ -448,7 +448,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(datavalues),
-            f"The figure must have only {expected_number} bars.",
+            f"The figure must have only <samp>{expected_number}</samp> bars.",
         )
 
     def checkBarValues(self, ax: plt.Axes, *, expected_values: List[float], container_number: int = 0):
@@ -467,7 +467,7 @@ class BaseTestMixin(TestCase):
         self.assertAllClose(
             expected_widths,
             actual_widths,
-            msg="The expected bar width does not match the actual widths.",
+            msg="The expected bar widths do not match the actual widths.",
         )
 
     def checkBarPosition(
@@ -506,7 +506,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_layout,
             actual_layout,
-            f"The bars must be oriented in the {expected_layout} direction.",
+            f"The bars must be oriented in the <samp>{expected_layout}</samp> direction.",
         )
 
     def checkBarColor(self, ax: plt.Axes, *, expected_facecolors: List[str], container_number: int = 0):
@@ -586,8 +586,8 @@ class BaseTestMixin(TestCase):
 
             msg += (
                 "Please see the full feedback for more information.\n\n"
-                f"The expected wedge center should be equal to {expected_patch.center}, "
-                f"but got {actual_patch.center}."
+                f"The expected wedge center should be equal to <samp>{expected_patch.center}</samp>, "
+                f"but got <samp>{actual_patch.center}</samp>."
             )
 
             self.assertAlmostEqual(expected_center_x, actual_center_x, msg=msg)
@@ -615,7 +615,7 @@ class BaseTestMixin(TestCase):
         )
 
     def checkNumberOfTextObjects(self, ax: plt.Axes, *, expected_number: int):
-        self.assertEqual(expected_number, len(ax.texts), f"The number of text objects must be {expected_number}.")
+        self.assertEqual(expected_number, len(ax.texts), f"The number of text objects must be <samp>{expected_number}</samp>.")
 
     def checkTextObjects(self, ax: plt.Axes, *, expected_texts: List[Tuple[float, float, str]]):
         actual_texts = sorted((*text.get_position(), text.get_text()) for text in ax.texts)
