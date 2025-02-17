@@ -572,13 +572,9 @@ class BaseTestMixin(TestCase):
         actual_colors = [to_rgb(patch.get_facecolor()) for patch in ax.patches]
         self.assertColorList(expected_colors, actual_colors, "The pie colors do not match.")
 
-    def checkPieNumericLabels(self, ax: plt.Axes, expected_labels: List[str]):
-        for actual_label, expected_label in zip(ax.texts[1::2], expected_labels):
-            self.assertEqual(
-                expected_label,
-                actual_label.get_text(),
-                f"The numeric label must be '{expected_label}'.",
-            )
+    def checkPieNumericLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
+        actual_labels = [actual_label.get_text() for actual_label in ax.texts[1::2]]
+        self.assertAllEqual(expected_labels, actual_labels, msg="The expected numeric pie labels do not match the actual ones.")
 
     def checkNumberOfTextObjects(self, ax: plt.Axes, expected_number: int):
         self.assertEqual(expected_number, len(ax.texts), f"The number of text objects must be {expected_number}.")
