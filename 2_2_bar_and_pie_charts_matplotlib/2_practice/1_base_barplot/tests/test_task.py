@@ -81,14 +81,14 @@ class TestCase(BaseTestMixin):
             number_of_products += get_category_size(self.data, category)
 
         self.checkTicks(self.fig.axes[0], expected_ticks=list(range(number_of_products)), axis="y")
-        self.checkTickLabels(self.fig.axes[0], expected_labels, axis="y")
+        self.checkTickLabels(self.fig.axes[0], expected_tick_labels=expected_labels, axis="y")
 
     def test_3_2_y_label(self):
         self.checkLabel(self.fig.axes[0], expected_label="Product name", axis="y")
 
     def test_4_1_x_ticks(self):
         self.checkTicks(self.fig.axes[0], expected_ticks=list(range(0, 101, 25)), axis="x")
-        self.checkTickLabels(self.fig.axes[0], list(map(str, range(0, 101, 25))), axis="x")
+        self.checkTickLabels(self.fig.axes[0], expected_tick_labels=list(map(str, range(0, 101, 25))), axis="x")
 
     def test_4_2_x_label(self):
         self.checkLabel(self.fig.axes[0], expected_label="Respondents, %", axis="x")

@@ -49,7 +49,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkBarValues(self.fig.axes[0], self.aggregated_data["count"].to_list())
 
     def test_2_3_bar_labels(self):
-        self.checkTickLabels(self.fig.axes[0], self.aggregated_data["platform"].to_list(), axis="y")
+        self.checkTickLabels(self.fig.axes[0], expected_tick_labels=self.aggregated_data["platform"].to_list(), axis="y")
 
     def test_2_4_bar_colors(self):
         self.checkBarColor(self.fig.axes[0], expected_facecolors=["gray", "blue", "green", "cyan"])

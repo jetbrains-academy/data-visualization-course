@@ -99,7 +99,7 @@ class PlotTestCase(BaseTestMixin):
             axis="x",
         )
 
-        self.checkTickLabels(self.fig.axes[0], list(map(str, self.decades)), axis="x")
+        self.checkTickLabels(self.fig.axes[0], expected_tick_labels=list(map(str, self.decades)), axis="x")
 
     def test_4_labels(self):
         self.checkLabel(self.fig.axes[0], expected_label="Decade", axis="x")

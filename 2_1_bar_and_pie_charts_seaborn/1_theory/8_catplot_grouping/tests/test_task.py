@@ -57,6 +57,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
             self.fig.ax,
-            list(map(str, self.data["decade"].cat.categories)),
+            expected_tick_labels=list(map(str, self.data["decade"].cat.categories)),
             axis="x",
         )

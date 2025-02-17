@@ -334,9 +334,9 @@ class BaseTestMixin(TestCase):
     def checkTickLabels(
         self,
         ax: plt.Axes,
+        *,
         expected_tick_labels: List[str],
         axis: Literal["x", "y"],
-        *,
         minor: bool = False,
         where: Literal["primary", "secondary"] = "primary",
     ):

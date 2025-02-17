@@ -52,4 +52,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")
 
     def test_2_3_bar_labels(self):
-        self.checkTickLabels(self.fig.ax, self.sorted_platforms, axis="x")
+        self.checkTickLabels(self.fig.ax, expected_tick_labels=self.sorted_platforms, axis="x")

@@ -48,6 +48,6 @@ class PlotTestCase(BaseTestMixin):
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
             self.fig.ax,
-            self.data["platform"].value_counts(sort=True, ascending=True).index.to_list(),
+            expected_tick_labels=self.data["platform"].value_counts(sort=True, ascending=True).index.to_list(),
             axis="y",
         )

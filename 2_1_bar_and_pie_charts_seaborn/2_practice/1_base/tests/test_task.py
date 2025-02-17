@@ -55,7 +55,7 @@ class PlotTestCase(BaseTestMixin):
     def test_2_3_bar_labels(self):
         self.checkTickLabels(
             self.fig.ax,
-            get_product_order(self.data),
+            expected_tick_labels=get_product_order(self.data),
             axis="y",
         )
 
