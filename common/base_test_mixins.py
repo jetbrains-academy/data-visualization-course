@@ -487,42 +487,40 @@ class BaseTestMixin(TestCase):
         self.assertColorList(expected_facecolors, actual_colors, "The bar colors do not match.")
 
     def checkPiePosition(self, ax: plt.Axes, *, expected_position: List[float]):
-        fig, ax_test = plt.subplots()
-        expected_patches, _ = ax_test.pie(expected_position)
+        fig, expected_ax = plt.subplots()
+        expected_patches, _ = expected_ax.pie(expected_position)
         actual_patches = ax.patches
 
         for i, (actual_wedge, expected_wedge) in enumerate(zip(actual_patches, expected_patches)):
             label = actual_wedge.get_label()
             if not label:
                 label = str(i + 1)
+
             self.assertAlmostEqual(
                 actual_wedge.r,
                 expected_wedge.r,
-                msg=self.addExpectedAndActualToMessage(
-                    expected_wedge.r,
-                    actual_wedge.r,
-                    f"The expected {label} wedge radius does not match the actual value.",
+                msg=(
+                    f"The wedge#{label} radius should be equal to <samp>{expected_wedge.r}</samp>, "
+                    f"but got <samp>{actual_wedge.r}</samp>."
                 ),
             )
 
             self.assertAlmostEqual(
                 actual_wedge.theta1,
                 expected_wedge.theta1,
-                msg=self.addExpectedAndActualToMessage(
-                    expected_wedge.theta1,
-                    actual_wedge.theta1,
-                    f"The expected {label} wedge start angle does not match the actual value.",
+                msg=(
+                    f"The wedge#{label} start angle should be equal to <samp>{expected_wedge.theta1}</samp>, "
+                    f"but got <samp>{actual_wedge.theta1}</samp>."
                 ),
             )
 
             self.assertAlmostEqual(
                 actual_wedge.theta2,
                 expected_wedge.theta2,
-                msg=self.addExpectedAndActualToMessage(
-                    expected_wedge.theta2,
-                    actual_wedge.theta2,
-                    f"The expected {label} wedge end angle does not match the actual value.",
-                ),
+                msg=(
+                    f"The wedge#{label} end angle should be equal to <samp>{expected_wedge.theta2}</samp>, "
+                    f"but got <samp>{actual_wedge.theta2}</samp>"
+                )
             )
 
     def checkPieExplode(
