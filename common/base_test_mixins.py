@@ -370,8 +370,8 @@ class BaseTestMixin(TestCase):
     def checkSpineVisibility(
         self,
         ax: plt.Axes,
-        position: Literal["left", "right", "top", "bottom"],
         *,
+        position: Literal["left", "right", "top", "bottom"],
         expected_visibility: bool,
     ):
         actual_visibility = ax.spines[position].get_visible()
@@ -381,7 +381,7 @@ class BaseTestMixin(TestCase):
         else:
             error_message = f"The {position} spine must not be visible."
 
-        self.assertEqual(expected_visibility, actual_visibility, msg=error_message)
+        self.assertTrue(expected_visibility == actual_visibility, msg=error_message)
 
     def checkNumberOfContainers(self, ax: plt.Axes, expected_number: int):
         containers = getattr(ax, "containers", [])
