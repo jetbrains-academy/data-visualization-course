@@ -26,7 +26,7 @@ class BaseTestMixin(TestCase):
         if "gray" not in name and name not in ("aqua", "fuchsia")
     }
 
-    def __rgb_to_name(self, color: tuple) -> Union[str, tuple]:
+    def __rgb_to_name(self, color: RGBColor) -> Union[ColorName, RGBColor]:
         return next((name for name, value in self.__named_colors.items() if value == color), color)
 
     def assertAllClose(self, expected: list, actual: list, msg: str):
@@ -48,7 +48,7 @@ class BaseTestMixin(TestCase):
             )
             raise self.failureException(error_string) from None
 
-    def assertColorList(self, expected_colors: List[str], actual_colors: List[tuple], msg: str):
+    def assertColorList(self, expected_colors: List[ColorName], actual_colors: List[RGBColor], msg: str):
         actual_colors_names = [self.__rgb_to_name(color) for color in actual_colors]
         expected_colors_rgb = [to_rgb(color) for color in expected_colors]
 
@@ -61,7 +61,7 @@ class BaseTestMixin(TestCase):
             ),
         )
 
-    def assertSingleColor(self, expected_color: str, actual_color: tuple, msg: str):
+    def assertSingleColor(self, expected_color: ColorName, actual_color: RGBColor, msg: str):
         self.assertTrue(
             same_color(to_rgb(expected_color), actual_color),
             msg=msg,
@@ -143,7 +143,7 @@ class BaseTestMixin(TestCase):
             msg="The actual legend labels do not match the expected ones.",
         )
 
-    def checkLegendHandleColors(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_handle_colors: List[str]):
+    def checkLegendHandleColors(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_handle_colors: List[ColorName]):
         actual_handle_colors = [to_rgb(handle.get_facecolor()) for handle in self.__get_legend(obj).legend_handles]
 
         self.assertColorList(
@@ -196,7 +196,7 @@ class BaseTestMixin(TestCase):
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
-    def checkCollectionColor(self, ax: plt.Axes, *, expected_facecolor: str, collection_number: int = 0):
+    def checkCollectionColor(self, ax: plt.Axes, *, expected_facecolor: ColorName, collection_number: int = 0):
         actual_color = to_rgb(ax.collections[collection_number].get_facecolor())
 
         self.assertSingleColor(
@@ -260,7 +260,7 @@ class BaseTestMixin(TestCase):
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
-    def checkLineColor(self, ax: plt.Axes, *, expected_color: str, line_number: int = 0):
+    def checkLineColor(self, ax: plt.Axes, *, expected_color: ColorName, line_number: int = 0):
         actual_color = to_rgb(ax.lines[line_number].get_color())
 
         self.assertSingleColor(
@@ -509,7 +509,7 @@ class BaseTestMixin(TestCase):
             f"The bars must be oriented in the <samp>{expected_layout}</samp> direction.",
         )
 
-    def checkBarColor(self, ax: plt.Axes, *, expected_facecolors: List[str], container_number: int = 0):
+    def checkBarColor(self, ax: plt.Axes, *, expected_facecolors: List[ColorName], container_number: int = 0):
         actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
 
         self.assertColorList(
@@ -597,7 +597,7 @@ class BaseTestMixin(TestCase):
         actual_labels = [actual_patch.get_label() for actual_patch in ax.patches]
         self.assertAllEqual(expected_labels, actual_labels, msg="The expected pie labels do not match the actual ones.")
 
-    def checkPieColors(self, ax: plt.Axes, *, expected_colors: List[str]):
+    def checkPieColors(self, ax: plt.Axes, *, expected_colors: List[ColorName]):
         actual_colors = [to_rgb(patch.get_facecolor()) for patch in ax.patches]
 
         self.assertColorList(
