@@ -41,4 +41,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkCollectionTransparency(self.fig.ax, expected_alpha=0.1)
 
     def test_2_3_scatter_color(self):
-        self.checkCollectionColor(self.fig.ax, "green")
+        self.checkCollectionColor(self.fig.ax, expected_facecolor="green")

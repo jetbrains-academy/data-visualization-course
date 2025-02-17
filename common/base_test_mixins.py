@@ -10,31 +10,24 @@ import matplotlib.pyplot as plt
 from numpy.testing import assert_allclose
 import seaborn as sns
 
-colors_to_avoid = [
-    "aqua",
-    "darkgray",
-    "darkslategray",
-    "dimgray",
-    "fuchsia",
-    "gray",
-    "lightgray",
-    "lightslategray",
-    "slategray",
-]
 
+ColorName = str
+RGBColor = tuple[float, float, float]
 
 class BaseTestMixin(TestCase):
+    # We don't want default messages to be included along with our custom ones
     longMessage = False
-    named_colors: ClassVar[dict] = {
-        name: mcolors.to_rgb(name) for name in mcolors.CSS4_COLORS if name not in colors_to_avoid
+
+    __named_colors: ClassVar[dict[ColorName, RGBColor]] = {
+        name: mcolors.to_rgb(name)
+        for name in mcolors.CSS4_COLORS
+        # We prefer to use "grey" instead of "gray",
+        # "cyan" instead of "aqua" and "magenta" instead of "fuchsia"
+        if "gray" not in name and name not in ("aqua", "fuchsia")
     }
 
-    # Add tab10 colors for checking default colors assigned to plots
-    tab10_colors: ClassVar[dict] = {f"C{i}": to_rgb(name) for i, name in enumerate(mcolors.TABLEAU_COLORS)}
-    named_colors.update(tab10_colors)
-
-    def rgb_to_names(self, color: tuple) -> Union[str, tuple]:
-        return next((name for name, value in self.named_colors.items() if value == color), color)
+    def __rgb_to_name(self, color: tuple) -> Union[str, tuple]:
+        return next((name for name, value in self.__named_colors.items() if value == color), color)
 
     def assertAllClose(self, expected: list, actual: list, msg: str):
         # The numpy error message is not compatible with the plugin,
@@ -55,18 +48,14 @@ class BaseTestMixin(TestCase):
             )
             raise self.failureException(error_string) from None
 
-    @staticmethod
-    def addExpectedAndActualToMessage(expected: Any, actual: Any, msg: str) -> str:
-        return f"{msg}\n\nExpected: {expected}\nActual: {actual}"
-
     def assertColorList(self, expected_colors: List[str], actual_colors: List[tuple], msg: str):
-        actual_colors_names = [self.rgb_to_names(color) for color in actual_colors]
+        actual_colors_names = [self.__rgb_to_name(color) for color in actual_colors]
         expected_colors_rgb = [to_rgb(color) for color in expected_colors]
 
         self.assertListEqual(
             expected_colors_rgb,
             actual_colors,
-            self.addExpectedAndActualToMessage(expected_colors, actual_colors_names, msg),
+            msg=f"{msg} Please see the full feedback for more information\n\nExpected: {expected_colors}\nActual: {actual_colors_names}",
         )
 
     def assertSingleColor(self, expected_color: str, actual_color: tuple, msg: str):
@@ -153,7 +142,12 @@ class BaseTestMixin(TestCase):
 
     def checkLegendHandleColors(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_handle_colors: List[str]):
         actual_handle_colors = [to_rgb(handle.get_facecolor()) for handle in self.__get_legend(obj).legend_handles]
-        self.assertColorList(expected_handle_colors, actual_handle_colors, "The legend colors do not match.")
+
+        self.assertColorList(
+            expected_handle_colors,
+            actual_handle_colors,
+            msg="The expected legend colors do not match the actual ones.",
+        )
 
     def checkCollectionPosition(
         self,
@@ -199,12 +193,16 @@ class BaseTestMixin(TestCase):
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
-    def checkCollectionColor(self, ax: plt.Axes, expected_facecolor: str, collection_number: int = 0):
+    def checkCollectionColor(self, ax: plt.Axes, *, expected_facecolor: str, collection_number: int = 0):
         actual_color = to_rgb(ax.collections[collection_number].get_facecolor())
+
         self.assertSingleColor(
             expected_facecolor,
             actual_color,
-            f"The collection must be colored in '{expected_facecolor}', but got '{self.rgb_to_names(actual_color)}'.",
+            msg=(
+                f"The collection must be colored in <samp>{expected_facecolor}</samp>, "
+                f"but got <samp>{self.__rgb_to_name(actual_color)}</samp>."
+            ),
         )
 
     def checkNumberOfLines(self, ax: plt.Axes, *, expected_number: int):
@@ -259,12 +257,16 @@ class BaseTestMixin(TestCase):
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
-    def checkLineColor(self, ax: plt.Axes, expected_color: str, line_number: int = 0):
+    def checkLineColor(self, ax: plt.Axes, *, expected_color: str, line_number: int = 0):
         actual_color = to_rgb(ax.lines[line_number].get_color())
+
         self.assertSingleColor(
             expected_color,
             actual_color,
-            f"The line must be colored in '{expected_color}', but got '{self.rgb_to_names(actual_color)}'.",
+            msg=(
+                f"The line must be colored in <samp>{expected_color}</samp>, "
+                f"but got <samp>{self.__rgb_to_name(actual_color)}</samp>."
+            ),
         )
 
     def checkLim(self, ax: plt.Axes, *, expected_lim: Tuple[float, float], axis: Literal["x", "y"]):
@@ -506,7 +508,12 @@ class BaseTestMixin(TestCase):
 
     def checkBarColor(self, ax: plt.Axes, *, expected_facecolors: List[str], container_number: int = 0):
         actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
-        self.assertColorList(expected_facecolors, actual_colors, "The bar colors do not match.")
+
+        self.assertColorList(
+            expected_facecolors,
+            actual_colors,
+            msg="The expected bar colors do not match the actual ones.",
+        )
 
     def checkPiePosition(self, ax: plt.Axes, *, expected_position: List[float]):
         fig, expected_ax = plt.subplots()
@@ -587,9 +594,14 @@ class BaseTestMixin(TestCase):
         actual_labels = [actual_patch.get_label() for actual_patch in ax.patches]
         self.assertAllEqual(expected_labels, actual_labels, msg="The expected pie labels do not match the actual ones.")
 
-    def checkPieColors(self, ax: plt.Axes, expected_colors: List[str]):
+    def checkPieColors(self, ax: plt.Axes, *, expected_colors: List[str]):
         actual_colors = [to_rgb(patch.get_facecolor()) for patch in ax.patches]
-        self.assertColorList(expected_colors, actual_colors, "The pie colors do not match.")
+
+        self.assertColorList(
+            expected_colors,
+            actual_colors,
+            msg="The expected pie colors do not match the actual ones.",
+        )
 
     def checkPieNumericLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
         actual_labels = [actual_label.get_text() for actual_label in ax.texts[1::2]]

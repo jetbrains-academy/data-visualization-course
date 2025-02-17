@@ -35,7 +35,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkLinePosition(self.fig.ax, expected_x=expected_line_x, expected_y=expected_line_y)
 
     def test_2_2_line_color(self):
-        self.checkLineColor(self.fig.ax, "navy")
+        self.checkLineColor(self.fig.ax, expected_color="navy")
 
     def test_2_3_line_transparency(self):
         self.checkLineTransparency(self.fig.ax, expected_alpha=1)
@@ -44,7 +44,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkCollectionPosition(self.fig.ax, expected_x=self.data["x"], expected_y=self.data["y"])
 
     def test_3_2_scatter_color(self):
-        self.checkCollectionColor(self.fig.ax, "grey")
+        self.checkCollectionColor(self.fig.ax, expected_facecolor="grey")
 
     def test_3_3_scatter_transparency(self):
         self.checkCollectionTransparency(self.fig.ax, expected_alpha=0.05)
