@@ -42,13 +42,17 @@ class BaseTestMixin(TestCase):
         try:
             assert_allclose(actual, expected)
         except AssertionError as e:
-            raise self.failureException(f"{msg} Please see the full feedback for more information.\n\n{e!s}") from None
+            msg = f"{msg} Please see the full feedback for more information.\n\n{e!s}"
+            raise self.failureException(msg) from None
 
     def assertAllEqual(self, expected: list, actual: list, msg: str):
         try:
             self.assertListEqual(expected, actual)
         except AssertionError as e:
-            error_string = f"{msg} Please see the full feedback for more information.\n\nExpected: {expected}\nActual: {actual}\n\n{e!s}"
+            error_string = (
+                f"{msg} Please see the full feedback for more information.\n\n"
+                f"Expected: {expected}\nActual: {actual}\n\n{e!s}"
+            )
             raise self.failureException(error_string) from None
 
     @staticmethod
@@ -144,7 +148,7 @@ class BaseTestMixin(TestCase):
         self.assertAllEqual(
             expected_labels,
             actual_labels,
-            msg=f"The actual legend labels does not match the expected ones.",
+            msg="The actual legend labels does not match the expected ones.",
         )
 
     def checkLegendHandleColors(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_handle_colors: List[str]):
@@ -188,7 +192,10 @@ class BaseTestMixin(TestCase):
         if expected_alpha == 1:
             error_message = f"The collection must not be transparent, but got <samp>{actual_alpha}</samp>."
         else:
-            error_message = f"The collection must have transparency equal to <samp>{expected_alpha}</samp>, but got <samp>{actual_alpha}</samp>."
+            error_message = (
+                f"The collection must have transparency equal to <samp>{expected_alpha}</samp>, "
+                f"but got <samp>{actual_alpha}</samp>."
+            )
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
@@ -208,7 +215,14 @@ class BaseTestMixin(TestCase):
             f"The figure must have only {expected_number} lines.",
         )
 
-    def checkLinePosition(self, ax: plt.Axes, *, expected_x: List[float], expected_y: List[float], line_number: int = 0):
+    def checkLinePosition(
+        self,
+        ax: plt.Axes,
+        *,
+        expected_x: List[float],
+        expected_y: List[float],
+        line_number: int = 0,
+    ):
         actual_x, actual_y = ax.lines[line_number].get_xydata().T
 
         self.assertAllClose(
@@ -238,7 +252,10 @@ class BaseTestMixin(TestCase):
         if expected_alpha == 1:
             error_message = f"The line must not be transparent, but got <samp>{actual_alpha}</samp>."
         else:
-            error_message = f"The line must have transparency equal to <samp>{expected_alpha}</samp>, but got <samp>{actual_alpha}</samp>."
+            error_message = (
+                f"The line must have transparency equal to <samp>{expected_alpha}</samp>, "
+                f"but got <samp>{actual_alpha}</samp>."
+            )
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
@@ -278,7 +295,6 @@ class BaseTestMixin(TestCase):
             actual_right_bound,
             msg=msg,
         )
-
 
     def checkTitle(self, ax: plt.Axes, *, expected_title: Optional[str]):
         actual_title = ax.get_title()
@@ -396,7 +412,10 @@ class BaseTestMixin(TestCase):
         self.assertIsInstance(
             container,
             expected_type,
-            f"Incorrect chart type: you should plot <samp>{expected_type.__name__}</samp>, but got <samp>{type(container).__name__}</samp>.",
+            msg=(
+                f"Incorrect chart type: you should plot <samp>{expected_type.__name__}</samp>, "
+                f"but got <samp>{type(container).__name__}</samp>."
+            ),
         )
 
     def checkNumberOfPatches(self, ax: plt.Axes, *, expected_number: int):
@@ -412,7 +431,10 @@ class BaseTestMixin(TestCase):
         self.assertIsInstance(
             patch,
             expected_type,
-            f"Incorrect chart type: you should plot <samp>{expected_type.__name__}</samp>, but got <samp>{type(patch).__name__}</samp>.",
+            msg=(
+                f"Incorrect chart type: you should plot <samp>{expected_type.__name__}</samp>, "
+                f"but got <samp>{type(patch).__name__}</samp>."
+            ),
         )
 
     def checkNumberOfBars(self, ax: plt.Axes, *, expected_number: int, container_number: int = 0):
@@ -440,7 +462,7 @@ class BaseTestMixin(TestCase):
         self.assertAllClose(
             expected_widths,
             actual_widths,
-            msg=f"The expected bar width does not match the actual widths.",
+            msg="The expected bar width does not match the actual widths.",
         )
 
     def checkBarPosition(
@@ -505,8 +527,7 @@ class BaseTestMixin(TestCase):
                 actual_wedge.r,
                 expected_wedge.r,
                 msg=(
-                    msg +
-                    f"The wedge#{label} radius should be equal to <samp>{expected_wedge.r}</samp>, "
+                    msg + f"The wedge#{label} radius should be equal to <samp>{expected_wedge.r}</samp>, "
                     f"but got <samp>{actual_wedge.r}</samp>."
                 ),
             )
@@ -515,8 +536,7 @@ class BaseTestMixin(TestCase):
                 actual_wedge.theta1,
                 expected_wedge.theta1,
                 msg=(
-                    msg +
-                    f"The wedge#{label} start angle should be equal to <samp>{expected_wedge.theta1}</samp>, "
+                    msg + f"The wedge#{label} start angle should be equal to <samp>{expected_wedge.theta1}</samp>, "
                     f"but got <samp>{actual_wedge.theta1}</samp>."
                 ),
             )
@@ -525,10 +545,9 @@ class BaseTestMixin(TestCase):
                 actual_wedge.theta2,
                 expected_wedge.theta2,
                 msg=(
-                    msg +
-                    f"The wedge#{label} end angle should be equal to <samp>{expected_wedge.theta2}</samp>, "
+                    msg + f"The wedge#{label} end angle should be equal to <samp>{expected_wedge.theta2}</samp>, "
                     f"but got <samp>{actual_wedge.theta2}</samp>."
-                )
+                ),
             )
 
     def checkPieExplode(
@@ -574,7 +593,11 @@ class BaseTestMixin(TestCase):
 
     def checkPieNumericLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
         actual_labels = [actual_label.get_text() for actual_label in ax.texts[1::2]]
-        self.assertAllEqual(expected_labels, actual_labels, msg="The expected numeric pie labels do not match the actual ones.")
+        self.assertAllEqual(
+            expected_labels,
+            actual_labels,
+            msg="The expected numeric pie labels do not match the actual ones.",
+        )
 
     def checkNumberOfTextObjects(self, ax: plt.Axes, *, expected_number: int):
         self.assertEqual(expected_number, len(ax.texts), f"The number of text objects must be {expected_number}.")

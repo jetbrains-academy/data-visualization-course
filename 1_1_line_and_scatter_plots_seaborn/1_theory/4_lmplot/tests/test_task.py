@@ -36,4 +36,8 @@ class PlotTestCase(BaseTestMixin):
         self.checkLinePosition(self.fig.ax, expected_x=expected_line_x, expected_y=expected_line_y)
 
     def test_3_1_scatter_position(self):
-        self.checkCollectionPosition(self.fig.ax, expected_x=self.data["user_score"], expected_y=self.data["critic_score"])
+        self.checkCollectionPosition(
+            self.fig.ax,
+            expected_x=self.data["user_score"],
+            expected_y=self.data["critic_score"],
+        )

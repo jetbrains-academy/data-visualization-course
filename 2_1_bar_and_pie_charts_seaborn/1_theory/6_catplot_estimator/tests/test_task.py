@@ -43,10 +43,8 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfBars(self.fig.ax, expected_number=self.filtered_data["platform"].nunique())
 
     def test_2_1_bar_position(self):
-        self.checkBarValues(
-            self.fig.ax,
-            expected_values=self.filtered_data.groupby("platform", sort=False)["global_sales"].median().sort_values().to_list(),
-        )
+        expected_position = self.filtered_data.groupby("platform", sort=False)["global_sales"].median().sort_values()
+        self.checkBarValues(self.fig.ax, expected_values=expected_position.to_list())
 
     def test_2_2_bar_layout(self):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")

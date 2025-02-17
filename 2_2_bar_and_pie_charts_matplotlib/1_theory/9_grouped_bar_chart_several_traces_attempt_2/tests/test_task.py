@@ -45,7 +45,11 @@ class PlotTestCase(BaseTestMixin):
         self.checkNumberOfContainers(self.fig.axes[0], expected_number=self.number_of_regions)
         for i in range(self.number_of_regions):
             self.checkContainerType(self.fig.axes[0], expected_type=BarContainer, container_number=i)
-            self.checkNumberOfBars(self.fig.axes[0], expected_number=self.aggregated_data["decade"].nunique(), container_number=i)
+            self.checkNumberOfBars(
+                self.fig.axes[0],
+                expected_number=self.aggregated_data["decade"].nunique(),
+                container_number=i,
+            )
 
     def test_2_1_bar_layout(self):
         self.checkBarLayout(self.fig.axes[0], expected_layout="vertical")
@@ -63,7 +67,9 @@ class PlotTestCase(BaseTestMixin):
         for i in range(len(self.regions)):
             self.checkBarPosition(
                 self.fig.axes[0],
-                expected_position=list(range(i, self.number_of_decades * (self.number_of_regions + 1), self.number_of_regions + 1)),
+                expected_position=list(
+                    range(i, self.number_of_decades * (self.number_of_regions + 1), self.number_of_regions + 1),
+                ),
                 container_number=i,
                 width=1,
                 axis="x",

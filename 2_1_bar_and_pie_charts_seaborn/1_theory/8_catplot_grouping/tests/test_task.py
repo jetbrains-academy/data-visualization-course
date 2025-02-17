@@ -45,11 +45,8 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_1_bar_position(self):
         for i, region in enumerate(self.data["region"].unique()):
-            self.checkBarValues(
-                self.fig.ax,
-                expected_values=self.data[self.data["region"] == region].groupby("decade", observed=True)["sales"].sum().to_list(),
-                container_number=i,
-            )
+            expected_position = self.data[self.data["region"] == region].groupby("decade", observed=True)["sales"].sum()
+            self.checkBarValues(self.fig.ax, expected_values=expected_position.to_list(), container_number=i)
 
     def test_2_2_bar_layout(self):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")

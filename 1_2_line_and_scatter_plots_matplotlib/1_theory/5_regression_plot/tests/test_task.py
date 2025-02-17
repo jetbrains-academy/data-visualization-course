@@ -32,7 +32,15 @@ class PlotTestCase(BaseTestMixin):
 
     def test_2_1_line_position(self):
         aggregated_data = aggregate(self.data)
-        self.checkLinePosition(self.fig.axes[0], expected_x=aggregated_data["user_score"], expected_y=aggregated_data["critic_score"])
+        self.checkLinePosition(
+            self.fig.axes[0],
+            expected_x=aggregated_data["user_score"],
+            expected_y=aggregated_data["critic_score"],
+        )
 
     def test_3_1_scatter_position(self):
-        self.checkCollectionPosition(self.fig.axes[0], expected_x=self.data["user_score"], expected_y=self.data["critic_score"])
+        self.checkCollectionPosition(
+            self.fig.axes[0],
+            expected_x=self.data["user_score"],
+            expected_y=self.data["critic_score"],
+        )

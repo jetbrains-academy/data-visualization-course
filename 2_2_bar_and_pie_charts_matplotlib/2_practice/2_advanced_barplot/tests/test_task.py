@@ -89,14 +89,30 @@ class TestCase(BaseTestMixin):
     def test_4_1_x_major_ticks(self):
         self.checkTicks(self.fig.axes[0], expected_ticks=list(range(0, 101, 25)), axis="x")
         self.checkTickLabels(self.fig.axes[0], expected_tick_labels=list(map(str, range(0, 101, 25))), axis="x")
-        self.checkTickLabels(self.fig.axes[0], expected_tick_labels=list(map(str, range(0, 101, 25))), axis="x", where="secondary")
+        self.checkTickLabels(
+            self.fig.axes[0],
+            expected_tick_labels=list(map(str, range(0, 101, 25))),
+            axis="x",
+            where="secondary",
+        )
 
     def test_4_2_x_minor_ticks(self):
         expected_positions = [x for x in range(0, 101, 5) if x not in range(0, 101, 25)]
 
         self.checkTicks(self.fig.axes[0], expected_ticks=expected_positions, axis="x", minor=True)
-        self.checkTickLabels(self.fig.axes[0], expected_tick_labels=[""] * len(expected_positions), axis="x", minor=True)
-        self.checkTickLabels(self.fig.axes[0], expected_tick_labels=[""] * len(expected_positions), axis="x", minor=True, where="secondary")
+        self.checkTickLabels(
+            self.fig.axes[0],
+            expected_tick_labels=[""] * len(expected_positions),
+            axis="x",
+            minor=True,
+        )
+        self.checkTickLabels(
+            self.fig.axes[0],
+            expected_tick_labels=[""] * len(expected_positions),
+            axis="x",
+            minor=True,
+            where="secondary",
+        )
 
     def test_4_3_x_label(self):
         self.checkLabel(self.fig.axes[0], expected_label="Respondents, %", axis="x")
