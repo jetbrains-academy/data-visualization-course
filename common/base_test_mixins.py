@@ -530,8 +530,8 @@ class BaseTestMixin(TestCase):
         expected_position: List[float],
         expected_explode: Optional[List[float]] = None,
     ):
-        fig, ax_test = plt.subplots()
-        expected_patches, _ = ax_test.pie(expected_position, explode=expected_explode)
+        fig, expected_ax = plt.subplots()
+        expected_patches, _ = expected_ax.pie(expected_position, explode=expected_explode)
         actual_patches = ax.patches
 
         for i, (actual_patch, expected_patch) in enumerate(zip(actual_patches, expected_patches)):
@@ -539,15 +539,22 @@ class BaseTestMixin(TestCase):
             if not label:
                 label = str(i + 1)
 
-            self.assertAlmostEqual(
-                expected_patch.center,
-                actual_patch.center,
-                msg=self.addExpectedAndActualToMessage(
-                    expected_patch.center,
-                    actual_patch.center,
-                    f"The expected {label} wedge explode value does not match the actual value.",
-                ),
+            actual_center_x, actual_center_y = actual_patch.center
+            expected_center_x, expected_center_y = expected_patch.center
+
+            if expected_explode is None:
+                msg = f"The wedge#{label} should not be offset. "
+            else:
+                msg = f"The expected wedge#{label} offset does not match the actual value. "
+
+            msg += (
+                "Please see the full feedback for more information.\n\n"
+                f"The expected wedge center should be equal to {expected_patch.center}, "
+                f"but got {actual_patch.center}."
             )
+
+            self.assertAlmostEqual(expected_center_x, actual_center_x, msg=msg)
+            self.assertAlmostEqual(expected_center_y, actual_center_y, msg=msg)
 
     def checkPieLabels(self, ax: plt.Axes, expected_labels: List[str]):
         for i, (actual_patch, expected_label) in enumerate(zip(ax.patches, expected_labels)):
