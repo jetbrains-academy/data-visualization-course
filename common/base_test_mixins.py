@@ -415,7 +415,7 @@ class BaseTestMixin(TestCase):
             f"Incorrect chart type: you should plot <samp>{expected_type.__name__}</samp>, but got <samp>{type(patch).__name__}</samp>.",
         )
 
-    def checkNumberOfBars(self, ax: plt.Axes, expected_number: int, container_number: int = 0):
+    def checkNumberOfBars(self, ax: plt.Axes, *, expected_number: int, container_number: int = 0):
         datavalues = ax.containers[container_number].datavalues
 
         self.assertEqual(

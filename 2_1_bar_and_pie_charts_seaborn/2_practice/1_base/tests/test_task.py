@@ -37,7 +37,7 @@ class PlotTestCase(BaseTestMixin):
 
             self.checkNumberOfBars(
                 self.fig.ax,
-                self.data[self.data["category"] == category]["product"].nunique(),
+                expected_number=self.data[self.data["category"] == category]["product"].nunique(),
                 container_number=i,
             )
 
