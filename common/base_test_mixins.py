@@ -528,7 +528,11 @@ class BaseTestMixin(TestCase):
         )
 
     def checkBarColor(
-        self, ax: plt.Axes, *, expected_facecolors: Optional[List[ColorName]] = None, container_number: int = 0
+        self,
+        ax: plt.Axes,
+        *,
+        expected_facecolors: Optional[List[ColorName]] = None,
+        container_number: int = 0,
     ):
         actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
 
