@@ -160,7 +160,7 @@ class BaseTestMixin(TestCase):
         self,
         obj: Union[plt.Axes, sns.FacetGrid],
         *,
-        expected_handle_colors: List[ColorName] = None,
+        expected_handle_colors: Optional[List[ColorName]] = None,
     ):
         actual_handle_colors = [to_rgb(handle.get_facecolor()) for handle in self.__get_legend(obj).legend_handles]
 
@@ -527,7 +527,9 @@ class BaseTestMixin(TestCase):
             f"The bars must be oriented in the <samp>{expected_layout}</samp> direction.",
         )
 
-    def checkBarColor(self, ax: plt.Axes, *, expected_facecolors: List[ColorName] = None, container_number: int = 0):
+    def checkBarColor(
+        self, ax: plt.Axes, *, expected_facecolors: Optional[List[ColorName]] = None, container_number: int = 0
+    ):
         actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
 
         self.assertColorList(
@@ -615,7 +617,7 @@ class BaseTestMixin(TestCase):
         actual_labels = [actual_patch.get_label() for actual_patch in ax.patches]
         self.assertAllEqual(expected_labels, actual_labels, msg="The expected pie labels do not match the actual ones.")
 
-    def checkPieColors(self, ax: plt.Axes, *, expected_colors: List[ColorName] = None):
+    def checkPieColors(self, ax: plt.Axes, *, expected_colors: Optional[List[ColorName]] = None):
         actual_colors = [to_rgb(patch.get_facecolor()) for patch in ax.patches]
 
         self.assertColorList(
