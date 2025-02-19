@@ -38,4 +38,4 @@ class PlotTestCase(BaseTestMixin):
         self.checkLineTransparency(self.fig.ax, expected_alpha=1)
 
     def test_2_3_line_color(self):
-        self.checkLineColor(self.fig.ax)
+        self.checkLineColor(self.fig.ax, expected_color=None)

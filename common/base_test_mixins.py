@@ -51,34 +51,40 @@ class BaseTestMixin(TestCase):
 
     def assertColorList(self, expected_colors: List[ColorName], actual_colors: List[RGBColor], msg: str):
         actual_colors_names = [self.__rgb_to_name(color) for color in actual_colors]
-        pallete = [to_rgb(color) for color in mcolors.TABLEAU_COLORS.values()]
+
         if expected_colors is None:
             self.assertTrue(
-                all(actual == expected for actual, expected in zip(actual_colors, itertools.cycle(pallete))),
-                msg="You do not need to change the default color palette.",
-            )
-        else:
-            expected_colors_rgb = [to_rgb(color) for color in expected_colors]
-            self.assertListEqual(
-                expected_colors_rgb,
-                actual_colors,
-                msg=(
-                    f"{msg} Please see the full feedback for more information\n\n"
-                    f"Expected: {expected_colors}\nActual: {actual_colors_names}"
+                all(
+                    actual == expected
+                    for actual, expected in zip(
+                        actual_colors,
+                        itertools.cycle(map(to_rgb, mcolors.TABLEAU_COLORS.values())),
+                    )
                 ),
+                msg="You do not need to change default figure colors.",
             )
+
+        expected_colors_rgb = [to_rgb(color) for color in expected_colors]
+        self.assertListEqual(
+            expected_colors_rgb,
+            actual_colors,
+            msg=(
+                f"{msg} Please see the full feedback for more information\n\n"
+                f"Expected: {expected_colors}\nActual: {actual_colors_names}"
+            ),
+        )
 
     def assertSingleColor(self, expected_color: ColorName, actual_color: RGBColor, msg: str):
         if expected_color is None:
             self.assertTrue(
-                same_color(to_rgb("#1f77b4"), actual_color),
-                msg="You do not need to change the default color.",
+                same_color(to_rgb(next(iter(mcolors.TABLEAU_COLORS.values()))), actual_color),
+                msg="You do not need to change the default figure color.",
             )
-        else:
-            self.assertTrue(
-                same_color(to_rgb(expected_color), actual_color),
-                msg=msg,
-            )
+
+        self.assertTrue(
+            same_color(to_rgb(expected_color), actual_color),
+            msg=msg,
+        )
 
     # ----------------------------------------------------------------------
 
@@ -160,7 +166,7 @@ class BaseTestMixin(TestCase):
         self,
         obj: Union[plt.Axes, sns.FacetGrid],
         *,
-        expected_handle_colors: Optional[List[ColorName]] = None,
+        expected_handle_colors: Optional[List[ColorName]],
     ):
         actual_handle_colors = [to_rgb(handle.get_facecolor()) for handle in self.__get_legend(obj).legend_handles]
 
@@ -214,7 +220,13 @@ class BaseTestMixin(TestCase):
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
-    def checkCollectionColor(self, ax: plt.Axes, *, expected_facecolor: ColorName = None, collection_number: int = 0):
+    def checkCollectionColor(
+        self,
+        ax: plt.Axes,
+        *,
+        expected_facecolor: Optional[ColorName],
+        collection_number: int = 0,
+    ):
         actual_color = to_rgb(ax.collections[collection_number].get_facecolor())
 
         self.assertSingleColor(
@@ -278,7 +290,7 @@ class BaseTestMixin(TestCase):
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
-    def checkLineColor(self, ax: plt.Axes, *, expected_color: ColorName = None, line_number: int = 0):
+    def checkLineColor(self, ax: plt.Axes, *, expected_color: Optional[ColorName], line_number: int = 0):
         actual_color = to_rgb(ax.lines[line_number].get_color())
 
         self.assertSingleColor(
@@ -531,7 +543,7 @@ class BaseTestMixin(TestCase):
         self,
         ax: plt.Axes,
         *,
-        expected_facecolors: Optional[List[ColorName]] = None,
+        expected_facecolors: Optional[List[ColorName]],
         container_number: int = 0,
     ):
         actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
@@ -621,7 +633,7 @@ class BaseTestMixin(TestCase):
         actual_labels = [actual_patch.get_label() for actual_patch in ax.patches]
         self.assertAllEqual(expected_labels, actual_labels, msg="The expected pie labels do not match the actual ones.")
 
-    def checkPieColors(self, ax: plt.Axes, *, expected_colors: Optional[List[ColorName]] = None):
+    def checkPieColors(self, ax: plt.Axes, *, expected_colors: Optional[List[ColorName]]):
         actual_colors = [to_rgb(patch.get_facecolor()) for patch in ax.patches]
 
         self.assertColorList(

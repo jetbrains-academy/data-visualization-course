@@ -47,7 +47,7 @@ class PlotTestCase(BaseTestMixin):
         self.checkPieLabels(self.fig.axes[0], expected_labels=self.aggregated_data["platform"].to_list())
 
     def test_2_3_pie_colors(self):
-        self.checkPieColors(self.fig.axes[0])
+        self.checkPieColors(self.fig.axes[0], expected_colors=None)
 
     def test_3_title(self):
         self.checkTitle(self.fig.axes[0], expected_title=None)
