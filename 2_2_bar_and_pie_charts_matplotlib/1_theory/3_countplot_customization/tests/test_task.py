@@ -56,7 +56,7 @@ class PlotTestCase(BaseTestMixin):
         )
 
     def test_2_4_bar_colors(self):
-        self.checkBarColor(self.fig.axes[0], expected_facecolors=["gray", "blue", "green", "cyan"])
+        self.checkBarColor(self.fig.axes[0], expected_facecolors=["grey", "blue", "green", "cyan"])
 
     def test_3_labels(self):
         self.checkLabel(self.fig.axes[0], expected_label="Count", axis="x")
