@@ -63,6 +63,7 @@ class BaseTestMixin(TestCase):
                 ),
                 msg="You do not need to change default figure colors.",
             )
+            return
 
         expected_colors_rgb = [to_rgb(color) for color in expected_colors]
         self.assertListEqual(
@@ -80,6 +81,7 @@ class BaseTestMixin(TestCase):
                 same_color(to_rgb(next(iter(mcolors.TABLEAU_COLORS.values()))), actual_color),
                 msg="You do not need to change the default figure color.",
             )
+            return
 
         self.assertTrue(
             same_color(to_rgb(expected_color), actual_color),
