@@ -1,3 +1,4 @@
+import itertools
 from typing import Any, ClassVar, Dict, List, Literal, Optional, Tuple, Type, Union
 from unittest import TestCase
 
@@ -26,7 +27,7 @@ class BaseTestMixin(TestCase):
         if "gray" not in name and name not in ("aqua", "fuchsia")
     }
 
-    def __rgb_to_name(self, color: tuple) -> Union[str, tuple]:
+    def __rgb_to_name(self, color: RGBColor) -> Union[ColorName, RGBColor]:
         return next((name for name, value in self.__named_colors.items() if value == color), color)
 
     def assertAllClose(self, expected: list, actual: list, msg: str):
@@ -48,10 +49,23 @@ class BaseTestMixin(TestCase):
             )
             raise self.failureException(error_string) from None
 
-    def assertColorList(self, expected_colors: List[str], actual_colors: List[tuple], msg: str):
+    def assertColorList(self, expected_colors: List[ColorName], actual_colors: List[RGBColor], msg: str):
         actual_colors_names = [self.__rgb_to_name(color) for color in actual_colors]
-        expected_colors_rgb = [to_rgb(color) for color in expected_colors]
 
+        if expected_colors is None:
+            self.assertTrue(
+                all(
+                    actual == expected
+                    for actual, expected in zip(
+                        actual_colors,
+                        itertools.cycle(map(to_rgb, mcolors.TABLEAU_COLORS.values())),
+                    )
+                ),
+                msg="You do not need to change default figure colors.",
+            )
+            return
+
+        expected_colors_rgb = [to_rgb(color) for color in expected_colors]
         self.assertListEqual(
             expected_colors_rgb,
             actual_colors,
@@ -61,7 +75,14 @@ class BaseTestMixin(TestCase):
             ),
         )
 
-    def assertSingleColor(self, expected_color: str, actual_color: tuple, msg: str):
+    def assertSingleColor(self, expected_color: ColorName, actual_color: RGBColor, msg: str):
+        if expected_color is None:
+            self.assertTrue(
+                same_color(to_rgb(next(iter(mcolors.TABLEAU_COLORS.values()))), actual_color),
+                msg="You do not need to change the default figure color.",
+            )
+            return
+
         self.assertTrue(
             same_color(to_rgb(expected_color), actual_color),
             msg=msg,
@@ -100,7 +121,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(axes),
-            f"The figure must have only {expected_number} axes.",
+            f"The figure must have only <samp>{expected_number}</samp> axes.",
         )
 
     def checkNumberOfCollections(self, ax: plt.Axes, *, expected_number: int):
@@ -108,7 +129,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(collections),
-            f"The figure must have only {expected_number} collections.",
+            f"The figure must have only <samp>{expected_number}</samp> collections.",
         )
 
     @staticmethod
@@ -132,7 +153,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(self.__get_legend(obj).texts),
-            f"The number of legend items must be {expected_number}.",
+            f"The number of legend items must be <samp>{expected_number}</samp>.",
         )
 
     def checkLegendLabels(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_labels: List[str]):
@@ -140,10 +161,15 @@ class BaseTestMixin(TestCase):
         self.assertAllEqual(
             expected_labels,
             actual_labels,
-            msg="The actual legend labels does not match the expected ones.",
+            msg="The actual legend labels do not match the expected ones.",
         )
 
-    def checkLegendHandleColors(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_handle_colors: List[str]):
+    def checkLegendHandleColors(
+        self,
+        obj: Union[plt.Axes, sns.FacetGrid],
+        *,
+        expected_handle_colors: Optional[List[ColorName]],
+    ):
         actual_handle_colors = [to_rgb(handle.get_facecolor()) for handle in self.__get_legend(obj).legend_handles]
 
         self.assertColorList(
@@ -196,7 +222,13 @@ class BaseTestMixin(TestCase):
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
-    def checkCollectionColor(self, ax: plt.Axes, *, expected_facecolor: str, collection_number: int = 0):
+    def checkCollectionColor(
+        self,
+        ax: plt.Axes,
+        *,
+        expected_facecolor: Optional[ColorName],
+        collection_number: int = 0,
+    ):
         actual_color = to_rgb(ax.collections[collection_number].get_facecolor())
 
         self.assertSingleColor(
@@ -213,7 +245,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(lines),
-            f"The figure must have only {expected_number} lines.",
+            f"The figure must have only <samp>{expected_number}</samp> lines.",
         )
 
     def checkLinePosition(
@@ -260,7 +292,7 @@ class BaseTestMixin(TestCase):
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
-    def checkLineColor(self, ax: plt.Axes, *, expected_color: str, line_number: int = 0):
+    def checkLineColor(self, ax: plt.Axes, *, expected_color: Optional[ColorName], line_number: int = 0):
         actual_color = to_rgb(ax.lines[line_number].get_color())
 
         self.assertSingleColor(
@@ -409,7 +441,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(containers),
-            f"The figure must have only {expected_number} containers.",
+            f"The figure must have only <samp>{expected_number}</samp> containers.",
         )
 
     def checkContainerType(self, ax: plt.Axes, *, expected_type: Type[Container], container_number: int = 0):
@@ -428,7 +460,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(patches),
-            f"The figure must have only {expected_number} patches.",
+            f"The figure must have only <samp>{expected_number}</samp> patches.",
         )
 
     def checkPatchType(self, ax: plt.Axes, *, expected_type: Type[Patch], patch_number: int = 0):
@@ -448,7 +480,7 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_number,
             len(datavalues),
-            f"The figure must have only {expected_number} bars.",
+            f"The figure must have only <samp>{expected_number}</samp> bars.",
         )
 
     def checkBarValues(self, ax: plt.Axes, *, expected_values: List[float], container_number: int = 0):
@@ -467,7 +499,7 @@ class BaseTestMixin(TestCase):
         self.assertAllClose(
             expected_widths,
             actual_widths,
-            msg="The expected bar width does not match the actual widths.",
+            msg="The expected bar widths do not match the actual widths.",
         )
 
     def checkBarPosition(
@@ -506,10 +538,16 @@ class BaseTestMixin(TestCase):
         self.assertEqual(
             expected_layout,
             actual_layout,
-            f"The bars must be oriented in the {expected_layout} direction.",
+            f"The bars must be oriented in the <samp>{expected_layout}</samp> direction.",
         )
 
-    def checkBarColor(self, ax: plt.Axes, *, expected_facecolors: List[str], container_number: int = 0):
+    def checkBarColor(
+        self,
+        ax: plt.Axes,
+        *,
+        expected_facecolors: Optional[List[ColorName]],
+        container_number: int = 0,
+    ):
         actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
 
         self.assertColorList(
@@ -586,8 +624,8 @@ class BaseTestMixin(TestCase):
 
             msg += (
                 "Please see the full feedback for more information.\n\n"
-                f"The expected wedge center should be equal to {expected_patch.center}, "
-                f"but got {actual_patch.center}."
+                f"The expected wedge center should be equal to <samp>{expected_patch.center}</samp>, "
+                f"but got <samp>{actual_patch.center}</samp>."
             )
 
             self.assertAlmostEqual(expected_center_x, actual_center_x, msg=msg)
@@ -597,7 +635,7 @@ class BaseTestMixin(TestCase):
         actual_labels = [actual_patch.get_label() for actual_patch in ax.patches]
         self.assertAllEqual(expected_labels, actual_labels, msg="The expected pie labels do not match the actual ones.")
 
-    def checkPieColors(self, ax: plt.Axes, *, expected_colors: List[str]):
+    def checkPieColors(self, ax: plt.Axes, *, expected_colors: Optional[List[ColorName]]):
         actual_colors = [to_rgb(patch.get_facecolor()) for patch in ax.patches]
 
         self.assertColorList(
@@ -615,7 +653,11 @@ class BaseTestMixin(TestCase):
         )
 
     def checkNumberOfTextObjects(self, ax: plt.Axes, *, expected_number: int):
-        self.assertEqual(expected_number, len(ax.texts), f"The number of text objects must be {expected_number}.")
+        self.assertEqual(
+            expected_number,
+            len(ax.texts),
+            f"The number of text objects must be <samp>{expected_number}</samp>.",
+        )
 
     def checkTextObjects(self, ax: plt.Axes, *, expected_texts: List[Tuple[float, float, str]]):
         actual_texts = sorted((*text.get_position(), text.get_text()) for text in ax.texts)

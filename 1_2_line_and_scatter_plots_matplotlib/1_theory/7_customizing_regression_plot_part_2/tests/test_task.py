@@ -52,7 +52,7 @@ class PlotTestCase(BaseTestMixin):
         )
 
     def test_3_2_scatter_color(self):
-        self.checkCollectionColor(self.fig.axes[0], expected_facecolor="C0")
+        self.checkCollectionColor(self.fig.axes[0], expected_facecolor=None)
 
     def test_3_3_transparency(self):
         self.checkCollectionTransparency(self.fig.axes[0], expected_alpha=0.1)
