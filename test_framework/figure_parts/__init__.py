@@ -1,0 +1,5 @@
+from test_framework.figure_parts.axis import AxisTestMixin
+from test_framework.figure_parts.legend import LegendTestMixin
+from test_framework.figure_parts.spine import SpineTestMixin
+from test_framework.figure_parts.text import TextTestMixin
+from test_framework.figure_parts.title import TitleTestMixin
