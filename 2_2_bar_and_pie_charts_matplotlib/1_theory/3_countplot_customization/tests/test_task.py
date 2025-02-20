@@ -4,13 +4,13 @@ from matplotlib.container import BarContainer
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from test_framework import AxisTestMixin, BarTestMixin
+from test_framework import AxisTestMixin, BarTestMixin, TitleTestMixin
 
 from data import aggregate, filter_platforms, preprocess, read
 from task import plot
 
 
-class PlotTestCase(BarTestMixin, AxisTestMixin):
+class PlotTestCase(BarTestMixin, AxisTestMixin, TitleTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
