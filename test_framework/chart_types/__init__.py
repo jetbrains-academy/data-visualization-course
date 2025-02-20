@@ -1,0 +1,4 @@
+from test_framework.chart_types.bar import BarTestMixin
+from test_framework.chart_types.collection import CollectionTestMixin
+from test_framework.chart_types.line import LineTestMixin
+from test_framework.chart_types.pie import PieTestMixin

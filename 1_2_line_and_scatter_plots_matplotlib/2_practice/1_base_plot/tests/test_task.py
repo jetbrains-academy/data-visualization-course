@@ -3,12 +3,13 @@ from typing import ClassVar
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from common.base_test_mixins import BaseTestMixin
+from test_framework import AxisTestMixin, CollectionTestMixin, LineTestMixin, SpineTestMixin
+
 from data import read
 from task import plot
 
 
-class PlotTestCase(BaseTestMixin):
+class PlotTestCase(CollectionTestMixin, LineTestMixin, SpineTestMixin, AxisTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 

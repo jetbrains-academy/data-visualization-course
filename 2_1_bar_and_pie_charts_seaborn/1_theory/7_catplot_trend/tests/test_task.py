@@ -4,12 +4,13 @@ from matplotlib.container import BarContainer
 import pandas as pd
 import seaborn as sns
 
-from common.base_test_mixins import BaseTestMixin
+from test_framework import AxisTestMixin, BarTestMixin
+
 from data import add_decades, preprocess, read
 from task import plot
 
 
-class PlotTestCase(BaseTestMixin):
+class PlotTestCase(BarTestMixin, AxisTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
 

@@ -4,12 +4,13 @@ from matplotlib.container import BarContainer
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from common.base_test_mixins import BaseTestMixin
+from test_framework import BarTestMixin, TitleTestMixin
+
 from data import aggregate, get_all_regions, get_number_of_decades, preprocess, read
 from task import plot
 
 
-class PlotTestCase(BaseTestMixin):
+class PlotTestCase(BarTestMixin, TitleTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 

@@ -3,12 +3,13 @@ from typing import ClassVar
 import pandas as pd
 import seaborn as sns
 
-from common.base_test_mixins import BaseTestMixin
+from test_framework import CollectionTestMixin, LineTestMixin
+
 from data import read
 from task import plot
 
 
-class PlotTestCase(BaseTestMixin):
+class PlotTestCase(CollectionTestMixin, LineTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
 

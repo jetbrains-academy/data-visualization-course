@@ -4,12 +4,13 @@ from matplotlib.patches import Wedge
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from common.base_test_mixins import BaseTestMixin
+from test_framework import PieTestMixin, TitleTestMixin
+
 from data import aggregate, filter_platforms, preprocess, read
 from task import plot
 
 
-class PlotTestCase(BaseTestMixin):
+class PlotTestCase(PieTestMixin, TitleTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
