@@ -33,8 +33,10 @@ ignore = [
 ]
 
 [lint.per-file-ignores]
-# We're using camelCase here to be consistent with unittest
-"common/base_test_mixins.py" = ["N802"]
+# We're using camelCase in the test framework to be consistent with unittest
+"test_framework/*" = ["N802"]
+# We import neccecary (but "unused") objects in __init__.py files for public API
+"test_framework/**/__init__.py" = ["F401", "F403"]
 # We have a function that should be defined in the first step, but unused for some time
 "2_2_bar_and_pie_charts_matplotlib/1_theory/[1-8]_*" = ["ARG001"]
 
