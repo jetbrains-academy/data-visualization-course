@@ -1,7 +1,7 @@
 from typing import ClassVar
 
-import numpy as np
 from matplotlib.container import BarContainer
+import numpy as np
 import pandas as pd
 import seaborn as sns
 
@@ -44,4 +44,3 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
 
     def test_2_2_bar_layout(self):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")
-

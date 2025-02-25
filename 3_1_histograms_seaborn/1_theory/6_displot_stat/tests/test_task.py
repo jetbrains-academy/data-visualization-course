@@ -1,13 +1,13 @@
 from typing import ClassVar
 
-import numpy as np
 from matplotlib.container import BarContainer
+import numpy as np
 import pandas as pd
 import seaborn as sns
 
 from test_framework import AxisTestMixin, HistTestMixin
 
-from data import preprocess, read, filter_by_publisher_and_global_sales
+from data import filter_by_publisher_and_global_sales, preprocess, read
 from task import plot
 
 

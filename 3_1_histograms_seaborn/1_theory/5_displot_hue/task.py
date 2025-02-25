@@ -1,7 +1,7 @@
 import pandas as pd
 import seaborn as sns
 
-from data import preprocess, read, filter_by_publisher_and_global_sales
+from data import filter_by_publisher_and_global_sales, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> sns.FacetGrid:
