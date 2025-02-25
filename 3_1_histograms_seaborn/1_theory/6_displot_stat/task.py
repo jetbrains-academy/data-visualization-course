@@ -6,7 +6,11 @@ from data import filter_by_publisher_and_global_sales, preprocess, read
 
 def plot(games: pd.DataFrame) -> sns.FacetGrid:
     return sns.displot(
-        data=filter_by_publisher_and_global_sales(games), x="global_sales", bins=10, hue="publisher", stat="probability"
+        data=filter_by_publisher_and_global_sales(games),
+        x="global_sales",
+        bins=10,
+        hue="publisher",
+        stat="probability",
     )
 
 
