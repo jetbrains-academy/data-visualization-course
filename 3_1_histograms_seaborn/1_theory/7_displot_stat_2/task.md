@@ -1,0 +1,22 @@
+## Theory
+
+After applying the `stat="probability"` parameter, we notice that the overall shape of the graph remains the same. This
+is because, by default, Seaborn normalizes the probability across all categories together.
+
+This means that the probability for each bin is calculated as a fraction of the entire dataset, rather than separately
+for each publisher. As a result, if one publisher has more games, its bars may still dominate the histogram, making
+direct comparisons difficult.
+
+To fix this, we can use the `common_norm` parameter. When set to `False`, it ensures that each publisher’s histogram is
+normalized independently, making their distributions directly comparable.
+
+## Task
+
+Modify the histogram so that it shows probabilities separately for each publisher. Edit the `common_norm` argument to
+achieve this.
+
+## Hints
+
+<div class="hint" title="What should the figure look like?">
+   <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
+</div>

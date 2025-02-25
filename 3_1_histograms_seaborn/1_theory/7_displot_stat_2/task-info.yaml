@@ -1,5 +1,5 @@
 type: edu
-custom_name: Histogram chart cropped
+custom_name: "Probability distribution #2"
 files:
   - name: task.py
     visible: true
@@ -7,3 +7,7 @@ files:
     visible: false
   - name: tests/test_task.py
     visible: false
+  - name: example.png
+    visible: false
+    propagatable: false
+    is_binary: true
