@@ -1,5 +1,5 @@
 type: edu
-custom_name: Comparing 2 distributions
+custom_name: Comparing distributions
 files:
   - name: example.png
     visible: false

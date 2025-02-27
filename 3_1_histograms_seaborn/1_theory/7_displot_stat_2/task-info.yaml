@@ -1,5 +1,5 @@
 type: edu
-custom_name: "Probability distribution #2"
+custom_name: "Probability distribution. Part #2"
 files:
   - name: task.py
     visible: true

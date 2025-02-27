@@ -1,5 +1,5 @@
 type: edu
-custom_name: Histogram chart with displot
+custom_name: Histogram plot with displot
 files:
   - name: example.png
     visible: false
