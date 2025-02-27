@@ -14,6 +14,8 @@ from task import plot
 class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
+    counts: ClassVar[np.ndarray]
+    bins: ClassVar[np.ndarray]
 
     @classmethod
     def setUpClass(cls):

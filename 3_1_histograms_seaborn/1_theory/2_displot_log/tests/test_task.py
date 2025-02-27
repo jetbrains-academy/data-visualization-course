@@ -14,6 +14,8 @@ from task import plot
 class PlotTestCase(HistTestMixin, AxisTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
+    counts: ClassVar[np.ndarray]
+    bins: ClassVar[np.ndarray]
 
     @classmethod
     def setUpClass(cls):
@@ -21,7 +23,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
         data = preprocess(data)
 
         cls.data = data
-        cls.counts, cls.bina = np.histogram(np.log(data["global_sales"]), bins="auto")
+        cls.counts, cls.bins = np.histogram(np.log(data["global_sales"]), bins="auto")
         cls.fig = plot(data)
 
     def test_1_1_return_type(self):
