@@ -3,8 +3,7 @@
 The main goal of this lesson is to **explore the distribution of video game sales using histograms**. We will analyze:
 
 1. The overall distribution of global sales
-2. The distribution of sales across different regions
-3. The distribution of global sales by publisher
+2. The distribution of global sales by publisher
 
 ## Theory
 

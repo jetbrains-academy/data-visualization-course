@@ -14,7 +14,7 @@ To enable this, set the `log_scale` argument to `True` in the `displot` function
 
 ## Task
 
-Apply a logarithmic scale to the x-axis of the histogram to  understand the upper limit of sales better.
+Apply a logarithmic scale to the x-axis of the histogram to understand the upper limit of sales better.
 
 ## Hints
 

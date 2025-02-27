@@ -12,8 +12,7 @@ normalized independently, making their distributions directly comparable.
 
 ## Task
 
-Modify the histogram so that it shows probabilities separately for each publisher. Edit the `common_norm` argument to
-achieve this.
+Modify the histogram so that it calculates probabilities separately for each publisher.
 
 ## Hints
 

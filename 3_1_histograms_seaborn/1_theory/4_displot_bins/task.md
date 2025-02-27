@@ -12,7 +12,12 @@ The number of bins determines the balance between detail and smoothness:
 By default, Seaborn uses the minimum of the bin width according to
 the [Sturges's rule](https://en.wikipedia.org/wiki/Sturges%27s_rule)
 and [Freedman-Diaconis rule](https://en.wikipedia.org/wiki/Freedman%E2%80%93Diaconis_rule) to choose the number of bins.
-However, we can manually set the desired number of bins in `bins` argument of the `displot` function.
+However, we can manually configure bins in `bins` argument of the `displot` function. It accepts:
+
+- An integer: The number of bins to use.
+- A collection: The edges of the bins (supports non-uniform widths).
+- A string: The method to calculate the number of bins. To see the list of accepted strings
+  check [documentation](https://numpy.org/doc/2.1/reference/generated/numpy.histogram_bin_edges.html).
 
 ## Task
 
