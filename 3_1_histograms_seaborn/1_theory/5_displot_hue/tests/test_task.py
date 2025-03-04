@@ -14,7 +14,6 @@ from task import plot
 class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
-    counts: ClassVar[np.ndarray]
     bins: ClassVar[np.ndarray]
 
     @classmethod
@@ -39,9 +38,9 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin):
 
         # Bars
         self.checkNumberOfContainers(self.fig.ax, expected_number=2)
-        self.checkContainerType(self.fig.ax, expected_type=BarContainer)
         for container_number, _ in enumerate(self.publishers):
-            self.checkNumberOfBars(self.fig.ax, expected_number=len(self.bins) - 1, container_number=container_number)
+            self.checkContainerType(self.fig.ax, expected_type=BarContainer, container_number=container_number)
+            self.checkBarBins(self.fig.ax, expected_bins=self.bins.tolist(), container_number=container_number)
 
     def test_2_1_bar_height(self):
         for container_number, publisher in enumerate(self.publishers):
