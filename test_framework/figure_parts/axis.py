@@ -105,3 +105,17 @@ class AxisTestMixin(BaseTestMixin):
             actual_right_bound,
             msg=msg,
         )
+
+    def checkAxisScale(self, ax: plt.Axes, *, expected_scale: str, axis: Literal["x", "y"]):
+        if axis == "x":
+            actual_scale = ax.get_xscale()
+        elif axis == "y":
+            actual_scale = ax.get_yscale()
+        else:
+            raise ValueError("Unknown axis name.")
+
+        self.assertEqual(
+            expected_scale,
+            actual_scale,
+            msg=f"The {axis}-axis scale should be <samp>{expected_scale}</samp>.",
+        )
