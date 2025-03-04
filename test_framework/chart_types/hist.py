@@ -34,11 +34,14 @@ class HistTestMixin(BarTestMixin):
             actual_alpha = 1
 
         if expected_alpha == 1:
-            error_message = f"The bars in container#{container_number} must not be transparent, but got <samp>{actual_alpha}</samp>."
+            error_message = (
+                f"The bars in container#{container_number} must not be transparent, but got "
+                f"<samp>{actual_alpha}</samp>."
+            )
         else:
             error_message = (
-                f"The bars in container#{container_number} must have transparency equal to <samp>{expected_alpha}</samp>, "
-                f"but got <samp>{actual_alpha}</samp>."
+                f"The bars in container#{container_number} must have transparency equal to "
+                f"<samp>{expected_alpha}</samp>, but got <samp>{actual_alpha}</samp>."
             )
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)

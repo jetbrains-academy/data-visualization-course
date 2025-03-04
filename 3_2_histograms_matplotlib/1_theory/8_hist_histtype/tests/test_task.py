@@ -24,8 +24,8 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
         cls.data = data
         cls.fig = plot(data)
         cls.publishers = ["Electronic Arts", "Ubisoft"]
-        min, max = get_min_sales(data), get_max_sales(data)
-        cls.bins = np.linspace(min, max, num=11)
+        min_value, max_value = get_min_sales(data), get_max_sales(data)
+        cls.bins = np.linspace(min_value, max_value, num=11)
 
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=plt.Figure)

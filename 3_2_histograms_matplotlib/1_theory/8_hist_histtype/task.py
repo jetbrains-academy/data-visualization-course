@@ -9,8 +9,8 @@ def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
     publishers = ["Electronic Arts", "Ubisoft"]
 
-    min, max = get_min_sales(games), get_max_sales(games)
-    bins = np.linspace(min, max, num=11)
+    min_value, max_value = get_min_sales(games), get_max_sales(games)
+    bins = np.linspace(min_value, max_value, num=11)
 
     for publisher in publishers:
         publisher_df = filter_by_publisher_and_global_sales(games, publisher)
