@@ -76,6 +76,7 @@ additional_files:
   - name: common/resources/datasets/experiment.csv
   - name: common/resources/datasets/games.csv
   - name: common/resources/datasets/food.csv
+  - name: common/resources/datasets/sales.csv
   - name: common/__init__.py
   - name: common/paths.py
   - name: test_framework/__init__.py
