@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 from common.paths import GAMES_DATASET_PATH
@@ -34,12 +35,11 @@ def filter_by_publisher_and_global_sales(data: pd.DataFrame, publisher: str) -> 
     return filtered_data[filtered_data["global_sales"] <= filtered_data["global_sales"].quantile(0.95)]
 
 
-def get_min_sales(data: pd.DataFrame) -> float:
-    filtered_data = data[data["publisher"].isin(["Electronic Arts", "Ubisoft"])]
-    return filtered_data["global_sales"].min()
-
-
-def get_max_sales(data: pd.DataFrame) -> float:
+def get_bins(data: pd.DataFrame) -> np.ndarray:
     filtered_data = data[data["publisher"].isin(["Electronic Arts", "Ubisoft"])]
     filtered_data = filtered_data[filtered_data["global_sales"] <= filtered_data["global_sales"].quantile(0.95)]
-    return filtered_data["global_sales"].max()
+    return np.linspace(filtered_data["global_sales"].min(), filtered_data["global_sales"].max(), num=11)
+
+
+def get_weights(data: pd.DataFrame) -> np.ndarray:
+    return np.ones_like(data["global_sales"]) / data["global_sales"].shape[0]

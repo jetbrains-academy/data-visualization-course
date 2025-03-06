@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 
 from common.paths import GAMES_DATASET_PATH
@@ -32,3 +33,7 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
 def filter_by_publisher_and_global_sales(data: pd.DataFrame, publisher: str) -> pd.DataFrame:
     filtered_data = data[data["publisher"] == publisher]
     return filtered_data[filtered_data["global_sales"] <= filtered_data["global_sales"].quantile(0.95)]
+
+
+def get_weights(data: pd.DataFrame) -> np.ndarray:
+    return np.ones_like(data["global_sales"]) / data["global_sales"].shape[0]
