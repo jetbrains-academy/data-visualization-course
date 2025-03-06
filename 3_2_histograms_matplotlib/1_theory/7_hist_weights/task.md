@@ -23,7 +23,16 @@ where `n` is the total number of data points.
 
 Modify your previous histogram to show probabilities instead of counts. Keep all other parameters the same.
 
+Use the hidden `get_weights` function to calculate the weights for a dataset filtered by publisher and global sales. If
+you want to calculate the weights yourself, refer to the corresponding hint below.
+
 ## Hints
+
+<div class="hint" title="How to calculate the weights?">
+    One way to do it is to use the <a href="https://numpy.org/doc/2.1/reference/generated/numpy.ones_like.html">
+    <code>ones_like</code></a> function to generate an array of ones with the same shape as the data. Then, divide this
+    array by the total number of data points.
+</div>
 
 <div class="hint" title="What should the figure look like?">
    <img src="example.png" alt="What the figure should look like" style="max-height: 500px">
