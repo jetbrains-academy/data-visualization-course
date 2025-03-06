@@ -38,16 +38,19 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
 
         # Bars
         self.checkNumberOfContainers(self.fig.ax, expected_number=2)
-        for container_number, _ in enumerate(self.publishers):
+        for container_number in range(len(self.publishers)):
             self.checkContainerType(self.fig.ax, expected_type=BarContainer, container_number=container_number)
+
+    def test_2_1_bar_bins(self):
+        for container_number in range(len(self.publishers)):
             self.checkBarBins(self.fig.ax, expected_bins=self.bins.tolist(), container_number=container_number)
 
-    def test_2_1_bar_height(self):
+    def test_2_2_bar_height(self):
         for container_number, publisher in enumerate(self.publishers):
             filtered_dataset = self.data[self.data["publisher"] == publisher]
             weights = np.ones_like(filtered_dataset["global_sales"]) / self.data["global_sales"].shape[0]
             counts, _ = np.histogram(filtered_dataset["global_sales"], bins=self.bins, weights=weights)
             self.checkBarHeights(self.fig.ax, expected_values=counts.tolist(), container_number=container_number)
 
-    def test_2_2_bar_layout(self):
+    def test_2_3_bar_layout(self):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")

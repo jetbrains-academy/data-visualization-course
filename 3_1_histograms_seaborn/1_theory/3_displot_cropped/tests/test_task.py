@@ -39,13 +39,15 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
         # Bars
         self.checkNumberOfContainers(self.fig.ax, expected_number=1)
         self.checkContainerType(self.fig.ax, expected_type=BarContainer)
-        self.checkBarBins(self.fig.ax, expected_bins=self.bins.tolist())
 
     def test_1_4_x_scale(self):
         self.checkAxisScale(self.fig.ax, expected_scale="linear", axis="x")
 
-    def test_2_1_bar_height(self):
+    def test_2_1_bar_bins(self):
+        self.checkBarBins(self.fig.ax, expected_bins=self.bins.tolist())
+
+    def test_2_2_bar_height(self):
         self.checkBarHeights(self.fig.ax, expected_values=self.counts.tolist())
 
-    def test_2_2_bar_layout(self):
+    def test_2_3_bar_layout(self):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")
