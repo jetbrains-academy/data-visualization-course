@@ -6,9 +6,9 @@ from data import get_logarithmic_bins, preprocess, read
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
-    bins = get_logarithmic_bins(games, 50)
 
-    ax.hist(data=games, x="global_sales", bins=bins)
+    ax.hist(data=games, x="global_sales", bins=get_logarithmic_bins(games, 50))
+
     ax.set_xscale("log")
 
     return fig

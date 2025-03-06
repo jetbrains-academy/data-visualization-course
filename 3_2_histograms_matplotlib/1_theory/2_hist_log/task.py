@@ -6,9 +6,11 @@ from data import preprocess, read
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
+
     ax.hist(data=games, x="global_sales")
 
     ax.set_xscale("log")
+
     return fig
 
 
@@ -18,7 +20,7 @@ def main():
     games = preprocess(games)
 
     fig = plot(games)
-    fig.savefig("example.png", dpi=300)
+    fig.savefig("plot.png", dpi=300)
 
 
 if __name__ == "__main__":

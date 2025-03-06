@@ -6,6 +6,7 @@ from data import filter_by_global_sales, preprocess, read
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
+
     ax.hist(data=filter_by_global_sales(games), x="global_sales")
 
     return fig

@@ -1,21 +1,28 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 
-from data import filter_by_publisher_and_global_sales, get_max_sales, get_min_sales, preprocess, read
+from data import filter_by_publisher_and_global_sales, get_bins, get_weights, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
-    publishers = ["Electronic Arts", "Ubisoft"]
 
-    min_value, max_value = get_min_sales(games), get_max_sales(games)
-    bins = np.linspace(min_value, max_value, num=11)
-
-    for publisher in publishers:
+    for publisher in ["Electronic Arts", "Ubisoft"]:
         publisher_df = filter_by_publisher_and_global_sales(games, publisher)
-        weights = np.ones_like(publisher_df["global_sales"]) / publisher_df["global_sales"].shape[0]
-        ax.hist(data=publisher_df, x="global_sales", alpha=0.7, weights=weights, bins=bins, histtype="step")
+        ax.hist(
+            data=publisher_df,
+            x="global_sales",
+            alpha=0.7,
+            weights=get_weights(publisher_df),
+            bins=get_bins(games),
+            histtype="step",
+            label=publisher,
+        )
+
+    ax.set_xlabel("Global Sales (millions)")
+    ax.set_ylabel("Proportion")
+    ax.set_title("Global Sales Distribution for Electronic Arts and Ubisoft")
+    ax.legend()
 
     return fig
 
@@ -26,7 +33,7 @@ def main():
     games = preprocess(games)
 
     fig = plot(games)
-    fig.savefig("example.png", dpi=300)
+    fig.savefig("plot.png", dpi=300)
 
 
 if __name__ == "__main__":

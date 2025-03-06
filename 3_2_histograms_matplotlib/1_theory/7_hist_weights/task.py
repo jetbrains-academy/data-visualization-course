@@ -1,18 +1,15 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 
-from data import filter_by_publisher_and_global_sales, preprocess, read
+from data import filter_by_publisher_and_global_sales, get_weights, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
-    publishers = ["Electronic Arts", "Ubisoft"]
 
-    for publisher in publishers:
+    for publisher in ["Electronic Arts", "Ubisoft"]:
         publisher_df = filter_by_publisher_and_global_sales(games, publisher)
-        weights = np.ones_like(publisher_df["global_sales"]) / publisher_df["global_sales"].shape[0]
-        ax.hist(data=publisher_df, x="global_sales", alpha=0.7, weights=weights)
+        ax.hist(data=publisher_df, x="global_sales", alpha=0.7, weights=get_weights(publisher_df))
 
     return fig
 

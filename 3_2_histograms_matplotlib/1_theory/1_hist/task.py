@@ -6,6 +6,7 @@ from data import preprocess, read
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
+
     ax.hist(data=games, x="global_sales")
 
     return fig

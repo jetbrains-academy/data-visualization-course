@@ -6,9 +6,8 @@ from data import filter_by_publisher_and_global_sales, preprocess, read
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
-    publishers = ["Electronic Arts", "Ubisoft"]
 
-    for publisher in publishers:
+    for publisher in ["Electronic Arts", "Ubisoft"]:
         ax.hist(data=filter_by_publisher_and_global_sales(games, publisher), x="global_sales", alpha=0.7)
 
     return fig
