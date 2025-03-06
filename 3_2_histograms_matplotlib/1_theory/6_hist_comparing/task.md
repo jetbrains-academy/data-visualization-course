@@ -16,6 +16,7 @@ one at a time, calling `hist` for each distribution.
 ## Task
 
 Plot two overlaid histograms for the global sales distributions of games published by `Electronic Arts` and `Ubisoft`.
+
 For each histogram set `alpha` as `0.7`, keep the default value for `bins`. We described `alpha` parameter in details in
 the "[Transparency and color](course://1_2_line_and_scatter_plots_matplotlib/1_theory/2_transparency_and_color)"
 section. See more details in the corresponding hint below.
@@ -36,7 +37,7 @@ If you prefer, you can filter the dataset manually. Please refer to the correspo
 </div>
 
 <div class="hint" title="How to set transparency?">
-    Specify the <code>alpha</code> parameter, in <code>hist</code> function.
+    Specify the <code>alpha</code> parameter in <code>hist</code> function.
 </div>
 
 <div class="hint" title="What should the figure look like?">
