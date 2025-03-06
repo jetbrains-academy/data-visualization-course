@@ -23,7 +23,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
         data = preprocess(data)
 
         cls.data = data
-        cls.counts, cls.bins = np.histogram(data["global_sales"], bins=10)
+        cls.counts, cls.bins = np.histogram(data["global_sales"])
         cls.fig = plot(data)
 
     def test_1_1_return_type(self):
@@ -39,10 +39,12 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
         # Bars
         self.checkNumberOfContainers(self.fig.axes[0], expected_number=1)
         self.checkContainerType(self.fig.axes[0], expected_type=BarContainer)
+
+    def test_2_1_bar_bins(self):
         self.checkBarBins(self.fig.axes[0], expected_bins=self.bins.tolist())
 
-    def test_2_1_bar_height(self):
+    def test_2_2_bar_height(self):
         self.checkBarHeights(self.fig.axes[0], expected_values=self.counts.tolist())
 
-    def test_2_2_bar_layout(self):
+    def test_2_3_bar_layout(self):
         self.checkBarLayout(self.fig.axes[0], expected_layout="vertical")

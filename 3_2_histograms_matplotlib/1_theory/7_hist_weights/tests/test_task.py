@@ -38,22 +38,25 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
 
         # Bars
         self.checkNumberOfContainers(self.fig.axes[0], expected_number=2)
+        for container_number in range(len(self.publishers)):
+            self.checkContainerType(self.fig.axes[0], expected_type=BarContainer, container_number=container_number)
+
+    def test_2_1_bar_bins(self):
         for container_number, publisher in enumerate(self.publishers):
             filtered_data = filter_by_publisher_and_global_sales(self.data, publisher)
             bins = np.histogram_bin_edges(filtered_data["global_sales"], bins=self.bins)
-            self.checkContainerType(self.fig.axes[0], expected_type=BarContainer, container_number=container_number)
             self.checkBarBins(self.fig.axes[0], expected_bins=bins.tolist(), container_number=container_number)
 
-    def test_2_1_bar_height(self):
+    def test_2_2_bar_height(self):
         for container_number, publisher in enumerate(self.publishers):
             filtered_data = filter_by_publisher_and_global_sales(self.data, publisher)
             weights = np.ones_like(filtered_data["global_sales"]) / filtered_data["global_sales"].shape[0]
             counts, _ = np.histogram(filtered_data["global_sales"], bins=self.bins, weights=weights)
             self.checkBarHeights(self.fig.axes[0], expected_values=counts.tolist(), container_number=container_number)
 
-    def test_2_2_bar_layout(self):
+    def test_2_3_bar_layout(self):
         self.checkBarLayout(self.fig.axes[0], expected_layout="vertical")
 
-    def test_2_3_bar_transparency(self):
-        for container_number, _ in enumerate(self.publishers):
+    def test_2_4_bar_transparency(self):
+        for container_number in range(len(self.publishers)):
             self.checkBarTransparency(self.fig.axes[0], expected_alpha=0.7, container_number=container_number)
