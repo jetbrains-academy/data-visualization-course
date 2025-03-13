@@ -7,6 +7,11 @@ files:
     is_binary: true
   - name: task.py
     visible: true
+    placeholders:
+      - offset: 131
+        length: 48
+        placeholder_text: "return  # TODO"
+        is_visible: false
   - name: tests/test_task.py
     visible: false
     propagatable: false
