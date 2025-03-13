@@ -14,7 +14,7 @@ cutoff.
 The `hist` function does not allow us to set a logarithmic scale for x-axis directly. Instead, we can apply logarithmic scaling to
 the axis, by calling the
 [`ax.set_xscale()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xscale.html#matplotlib.axes.Axes.set_xscale)
-function with the `'log'` argument.
+function with the `log` argument.
 
 ## Task
 

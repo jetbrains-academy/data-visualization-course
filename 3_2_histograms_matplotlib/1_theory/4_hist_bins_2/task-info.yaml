@@ -8,5 +8,5 @@ files:
   - name: tests/test_task.py
     visible: false
   - name: example.png
-    visible: true
+    visible: false
     is_binary: true

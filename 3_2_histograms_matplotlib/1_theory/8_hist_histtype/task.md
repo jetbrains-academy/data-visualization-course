@@ -6,7 +6,7 @@ Our histogram now looks better, but there are still some refinements we can make
 2. Improve visual clarity by adjusting the `histtype` parameter in the `hist` function.
 3. Add axis labels, legend and a title to the plot.
 
-By default, `histtype` is set to `'bar'`, which fills the bars with color. However, we can change it to `'step'`, which
+By default, `histtype` is set to `bar`, which fills the bars with color. However, we can change it to `step`, which
 draws a line connecting the tops of the bars while leaving the area unfilled. This creates a cleaner and more
 visually appealing distribution.
 
@@ -14,7 +14,7 @@ visually appealing distribution.
 
 Modify the histogram as follows:
 
-- Set `histtype` to `'step'` to create an unfilled line-based histogram.
+- Set `histtype` to `step` to create an unfilled line-based histogram.
 - Generate the same bins collection for both distributions. There should be `10` uniform bins, starting from the minimum
   global sales value (across both publishers) and ending at the maximum value.
 - Name x-axis as `'Global Sales (millions)'`, y-axis as `'Proportion'`.
