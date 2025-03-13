@@ -1,0 +1,22 @@
+type: edu
+custom_name: Base
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 43
+        length: 31
+        placeholder_text: "from data import read"
+        is_visible: false
+      - offset: 129
+        length: 109
+        placeholder_text: "return # TODO"
+        is_visible: false
+  - name: data.py
+    visible: false
+  - name: tests/test_task.py
+    visible: false
+  - name: example.png
+    visible: false
+    propagatable: false
+    is_binary: true
