@@ -28,4 +28,5 @@ def get_y_coordinates(sales: pd.Series, city: str) -> np.ndarray:
         return np.zeros_like(sales) + 0.2
     if city == "Yerevan":
         return np.zeros_like(sales) + 0.1
-    raise ValueError(f"Unknown city: {city}")
+    error_message = f"Unknown city: {city}"
+    raise ValueError(error_message)

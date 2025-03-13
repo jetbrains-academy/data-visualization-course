@@ -25,7 +25,10 @@ class TextTestMixin(BaseTestMixin):
         self.assertEqual(
             expected_alignment,
             actual_alignment,
-            f"The text must be aligned to the <samp>{expected_alignment}</samp>, but got <samp>{actual_alignment}</samp>.",
+            msg=(
+                f"The text must be aligned to the <samp>{expected_alignment}</samp>, "
+                f"but got <samp>{actual_alignment}</samp>."
+            ),
         )
 
     def checkTextObjectColor(self, ax: plt.Axes, *, expected_color: str, text_number: int = 0):
