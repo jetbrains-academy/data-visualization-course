@@ -18,3 +18,21 @@ class TextTestMixin(BaseTestMixin):
         expected_texts = sorted(expected_texts)
 
         self.assertAllEqual(expected_texts, actual_texts, "The expected text objects do not match the actual ones.")
+
+    def checkTextObjectHorizontalAlignment(self, ax: plt.Axes, *, expected_alignment: str, text_number: int = 0):
+        actual_alignment = ax.texts[text_number].get_horizontalalignment()
+
+        self.assertEqual(
+            expected_alignment,
+            actual_alignment,
+            f"The text must be aligned to the <samp>{expected_alignment}</samp>, but got <samp>{actual_alignment}</samp>.",
+        )
+
+    def checkTextObjectColor(self, ax: plt.Axes, *, expected_color: str, text_number: int = 0):
+        actual_color = ax.texts[text_number].get_color()
+
+        self.assertEqual(
+            expected_color,
+            actual_color,
+            f"The text must have color <samp>{expected_color}</samp>, but got <samp>{actual_color}</samp>.",
+        )
