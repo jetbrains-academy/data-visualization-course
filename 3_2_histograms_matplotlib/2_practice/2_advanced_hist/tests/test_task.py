@@ -188,7 +188,7 @@ class PlotTestCase(
 
     def test_5_2_text_objects(self):
         expected_texts = []
-        for text_number, city in enumerate(self.cities):
+        for city in self.cities:
             city_sales = get_city_sales(self.data, city)
             median = city_sales.median()
             expected_texts.append((median + self.sign_map[city] * 25, 0.005, str(median)))

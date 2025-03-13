@@ -1,4 +1,4 @@
-from typing import List, Optional, Union, Literal
+from typing import List, Literal, Optional, Union
 
 from matplotlib.colors import to_rgb
 import matplotlib.pyplot as plt
@@ -85,7 +85,8 @@ class LineTestMixin(BaseTestMixin):
             expected_coordinate,
             actual_coordinate[0],
             msg=(
-                f"The expected coordinate value is <samp>{expected_coordinate}</samp>, but got <samp>{actual_coordinate[0]}</samp>."
+                f"The expected coordinate value is <samp>{expected_coordinate}</samp>, "
+                f"but got <samp>{actual_coordinate[0]}</samp>."
             ),
         )
 

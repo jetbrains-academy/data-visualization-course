@@ -71,8 +71,8 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
     ax_hist.legend()
 
     handles, labels = ax_hist.get_legend_handles_labels()
-    filtered_handles = [h for h, l in zip(handles, labels) if l != "Median"]
-    filtered_labels = [l for l in labels if l != "Median"]
+    filtered_handles = [handle for handle, label in zip(handles, labels) if label != "Median"]
+    filtered_labels = [label for label in labels if label != "Median"]
 
     ax_hist.legend(filtered_handles, filtered_labels)
 
