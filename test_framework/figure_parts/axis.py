@@ -106,7 +106,7 @@ class AxisTestMixin(BaseTestMixin):
             msg=msg,
         )
 
-    def checkAxisScale(self, ax: plt.Axes, *, expected_scale: Literal['log', 'linear'], axis: Literal["x", "y"]):
+    def checkAxisScale(self, ax: plt.Axes, *, expected_scale: Literal["log", "linear"], axis: Literal["x", "y"]):
         if axis == "x":
             actual_scale = ax.get_xscale()
         elif axis == "y":
