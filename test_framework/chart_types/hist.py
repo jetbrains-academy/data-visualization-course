@@ -1,5 +1,6 @@
-from typing import List
+from typing import List, Literal
 
+from matplotlib.colors import to_rgb
 import matplotlib.pyplot as plt
 
 from test_framework.chart_types import BarTestMixin
@@ -12,7 +13,7 @@ class HistTestMixin(BarTestMixin):
         *,
         expected_values: List[float],
         container_number: int = 0,
-        histtype: str = "bar",
+        histtype: Literal["bar", "step"],
     ):
         if histtype == "bar":
             actual_heights = [bar.get_height() for bar in ax.containers[container_number]]
@@ -35,7 +36,7 @@ class HistTestMixin(BarTestMixin):
         *,
         expected_bins: List[float],
         container_number: int = 0,
-        histtype: str = "bar",
+        histtype: Literal["bar", "step"],
     ):
         if histtype == "bar":
             actual_bins = [bar.get_x() for bar in ax.containers[container_number]]
@@ -60,7 +61,7 @@ class HistTestMixin(BarTestMixin):
         *,
         expected_alpha: float,
         container_number: int = 0,
-        histtype: str = "bar",
+        histtype: Literal["bar", "step"],
     ):
         if histtype == "bar":
             actual_alpha = ax.containers[container_number][0].get_alpha()
@@ -87,3 +88,25 @@ class HistTestMixin(BarTestMixin):
             )
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
+
+    def checkStepHistColor(self, ax: plt.Axes, *, expected_facecolor: str, container_number: int = 0):
+        actual_facecolor = to_rgb(ax.patches[container_number].get_facecolor())
+        self.assertSingleColor(
+            expected_facecolor,
+            actual_facecolor,
+            msg=(
+                f"The histogram must be colored in <samp>{expected_facecolor}</samp>, "
+                f"but got <samp>{self._rgb_to_name(actual_facecolor)}</samp>."
+            ),
+        )
+
+    def checkStepHistEdgeColor(self, ax: plt.Axes, *, expected_edgecolor: str, container_number: int = 0):
+        actual_edgecolor = to_rgb(ax.patches[container_number].get_edgecolor())
+        self.assertSingleColor(
+            expected_edgecolor,
+            actual_edgecolor,
+            msg=(
+                f"The histogram must be colored in <samp>{expected_edgecolor}</samp>, "
+                f"but got <samp>{self._rgb_to_name(actual_edgecolor)}</samp>."
+            ),
+        )
