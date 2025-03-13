@@ -1,0 +1,96 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+
+from data import get_bins, get_city_sales, get_weights, get_y_coordinates, read
+
+
+def plot(sales: pd.DataFrame) -> plt.Figure:
+    fig, (ax_ind, ax_hist) = plt.subplots(2, 1, height_ratios=[1, 10])
+
+    color_map = {
+        "Yerevan": "pink",
+        "Belgrade": "grey",
+    }
+
+    edge_color_map = {
+        "Yerevan": "crimson",
+        "Belgrade": "black",
+    }
+
+    position_map = {
+        "Yerevan": "right",
+        "Belgrade": "left",
+    }
+
+    sign_map = {
+        "Yerevan": -1,
+        "Belgrade": 1,
+    }
+
+    for city in ["Yerevan", "Belgrade"]:
+        city_sales = get_city_sales(sales, city)
+
+        ax_hist.hist(
+            x=city_sales,
+            alpha=0.5,
+            weights=get_weights(city_sales),
+            label=city,
+            bins=get_bins(sales),
+            color=color_map[city],
+            edgecolor=edge_color_map[city],
+            histtype="step",
+        )
+
+        ax_hist.axvline(
+            city_sales.median(),
+            linestyle="dashed",
+            linewidth=1.5,
+            label="Median",
+            color=edge_color_map[city],
+        )
+
+        ax_hist.text(
+            city_sales.median() + sign_map[city] * 25,
+            0.005,
+            city_sales.median(),
+            horizontalalignment=position_map[city],
+            color=edge_color_map[city],
+        )
+
+        ax_ind.scatter(
+            city_sales,
+            get_y_coordinates(city_sales, city),
+            alpha=0.1,
+            label=f"{city} Observations",
+            color=color_map[city],
+            edgecolors=edge_color_map[city],
+        )
+
+    ax_hist.set_ylabel("Probability")
+    ax_hist.set_xlabel("Sales")
+    ax_hist.legend()
+
+    handles, labels = ax_hist.get_legend_handles_labels()
+    filtered_handles = [h for h, l in zip(handles, labels) if l != "Median"]
+    filtered_labels = [l for l in labels if l != "Median"]
+
+    ax_hist.legend(filtered_handles, filtered_labels)
+
+    ax_ind.set_ylim(0, 0.3)
+    ax_ind.spines[["top", "bottom", "left", "right"]].set_visible(False)
+    ax_ind.set_xticks([])
+    ax_ind.set_yticks([])
+
+    return fig
+
+
+# Please solve the task in the plot function and do not modify this one
+def main():
+    sales = read()
+
+    fig = plot(sales)
+    fig.savefig("plot.png", dpi=300)
+
+
+if __name__ == "__main__":
+    main()
