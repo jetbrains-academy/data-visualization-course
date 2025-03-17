@@ -71,4 +71,5 @@ additional_files:
   - name: test_framework/figure_parts/legend.py
   - name: test_framework/figure_parts/spine.py
   - name: test_framework/figure_parts/text.py
+  - name: test_framework/figure_parts/hist.py
 yaml_version: 2

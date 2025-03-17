@@ -14,7 +14,6 @@ from task import plot
 class PlotTestCase(HistTestMixin, AxisTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
-    counts: ClassVar[np.ndarray]
     bins: ClassVar[np.ndarray]
 
     @classmethod
@@ -39,16 +38,19 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
 
         # Bars
         self.checkNumberOfContainers(self.fig.ax, expected_number=2)
-        self.checkContainerType(self.fig.ax, expected_type=BarContainer)
-        for container_number, _ in enumerate(self.publishers):
-            self.checkNumberOfBars(self.fig.ax, expected_number=len(self.bins) - 1, container_number=container_number)
+        for container_number in range(len(self.publishers)):
+            self.checkContainerType(self.fig.ax, expected_type=BarContainer, container_number=container_number)
 
-    def test_2_1_bar_height(self):
+    def test_2_1_bar_bins(self):
+        for container_number in range(len(self.publishers)):
+            self.checkBarBins(self.fig.ax, expected_bins=self.bins.tolist(), container_number=container_number)
+
+    def test_2_2_bar_height(self):
         for container_number, publisher in enumerate(self.publishers):
             filtered_dataset = self.data[self.data["publisher"] == publisher]
             weights = np.ones_like(filtered_dataset["global_sales"]) / filtered_dataset.shape[0]
             counts, _ = np.histogram(filtered_dataset["global_sales"], bins=self.bins, weights=weights)
             self.checkBarHeights(self.fig.ax, expected_values=counts.tolist(), container_number=container_number)
 
-    def test_2_2_bar_layout(self):
+    def test_2_3_bar_layout(self):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")
