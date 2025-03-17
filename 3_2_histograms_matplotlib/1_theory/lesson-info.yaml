@@ -1,3 +1,12 @@
 type: framework
 custom_name: Theory
+content:
+  - 1_hist
+  - 2_hist_log
+  - 3_hist_bins_1
+  - 4_hist_bins_2
+  - 5_hist_cropped
+  - 6_hist_comparing
+  - 7_hist_weights
+  - 8_hist_histtype
 is_template_based: false

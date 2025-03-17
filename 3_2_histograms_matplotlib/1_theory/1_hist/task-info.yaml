@@ -1,5 +1,5 @@
 type: edu
-custom_name: Histogram plot with displot
+custom_name: Histogram plot
 files:
   - name: example.png
     visible: false
@@ -8,8 +8,8 @@ files:
   - name: task.py
     visible: true
     placeholders:
-      - offset: 131
-        length: 48
+      - offset: 138
+        length: 83
         placeholder_text: "return  # TODO"
         is_visible: false
   - name: tests/test_task.py

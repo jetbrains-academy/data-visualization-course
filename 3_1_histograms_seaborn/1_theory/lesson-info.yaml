@@ -8,6 +8,4 @@ content:
   - 5_displot_hue
   - 6_displot_stat
   - 7_displot_stat_2
-  - 6_processed_dataset_histplot
-  - 7_histograms_and_scatters
 is_template_based: false
