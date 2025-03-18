@@ -1,8 +1,8 @@
 ## Task
 
-A beverage company operates in both Belgrade and Yerevan, selling a variety of drinks throughout the year. To optimize
-their sales strategy, they regularly analyze sales trends in different markets. Recently, they gathered sales data for a
-full year in Belgrade and six months in Yerevan and want to compare how sales are distributed across these cities.
+A beverage company has been successfully operating in Belgrade, selling a variety of drinks throughout the year. Now,
+they have decided to expand their business to Yerevan and want to compare their established sales in Belgrade with the
+initial six months of sales in Yerevan to assess market differences and optimize their strategy.
 
 Because the two markets differ in size, seasonality, and customer preferences, the company wants to see if Yerevan’s
 sales patterns, despite the shorter observation period, resemble those in Belgrade. If both follow a similar
@@ -31,7 +31,7 @@ If you want, you can further customize the figure. Here are some ideas for the c
 
 1. Change bar color palette.
 2. Add a clear figure title and axis labels.
-3. Combine the histograms with other plot types.
+3. Add individual observations using scatter plot.
 
 We encourage you to explore these customizations on your own, as not all of them will be covered in this course.
 
@@ -50,7 +50,7 @@ Note that these changes will not be tested and might break existing tests.
 
 <div class="hint" title="How to normalize the histogram?">
     To normalize the histogram, you can set the <code>stat</code> parameter of the <code>displot</code> function to 
-    <code>'probability'</code> and set the <code>common_norm</code> parameter to <code>False</code>, so that each 
+    <code>probability</code> and set the <code>common_norm</code> parameter to <code>False</code>, so that each 
     histogram is normalized separately.
 </div>
 

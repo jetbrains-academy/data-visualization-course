@@ -5,13 +5,13 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-from test_framework import AxisTestMixin, HistTestMixin
+from test_framework import AxisTestMixin, HistTestMixin, LegendTestMixin
 
 from data import get_bins, read
 from task import plot
 
 
-class PlotTestCase(HistTestMixin, AxisTestMixin):
+class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
     bins: ClassVar[np.ndarray]
@@ -53,3 +53,9 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
 
     def test_2_3_bar_layout(self):
         self.checkBarLayout(self.fig.ax, expected_layout="vertical")
+
+    def test_3_1_number_of_legend_items(self):
+        self.checkNumberOfLegendItems(self.fig, expected_number=len(self.publishers))
+
+    def test_3_2_legend_labels(self):
+        self.checkLegendLabels(self.fig, expected_labels=list(self.publishers[::-1]))

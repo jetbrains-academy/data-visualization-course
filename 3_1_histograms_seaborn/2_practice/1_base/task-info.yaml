@@ -10,7 +10,7 @@ files:
         is_visible: false
       - offset: 129
         length: 109
-        placeholder_text: "return # TODO"
+        placeholder_text: "return  # TODO"
         is_visible: false
   - name: data.py
     visible: false
