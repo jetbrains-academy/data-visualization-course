@@ -1,0 +1,21 @@
+type: choice
+is_multiple_choice: true
+options:
+  - text: A
+    is_correct: true
+  - text: B
+    is_correct: false
+  - text: C
+    is_correct: true
+  - text: D
+    is_correct: false
+message_incorrect: "In graph A, most data points fall into the initial bins, indicating\
+  \ a right-skewed distribution. \n\nIn graph B, the data follow a normal distribution,\
+  \ which is symmetric by definition. Hence, there is no skew. \n\nIn graph C, more\
+  \ data points have higher values than lower ones, indicating a left-skewed distribution.\
+  \ \n\nIn graph D, the distribution is uniform, meaning there is no skew by definition. "
+files:
+  - name: main.py
+    visible: true
+custom_name: Choose skewed distributions
+local_check: true
