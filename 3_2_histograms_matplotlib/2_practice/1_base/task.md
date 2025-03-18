@@ -1,8 +1,8 @@
 ## Task
 
-A beverage company operates in both Belgrade and Yerevan, selling a variety of drinks throughout the year. To optimize
-their sales strategy, they regularly analyze sales trends in different markets. Recently, they gathered sales data for a
-full year in Belgrade and six months in Yerevan and want to compare how sales are distributed across these cities.
+A beverage company has been successfully operating in Belgrade, selling a variety of drinks throughout the year. Now,
+they have decided to expand their business to Yerevan and want to compare their established sales in Belgrade with the
+initial six months of sales in Yerevan to assess market differences and optimize their strategy.
 
 Because the two markets differ in size, seasonality, and customer preferences, the company wants to see if Yerevan’s
 sales patterns, despite the shorter observation period, resemble those in Belgrade. If both follow a similar
@@ -20,10 +20,10 @@ Visualization requirements:
     - Yerevan: Line color `grey`, edge color `black`.
 4. Both histograms should have common bins, ranging from the lowest rounded-down hundred to the highest rounded-up
    hundred across both cities, with a step of `100`.
-5. Each histogram transparency should be set to `0.5`.
-6. X-axis label should be `'Sales'`.
-7. Y-axis label should be `'Probability'`.
-8. Add a legend with the city names.
+5. X-axis label should be `'Sales'`.
+6. Y-axis label should be `'Probability'`.
+7. Add a legend with the city names.
+8. Add a title `'Sales Distribution in Belgrade and Yerevan'`.
 
 Note that there is no need to preprocess the data here.
 
@@ -58,12 +58,10 @@ like.
 </div>
 
 <div class="hint" title="How to set colors for the histogram?">
-   If <code>histtype='step'</code> is used, <code>color</code> sets the line color. You can also set
-   <code>edgecolor</code>.
+   If <code>histtype='step'</code> is used, <code>color</code> sets the line color.
 </div>
 
 <div class="hint" title="How to change the number of bins?">
-   By default the <code>hist</code> function uses <code>10</code> bins.
    To change it, you can specify <code>bins</code> parameter of the <code>hist</code> function.
 </div>
 

@@ -73,7 +73,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
         for patch_number in range(len(self.cities)):
             self.checkBarTransparency(
                 self.fig.axes[0],
-                expected_alpha=0.5,
+                expected_alpha=1,
                 container_number=patch_number,
                 histtype="step",
             )
@@ -84,20 +84,25 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
 
     def test_3_1_bar_colors(self):
         for patch_number, city in enumerate(self.cities):
-            self.checkStepHistColor(
+            self.checkBarColor(
                 self.fig.axes[0],
-                expected_facecolor=self.color_map[city],
+                expected_facecolors=self.color_map[city],
                 container_number=patch_number,
+                histtype="step",
             )
 
     def test_3_2_bar_edge_colors(self):
         for patch_number, city in enumerate(self.cities):
-            self.checkStepHistEdgeColor(
+            self.checkHistEdgeColor(
                 self.fig.axes[0],
-                expected_edgecolor=self.edge_color_map[city],
+                expected_edgecolors=self.edge_color_map[city],
                 container_number=patch_number,
+                histtype="step",
             )
 
     def test_4_labels(self):
         self.checkLabel(self.fig.axes[0], expected_label="Sales", axis="x")
         self.checkLabel(self.fig.axes[0], expected_label="Probability", axis="y")
+
+    def test_5_title(self):
+        self.checkTitle(self.fig.axes[0], expected_title="Sales Distribution in Belgrade and Yerevan")

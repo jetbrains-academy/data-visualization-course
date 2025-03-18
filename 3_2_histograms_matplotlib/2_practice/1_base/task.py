@@ -12,28 +12,22 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
         "Belgrade": "grey",
     }
 
-    edge_color_map = {
-        "Yerevan": "crimson",
-        "Belgrade": "black",
-    }
-
     for city in ["Yerevan", "Belgrade"]:
         city_sales = get_city_sales(sales, city)
         weights = get_weights(city_sales)
 
         ax.hist(
             x=city_sales,
-            alpha=0.5,
             weights=weights,
             label=city,
             bins=get_bins(sales),
             color=line_color_map[city],
-            edgecolor=edge_color_map[city],
             histtype="step",
         )
 
     ax.set_ylabel("Probability")
     ax.set_xlabel("Sales")
+    ax.set_title("Sales Distribution in Belgrade and Yerevan")
     ax.legend()
 
     return fig

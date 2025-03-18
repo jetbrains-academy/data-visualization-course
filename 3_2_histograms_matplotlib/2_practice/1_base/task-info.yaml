@@ -9,8 +9,8 @@ files:
         placeholder_text: "from data import read"
         is_visible: false
       - offset: 165
-        length: 701
-        placeholder_text: "return # TODO"
+        length: 608
+        placeholder_text: "return  # TODO"
         is_visible: false
   - name: data.py
     visible: false
