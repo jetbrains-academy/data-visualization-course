@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from data import get_bins, get_city_sales, get_weights, get_y_coordinates, read, get_median
+from data import get_bins, get_city_sales, get_median, get_weights, get_y_coordinates, read
 
 
 def plot(sales: pd.DataFrame) -> plt.Figure:

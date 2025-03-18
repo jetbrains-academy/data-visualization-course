@@ -1,3 +1,5 @@
+from typing import List
+
 import numpy as np
 import pandas as pd
 
@@ -27,7 +29,7 @@ def get_median(sales: pd.Series) -> float:
     return sales.median()
 
 
-def get_y_coordinates(sales: pd.Series, city: str) -> list[float]:
+def get_y_coordinates(sales: pd.Series, city: str) -> List[float]:
     if city == "Belgrade":
         return [0.2] * len(sales)
     if city == "Yerevan":

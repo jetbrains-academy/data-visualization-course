@@ -90,17 +90,6 @@ class HistTestMixin(BarTestMixin):
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
 
-    # def checkStepHistColor(self, ax: plt.Axes, *, expected_facecolor: ColorName, container_number: int = 0):
-    #     actual_facecolor = to_rgb(ax.patches[container_number].get_facecolor())
-    #     self.assertSingleColor(
-    #         expected_facecolor,
-    #         actual_facecolor,
-    #         msg=(
-    #             f"The histogram must be colored in <samp>{expected_facecolor}</samp>, "
-    #             f"but got <samp>{self._rgb_to_name(actual_facecolor)}</samp>."
-    #         ),
-    #     )
-
     def checkHistEdgeColor(
         self,
         ax: plt.Axes,
