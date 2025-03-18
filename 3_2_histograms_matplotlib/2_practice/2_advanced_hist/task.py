@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from data import get_bins, get_city_sales, get_weights, get_y_coordinates, read
+from data import get_bins, get_city_sales, get_weights, get_y_coordinates, read, get_median
 
 
 def plot(sales: pd.DataFrame) -> plt.Figure:
@@ -22,9 +22,9 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
         "Belgrade": "left",
     }
 
-    sign_map = {
-        "Yerevan": -1,
-        "Belgrade": 1,
+    shift_map = {
+        "Yerevan": -25,
+        "Belgrade": 25,
     }
 
     for city in ["Yerevan", "Belgrade"]:
@@ -42,7 +42,7 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
         )
 
         ax_hist.axvline(
-            city_sales.median(),
+            get_median(city_sales),
             linestyle="dashed",
             linewidth=1.5,
             label="Median",
@@ -50,9 +50,9 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
         )
 
         ax_hist.text(
-            city_sales.median() + sign_map[city] * 25,
+            get_median(city_sales) + shift_map[city],
             0.005,
-            city_sales.median(),
+            get_median(city_sales),
             horizontalalignment=position_map[city],
             color=edge_color_map[city],
         )

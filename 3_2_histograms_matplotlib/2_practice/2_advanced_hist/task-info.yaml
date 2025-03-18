@@ -5,12 +5,12 @@ files:
     visible: true
     placeholders:
       - offset: 53
-        length: 79
+        length: 91
         placeholder_text: "from data import read"
         is_visible: false
-      - offset: 184
-        length: 1996
-        placeholder_text: "return # TODO"
+      - offset: 196
+        length: 2004
+        placeholder_text: "return  # TODO"
         is_visible: false
   - name: data.py
     visible: false

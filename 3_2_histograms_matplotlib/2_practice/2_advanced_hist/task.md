@@ -26,19 +26,24 @@ First, let's add a one-dimensional scatter plot above the existing one:
 You can use the hidden `get_y_coordinates` function, accepting the city sales and the city name to generate `y`
 coordinates for the scatter plot.
 
-Second, let's add vertical lines and text labels to the main histograms axes, indicating the median sales value for each
-city:
+Second, let's change the main histograms axes. We will add an edge color for histograms, and add vertical lines with
+text labels indicating the median sales value for each city:
 
-1. Draw a vertical line at each median using [
+1. Add the following edge colors:
+    - Belgrade: `crimson`.
+    - Yerevan: `black`.
+2. Draw a vertical line at each median using [
    `axvline`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.axvline.html) method, on the
    corresponding axes.
-2. Make the line dashed, set its width to `1.5`, and match its color to the histogram’s edge color.
-3. Use the [
+3. Make the line dashed, set its width to `1.5`, and match its color to the histogram’s edge color.
+4. Use the [
    `text`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.text.html) method to add median value near the
    line:
-    - Belgrade: `x = median_belgrade + 25`, `y = 0.005`, horizontal alignment `'left'`.
-    - Yerevan: `x = median_yerevan - 25`, `y = 0.005`, horizontal alignment `'right'`.
-4. Do not include medians in the legend.
+    - Belgrade: `x = median_belgrade + 25`, `y = 0.005`, horizontal alignment `left`.
+    - Yerevan: `x = median_yerevan - 25`, `y = 0.005`, horizontal alignment `right`.
+5. Do not include medians in the legend.
+
+You can use the hidden `get_median` function, accepting the city sales to calculate the median sales for each city.
 
 Please consult the corresponding documentation pages to figure out how to do it.
 
@@ -69,9 +74,8 @@ Note that these changes will not be tested and might break existing tests.
 </div>
 
 <div class="hint" title="How to generate y coordinates for the scatter plot?">
-    You can use <a href="https://numpy.org/doc/2.2/reference/generated/numpy.zeros_like.html"><code>np.zeros_like</code>
-    </a> function to generate a NumPy array of zeros with the same shape as the data array. Then, since <code>y</code> 
-    is constant, you can simply add some value to it.
+    You can use Python list operations to make a list of constant values: <code>[1] * 10</code> will create a list of 
+    <code>10</code> ones.
 </div>
 
 <div class="hint" title="How to remove ticks?">
@@ -90,7 +94,15 @@ Note that these changes will not be tested and might break existing tests.
     method of Series.
 </div>
 
+<div class="hint" title="How to set an edge color for a histogram?">
+    You can set it by passing the <code>edgecolor</code> parameter to the 
+    <code>hist</code> function.
+</div>
+
 <div class="hint" title="How to exclude some elements from the legend?">
-    You can exclude some elements from the legend by passing a list of handles and labels to the <code>legend</code> method:
-    <code>ax.legend(handles, labels)</code>.
+    You can get handles and labels of the legend by calling the 
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.get_legend_handles_labels.html">
+    <code>get_legend_handles_labels</code></a> on the corresponding axes. 
+    Then, to exclude some elements from the legend you can pass filtered lists of handles and labels to the <code>legend</code> method:
+    <code>ax.legend(handles_filtered, labels_filtered)</code>.
 </div>

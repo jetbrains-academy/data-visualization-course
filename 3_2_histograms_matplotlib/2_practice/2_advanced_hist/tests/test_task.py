@@ -12,6 +12,7 @@ from test_framework import (
     HistTestMixin,
     LegendTestMixin,
     LineTestMixin,
+    OrthogonalLineTestMixin,
     SpineTestMixin,
     TextTestMixin,
     TitleTestMixin,
@@ -31,6 +32,7 @@ class PlotTestCase(
     SpineTestMixin,
     FigureTestMixin,
     LineTestMixin,
+    OrthogonalLineTestMixin,
 ):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
@@ -56,9 +58,9 @@ class PlotTestCase(
             "Yerevan": 0.1,
             "Belgrade": 0.2,
         }
-        cls.sign_map = {
-            "Yerevan": -1,
-            "Belgrade": 1,
+        cls.shift_map = {
+            "Yerevan": -25,
+            "Belgrade": 25,
         }
         cls.position_map = {
             "Yerevan": "right",
@@ -84,7 +86,6 @@ class PlotTestCase(
 
         self.checkNumberOfContainers(self.fig.axes[1], expected_number=0)
         self.checkNumberOfPatches(self.fig.axes[1], expected_number=2)
-        self.checkNumberOfTextObjects(self.fig.axes[1], expected_number=2)
         for patch_number in range(len(self.cities)):
             self.checkPatchType(self.fig.axes[1], expected_type=Polygon, patch_number=patch_number)
 
@@ -191,7 +192,7 @@ class PlotTestCase(
         for city in self.cities:
             city_sales = get_city_sales(self.data, city)
             median = city_sales.median()
-            expected_texts.append((median + self.sign_map[city] * 25, 0.005, str(median)))
+            expected_texts.append((median + self.shift_map[city], 0.005, str(median)))
         self.checkTextObjects(
             self.fig.axes[1],
             expected_texts=expected_texts,
@@ -215,18 +216,20 @@ class PlotTestCase(
 
     def test_6_1_bar_colors(self):
         for patch_number, city in enumerate(self.cities):
-            self.checkStepHistColor(
+            self.checkBarColor(
                 self.fig.axes[1],
-                expected_facecolor=self.color_map[city],
+                expected_facecolors=self.color_map[city],
                 container_number=patch_number,
+                histtype="step",
             )
 
     def test_6_2_bar_edge_colors(self):
         for patch_number, city in enumerate(self.cities):
-            self.checkStepHistEdgeColor(
+            self.checkHistEdgeColor(
                 self.fig.axes[1],
-                expected_edgecolor=self.edge_color_map[city],
+                expected_edgecolors=self.edge_color_map[city],
                 container_number=patch_number,
+                histtype="step",
             )
 
     def test_7_labels(self):

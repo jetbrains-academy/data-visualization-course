@@ -23,10 +23,14 @@ def get_bins(sales: pd.DataFrame) -> np.ndarray:
     return np.array(list(range(start, end + 1, 100)))
 
 
-def get_y_coordinates(sales: pd.Series, city: str) -> np.ndarray:
+def get_median(sales: pd.Series) -> float:
+    return sales.median()
+
+
+def get_y_coordinates(sales: pd.Series, city: str) -> list[float]:
     if city == "Belgrade":
-        return np.zeros_like(sales) + 0.2
+        return [0.2] * len(sales)
     if city == "Yerevan":
-        return np.zeros_like(sales) + 0.1
+        return [0.1] * len(sales)
     error_message = f"Unknown city: {city}"
     raise ValueError(error_message)
