@@ -94,4 +94,5 @@ additional_files:
   - name: test_framework/figure_parts/text.py
   - name: test_framework/chart_types/hist.py
   - name: test_framework/figure_parts/figure.py
+  - name: test_framework/figure_parts/orthogonal_line.py
 yaml_version: 2
