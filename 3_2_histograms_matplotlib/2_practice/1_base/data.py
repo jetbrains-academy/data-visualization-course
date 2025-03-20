@@ -1,3 +1,5 @@
+from typing import List
+
 import numpy as np
 import pandas as pd
 
@@ -16,8 +18,8 @@ def get_weights(sales: pd.Series) -> np.ndarray:
     return np.ones_like(sales) / sales.shape[0]
 
 
-def get_bins(sales: pd.DataFrame) -> np.ndarray:
+def get_bins(sales: pd.DataFrame) -> List:
     start = (sales["sales"].min() // 100) * 100
     end = ((sales["sales"].max() // 100) + 1) * 100
 
-    return np.array(list(range(start, end + 1, 100)))
+    return list(range(start, end + 1, 100))
