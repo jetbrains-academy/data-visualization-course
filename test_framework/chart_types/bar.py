@@ -85,6 +85,9 @@ class BarTestMixin(BaseTestMixin):
         if histtype == "step":
             actual_facecolor = to_rgb(ax.patches[container_number].get_facecolor())
 
+            if isinstance(expected_facecolors, list):
+                raise ValueError("Pass a single color for a step histogram.")
+
             self.assertSingleColor(
                 expected_facecolors,
                 actual_facecolor,
@@ -95,6 +98,9 @@ class BarTestMixin(BaseTestMixin):
             )
         elif histtype == "bar":
             actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
+
+            if isinstance(expected_facecolors, ColorName):
+                expected_facecolors = [expected_facecolors] * len(actual_colors)
 
             self.assertColorList(
                 expected_facecolors,

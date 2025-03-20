@@ -101,6 +101,9 @@ class HistTestMixin(BarTestMixin):
         if histtype == "bar":
             actual_edgecolors = [to_rgb(bar.get_edgecolor()) for bar in ax.containers[container_number]]
 
+            if isinstance(expected_edgecolors, ColorName):
+                expected_edgecolors = [expected_edgecolors] * len(expected_edgecolors)
+
             self.assertColorList(
                 expected_edgecolors,
                 actual_edgecolors,
@@ -108,6 +111,9 @@ class HistTestMixin(BarTestMixin):
             )
         elif histtype == "step":
             actual_edgecolors = to_rgb(ax.patches[container_number].get_edgecolor())
+
+            if isinstance(expected_edgecolors, list):
+                raise ValueError("Pass a single color for a step histogram.")
 
             self.assertSingleColor(
                 expected_edgecolors,
