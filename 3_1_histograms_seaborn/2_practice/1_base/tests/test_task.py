@@ -14,7 +14,7 @@ from task import plot
 class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
-    bins: ClassVar[np.ndarray]
+    bins: ClassVar[list]
 
     @classmethod
     def setUpClass(cls):
@@ -42,7 +42,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin):
 
     def test_2_1_bar_bins(self):
         for container_number in range(len(self.publishers)):
-            self.checkBarBins(self.fig.ax, expected_bins=self.bins.tolist(), container_number=container_number)
+            self.checkBarBins(self.fig.ax, expected_bins=self.bins, container_number=container_number)
 
     def test_2_2_bar_height(self):
         for container_number, city in enumerate(self.publishers):
