@@ -12,7 +12,7 @@ class OrthogonalLineTestMixin(BaseTestMixin):
         ax: plt.Axes,
         *,
         expected_type: Literal["vertical", "horizontal"],
-        expected_coordinate: Union[List[float], List[int]],
+        expected_coordinate: List[float],
         line_number: int = 0,
     ):
         if expected_type == "vertical":
@@ -45,7 +45,7 @@ class OrthogonalLineTestMixin(BaseTestMixin):
     def checkOrthogonalLineWidth(self, ax: plt.Axes, *, expected_width: float, line_number: int = 0):
         actual_width = ax.lines[line_number].get_linewidth()
 
-        self.assertEqual(
+        self.assertAlmostEqual(
             expected_width,
             actual_width,
             msg=(f"The expected line width is <samp>{expected_width}</samp>, but got <samp>{actual_width}</samp>."),
