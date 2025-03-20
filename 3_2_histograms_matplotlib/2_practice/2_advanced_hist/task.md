@@ -10,14 +10,14 @@ First, let's add a one-dimensional scatter plot above the existing one:
 
 1. Create two `ax` objects using the [
    `plt.subplots`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html) function instead of a
-   single one. Set `height_ratios=[1, 10]`.
+   single one. Set `height_ratios` to `[1, 10]`.
 2. Plot the data points with the [
    `scatter`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html#matplotlib.axes.Axes.scatter)
    method on the corresponding `ax` object.
-3. Since it is a one-dimensional plot, `y` coordinate should be the same for all points in the same city.
-    - Let `y` coordinate for Belgrade sales distribution be `0.2`, and `0.1` for Yerevan distribution.
-4. Use the same colors as in the histograms for each city.
-5. Set `alpha` parameter to `0.1`.
+3. Since it is a one-dimensional plot, `y` coordinate should be the same for all points in the same city: let `y`
+   coordinate for Belgrade sales distribution be `0.2`, and `0.1` for Yerevan distribution.
+4. Yerevan data should be colored `crimson` and Belgrade data should be colored `black`.
+5. Set `alpha` parameter to `0.05`.
 6. Limit `y` axis range from `0` to `0.3` by calling the [
    `set_ylim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html) method.
 7. Remove both `x` and `y` ticks.
@@ -26,22 +26,21 @@ First, let's add a one-dimensional scatter plot above the existing one:
 You can use the hidden `get_y_coordinates` function, accepting the city sales and the city name to generate `y`
 coordinates for the scatter plot.
 
-Second, let's change the main histograms axes. We will add an edge color for histograms, and add vertical lines with
+Second, let's change the main histograms axes. We will change colors, and add vertical lines with
 text labels indicating the median sales value for each city:
 
-1. Add the following edge colors:
-    - Belgrade: `crimson`.
-    - Yerevan: `black`.
+1. Use the same colors as in the scatter plot for each city.
 2. Draw a vertical line at each median using [
-   `axvline`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.axvline.html) method, on the
+   `axvline`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.axvline.html) method on the
    corresponding axes.
-3. Make the line dashed, set its width to `1.5`, and match its color to the histogram’s edge color.
+3. Make the line dashed, set its width to `1.5`, and match its color to the histogram’s color.
 4. Use the [
    `text`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.text.html) method to add median value near the
    line:
-    - Belgrade: `x = median_belgrade + 25`, `y = 0.005`, horizontal alignment `left`.
-    - Yerevan: `x = median_yerevan - 25`, `y = 0.005`, horizontal alignment `right`.
+    - For Belgrade sales: set `x`  to their median sales _plus_ `25`, `y` to `0.005`, and the horizontal alignment to `left`.
+    - For Yerevan sales: set `x`  to their median sales _minus_ `25`, `y` to `0.005`, and the horizontal alignment to `right`.
 5. Do not include medians in the legend.
+6. Remove the axes title and add a super title to the figure.
 
 You can use the hidden `get_median` function, accepting the city sales to calculate the median sales for each city.
 
@@ -86,12 +85,18 @@ Note that these changes will not be tested and might break existing tests.
 </div>
 
 <div class="hint" title="How to hide all spines of a plot?">
-    Call <code>ax_ind.spines[["top", "bottom", "left", "right"]].set_visible(False)</code> one the corresponding <code>ax</code> object.
+    Call <code>ax_ind.spines[["top", "bottom", "left", "right"]].set_visible(False)</code> on the corresponding <code>ax</code> object.
 </div>
 
 <div class="hint" title="How to find the median of an array?">
     Use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.median.html"><code>median()</code></a> 
     method of Series.
+</div>
+
+<div class="hint" title="How to customize a vertical line?">
+    You can change the line appearance when using the <code>axvline</code> method by setting these three parameters: use
+    <code>linestyle</code> to define line style, <code>width</code> to configure its thickness, and <code>color</code> 
+    to assign its color.
 </div>
 
 <div class="hint" title="How to set an edge color for a histogram?">
@@ -105,4 +110,11 @@ Note that these changes will not be tested and might break existing tests.
     <code>get_legend_handles_labels</code></a> on the corresponding axes. 
     Then, to exclude some elements from the legend you can pass filtered lists of handles and labels to the <code>legend</code> method:
     <code>ax.legend(handles_filtered, labels_filtered)</code>.
+</div>
+
+<div class="hint" title="How to add a super title to the figure?">
+    You can call 
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.suptitle.html#matplotlib.figure.Figure.suptitle">
+    <code>suptitle()</code></a> method on the figure object:
+    <code>fig.suptitle("Title")</code>.
 </div>

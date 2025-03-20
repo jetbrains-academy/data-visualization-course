@@ -36,7 +36,7 @@ class PlotTestCase(
 ):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
-    bins: ClassVar[np.ndarray]
+    bins: ClassVar[list]
 
     @classmethod
     def setUpClass(cls):
@@ -47,10 +47,6 @@ class PlotTestCase(
         cls.cities = ["Yerevan", "Belgrade"]
         cls.bins = get_bins(data)
         cls.color_map = {
-            "Yerevan": "pink",
-            "Belgrade": "grey",
-        }
-        cls.edge_color_map = {
             "Yerevan": "crimson",
             "Belgrade": "black",
         }
@@ -104,7 +100,7 @@ class PlotTestCase(
 
     def test_2_2_scatter_transparency(self):
         for collection_number in range(len(self.cities)):
-            self.checkCollectionTransparency(self.fig.axes[0], expected_alpha=0.1, collection_number=collection_number)
+            self.checkCollectionTransparency(self.fig.axes[0], expected_alpha=0.05, collection_number=collection_number)
 
     def test_2_3_scatter_spines(self):
         self.checkSpineVisibility(self.fig.axes[0], position="top", expected_visibility=False)
@@ -131,7 +127,7 @@ class PlotTestCase(
         for patch_number in range(len(self.cities)):
             self.checkBarBins(
                 self.fig.axes[1],
-                expected_bins=self.bins.tolist(),
+                expected_bins=self.bins,
                 container_number=patch_number,
                 histtype="step",
             )
@@ -152,14 +148,10 @@ class PlotTestCase(
         for patch_number in range(len(self.cities)):
             self.checkBarTransparency(
                 self.fig.axes[1],
-                expected_alpha=0.5,
+                expected_alpha=1,
                 container_number=patch_number,
                 histtype="step",
             )
-
-    def test_3_4_bar_legend(self):
-        self.checkLegendExists(self.fig.axes[1])
-        self.checkLegendLabels(self.fig.axes[1], expected_labels=self.cities)
 
     def test_4_1_lines_coordinate(self):
         for line_number, city in enumerate(self.cities):
@@ -182,7 +174,7 @@ class PlotTestCase(
 
     def test_4_4_lines_colors(self):
         for line_number, city in enumerate(self.cities):
-            self.checkLineColor(self.fig.axes[1], expected_color=self.edge_color_map[city], line_number=line_number)
+            self.checkLineColor(self.fig.axes[1], expected_color=self.color_map[city], line_number=line_number)
 
     def test_5_1_text_objects_number(self):
         self.checkNumberOfTextObjects(self.fig.axes[1], expected_number=2)
@@ -202,7 +194,7 @@ class PlotTestCase(
         for text_number, city in enumerate(self.cities):
             self.checkTextObjectColor(
                 self.fig.axes[1],
-                expected_color=self.edge_color_map[city],
+                expected_color=self.color_map[city],
                 text_number=text_number,
             )
 
@@ -214,7 +206,7 @@ class PlotTestCase(
                 text_number=text_number,
             )
 
-    def test_6_1_bar_colors(self):
+    def test_6_bar_colors(self):
         for patch_number, city in enumerate(self.cities):
             self.checkBarColor(
                 self.fig.axes[1],
@@ -223,15 +215,13 @@ class PlotTestCase(
                 histtype="step",
             )
 
-    def test_6_2_bar_edge_colors(self):
-        for patch_number, city in enumerate(self.cities):
-            self.checkHistEdgeColor(
-                self.fig.axes[1],
-                expected_edgecolors=self.edge_color_map[city],
-                container_number=patch_number,
-                histtype="step",
-            )
-
     def test_7_labels(self):
         self.checkLabel(self.fig.axes[1], expected_label="Sales", axis="x")
         self.checkLabel(self.fig.axes[1], expected_label="Probability", axis="y")
+
+    def test_8_title(self):
+        self.checkSupTitle(self.fig, expected_suptitle="Sales Distribution in Belgrade and Yerevan")
+
+    def test_9_bar_legend(self):
+        self.checkLegendExists(self.fig.axes[1])
+        self.checkLegendLabels(self.fig.axes[1], expected_labels=self.cities)

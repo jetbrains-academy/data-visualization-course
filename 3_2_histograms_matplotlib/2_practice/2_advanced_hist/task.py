@@ -8,11 +8,6 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
     fig, (ax_ind, ax_hist) = plt.subplots(2, 1, height_ratios=[1, 10])
 
     color_map = {
-        "Yerevan": "pink",
-        "Belgrade": "grey",
-    }
-
-    edge_color_map = {
         "Yerevan": "crimson",
         "Belgrade": "black",
     }
@@ -32,12 +27,10 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
 
         ax_hist.hist(
             x=city_sales,
-            alpha=0.5,
             weights=get_weights(city_sales),
             label=city,
             bins=get_bins(sales),
             color=color_map[city],
-            edgecolor=edge_color_map[city],
             histtype="step",
         )
 
@@ -46,7 +39,7 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
             linestyle="dashed",
             linewidth=1.5,
             label="Median",
-            color=edge_color_map[city],
+            color=color_map[city],
         )
 
         ax_hist.text(
@@ -54,21 +47,18 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
             0.005,
             get_median(city_sales),
             horizontalalignment=position_map[city],
-            color=edge_color_map[city],
+            color=color_map[city],
         )
 
         ax_ind.scatter(
             city_sales,
             get_y_coordinates(city_sales, city),
-            alpha=0.1,
-            label=f"{city} Observations",
+            alpha=0.05,
             color=color_map[city],
-            edgecolors=edge_color_map[city],
         )
 
     ax_hist.set_ylabel("Probability")
     ax_hist.set_xlabel("Sales")
-    ax_hist.legend()
 
     handles, labels = ax_hist.get_legend_handles_labels()
     filtered_handles = [handle for handle, label in zip(handles, labels) if label != "Median"]
@@ -80,6 +70,8 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
     ax_ind.spines[["top", "bottom", "left", "right"]].set_visible(False)
     ax_ind.set_xticks([])
     ax_ind.set_yticks([])
+
+    fig.suptitle("Sales Distribution in Belgrade and Yerevan")
 
     return fig
 
