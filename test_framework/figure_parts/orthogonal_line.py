@@ -1,4 +1,4 @@
-from typing import List, Literal, Union
+from typing import List, Literal
 
 from matplotlib import pyplot as plt
 import numpy as np
