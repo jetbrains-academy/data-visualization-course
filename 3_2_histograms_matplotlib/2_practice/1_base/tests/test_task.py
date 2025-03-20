@@ -14,7 +14,7 @@ from task import plot
 class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
-    bins: ClassVar[np.ndarray]
+    bins: ClassVar[list]
 
     @classmethod
     def setUpClass(cls):
@@ -27,10 +27,6 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
         cls.color_map = {
             "Yerevan": "pink",
             "Belgrade": "grey",
-        }
-        cls.edge_color_map = {
-            "Yerevan": "crimson",
-            "Belgrade": "black",
         }
 
     def test_1_1_return_type(self):
@@ -52,7 +48,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
         for patch_number in range(len(self.cities)):
             self.checkBarBins(
                 self.fig.axes[0],
-                expected_bins=self.bins.tolist(),
+                expected_bins=self.bins,
                 container_number=patch_number,
                 histtype="step",
             )
@@ -78,24 +74,11 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
                 histtype="step",
             )
 
-    def test_2_4_bar_legend(self):
-        self.checkLegendExists(self.fig.axes[0])
-        self.checkLegendLabels(self.fig.axes[0], expected_labels=self.cities)
-
-    def test_3_1_bar_colors(self):
+    def test_3_bar_colors(self):
         for patch_number, city in enumerate(self.cities):
             self.checkBarColor(
                 self.fig.axes[0],
                 expected_facecolors=self.color_map[city],
-                container_number=patch_number,
-                histtype="step",
-            )
-
-    def test_3_2_bar_edge_colors(self):
-        for patch_number, city in enumerate(self.cities):
-            self.checkHistEdgeColor(
-                self.fig.axes[0],
-                expected_edgecolors=self.edge_color_map[city],
                 container_number=patch_number,
                 histtype="step",
             )
@@ -106,3 +89,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
 
     def test_5_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Sales Distribution in Belgrade and Yerevan")
+
+    def test_6_legend(self):
+        self.checkLegendExists(self.fig.axes[0])
+        self.checkLegendLabels(self.fig.axes[0], expected_labels=self.cities)

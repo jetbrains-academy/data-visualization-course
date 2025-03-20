@@ -14,11 +14,10 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
 
     for city in ["Yerevan", "Belgrade"]:
         city_sales = get_city_sales(sales, city)
-        weights = get_weights(city_sales)
 
         ax.hist(
             x=city_sales,
-            weights=weights,
+            weights=get_weights(city_sales),
             label=city,
             bins=get_bins(sales),
             color=line_color_map[city],
