@@ -15,15 +15,13 @@ Visualization requirements:
 
 1. The histogram should be normalized (the bins should sum to `1`).
 2. The histogram should be an unfilled line plot.
-3. The following colors are required:
-    - Belgrade: Line color `pink`, edge color `crimson`.
-    - Yerevan: Line color `grey`, edge color `black`.
+3. Yerevan data should be colored `pink` and Belgrade data should be colored `grey`.
 4. Both histograms should have common bins, ranging from the lowest rounded-down hundred to the highest rounded-up
    hundred across both cities, with a step of `100`.
 5. X-axis label should be `'Sales'`.
 6. Y-axis label should be `'Probability'`.
-7. Add a legend with the city names.
-8. Add a title `'Sales Distribution in Belgrade and Yerevan'`.
+7. Add a title `'Sales Distribution in Belgrade and Yerevan'`.
+8. Add a legend with the city names.
 
 Note that there is no need to preprocess the data here.
 
@@ -75,6 +73,11 @@ like.
    <code>set_xlabel</code></a> and 
    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylabel.html#matplotlib.axes.Axes.set_ylabel">
    <code>set_ylabel</code></a> methods: <code>ax.set_xlabel('x')</code> and <code>ax.set_ylabel('y')</code>.
+</div>
+
+<div class="hint" title="How to set a title?">
+    You can pass the desired title of the plot to the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_title.html">
+    <code>set_title</code></a> method: <code>ax.set_title("title")</code>.
 </div>
 
 <div class="hint" title="How to add a legend?">
