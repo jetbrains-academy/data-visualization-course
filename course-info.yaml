@@ -73,9 +73,18 @@ additional_files:
     is_binary: true
   - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
     is_binary: true
+  - name: common/resources/images/histograms/Quiz_A.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_B.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_C.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_D.png
+    is_binary: true
   - name: common/resources/datasets/experiment.csv
   - name: common/resources/datasets/games.csv
   - name: common/resources/datasets/food.csv
+  - name: common/resources/datasets/sales.csv
   - name: common/__init__.py
   - name: common/paths.py
   - name: test_framework/__init__.py
@@ -92,13 +101,6 @@ additional_files:
   - name: test_framework/figure_parts/spine.py
   - name: test_framework/figure_parts/text.py
   - name: test_framework/chart_types/hist.py
-  - name: common/resources/images/histograms/Quiz_A.png
-    is_binary: true
-  - name: common/resources/images/histograms/Quiz_B.png
-    is_binary: true
-  - name: common/resources/images/histograms/Quiz_C.png
-    is_binary: true
-  - name: common/resources/images/histograms/Quiz_D.png
-    is_binary: true
-  - name: common/resources/datasets/histogram.csv
+  - name: test_framework/figure_parts/figure.py
+  - name: test_framework/figure_parts/orthogonal_line.py
 yaml_version: 2
