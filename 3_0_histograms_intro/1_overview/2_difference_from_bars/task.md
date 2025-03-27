@@ -3,7 +3,14 @@ data. In a bar chart, each bar represents a distinct category, often with gaps t
 contrast, histogram bins typically touch, reflecting that the data values lie on a continuous scale. This visual
 distinction indicates you’re examining ranges rather than separate categories.
 
-After his promotion, Bruno was assigned to analyze customer spending at a local cafe. Initially, he tried using a bar
-chart, but it became cluttered with countless individual purchase amounts. Realizing this approach didn’t suit
-continuous data, he switched to a histogram, grouping spending into price ranges—an adjustment that made it far easier
-to spot common spending patterns.
+Scatter plots may also be used to visualize data distributions, particularly when working with 2D or 3D
+datasets. In the case of 1D data, a scatter plot does not effectively convey density information. However,
+it can still be valuable for identifying outliers that might otherwise be absorbed into histogram bins. To partially
+address the density limitation in 1D, one can reduce the opacity of points—areas with higher concentrations will appear
+darker due to overlap, providing a rough visual cue of data density. This is why scatter plots often appear as a
+follow-up in more advanced analysis steps.
+
+After his promotion, Bruno was assigned to analyze customer spending at a local cafe. At first, he tried a bar chart,
+but it quickly became cluttered with individual purchase amounts. Realizing it wasn’t suited for continuous data, he
+switched to a histogram, grouping spending into price ranges. Later, to explore unusual spending behaviors, he added a
+1D scatter plot on top—helping him spot outliers that the histogram had smoothed over.

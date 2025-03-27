@@ -1,5 +1,5 @@
 type: theory
-custom_name: Histograms vs. Bar Charts
+custom_name: Histograms vs. Bars or Scatter
 files:
   - name: main.py
     visible: true
