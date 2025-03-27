@@ -1,0 +1,18 @@
+type: edu
+custom_name: Count plot with catplot
+files:
+  - name: task.py
+    visible: true
+    placeholders:
+      - offset: 131
+        length: 58
+        placeholder_text: "return  # TODO"
+        is_visible: false
+  - name: data.py
+    visible: false
+  - name: tests/test_task.py
+    visible: false
+  - name: example.png
+    visible: false
+    propagatable: false
+    is_binary: true

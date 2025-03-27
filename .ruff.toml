@@ -8,6 +8,8 @@ ignore = [
     "D",
     # flake8-pytest-style
     "PT",
+    # flake8-fixme
+    "FIX",
     # flake8-print
     "T20",
     # Missing type annotation for self/cls in method
@@ -22,10 +24,21 @@ ignore = [
     "EM101",
     # Checks for long exception messages that are not defined in the exception class itself
     "TRY003",
+    # Checks that a TODO comment includes an author.
+    "TD002",
+    # Checks that a TODO comment is associated with a link to a relevant issue or ticket.
+    "TD003",
+    # Checks for function definitions that include too many arguments.
+    "PLR0913",
 ]
 
 [lint.per-file-ignores]
-"common/base_test_mixins.py" = ["N802"] # We're using camelCase here to be consistent with unittest
+# We're using camelCase in the test framework to be consistent with unittest
+"test_framework/*" = ["N802"]
+# We import neccecary (but "unused") objects in __init__.py files for public API
+"test_framework/**/__init__.py" = ["F401", "F403"]
+# We have a function that should be defined in the first step, but unused for some time
+"2_2_bar_and_pie_charts_matplotlib/1_theory/[1-8]_*" = ["ARG001"]
 
 [lint.isort]
 known-local-folder = ["data", "common", "task"]

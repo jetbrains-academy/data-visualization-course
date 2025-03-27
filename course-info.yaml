@@ -10,6 +10,9 @@ content:
   - 1_0_line_and_scatter_plots_intro
   - 1_1_line_and_scatter_plots_seaborn
   - 1_2_line_and_scatter_plots_matplotlib
+  - 2_0_bar_and_pie_charts_intro
+  - 2_1_bar_and_pie_charts_seaborn
+  - 2_2_bar_and_pie_charts_matplotlib
 additional_files:
   - name: requirements.txt
   - name: LICENSE
@@ -57,9 +60,32 @@ additional_files:
     is_binary: true
   - name: common/resources/images/line_and_scatter_plots/Quiz_d.png
     is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_1.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_2.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_3.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_4.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
+    is_binary: true
   - name: common/resources/datasets/experiment.csv
   - name: common/resources/datasets/games.csv
+  - name: common/resources/datasets/food.csv
   - name: common/__init__.py
-  - name: common/base_test_mixins.py
   - name: common/paths.py
+  - name: test_framework/__init__.py
+  - name: test_framework/base.py
+  - name: test_framework/chart_types/__init__.py
+  - name: test_framework/chart_types/bar.py
+  - name: test_framework/chart_types/pie.py
+  - name: test_framework/chart_types/line.py
+  - name: test_framework/chart_types/collection.py
+  - name: test_framework/figure_parts/__init__.py
+  - name: test_framework/figure_parts/title.py
+  - name: test_framework/figure_parts/axis.py
+  - name: test_framework/figure_parts/legend.py
+  - name: test_framework/figure_parts/spine.py
+  - name: test_framework/figure_parts/text.py
 yaml_version: 2
