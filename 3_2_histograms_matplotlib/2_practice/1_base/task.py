@@ -7,9 +7,9 @@ from data import get_bins, get_city_sales, get_weights, read
 def plot(sales: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
 
-    line_color_map = {
-        "Yerevan": "pink",
-        "Belgrade": "grey",
+    color_map = {
+        "Yerevan": "crimson",
+        "Belgrade": "black",
     }
 
     for city in ["Yerevan", "Belgrade"]:
@@ -20,7 +20,7 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
             weights=get_weights(city_sales),
             label=city,
             bins=get_bins(sales),
-            color=line_color_map[city],
+            color=color_map[city],
             histtype="step",
         )
 

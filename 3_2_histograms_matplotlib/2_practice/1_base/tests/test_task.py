@@ -25,8 +25,8 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
         cls.cities = ["Yerevan", "Belgrade"]
         cls.bins = get_bins(data)
         cls.color_map = {
-            "Yerevan": "pink",
-            "Belgrade": "grey",
+            "Yerevan": "crimson",
+            "Belgrade": "black",
         }
 
     def test_1_1_return_type(self):

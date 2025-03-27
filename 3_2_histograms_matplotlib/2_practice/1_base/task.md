@@ -15,7 +15,7 @@ Visualization requirements:
 
 1. The histogram should be normalized (the bins should sum to `1`).
 2. The histogram should be an unfilled line plot.
-3. Yerevan data should be colored `pink` and Belgrade data should be colored `grey`.
+3. Yerevan data should be colored `crimson` and Belgrade data should be colored `black`.
 4. Both histograms should have common bins, ranging from the lowest rounded-down hundred to the highest rounded-up
    hundred across both cities, with a step of `100`.
 5. X-axis label should be `'Sales'`.
