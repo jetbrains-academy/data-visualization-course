@@ -16,7 +16,7 @@ def configure_axes(ax: plt.Axes):
 
 def add_traces(ax: plt.Axes, experiment: pd.DataFrame):
     ax.plot("x", "approximated_y", color="navy", data=experiment)
-    ax.scatter("x", "y", color="gray", alpha=0.05, data=experiment)
+    ax.scatter("x", "y", color="grey", alpha=0.05, data=experiment)
 
 
 def plot(experiment: pd.DataFrame) -> plt.Figure:

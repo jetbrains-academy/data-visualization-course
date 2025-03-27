@@ -4,12 +4,13 @@ from matplotlib.container import BarContainer
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from common.base_test_mixins import BaseTestMixin
+from test_framework import AxisTestMixin, BarTestMixin, LegendTestMixin, TextTestMixin, TitleTestMixin
+
 from data import get_categories, get_category_product_names, get_category_size, get_category_votes, preprocess, read
 from task import plot
 
 
-class TestCase(BaseTestMixin):
+class TestCase(BarTestMixin, AxisTestMixin, TitleTestMixin, LegendTestMixin, TextTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
@@ -33,18 +34,18 @@ class TestCase(BaseTestMixin):
         }
 
     def test_1_1_return_type(self):
-        self.checkReturnType(self.fig, expected_type=plt.Figure, expected_function="ax.barh")
+        self.checkReturnType(self.fig, expected_type=plt.Figure)
 
     def test_1_2_number_of_axes(self):
-        self.checkNumberOfAxes(self.fig.axes, 1)
+        self.checkNumberOfAxes(self.fig.axes, expected_number=1)
 
     def test_1_3_bar_kind(self):
-        self.checkNumberOfCollections(self.fig.axes[0], 0)
-        self.checkNumberOfLines(self.fig.axes[0], 0)
+        self.checkNumberOfCollections(self.fig.axes[0], expected_number=0)
+        self.checkNumberOfLines(self.fig.axes[0], expected_number=0)
 
-        self.checkNumberOfContainers(self.fig.axes[0], 3)
+        self.checkNumberOfContainers(self.fig.axes[0], expected_number=3)
         for i in range(3):
-            self.checkContainerType(self.fig.axes[0], BarContainer, container_number=i)
+            self.checkContainerType(self.fig.axes[0], expected_type=BarContainer, container_number=i)
 
     def test_1_4_bar_layout(self):
         self.checkBarLayout(self.fig.axes[0], expected_layout="horizontal")
@@ -52,16 +53,16 @@ class TestCase(BaseTestMixin):
     def test_2_1_bar_values(self):
         for i, category in enumerate(self.categories):
             expected_positions = list(reversed(get_category_votes(self.data, category)))
-            self.checkBarValues(self.fig.axes[0], expected_positions, container_number=i)
+            self.checkBarValues(self.fig.axes[0], expected_values=expected_positions, container_number=i)
 
     def test_2_2_bar_position(self):
         offset = 0
         for i, category in enumerate(self.categories):
             category_size = get_category_size(self.data, category)
 
-            self.checkBarPositions(
+            self.checkBarPosition(
                 self.fig.axes[0],
-                list(range(offset, offset + category_size)),
+                expected_position=list(range(offset, offset + category_size)),
                 axis="y",
                 container_number=i,
             )
@@ -80,32 +81,48 @@ class TestCase(BaseTestMixin):
             expected_labels.extend(reversed(get_category_product_names(self.data, category)))
             number_of_products += get_category_size(self.data, category)
 
-        self.checkTicks(self.fig.axes[0], list(range(number_of_products)), axis="y")
-        self.checkTickLabels(self.fig.axes[0], expected_labels, axis="y")
+        self.checkTicks(self.fig.axes[0], expected_ticks=list(range(number_of_products)), axis="y")
+        self.checkTickLabels(self.fig.axes[0], expected_tick_labels=expected_labels, axis="y")
 
     def test_3_2_y_label(self):
-        self.checkLabel(self.fig.axes[0], "Product name", axis="y")
+        self.checkLabel(self.fig.axes[0], expected_label="Product name", axis="y")
 
     def test_4_1_x_major_ticks(self):
-        self.checkTicks(self.fig.axes[0], list(range(0, 101, 25)), axis="x")
-        self.checkTickLabels(self.fig.axes[0], list(map(str, range(0, 101, 25))), axis="x")
-        self.checkTickLabels(self.fig.axes[0], list(map(str, range(0, 101, 25))), axis="x", where="secondary")
+        self.checkTicks(self.fig.axes[0], expected_ticks=list(range(0, 101, 25)), axis="x")
+        self.checkTickLabels(self.fig.axes[0], expected_tick_labels=list(map(str, range(0, 101, 25))), axis="x")
+        self.checkTickLabels(
+            self.fig.axes[0],
+            expected_tick_labels=list(map(str, range(0, 101, 25))),
+            axis="x",
+            where="secondary",
+        )
 
     def test_4_2_x_minor_ticks(self):
         expected_positions = [x for x in range(0, 101, 5) if x not in range(0, 101, 25)]
 
-        self.checkTicks(self.fig.axes[0], expected_positions, axis="x", minor=True)
-        self.checkTickLabels(self.fig.axes[0], [""] * len(expected_positions), axis="x", minor=True)
-        self.checkTickLabels(self.fig.axes[0], [""] * len(expected_positions), axis="x", minor=True, where="secondary")
+        self.checkTicks(self.fig.axes[0], expected_ticks=expected_positions, axis="x", minor=True)
+        self.checkTickLabels(
+            self.fig.axes[0],
+            expected_tick_labels=[""] * len(expected_positions),
+            axis="x",
+            minor=True,
+        )
+        self.checkTickLabels(
+            self.fig.axes[0],
+            expected_tick_labels=[""] * len(expected_positions),
+            axis="x",
+            minor=True,
+            where="secondary",
+        )
 
     def test_4_3_x_label(self):
-        self.checkLabel(self.fig.axes[0], "Respondents, %", "x")
+        self.checkLabel(self.fig.axes[0], expected_label="Respondents, %", axis="x")
 
     def test_5_title(self):
-        self.checkTitle(self.fig.axes[0], "Distribution of votes per category")
+        self.checkTitle(self.fig.axes[0], expected_title="Distribution of votes per category")
 
     def test_6_1_number_of_text_objects(self):
-        self.checkNumberOfTextObjects(self.fig.axes[0], 18)
+        self.checkNumberOfTextObjects(self.fig.axes[0], expected_number=18)
 
     def test_6_2_text_values(self):
         expected_x = []
@@ -118,7 +135,7 @@ class TestCase(BaseTestMixin):
 
         expected_y = list(range(self.data["product"].nunique()))
 
-        self.checkTextObjects(self.fig.axes[0], list(zip(expected_x, expected_y, expected_text)))
+        self.checkTextObjects(self.fig.axes[0], expected_texts=list(zip(expected_x, expected_y, expected_text)))
 
     def test_7_1_legend(self):
         self.checkLegendExists(self.fig.axes[0])

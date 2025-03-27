@@ -3,12 +3,13 @@ from typing import ClassVar
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from common.base_test_mixins import BaseTestMixin
+from test_framework import AxisTestMixin, CollectionTestMixin, LineTestMixin, SpineTestMixin
+
 from data import aggregate, preprocess, read
 from task import plot
 
 
-class PlotTestCase(BaseTestMixin):
+class PlotTestCase(LineTestMixin, CollectionTestMixin, AxisTestMixin, SpineTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
@@ -24,38 +25,46 @@ class PlotTestCase(BaseTestMixin):
         self.checkReturnType(self.fig, expected_type=plt.Figure)
 
     def test_1_2_number_of_axes(self):
-        self.checkNumberOfAxes(self.fig.axes, 1)
+        self.checkNumberOfAxes(self.fig.axes, expected_number=1)
 
     def test_1_3_relplot_kind(self):
-        self.checkNumberOfCollections(self.fig.axes[0], 1)
-        self.checkNumberOfLines(self.fig.axes[0], 1)
+        self.checkNumberOfCollections(self.fig.axes[0], expected_number=1)
+        self.checkNumberOfLines(self.fig.axes[0], expected_number=1)
 
     def test_2_1_line_position(self):
         aggregated_data = aggregate(self.data)
-        self.checkLinePosition(self.fig.axes[0], aggregated_data["user_score"], aggregated_data["critic_score"])
+        self.checkLinePosition(
+            self.fig.axes[0],
+            expected_x=aggregated_data["user_score"],
+            expected_y=aggregated_data["critic_score"],
+        )
 
     def test_2_2_line_color(self):
-        self.checkLineColor(self.fig.axes[0], "firebrick")
+        self.checkLineColor(self.fig.axes[0], expected_color="firebrick")
 
     def test_2_3_line_transparency(self):
-        self.checkLineTransparency(self.fig.axes[0], 1)
+        self.checkLineTransparency(self.fig.axes[0], expected_alpha=1)
 
     def test_3_1_scatter_position(self):
-        self.checkCollectionPosition(self.fig.axes[0], self.data["user_score"], self.data["critic_score"])
+        self.checkCollectionPosition(
+            self.fig.axes[0],
+            expected_x=self.data["user_score"],
+            expected_y=self.data["critic_score"],
+        )
 
     def test_3_2_scatter_color(self):
-        self.checkCollectionColor(self.fig.axes[0], "C0")
+        self.checkCollectionColor(self.fig.axes[0], expected_facecolor=None)
 
     def test_3_3_transparency(self):
-        self.checkCollectionTransparency(self.fig.axes[0], 0.1)
+        self.checkCollectionTransparency(self.fig.axes[0], expected_alpha=0.1)
 
     def test_4_labels(self):
-        self.checkLabel(self.fig.axes[0], "User Score", "x")
-        self.checkLabel(self.fig.axes[0], "Critic Score", "y")
+        self.checkLabel(self.fig.axes[0], expected_label="User Score", axis="x")
+        self.checkLabel(self.fig.axes[0], expected_label="Critic Score", axis="y")
 
     def test_5_ticks(self):
-        self.checkTicks(self.fig.axes[0], list(range(11)), axis="x")
-        self.checkTicks(self.fig.axes[0], list(range(0, 101, 10)), axis="y")
+        self.checkTicks(self.fig.axes[0], expected_ticks=list(range(11)), axis="x")
+        self.checkTicks(self.fig.axes[0], expected_ticks=list(range(0, 101, 10)), axis="y")
 
     def test_6_spines_visibility(self):
         self.checkSpineVisibility(self.fig.axes[0], position="top", expected_visibility=False)

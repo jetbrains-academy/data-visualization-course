@@ -9,11 +9,12 @@ options:
     is_correct: false
   - text: Pie chart
     is_correct: true
-message_incorrect: "Scatter plots and line charts are used to show trends\
-  \ or relationships between numerical variables, making them unsuitable for\
-  \ analyzing spending distribution.\n\nBar charts and pie charts, on the other hand,\
-  \ are ideal for comparing expenses across categories, helping Bruno understand where most of his money went."
+message_incorrect: |-
+  Scatter plots and line charts are used to show trends or relationships between numerical variables, making them unsuitable for analyzing spending distribution.
+
+  Bar charts and pie charts, on the other hand, are ideal for comparing expenses across categories, helping Bruno understand where most of his money went.
 files:
   - name: main.py
     visible: true
 custom_name: Choose correct plot types
+local_check: true

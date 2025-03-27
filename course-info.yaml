@@ -74,6 +74,18 @@ additional_files:
   - name: common/resources/datasets/games.csv
   - name: common/resources/datasets/food.csv
   - name: common/__init__.py
-  - name: common/base_test_mixins.py
   - name: common/paths.py
+  - name: test_framework/__init__.py
+  - name: test_framework/base.py
+  - name: test_framework/chart_types/__init__.py
+  - name: test_framework/chart_types/bar.py
+  - name: test_framework/chart_types/pie.py
+  - name: test_framework/chart_types/line.py
+  - name: test_framework/chart_types/collection.py
+  - name: test_framework/figure_parts/__init__.py
+  - name: test_framework/figure_parts/title.py
+  - name: test_framework/figure_parts/axis.py
+  - name: test_framework/figure_parts/legend.py
+  - name: test_framework/figure_parts/spine.py
+  - name: test_framework/figure_parts/text.py
 yaml_version: 2
