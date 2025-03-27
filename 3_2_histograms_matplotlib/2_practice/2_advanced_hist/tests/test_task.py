@@ -46,18 +46,22 @@ class PlotTestCase(
         cls.fig = plot(data)
         cls.cities = ["Yerevan", "Belgrade"]
         cls.bins = get_bins(data)
+
         cls.color_map = {
             "Yerevan": "crimson",
             "Belgrade": "black",
         }
+
         cls.y_coordinates_scatter = {
             "Yerevan": 0.1,
             "Belgrade": 0.2,
         }
+
         cls.shift_map = {
             "Yerevan": -25,
             "Belgrade": 25,
         }
+
         cls.position_map = {
             "Yerevan": "right",
             "Belgrade": "left",

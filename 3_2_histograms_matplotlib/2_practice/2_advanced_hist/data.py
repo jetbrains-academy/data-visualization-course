@@ -27,13 +27,3 @@ def get_bins(sales: pd.DataFrame) -> List:
 
 def get_median(sales: pd.Series) -> float:
     return sales.median()
-
-
-def get_y_coordinates(sales: pd.Series, city: str) -> List[float]:
-    if city == "Belgrade":
-        return [0.2] * len(sales)
-    if city == "Yerevan":
-        return [0.1] * len(sales)
-
-    error_message = f"Unknown city: {city}"
-    raise ValueError(error_message)

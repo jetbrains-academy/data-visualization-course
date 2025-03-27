@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from data import get_bins, get_city_sales, get_median, get_weights, get_y_coordinates, read
+from data import get_bins, get_city_sales, get_median, get_weights, read
 
 
 def plot(sales: pd.DataFrame) -> plt.Figure:
@@ -20,6 +20,11 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
     shift_map = {
         "Yerevan": -25,
         "Belgrade": 25,
+    }
+
+    y_coordinates = {
+        "Yerevan": 0.1,
+        "Belgrade": 0.2,
     }
 
     for city in ["Yerevan", "Belgrade"]:
@@ -52,7 +57,7 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
 
         ax_ind.scatter(
             city_sales,
-            get_y_coordinates(city_sales, city),
+            [y_coordinates[city]] * len(city_sales),
             alpha=0.05,
             color=color_map[city],
         )
