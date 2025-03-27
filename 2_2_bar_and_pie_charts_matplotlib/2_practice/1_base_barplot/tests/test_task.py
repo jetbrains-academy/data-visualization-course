@@ -1,4 +1,4 @@
-from typing import ClassVar, Dict, List
+from typing import ClassVar
 
 from matplotlib.container import BarContainer
 import matplotlib.pyplot as plt
@@ -14,8 +14,8 @@ class TestCase(BarTestMixin, AxisTestMixin, TitleTestMixin, LegendTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
-    categories: ClassVar[List[str]]
-    category_colors: ClassVar[Dict[str, str]]
+    categories: ClassVar[list[str]]
+    category_colors: ClassVar[dict[str, str]]
 
     @classmethod
     def setUpClass(cls):
@@ -71,8 +71,7 @@ class TestCase(BarTestMixin, AxisTestMixin, TitleTestMixin, LegendTestMixin):
 
     def test_2_3_bar_colors(self):
         for i, (category, color) in enumerate(self.category_colors.items()):
-            expected_colors = [color] * get_category_size(self.data, category)
-            self.checkBarColor(self.fig.axes[0], expected_facecolors=expected_colors, container_number=i)
+            self.checkBarColor(self.fig.axes[0], expected_facecolors=color, container_number=i)
 
     def test_3_1_y_ticks(self):
         expected_labels = []

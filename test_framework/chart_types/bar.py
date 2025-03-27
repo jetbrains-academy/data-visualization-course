@@ -1,4 +1,4 @@
-from typing import List, Literal, Optional, Union
+from typing import Literal, Optional, Union
 
 from matplotlib.colors import to_rgb
 import matplotlib.pyplot as plt
@@ -16,7 +16,7 @@ class BarTestMixin(BaseTestMixin):
             f"The figure must have only <samp>{expected_number}</samp> bars.",
         )
 
-    def checkBarValues(self, ax: plt.Axes, *, expected_values: List[float], container_number: int = 0):
+    def checkBarValues(self, ax: plt.Axes, *, expected_values: list[float], container_number: int = 0):
         actual_position = ax.containers[container_number].datavalues
 
         self.assertAllClose(
@@ -39,7 +39,7 @@ class BarTestMixin(BaseTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_position: List[float],
+        expected_position: list[float],
         width: float = 0.8,
         axis: Literal["x", "y"],
         container_number: int = 0,
@@ -78,7 +78,7 @@ class BarTestMixin(BaseTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_facecolors: Union[Optional[List[ColorName]], ColorName],
+        expected_facecolors: Union[Optional[list[ColorName]], ColorName],
         container_number: int = 0,
         histtype: Literal["bar", "step"] = "bar",
     ):

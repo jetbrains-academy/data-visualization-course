@@ -1,4 +1,4 @@
-from typing import List, Literal
+from typing import Literal
 
 from matplotlib import pyplot as plt
 import numpy as np
@@ -12,7 +12,7 @@ class OrthogonalLineTestMixin(BaseTestMixin):
         ax: plt.Axes,
         *,
         expected_type: Literal["vertical", "horizontal"],
-        expected_coordinate: List[float],
+        expected_coordinate: list[float],
         line_number: int = 0,
     ):
         if expected_type == "vertical":

@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 
 from matplotlib.colors import to_rgb
 import matplotlib.pyplot as plt
@@ -7,7 +7,7 @@ from test_framework.base import BaseTestMixin, ColorName
 
 
 class PieTestMixin(BaseTestMixin):
-    def checkPiePosition(self, ax: plt.Axes, *, expected_position: List[float]):
+    def checkPiePosition(self, ax: plt.Axes, *, expected_position: list[float]):
         fig, expected_ax = plt.subplots()
         expected_patches, _ = expected_ax.pie(expected_position)
         actual_patches = ax.patches
@@ -53,8 +53,8 @@ class PieTestMixin(BaseTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_position: List[float],
-        expected_explode: Optional[List[float]] = None,
+        expected_position: list[float],
+        expected_explode: Optional[list[float]] = None,
     ):
         fig, expected_ax = plt.subplots()
         expected_patches, _ = expected_ax.pie(expected_position, explode=expected_explode)
@@ -82,7 +82,7 @@ class PieTestMixin(BaseTestMixin):
             self.assertAlmostEqual(expected_center_x, actual_center_x, msg=msg)
             self.assertAlmostEqual(expected_center_y, actual_center_y, msg=msg)
 
-    def checkPieLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
+    def checkPieLabels(self, ax: plt.Axes, *, expected_labels: list[str]):
         actual_labels = [actual_patch.get_label() for actual_patch in ax.patches]
         self.assertAllEqual(
             expected_labels,
@@ -90,7 +90,7 @@ class PieTestMixin(BaseTestMixin):
             msg="The expected pie labels do not match the actual ones.",
         )
 
-    def checkPieColors(self, ax: plt.Axes, *, expected_colors: Optional[List[ColorName]]):
+    def checkPieColors(self, ax: plt.Axes, *, expected_colors: Optional[list[ColorName]]):
         actual_colors = [to_rgb(patch.get_facecolor()) for patch in ax.patches]
 
         self.assertColorList(
@@ -99,7 +99,7 @@ class PieTestMixin(BaseTestMixin):
             msg="The expected pie colors do not match the actual ones.",
         )
 
-    def checkPieNumericLabels(self, ax: plt.Axes, *, expected_labels: List[str]):
+    def checkPieNumericLabels(self, ax: plt.Axes, *, expected_labels: list[str]):
         actual_labels = [actual_label.get_text() for actual_label in ax.texts[1::2]]
         self.assertAllEqual(
             expected_labels,

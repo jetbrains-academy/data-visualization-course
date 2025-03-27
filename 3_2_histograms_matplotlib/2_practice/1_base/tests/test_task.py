@@ -95,6 +95,9 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
     def test_4_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Sales Distribution in Belgrade and Yerevan")
 
-    def test_5_legend(self):
+    def test_5_1_legend(self):
         self.checkLegendExists(self.fig.axes[0])
         self.checkLegendLabels(self.fig.axes[0], expected_labels=self.cities)
+
+    def test_5_2_legend_colors(self):
+        self.checkLegendHandleColors(self.fig.axes[0], expected_handle_colors=list(self.color_map.values()))

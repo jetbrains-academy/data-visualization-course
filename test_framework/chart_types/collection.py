@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 
 from matplotlib.colors import to_rgb
 import matplotlib.pyplot as plt
@@ -11,8 +11,8 @@ class CollectionTestMixin(BaseTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_x: List[float],
-        expected_y: List[float],
+        expected_x: list[float],
+        expected_y: list[float],
         collection_number: int = 0,
     ):
         actual_x, actual_y = ax.collections[collection_number].get_offsets().T

@@ -1,4 +1,4 @@
-from typing import ClassVar, List
+from typing import ClassVar
 
 from matplotlib.container import BarContainer
 import matplotlib.pyplot as plt
@@ -23,8 +23,8 @@ class PlotTestCase(BarTestMixin, TitleTestMixin, LegendTestMixin, AxisTestMixin)
     fig: ClassVar[plt.Figure]
 
     aggregated_data: ClassVar[pd.DataFrame]
-    regions: ClassVar[List[str]]
-    decades: ClassVar[List[int]]
+    regions: ClassVar[list[str]]
+    decades: ClassVar[list[int]]
     number_of_decades: ClassVar[int]
     number_of_regions: ClassVar[int]
 

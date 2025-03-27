@@ -1,5 +1,3 @@
-from typing import List
-
 import matplotlib.pyplot as plt
 
 from test_framework.base import BaseTestMixin
@@ -30,7 +28,7 @@ class FigureTestMixin(BaseTestMixin):
             msg=error_message,
         )
 
-    def checkHeightRatio(self, ax: plt.Axes, *, expected_ratio: List[float]):
+    def checkHeightRatio(self, ax: plt.Axes, *, expected_ratio: list[float]):
         actual_height_ratio = ax.get_gridspec().get_height_ratios()
         self.assertAllClose(
             expected_ratio,
