@@ -53,6 +53,14 @@ additional_files:
     is_binary: true
   - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
     is_binary: true
+  - name: common/resources/images/histograms/Quiz_A.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_B.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_C.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_D.png
+    is_binary: true
   - name: common/resources/datasets/experiment.csv
   - name: common/resources/datasets/games.csv
   - name: common/resources/datasets/food.csv
