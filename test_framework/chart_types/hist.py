@@ -1,7 +1,9 @@
-from typing import List
+from typing import List, Literal, Optional, Union
 
+from matplotlib.colors import to_rgb
 import matplotlib.pyplot as plt
 
+from test_framework.base import ColorName
 from test_framework.chart_types import BarTestMixin
 
 
@@ -12,7 +14,7 @@ class HistTestMixin(BarTestMixin):
         *,
         expected_values: List[float],
         container_number: int = 0,
-        histtype: str = "bar",
+        histtype: Literal["bar", "step"] = "bar",
     ):
         if histtype == "bar":
             actual_heights = [bar.get_height() for bar in ax.containers[container_number]]
@@ -35,7 +37,7 @@ class HistTestMixin(BarTestMixin):
         *,
         expected_bins: List[float],
         container_number: int = 0,
-        histtype: str = "bar",
+        histtype: Literal["bar", "step"] = "bar",
     ):
         if histtype == "bar":
             actual_bins = [bar.get_x() for bar in ax.containers[container_number]]
@@ -60,7 +62,7 @@ class HistTestMixin(BarTestMixin):
         *,
         expected_alpha: float,
         container_number: int = 0,
-        histtype: str = "bar",
+        histtype: Literal["bar", "step"] = "bar",
     ):
         if histtype == "bar":
             actual_alpha = ax.containers[container_number][0].get_alpha()
@@ -87,3 +89,39 @@ class HistTestMixin(BarTestMixin):
             )
 
         self.assertAlmostEqual(expected_alpha, actual_alpha, msg=error_message)
+
+    def checkHistEdgeColor(
+        self,
+        ax: plt.Axes,
+        *,
+        expected_edgecolors: Union[Optional[List[ColorName]], ColorName],
+        container_number: int = 0,
+        histtype: Literal["bar", "step"] = "bar",
+    ):
+        if histtype == "bar":
+            actual_edgecolors = [to_rgb(bar.get_edgecolor()) for bar in ax.containers[container_number]]
+
+            if isinstance(expected_edgecolors, ColorName):
+                expected_edgecolors = [expected_edgecolors] * len(expected_edgecolors)
+
+            self.assertColorList(
+                expected_edgecolors,
+                actual_edgecolors,
+                msg="The expected histogram edge colors do not match the actual ones.",
+            )
+        elif histtype == "step":
+            actual_edgecolors = to_rgb(ax.patches[container_number].get_edgecolor())
+
+            if isinstance(expected_edgecolors, list):
+                raise ValueError("Pass a single color for a step histogram.")
+
+            self.assertSingleColor(
+                expected_edgecolors,
+                actual_edgecolors,
+                msg=(
+                    f"The histogram edge color must be <samp>{expected_edgecolors}</samp>, "
+                    f"but got <samp>{self._rgb_to_name(actual_edgecolors)}</samp>."
+                ),
+            )
+        else:
+            raise ValueError("Unknown histtype parameter.")

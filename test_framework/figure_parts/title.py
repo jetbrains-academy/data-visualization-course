@@ -21,3 +21,19 @@ class TitleTestMixin(BaseTestMixin):
             actual_title,
             f"The figure should be titled as <samp>{expected_title}</samp>.",
         )
+
+    def checkSupTitle(self, fig: plt.Figure, *, expected_suptitle: str):
+        actual_suptitle = fig.get_suptitle()
+
+        if expected_suptitle is None:
+            self.assertTrue(
+                actual_suptitle == "",
+                msg=f"The figure should have no title, but got <samp>{actual_suptitle}</samp> instead.",
+            )
+            return
+
+        self.assertEqual(
+            expected_suptitle,
+            actual_suptitle,
+            f"The figure should be titled as <samp>{expected_suptitle}</samp>.",
+        )

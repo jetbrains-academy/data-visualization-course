@@ -1,4 +1,4 @@
-from typing import List, Literal, Optional
+from typing import List, Literal, Optional, Union
 
 from matplotlib.colors import to_rgb
 import matplotlib.pyplot as plt
@@ -78,13 +78,34 @@ class BarTestMixin(BaseTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_facecolors: Optional[List[ColorName]],
+        expected_facecolors: Union[Optional[List[ColorName]], ColorName],
         container_number: int = 0,
+        histtype: Literal["bar", "step"] = "bar",
     ):
-        actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
+        if histtype == "step":
+            actual_facecolor = to_rgb(ax.patches[container_number].get_facecolor())
 
-        self.assertColorList(
-            expected_facecolors,
-            actual_colors,
-            msg="The expected bar colors do not match the actual ones.",
-        )
+            if isinstance(expected_facecolors, list):
+                raise ValueError("Pass a single color for a step histogram.")
+
+            self.assertSingleColor(
+                expected_facecolors,
+                actual_facecolor,
+                msg=(
+                    f"The histogram must be colored in <samp>{expected_facecolors}</samp>, "
+                    f"but got <samp>{self._rgb_to_name(actual_facecolor)}</samp>."
+                ),
+            )
+        elif histtype == "bar":
+            actual_colors = [to_rgb(bar.get_facecolor()) for bar in ax.containers[container_number]]
+
+            if isinstance(expected_facecolors, ColorName):
+                expected_facecolors = [expected_facecolors] * len(actual_colors)
+
+            self.assertColorList(
+                expected_facecolors,
+                actual_colors,
+                msg="The expected bar colors do not match the actual ones.",
+            )
+        else:
+            raise ValueError("Unknown histtype parameter.")
