@@ -6,9 +6,9 @@ interpretability. If you have a large number of categories, consider grouping or
 charts are particularly useful for displaying proportions or percentages within categories, as the scaled heights of the
 bars facilitate easy comparison and provide a clear visualization of the distribution.
 
-In the early years of his career, Bruno assisted at a local farm. The farm had to scale
+In the early years of his career, Jonsi assisted at a local farm. The farm had to scale
 back
 production after some of its cattle escaped.
-To adapt, the farm decided to focus on producing only its most popular types of cheeses. Bruno organized a tasting day and used bar
+To adapt, the farm decided to focus on producing only its most popular types of cheeses. Jonsi organized a tasting day and used bar
 charts to visualize the popularity of each cheese type among participants. His analysis effectively guided the farm’s decision on
 which cheeses to continue producing.
