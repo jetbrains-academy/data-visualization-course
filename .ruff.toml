@@ -1,5 +1,6 @@
 line-length = 120
-target_version = ["py39"]
+
+target-version = ["py39"]
 
 [lint]
 select = ["ALL"]
