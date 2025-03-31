@@ -1,5 +1,3 @@
-from typing import List
-
 import pandas as pd
 
 from common.paths import GAMES_DATASET_PATH
@@ -33,5 +31,5 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 
-def get_sorted_platforms(data: pd.DataFrame) -> List[str]:
+def get_sorted_platforms(data: pd.DataFrame) -> list[str]:
     return data["platform"].value_counts(sort=True, ascending=True).index.to_list()
