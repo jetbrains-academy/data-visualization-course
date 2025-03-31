@@ -4,13 +4,14 @@ from matplotlib.container import BarContainer
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from test_framework import AxisTestMixin, BarTestMixin
+from test_framework import AxisTestMixin, BarTestMixin, FigureTestMixin
 
 from data import aggregate, preprocess, read
+import task
 from task import plot
 
 
-class PlotTestCase(BarTestMixin, AxisTestMixin):
+class PlotTestCase(BarTestMixin, AxisTestMixin, FigureTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
@@ -53,3 +54,6 @@ class PlotTestCase(BarTestMixin, AxisTestMixin):
             expected_tick_labels=self.aggregated_data["platform"].to_list(),
             axis="y",
         )
+
+    def test_3_figure_tight_layout(self):
+        self.checkTightLayout(plot_module=task, data=self.data)

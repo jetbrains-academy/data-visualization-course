@@ -4,13 +4,14 @@ from matplotlib.patches import Wedge
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from test_framework import PieTestMixin, TitleTestMixin
+from test_framework import FigureTestMixin, PieTestMixin, TitleTestMixin
 
 from data import aggregate, filter_platforms, preprocess, read
+import task
 from task import plot
 
 
-class PlotTestCase(PieTestMixin, TitleTestMixin):
+class PlotTestCase(PieTestMixin, TitleTestMixin, FigureTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
@@ -69,3 +70,6 @@ class PlotTestCase(PieTestMixin, TitleTestMixin):
 
     def test_3_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Proportion of games per platform")
+
+    def test_4_figure_tight_layout(self):
+        self.checkTightLayout(plot_module=task, data=self.data)

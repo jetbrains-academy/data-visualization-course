@@ -1,4 +1,8 @@
+from types import ModuleType
+from unittest.mock import patch
+
 import matplotlib.pyplot as plt
+import pandas as pd
 
 from test_framework.base import BaseTestMixin
 
@@ -35,3 +39,9 @@ class FigureTestMixin(BaseTestMixin):
             actual_height_ratio,
             msg="The expected height ratio does not match the actual one.",
         )
+
+    @staticmethod
+    def checkTightLayout(*, plot_module: ModuleType, data: pd.DataFrame):
+        with patch.object(plot_module.plt.Figure, "tight_layout") as mock_tl:
+            plot_module.plot(data)
+            mock_tl.assert_called_once()

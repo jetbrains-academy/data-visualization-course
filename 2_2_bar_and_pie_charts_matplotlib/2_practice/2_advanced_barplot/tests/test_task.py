@@ -4,13 +4,14 @@ from matplotlib.container import BarContainer
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from test_framework import AxisTestMixin, BarTestMixin, LegendTestMixin, TextTestMixin, TitleTestMixin
+from test_framework import AxisTestMixin, BarTestMixin, FigureTestMixin, LegendTestMixin, TextTestMixin, TitleTestMixin
 
 from data import get_categories, get_category_product_names, get_category_size, get_category_votes, preprocess, read
+import task
 from task import plot
 
 
-class TestCase(BarTestMixin, AxisTestMixin, TitleTestMixin, LegendTestMixin, TextTestMixin):
+class TestCase(BarTestMixin, AxisTestMixin, TitleTestMixin, LegendTestMixin, TextTestMixin, FigureTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
@@ -70,7 +71,7 @@ class TestCase(BarTestMixin, AxisTestMixin, TitleTestMixin, LegendTestMixin, Tex
             offset += category_size
 
     def test_2_3_bar_colors(self):
-        for i, (category, color) in enumerate(self.category_colors.items()):
+        for i, (_, color) in enumerate(self.category_colors.items()):
             self.checkBarColor(self.fig.axes[0], expected_facecolors=color, container_number=i)
 
     def test_3_1_y_ticks(self):
@@ -149,3 +150,6 @@ class TestCase(BarTestMixin, AxisTestMixin, TitleTestMixin, LegendTestMixin, Tex
             self.fig.axes[0],
             expected_handle_colors=list(reversed(self.category_colors.values())),
         )
+
+    def test_8_figure_tight_layout(self):
+        self.checkTightLayout(plot_module=task, data=self.data)
