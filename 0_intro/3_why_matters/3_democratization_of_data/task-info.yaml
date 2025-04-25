@@ -1,0 +1,5 @@
+type: theory
+custom_name: Democratization of Data
+files:
+  - name: main.py
+    visible: true

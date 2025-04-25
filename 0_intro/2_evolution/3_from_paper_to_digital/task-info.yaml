@@ -1,0 +1,5 @@
+type: theory
+custom_name: Transition From Paper to Digital
+files:
+  - name: main.py
+    visible: true
