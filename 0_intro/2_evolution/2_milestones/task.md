@@ -15,12 +15,18 @@ but also demonstrated that a well‐designed chart could tell a compelling story
     <figcaption style="text-align: center; font-size: 0.6rem">Image by <a href="https://colenda.library.upenn.edu/catalog/81431-p3gh9bs0c">University of Pennsylvania Libraries</a> (Public Domain, Modified)</figcaption>
 </figure>
 
+
 Moving into the 19th century, visualizations became powerful tools for public health and military strategy. 
-John Snow's cholera map (1854) pinpointed the source of an outbreak in London, 
-while Charles Minard's famous diagram of Napoleon's Russian campaign elegantly combined six variables 
+[John Snow](https://en.wikipedia.org/wiki/John_Snow)'s cholera map (1854) pinpointed the source of an outbreak in London, 
+while [Charles Minard](https://en.wikipedia.org/wiki/Charles_Joseph_Minard)'s famous diagram of Napoleon's Russian campaign elegantly combined six variables 
 (army size, geography, time, temperature, and direction) to tell a dramatic story of loss and survival.
 
 <figure>
     <img src="../../../common/resources/images/intro/snow-cholera.png">
     <figcaption style="text-align: center; font-size: 0.6rem">Image by <a href="https://www.ph.ucla.edu/epi/snow/highressnowmap.html">University of California Los Angeles</a> (Public Domain, Modified)</figcaption>
+</figure>
+
+<figure>
+    <img src="../../../common/resources/images/intro/napoleon-map.png">
+    <figcaption style="text-align: center; font-size: 0.6rem">Image by <a href="https://gallica.bnf.fr/ark:/12148/btv1b52504201x">National Library of France</a> (Public Domain, Modified)</figcaption>
 </figure>
