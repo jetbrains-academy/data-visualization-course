@@ -3,6 +3,3 @@ custom_name: Prerequisites
 files:
   - name: main.py
     visible: true
-  - name: __init__.py
-    visible: false
-    propagatable: false
