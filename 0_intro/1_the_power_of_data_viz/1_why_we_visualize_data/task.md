@@ -168,7 +168,7 @@ This can make you think that these datasets, although different, are fundamental
             <td>4.125 (±0.003)</td>
         </tr>
         <tr>
-            <td><a href="https://en.wikipedia.org/wiki/Correlation_and_dependence">Correlation</a></td>
+            <td><a href="https://en.wikipedia.org/wiki/Correlation">Correlation</a></td>
             <td>0.816</td>
         </tr>
         <tr>

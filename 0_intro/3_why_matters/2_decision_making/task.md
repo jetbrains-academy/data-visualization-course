@@ -8,6 +8,6 @@ dashboards are crucial for monitoring the status and the availability of applica
 <figure style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
     <img src="../../../common/resources/images/intro/wikimedia-status-dashboard.png">
     <figcaption style="text-align: center; font-size: 0.6rem">
-        <a href="https://www.wikimediastatus.net/#month">Monthly Status</a> of Wikimedia Foundation Services
+        <a href="https://www.wikimediastatus.net/#month">Monthly Status</a> of <a href="https://wikimediafoundation.org/">Wikimedia Foundation</a> Services
     </figcaption>
 </figure>
