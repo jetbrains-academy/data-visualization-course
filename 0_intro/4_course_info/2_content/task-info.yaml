@@ -1,5 +1,5 @@
 type: theory
-custom_name: Course Structure
+custom_name: Content
 files:
   - name: main.py
     visible: true
