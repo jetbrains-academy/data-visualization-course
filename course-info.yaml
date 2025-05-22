@@ -28,30 +28,10 @@ additional_files:
     is_binary: true
   - name: common/resources/images/common/output_location_dark.png
     is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Distribution_a.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Distribution_b.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Outliers_a.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Outliers_b.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Outliers_c.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Outliers_d.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Relationship_a.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Relationship_b.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Relationship_c.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Trend_a.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Trend_b.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Trend_c.png
-    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Trend_analysis.svg
+  - name: common/resources/images/line_and_scatter_plots/Data_distribution.svg
+  - name: common/resources/images/line_and_scatter_plots/Outliers.svg
+  - name: common/resources/images/line_and_scatter_plots/Relationship_between_variables.svg
   - name: common/resources/images/line_and_scatter_plots/Quiz_a.png
     is_binary: true
   - name: common/resources/images/line_and_scatter_plots/Quiz_b.png

@@ -4,7 +4,7 @@ At a recent tasting event, participants were invited to sample an assortment of 
 Everyone had the chance to vote for up to 3 products per category, sharing their favorites from the diverse offerings.
 The organizers collected all the responses and
 calculated the percentage of votes for each product within each category
-(to uderstand the distribution across bread, cheese, and salad).
+(to understand the distribution across bread, cheese, and salad).
 Now they want us to help with plotting the data.
 Let's help them!
 
