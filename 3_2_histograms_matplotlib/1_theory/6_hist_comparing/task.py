@@ -1,14 +1,16 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from data import filter_by_publisher_and_global_sales, preprocess, read
+from data import filter_by_publisher, filter_by_global_sales, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
 
     for publisher in ["Electronic Arts", "Ubisoft"]:
-        ax.hist(data=filter_by_publisher_and_global_sales(games, publisher), x="global_sales", alpha=0.7)
+        filtered_games = filter_by_publisher(games, publisher)
+        filtered_games = filter_by_global_sales(filtered_games)
+        ax.hist(data=filtered_games, x="global_sales", alpha=0.7)
 
     return fig
 

@@ -9,6 +9,5 @@ files:
     visible: true
   - name: tests/test_task.py
     visible: false
-    propagatable: false
   - name: data.py
     visible: false

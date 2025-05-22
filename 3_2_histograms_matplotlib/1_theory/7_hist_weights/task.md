@@ -29,7 +29,7 @@ you want to calculate the weights yourself, refer to the corresponding hint belo
 ## Hints
 
 <div class="hint" title="How to calculate the weights?">
-    One way to do it is to use the <a href="https://numpy.org/doc/2.1/reference/generated/numpy.ones_like.html">
+    One way to do it is to use the <a href="https://numpy.org/doc/stable/reference/generated/numpy.ones_like.html">
     <code>ones_like</code></a> function to generate an array of ones with the same shape as the data. Then, divide this
     array by the total number of data points.
 </div>

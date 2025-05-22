@@ -8,6 +8,8 @@ def read() -> pd.DataFrame:
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
+    data = data.copy()
+
     data.columns = [col.lower() for col in data.columns]
 
     data = data[data["user_score"] != "tbd"]
@@ -29,6 +31,9 @@ def preprocess(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 
-def filter_by_publisher_and_global_sales(data: pd.DataFrame, publisher: str) -> pd.DataFrame:
-    filtered_data = data[data["publisher"] == publisher]
-    return filtered_data[filtered_data["global_sales"] <= filtered_data["global_sales"].quantile(0.95)]
+def filter_by_global_sales(data: pd.DataFrame) -> pd.DataFrame:
+    return data[data["global_sales"] <= data["global_sales"].quantile(0.95)]
+
+
+def filter_by_publisher(data: pd.DataFrame, publisher: str) -> pd.DataFrame:
+    return data[data["publisher"] == publisher]

@@ -72,9 +72,9 @@ def plot(sales: pd.DataFrame) -> plt.Figure:
     ax_hist.legend(filtered_handles, filtered_labels)
 
     ax_ind.set_ylim(0, 0.3)
-    ax_ind.spines[["top", "bottom", "left", "right"]].set_visible(False)
     ax_ind.set_xticks([])
     ax_ind.set_yticks([])
+    ax_ind.spines[["top", "bottom", "left", "right"]].set_visible(False)
 
     fig.suptitle("Sales Distribution in Belgrade and Yerevan")
 

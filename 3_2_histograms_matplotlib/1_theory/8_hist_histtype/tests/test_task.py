@@ -7,13 +7,14 @@ import pandas as pd
 
 from test_framework import AxisTestMixin, HistTestMixin, LegendTestMixin, TitleTestMixin
 
-from data import filter_by_publisher_and_global_sales, get_bins, preprocess, read
+from data import filter_by_publisher, filter_by_global_sales, get_bins, preprocess, read
 from task import plot
 
 
 class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
+    publishers: ClassVar[list[str]]
     bins: ClassVar[np.ndarray]
 
     @classmethod
@@ -23,6 +24,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
 
         cls.data = data
         cls.fig = plot(data)
+
         cls.publishers = ["Electronic Arts", "Ubisoft"]
         cls.bins = get_bins(data)
 
@@ -52,7 +54,8 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
 
     def test_2_2_bar_height(self):
         for patch_number, publisher in enumerate(self.publishers):
-            filtered_data = filter_by_publisher_and_global_sales(self.data, publisher)
+            filtered_data = filter_by_publisher(self.data, publisher)
+            filtered_data = filter_by_global_sales(filtered_data)
             weights = np.ones_like(filtered_data["global_sales"]) / filtered_data["global_sales"].shape[0]
             counts, _ = np.histogram(filtered_data["global_sales"], bins=self.bins, weights=weights)
             self.checkBarHeights(

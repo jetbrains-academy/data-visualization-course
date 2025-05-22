@@ -14,7 +14,9 @@ from task import plot
 class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
+    cities: ClassVar[list[str]]
     bins: ClassVar[list]
+    color_map: ClassVar[dict[str, str]]
 
     @classmethod
     def setUpClass(cls):
@@ -22,8 +24,10 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
 
         cls.data = data
         cls.fig = plot(data)
+
         cls.cities = ["Yerevan", "Belgrade"]
         cls.bins = get_bins(data)
+
         cls.color_map = {
             "Yerevan": "crimson",
             "Belgrade": "black",
@@ -58,6 +62,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
             city_sales = get_city_sales(self.data, city)
             weights = get_weights(city_sales)
             counts, _ = np.histogram(city_sales, bins=self.bins, weights=weights)
+
             self.checkBarHeights(
                 self.fig.axes[0],
                 expected_values=counts.tolist(),
@@ -74,7 +79,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
                 histtype="step",
             )
 
-    def test_3_bar_colors(self):
+    def test_2_4_bar_colors(self):
         for patch_number, city in enumerate(self.cities):
             self.checkBarColor(
                 self.fig.axes[0],
@@ -83,13 +88,13 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
                 histtype="step",
             )
 
-    def test_4_labels(self):
+    def test_3_labels(self):
         self.checkLabel(self.fig.axes[0], expected_label="Sales", axis="x")
         self.checkLabel(self.fig.axes[0], expected_label="Probability", axis="y")
 
-    def test_5_title(self):
+    def test_4_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Sales Distribution in Belgrade and Yerevan")
 
-    def test_6_legend(self):
+    def test_5_legend(self):
         self.checkLegendExists(self.fig.axes[0])
         self.checkLegendLabels(self.fig.axes[0], expected_labels=self.cities)

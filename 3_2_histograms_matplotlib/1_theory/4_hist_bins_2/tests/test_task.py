@@ -23,9 +23,10 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
         data = preprocess(data)
 
         cls.data = data
+        cls.fig = plot(data)
+
         cls.bins = get_logarithmic_bins(data, 50)
         cls.counts, _ = np.histogram(data["global_sales"], bins=cls.bins)
-        cls.fig = plot(data)
 
     def test_1_1_return_type(self):
         self.checkReturnType(self.fig, expected_type=plt.Figure)

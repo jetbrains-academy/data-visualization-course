@@ -1,19 +1,21 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from data import filter_by_publisher_and_global_sales, get_bins, get_weights, preprocess, read
+from data import filter_by_publisher, filter_by_global_sales, get_bins, get_weights, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> plt.Figure:
     fig, ax = plt.subplots()
 
     for publisher in ["Electronic Arts", "Ubisoft"]:
-        publisher_df = filter_by_publisher_and_global_sales(games, publisher)
+        filtered_games = filter_by_publisher(games, publisher)
+        filtered_games = filter_by_global_sales(filtered_games)
+
         ax.hist(
-            data=publisher_df,
+            data=filtered_games,
             x="global_sales",
             alpha=0.7,
-            weights=get_weights(publisher_df),
+            weights=get_weights(filtered_games),
             bins=get_bins(games),
             histtype="step",
             label=publisher,

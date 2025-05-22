@@ -40,9 +40,9 @@ text labels indicating the median sales value for each city:
    `fig.suptitle`](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.suptitle.html#matplotlib.figure.Figure.suptitle)
    function.
 
-You can use the hidden `get_median` function, accepting the city sales to calculate the median sales for each city.
-
 Please consult the corresponding documentation pages to figure out how to do it.
+
+You can use the hidden `get_median` function, accepting the city sales to calculate the median sales for each city.
 
 If you get stuck,
 please feel free to use the hints below, where you can also find what the final figure should look like.
@@ -93,22 +93,22 @@ Note that these changes will not be tested and might break existing tests.
 
 <div class="hint" title="How to remove ticks?">
     You can remove both <code>x</code> and <code>y</code> ticks by calling the 
-    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_yticks.html"><code>set_yticks([])</code>
+    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_yticks.html"><code>set_yticks</code>
     </a> and <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xticks.html"><code>
-    set_xticks([])</code></a> methods of axes.
+    set_xticks</code></a> methods of axes: <code>ax.set_yticks([])</code> and <code>ax.set_xticks([])</code>.
 </div>
 
 <div class="hint" title="How to hide all spines of a plot?">
-    You can call <code>ax_ind.spines[["top", "bottom", "left", "right"]].set_visible(False)</code> on the corresponding <code>ax</code> object.
+    You can call <code>ax.spines[["top", "bottom", "left", "right"]].set_visible(False)</code> on the corresponding <code>ax</code> object.
 </div>
 
 <div class="hint" title="How to find the median of an array?">
-    You can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.median.html"><code>median()</code></a> 
+    You can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.median.html"><code>median</code></a> 
     method of Series.
 </div>
 
 <div class="hint" title="How to customize a vertical line?">
-    You can change the line appearance when using the <code>axvline</code> method by setting these three parameters: use
+    You can change the line appearance when using the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.axvline.html"><code>axvline</code></a> method by setting these three parameters: use
     <code>linestyle</code> to define line style, <code>width</code> to configure its thickness, and <code>color</code> 
     to assign its color.
 </div>
@@ -124,6 +124,6 @@ Note that these changes will not be tested and might break existing tests.
 <div class="hint" title="How to add a super title to the figure?">
     You can call the
     <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.suptitle.html#matplotlib.figure.Figure.suptitle">
-    <code>suptitle()</code></a> method on the figure object:
+    <code>suptitle</code></a> method on the figure object:
     <code>fig.suptitle("Title")</code>.
 </div>

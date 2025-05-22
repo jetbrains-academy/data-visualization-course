@@ -14,18 +14,17 @@ visually appealing distribution.
 
 Modify the histogram as follows:
 
-- Set `histtype` to `step` to create an unfilled line-based histogram.
-- Generate the same bins collection for both distributions. There should be `10` uniform bins, starting from the minimum
-  global sales value (across both publishers) and ending at the maximum value.
-- Name x-axis as `'Global Sales (millions)'`, y-axis as `'Proportion'`.
-- Add a title to the plot: `'Global Sales Distribution for Electronic Arts and Ubisoft'`.
-- Add a legend to the plot, with labels corresponding to the publishers.
+1. Set `histtype` to `step` to create an unfilled line-based histogram.
+2. Generate the same bins collection for both distributions. There should be `10` uniform bins, starting from the minimum
+global sales value (across both publishers) and ending at the maximum value.
+3. Name x-axis as `Global Sales (millions)`, y-axis as `Proportion`.
+4. Add a title to the plot: `Global Sales Distribution for Electronic Arts and Ubisoft`.
+5. Add a legend to the plot, with labels corresponding to the publishers.
 
 You can add legend for a histogram in the same way as for a bar chart. We described it in details in
 the "[Legend](course://2_2_bar_and_pie_charts_matplotlib/1_theory/10_grouped_bar_chart_legend)" section. See more details in the corresponding hint below.
 
-Use the hidden `get_bins` function to generate bins collection. Pass the unfiltered dataset as an argument!
-
+Use the hidden `get_bins` function to generate bins collection. Pass the unfiltered dataset as an argument! 
 If you want, you can find these values manually. Please refer to the corresponding hint below.
 
 ## Hints

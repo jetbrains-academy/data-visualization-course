@@ -9,6 +9,8 @@ def read() -> pd.DataFrame:
 
 
 def preprocess(data: pd.DataFrame) -> pd.DataFrame:
+    data = data.copy()
+
     data.columns = [col.lower() for col in data.columns]
 
     data = data[data["user_score"] != "tbd"]

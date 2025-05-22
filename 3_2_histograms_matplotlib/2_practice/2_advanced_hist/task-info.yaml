@@ -3,15 +3,6 @@ custom_name: Advanced
 files:
   - name: task.py
     visible: true
-    placeholders:
-      - offset: 53
-        length: 72
-        placeholder_text: "from data import read"
-        is_visible: false
-      - offset: 177
-        length: 1881
-        placeholder_text: "return  # TODO"
-        is_visible: false
   - name: data.py
     visible: false
   - name: example.png

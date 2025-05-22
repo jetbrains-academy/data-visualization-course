@@ -11,6 +11,7 @@ The number of bins determines the balance between detail and smoothness:
 
 ## Task
 Change the number of logarithmic bins to `50`.
+
 ## Hints
 <div class="hint" title="What should the figure look like?">
     <img src="example.png" alt="What the figure should look like" style="max-height: 500px">

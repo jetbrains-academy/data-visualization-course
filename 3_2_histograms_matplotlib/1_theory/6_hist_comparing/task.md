@@ -15,25 +15,22 @@ one at a time, calling `hist` for each distribution.
 
 ## Task
 
-Plot two overlaid histograms for the global sales distributions of games published by `Electronic Arts` and `Ubisoft`.
+1. Plot two overlaid histograms for the global sales distributions of games published by `Electronic Arts` and `Ubisoft`.
 
-For each histogram set `alpha` as `0.7`, keep the default value for `bins`. We described `alpha` parameter in details in
+2. For each histogram set `alpha` as `0.7`, keep the default value for `bins`. We described `alpha` parameter in details in
 the "[Transparency and color](course://1_2_line_and_scatter_plots_matplotlib/1_theory/2_transparency_and_color)"
 section. See more details in the corresponding hint below.
 
-Use the hidden `filter_by_publisher_and_global_sales` function to retrieve the global sales data for the given publisher,
-filtering out values above the 95th percentile. Pass the dataset and the publisher name as arguments.
+3. Use the hidden `filter_by_publisher` function to filter the data only for the given publisher. 
+Pass the dataset and the publisher name as arguments.
+Then use the hidden `filter_by_global_sales` function to filter out global sales above the 95th percentile.
 
 If you prefer, you can filter the dataset manually. Please refer to the corresponding hint below.
 
 ## Hints
 
-<div class="hint" title="How should I get the data for the given publisher?">
-    You have to filter by two columns:
-    <ol>
-    <li>Use boolean indexing on <code>publisher</code> column.</li>
-    <li>Filter the data by <code>global_sales</code> below 95th percentile.</li>
-    </ol>
+<div class="hint" title="How should I filter the data?">
+    To filter the data by publisher, you can use boolean indexing on <code>publisher</code> column.
 </div>
 
 <div class="hint" title="How to set transparency?">

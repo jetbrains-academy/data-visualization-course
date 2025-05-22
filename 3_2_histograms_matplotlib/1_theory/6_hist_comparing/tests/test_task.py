@@ -7,13 +7,14 @@ import pandas as pd
 
 from test_framework import AxisTestMixin, HistTestMixin
 
-from data import filter_by_publisher_and_global_sales, preprocess, read
+from data import filter_by_publisher, filter_by_global_sales, preprocess, read
 from task import plot
 
 
 class PlotTestCase(HistTestMixin, AxisTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
+    publishers: ClassVar[list[str]]
     bins: ClassVar[int]
 
     @classmethod
@@ -23,6 +24,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
 
         cls.data = data
         cls.fig = plot(data)
+
         cls.publishers = ["Electronic Arts", "Ubisoft"]
         cls.bins = 10
 
@@ -43,13 +45,15 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
 
     def test_2_1_bar_bins(self):
         for container_number, publisher in enumerate(self.publishers):
-            filtered_data = filter_by_publisher_and_global_sales(self.data, publisher)
+            filtered_data = filter_by_publisher(self.data, publisher)
+            filtered_data = filter_by_global_sales(filtered_data)
             bins = np.histogram_bin_edges(filtered_data["global_sales"], bins=self.bins)
             self.checkBarBins(self.fig.axes[0], expected_bins=bins.tolist(), container_number=container_number)
 
     def test_2_2_bar_height(self):
         for container_number, publisher in enumerate(self.publishers):
-            filtered_data = filter_by_publisher_and_global_sales(self.data, publisher)
+            filtered_data = filter_by_publisher(self.data, publisher)
+            filtered_data = filter_by_global_sales(filtered_data)
             counts, _ = np.histogram(filtered_data["global_sales"], bins=self.bins)
             self.checkBarHeights(self.fig.axes[0], expected_values=counts.tolist(), container_number=container_number)
 

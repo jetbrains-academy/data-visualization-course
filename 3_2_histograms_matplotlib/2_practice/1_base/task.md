@@ -63,10 +63,6 @@ like.
    To change it, you can specify <code>bins</code> parameter of the <code>hist</code> function.
 </div>
 
-<div class="hint" title="How to set transparency for the histogram?">
-   To set transparency for the histogram, you can use the <code>alpha</code> parameter of the <code>hist</code> function.
-</div>
-
 <div class="hint" title="How to add axis labels?">
    You can pass the desired label to the 
    <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlabel.html#matplotlib.axes.Axes.set_xlabel">
