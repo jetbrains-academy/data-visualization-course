@@ -1,12 +1,15 @@
 import pandas as pd
 import seaborn as sns
 
-from data import filter_by_publisher_and_global_sales, preprocess, read
+from data import filter_by_global_sales, filter_by_publisher, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> sns.FacetGrid:
+    filtered_games = filter_by_publisher(games)
+    filtered_games = filter_by_global_sales(filtered_games)
+
     return sns.displot(
-        data=filter_by_publisher_and_global_sales(games),
+        data=filtered_games,
         x="global_sales",
         bins=10,
         hue="publisher",
@@ -21,7 +24,7 @@ def main():
     games = preprocess(games)
 
     fig = plot(games)
-    fig.savefig("example.png", dpi=300)
+    fig.savefig("plot.png", dpi=300)
 
 
 if __name__ == "__main__":

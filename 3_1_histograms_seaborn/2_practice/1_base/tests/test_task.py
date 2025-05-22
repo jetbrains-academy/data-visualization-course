@@ -20,8 +20,9 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin):
     def setUpClass(cls):
         data = read()
 
-        cls.fig = plot(data)
         cls.data = data
+        cls.fig = plot(data)
+
         cls.bins = get_bins(data)
         cls.publishers = cls.data["city"].unique()[::-1]
 

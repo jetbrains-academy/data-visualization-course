@@ -24,6 +24,7 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
 
         cls.fig = plot(data)
         cls.data = filter_by_global_sales(data)
+
         cls.counts, cls.bins = np.histogram(cls.data["global_sales"], bins="auto")
 
     def test_1_1_return_type(self):

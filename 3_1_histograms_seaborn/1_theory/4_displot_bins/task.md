@@ -17,13 +17,11 @@ However, we can manually configure bins in `bins` argument of the `displot` func
 - An integer: The number of bins to use.
 - A collection: The edges of the bins (supports non-uniform widths).
 - A string: The method to calculate the number of bins. To see the list of accepted strings
-  check [documentation](https://numpy.org/doc/2.1/reference/generated/numpy.histogram_bin_edges.html).
+  check [documentation](https://numpy.org/doc/stable/reference/generated/numpy.histogram_bin_edges.html).
 
 ## Task
 
-Create the same histogram as before with `10` bins.
-
-Please do not forget to filter dataset by global sales below 95th percentile, as in the previous task.
+Set the number of bins in the histogram to `10`.
 
 ## Hints
 

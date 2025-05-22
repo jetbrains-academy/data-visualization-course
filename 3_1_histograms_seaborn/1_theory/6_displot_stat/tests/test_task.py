@@ -7,7 +7,7 @@ import seaborn as sns
 
 from test_framework import AxisTestMixin, HistTestMixin
 
-from data import filter_by_publisher_and_global_sales, preprocess, read
+from data import filter_by_global_sales, filter_by_publisher, preprocess, read
 from task import plot
 
 
@@ -22,7 +22,9 @@ class PlotTestCase(HistTestMixin, AxisTestMixin):
         data = preprocess(data)
 
         cls.fig = plot(data)
-        cls.data = filter_by_publisher_and_global_sales(data)
+        cls.data = filter_by_publisher(data)
+        cls.data = filter_by_global_sales(cls.data)
+
         cls.bins = np.histogram_bin_edges(cls.data["global_sales"], bins=10)
         cls.publishers = cls.data["publisher"].unique()[::-1]
 

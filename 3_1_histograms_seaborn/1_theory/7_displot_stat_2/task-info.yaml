@@ -9,5 +9,4 @@ files:
     visible: false
   - name: example.png
     visible: false
-    propagatable: false
     is_binary: true

@@ -1,11 +1,14 @@
 import pandas as pd
 import seaborn as sns
 
-from data import filter_by_publisher_and_global_sales, preprocess, read
+from data import filter_by_global_sales, filter_by_publisher, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> sns.FacetGrid:
-    return sns.displot(data=filter_by_publisher_and_global_sales(games), x="global_sales", bins=10, hue="publisher")
+    filtered_games = filter_by_publisher(games)
+    filtered_games = filter_by_global_sales(filtered_games)
+
+    return sns.displot(data=filtered_games, x="global_sales", bins=10, hue="publisher")
 
 
 # Please solve the task in the plot function and do not modify this one
