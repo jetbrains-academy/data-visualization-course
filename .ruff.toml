@@ -41,8 +41,6 @@ ignore = [
 "test_framework/**/__init__.py" = ["F401", "F403"]
 # We have a function that should be defined in the first step, but unused for some time
 "2_2_bar_and_pie_charts_matplotlib/1_theory/[1-8]_*" = ["ARG001"]
-# TODO: remove after removing (or fixing) correspoding files
-"3_0_histograms_intro/1_overview/[2-5]_*" = ["NPY002"]
 
 [lint.isort]
 known-local-folder = ["data", "common", "task"]
