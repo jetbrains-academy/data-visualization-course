@@ -1,0 +1,6 @@
+type: framework
+custom_name: Practice
+content:
+  - 1_base
+  - 2_advanced_hist
+is_template_based: false

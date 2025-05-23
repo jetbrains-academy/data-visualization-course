@@ -1,0 +1,5 @@
+type: theory
+custom_name: Truncated histogram
+files:
+  - name: main.py
+    visible: true

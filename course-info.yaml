@@ -13,6 +13,9 @@ content:
   - 2_0_bar_and_pie_charts_intro
   - 2_1_bar_and_pie_charts_seaborn
   - 2_2_bar_and_pie_charts_matplotlib
+  - 3_0_histograms_intro
+  - 3_1_histograms_seaborn
+  - 3_2_histograms_matplotlib
 additional_files:
   - name: requirements.txt
   - name: LICENSE
@@ -50,9 +53,18 @@ additional_files:
     is_binary: true
   - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
     is_binary: true
+  - name: common/resources/images/histograms/Quiz_A.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_B.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_C.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_D.png
+    is_binary: true
   - name: common/resources/datasets/experiment.csv
   - name: common/resources/datasets/games.csv
   - name: common/resources/datasets/food.csv
+  - name: common/resources/datasets/sales.csv
   - name: common/__init__.py
   - name: common/paths.py
   - name: test_framework/__init__.py
@@ -68,4 +80,7 @@ additional_files:
   - name: test_framework/figure_parts/legend.py
   - name: test_framework/figure_parts/spine.py
   - name: test_framework/figure_parts/text.py
+  - name: test_framework/chart_types/hist.py
+  - name: test_framework/figure_parts/figure.py
+  - name: test_framework/figure_parts/orthogonal_line.py
 yaml_version: 2

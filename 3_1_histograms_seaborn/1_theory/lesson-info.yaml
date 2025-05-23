@@ -1,0 +1,11 @@
+type: framework
+custom_name: Theory
+content:
+  - 1_displot
+  - 2_displot_log
+  - 3_displot_cropped
+  - 4_displot_bins
+  - 5_displot_hue
+  - 6_displot_stat
+  - 7_displot_stat_2
+is_template_based: false
