@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import Optional
 
 from matplotlib.colors import to_rgb
 import matplotlib.pyplot as plt
@@ -11,8 +11,8 @@ class LineTestMixin(BaseTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_x: List[float],
-        expected_y: List[float],
+        expected_x: list[float],
+        expected_y: list[float],
         line_number: int = 0,
     ):
         actual_x, actual_y = ax.lines[line_number].get_xydata().T

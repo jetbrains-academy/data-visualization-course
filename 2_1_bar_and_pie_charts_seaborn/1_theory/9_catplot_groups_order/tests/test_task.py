@@ -1,4 +1,4 @@
-from typing import ClassVar, List
+from typing import ClassVar
 
 from matplotlib.container import BarContainer
 import pandas as pd
@@ -14,7 +14,7 @@ class PlotTestCase(BarTestMixin, AxisTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[sns.FacetGrid]
 
-    sorted_regions: ClassVar[List[str]]
+    sorted_regions: ClassVar[list[str]]
 
     @classmethod
     def setUpClass(cls):

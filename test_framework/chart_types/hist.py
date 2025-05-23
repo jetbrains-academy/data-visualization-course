@@ -1,4 +1,4 @@
-from typing import List, Literal, Optional, Union
+from typing import Literal, Optional, Union
 
 from matplotlib.colors import to_rgb
 import matplotlib.pyplot as plt
@@ -12,7 +12,7 @@ class HistTestMixin(BarTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_values: List[float],
+        expected_values: list[float],
         container_number: int = 0,
         histtype: Literal["bar", "step"] = "bar",
     ):
@@ -35,7 +35,7 @@ class HistTestMixin(BarTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_bins: List[float],
+        expected_bins: list[float],
         container_number: int = 0,
         histtype: Literal["bar", "step"] = "bar",
     ):
@@ -94,7 +94,7 @@ class HistTestMixin(BarTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_edgecolors: Union[Optional[List[ColorName]], ColorName],
+        expected_edgecolors: Union[Optional[list[ColorName]], ColorName],
         container_number: int = 0,
         histtype: Literal["bar", "step"] = "bar",
     ):

@@ -1,10 +1,10 @@
-from typing import ClassVar, List
+from typing import ClassVar
 
 from matplotlib.container import BarContainer
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from test_framework import AxisTestMixin, BarTestMixin, LegendTestMixin, TitleTestMixin
+from test_framework import AxisTestMixin, BarTestMixin, FigureTestMixin, LegendTestMixin, TitleTestMixin
 
 from data import (
     aggregate,
@@ -15,16 +15,17 @@ from data import (
     preprocess,
     read,
 )
+import task
 from task import plot
 
 
-class PlotTestCase(BarTestMixin, TitleTestMixin, LegendTestMixin, AxisTestMixin):
+class PlotTestCase(BarTestMixin, TitleTestMixin, LegendTestMixin, AxisTestMixin, FigureTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
     aggregated_data: ClassVar[pd.DataFrame]
-    regions: ClassVar[List[str]]
-    decades: ClassVar[List[int]]
+    regions: ClassVar[list[str]]
+    decades: ClassVar[list[int]]
     number_of_decades: ClassVar[int]
     number_of_regions: ClassVar[int]
 
@@ -114,3 +115,6 @@ class PlotTestCase(BarTestMixin, TitleTestMixin, LegendTestMixin, AxisTestMixin)
 
     def test_5_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Total sales for each region over decades")
+
+    def test_6_figure_tight_layout(self):
+        self.checkTightLayout(plot_module=task, data=self.data)

@@ -4,13 +4,14 @@ from matplotlib.container import BarContainer
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from test_framework import AxisTestMixin, BarTestMixin, TitleTestMixin
+from test_framework import AxisTestMixin, BarTestMixin, FigureTestMixin, TitleTestMixin
 
 from data import aggregate, filter_platforms, preprocess, read
+import task
 from task import plot
 
 
-class PlotTestCase(BarTestMixin, AxisTestMixin, TitleTestMixin):
+class PlotTestCase(BarTestMixin, AxisTestMixin, TitleTestMixin, FigureTestMixin):
     data: ClassVar[pd.DataFrame]
     fig: ClassVar[plt.Figure]
 
@@ -65,3 +66,6 @@ class PlotTestCase(BarTestMixin, AxisTestMixin, TitleTestMixin):
 
     def test_4_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Number of games per platform")
+
+    def test_5_figure_tight_layout(self):
+        self.checkTightLayout(plot_module=task, data=self.data)

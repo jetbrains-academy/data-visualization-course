@@ -1,5 +1,3 @@
-from typing import List
-
 import numpy as np
 import pandas as pd
 
@@ -59,5 +57,5 @@ def extract_sales_region(data: pd.DataFrame) -> pd.DataFrame:
     return data
 
 
-def get_sorted_regions(data: pd.DataFrame) -> List[str]:
+def get_sorted_regions(data: pd.DataFrame) -> list[str]:
     return data.groupby("region")["sales"].sum().sort_values().index.tolist()

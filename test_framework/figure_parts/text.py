@@ -1,4 +1,4 @@
-from typing import List, Literal, Tuple
+from typing import Literal
 
 import matplotlib.pyplot as plt
 
@@ -13,7 +13,7 @@ class TextTestMixin(BaseTestMixin):
             f"The number of text objects must be <samp>{expected_number}</samp>.",
         )
 
-    def checkTextObjects(self, ax: plt.Axes, *, expected_texts: List[Tuple[float, float, str]]):
+    def checkTextObjects(self, ax: plt.Axes, *, expected_texts: list[tuple[float, float, str]]):
         actual_texts = sorted((*text.get_position(), text.get_text()) for text in ax.texts)
         expected_texts = sorted(expected_texts)
 

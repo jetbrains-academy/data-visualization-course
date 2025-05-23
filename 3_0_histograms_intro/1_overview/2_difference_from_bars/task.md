@@ -10,7 +10,7 @@ address the density limitation in 1D, one can reduce the opacity of points—are
 darker due to overlap, providing a rough visual cue of data density. This is why scatter plots often appear as a
 follow-up in more advanced analysis steps.
 
-After his promotion, Bruno was assigned to analyze customer spending at a local cafe. At first, he tried a bar chart,
+After his promotion, Jonsi was assigned to analyze customer spending at a local cafe. At first, he tried a bar chart,
 but it quickly became cluttered with individual purchase amounts. Realizing it wasn’t suited for continuous data, he
 switched to a histogram, grouping spending into price ranges. Later, to explore unusual spending behaviors, he added a
 1D scatter plot on top—helping him spot outliers that the histogram had smoothed over.

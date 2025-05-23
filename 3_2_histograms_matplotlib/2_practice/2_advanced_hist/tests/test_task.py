@@ -240,6 +240,9 @@ class PlotTestCase(
     def test_7_2_suptitle(self):
         self.checkSupTitle(self.fig, expected_suptitle="Sales Distribution in Belgrade and Yerevan")
 
-    def test_8_legend(self):
+    def test_8_1_legend(self):
         self.checkLegendExists(self.fig.axes[1])
         self.checkLegendLabels(self.fig.axes[1], expected_labels=self.cities)
+
+    def test_8_2_legend_colors(self):
+        self.checkLegendHandleColors(self.fig.axes[1], expected_handle_colors=list(self.color_map.values()))

@@ -1,4 +1,4 @@
-from typing import List, Optional, Union
+from typing import Optional, Union
 
 from matplotlib.colors import to_rgb
 from matplotlib.legend import Legend
@@ -33,7 +33,7 @@ class LegendTestMixin(BaseTestMixin):
             f"The number of legend items must be <samp>{expected_number}</samp>.",
         )
 
-    def checkLegendLabels(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_labels: List[str]):
+    def checkLegendLabels(self, obj: Union[plt.Axes, sns.FacetGrid], *, expected_labels: list[str]):
         actual_labels = [label.get_text() for label in self.__get_legend(obj).texts]
         self.assertAllEqual(
             expected_labels,
@@ -45,7 +45,7 @@ class LegendTestMixin(BaseTestMixin):
         self,
         obj: Union[plt.Axes, sns.FacetGrid],
         *,
-        expected_handle_colors: Optional[List[ColorName]],
+        expected_handle_colors: Optional[list[ColorName]],
     ):
         actual_handle_colors = [to_rgb(handle.get_facecolor()) for handle in self.__get_legend(obj).legend_handles]
 
