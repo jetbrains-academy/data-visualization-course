@@ -7,7 +7,7 @@ import pandas as pd
 
 from test_framework import AxisTestMixin, HistTestMixin, LegendTestMixin, TitleTestMixin
 
-from data import filter_by_publisher, filter_by_global_sales, get_bins, preprocess, read
+from data import filter_by_global_sales, filter_by_publisher, get_bins, preprocess, read
 from task import plot
 
 

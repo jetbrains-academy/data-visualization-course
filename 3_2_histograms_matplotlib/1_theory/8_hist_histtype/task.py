@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
-from data import filter_by_publisher, filter_by_global_sales, get_bins, get_weights, preprocess, read
+from data import filter_by_global_sales, filter_by_publisher, get_bins, get_weights, preprocess, read
 
 
 def plot(games: pd.DataFrame) -> plt.Figure:
