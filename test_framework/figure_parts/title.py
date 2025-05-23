@@ -12,14 +12,14 @@ class TitleTestMixin(BaseTestMixin):
         if expected_title is None:
             self.assertTrue(
                 actual_title == "",
-                msg=f"The figure should have no title, but got <samp>{actual_title}</samp> instead.",
+                msg=f"The axes should have no title, but got <samp>{actual_title}</samp> instead.",
             )
             return
 
         self.assertEqual(
             expected_title,
             actual_title,
-            f"The figure should be titled as <samp>{expected_title}</samp>.",
+            f"The axes should be titled as <samp>{expected_title}</samp>.",
         )
 
     def checkSupTitle(self, fig: plt.Figure, *, expected_suptitle: str):

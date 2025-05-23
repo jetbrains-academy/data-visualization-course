@@ -13,11 +13,11 @@ To reveal these overall trends, the company asked us to create a single plot wit
 
 Visualization requirements:
 
-1. The histogram should be normalized (the bins should sum to `1`).
-2. The histogram should be an unfilled line plot.
-3. Yerevan data should be colored `crimson` and Belgrade data should be colored `black`.
-4. Both histograms should have common bins, ranging from the lowest rounded-down hundred to the highest rounded-up
+1. The histogram should be an unfilled line plot.
+2. The histogram should be normalized (the bins should sum to `1`).
+3. Both histograms should have common bins, ranging from the lowest rounded-down hundred to the highest rounded-up
    hundred across both cities, with a step of `100`.
+4. Yerevan data should be colored `crimson` and Belgrade data should be colored `black`.
 5. X-axis label should be `'Sales'`.
 6. Y-axis label should be `'Probability'`.
 7. Add a title `'Sales Distribution in Belgrade and Yerevan'`.

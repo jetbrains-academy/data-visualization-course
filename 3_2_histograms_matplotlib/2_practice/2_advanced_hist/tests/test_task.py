@@ -233,7 +233,11 @@ class PlotTestCase(
         self.checkLabel(self.fig.axes[1], expected_label="Sales", axis="x")
         self.checkLabel(self.fig.axes[1], expected_label="Probability", axis="y")
 
-    def test_7_title(self):
+    def test_7_1_title(self):
+        self.checkTitle(self.fig.axes[0], expected_title=None)
+        self.checkTitle(self.fig.axes[1], expected_title=None)
+
+    def test_7_2_suptitle(self):
         self.checkSupTitle(self.fig, expected_suptitle="Sales Distribution in Belgrade and Yerevan")
 
     def test_8_legend(self):

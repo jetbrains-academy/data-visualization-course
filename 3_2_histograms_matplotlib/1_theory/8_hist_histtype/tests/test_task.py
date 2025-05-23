@@ -74,13 +74,13 @@ class PlotTestCase(HistTestMixin, AxisTestMixin, LegendTestMixin, TitleTestMixin
                 histtype="step",
             )
 
-    def test_2_4_bar_legend(self):
-        self.checkLegendExists(self.fig.axes[0])
-        self.checkLegendLabels(self.fig.axes[0], expected_labels=self.publishers)
-
     def test_3_labels(self):
         self.checkLabel(self.fig.axes[0], expected_label="Global Sales (millions)", axis="x")
         self.checkLabel(self.fig.axes[0], expected_label="Proportion", axis="y")
 
     def test_4_title(self):
         self.checkTitle(self.fig.axes[0], expected_title="Global Sales Distribution for Electronic Arts and Ubisoft")
+
+    def test_5_bar_legend(self):
+        self.checkLegendExists(self.fig.axes[0])
+        self.checkLegendLabels(self.fig.axes[0], expected_labels=self.publishers)
