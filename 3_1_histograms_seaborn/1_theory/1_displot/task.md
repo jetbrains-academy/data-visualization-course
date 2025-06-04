@@ -7,11 +7,11 @@ The main goal of this lesson is to **explore the distribution of video game sale
 
 ## Theory
 
-In Seaborn distributions can be visualized with the [
+In Seaborn, distributions can be visualized using the [
 `displot`](https://seaborn.pydata.org/generated/seaborn.displot.html) function. Similar to 
-[`catplot`](https://seaborn.pydata.org/generated/seaborn.catplot.html) it accepts a special
-argument, `kind`, which defines the type of distribution to be built. By default, `kind="hist"` and the function builds
-histogram, which we are planning to focus on in this module.
+[`catplot`](https://seaborn.pydata.org/generated/seaborn.catplot.html), it accepts a special
+argument, `kind`, which defines the type of distribution to be built. By default, `kind="hist"`, and the function creates
+a histogram, which we will focus on in this module.
 
 Like other Seaborn functions, `displot` accepts three main arguments: `data`, `x`, and `y`.
 We described them in detail in the
@@ -22,17 +22,17 @@ We described them in detail in the
 Create a histogram showing the distribution of global sales using the `displot` function. Pass `games` as
 `data` and `global_sales` as the x-axis.
 
-Note that we have preprocessed the data for you. To learn how we did this, please see the corresponding hint below.
+Note that we have preprocessed the data for you. To learn how this was done, please see the corresponding hint below.
 
 ## Hints
 
 <div class="hint" title="How to run the code?">
    To run the code, click the green triangle next to the entry point.
-   In case of execution errors, they will be displayed in the console inside the IDE. 
+   In the case of execution errors, the issues will be displayed in the console inside the IDE. 
    <img src="../../../common/resources/images/common/entry_point.png" style="max-width: 500px">
 </div>
 
-<div class="hint" title="Where to find my figure?">
+<div class="hint" title="Where can I find my figure?">
    After running the code, the graph will be generated next to the `task.py` file.
    <img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
 </div>
