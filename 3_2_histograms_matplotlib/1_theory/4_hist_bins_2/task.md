@@ -1,7 +1,7 @@
 ## Theory
 
-Our histogram now provides a clearer view of the distribution, but now it seems to be too detailed. When using many bins,
-small fluctuations in the data can create a noisy appearance, making it harder to see overall trends.
+Our histogram now provides a clearer view of the distribution, but it seems to be too detailed. Using too many bins
+can cause small fluctuations in the data to create a noisy appearance, making it harder to see overall trends.
 
 The number of bins determines the balance between detail and smoothness:
 
