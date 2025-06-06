@@ -7,10 +7,10 @@ The main goal of this lesson is to **explore the distribution of video game sale
 
 ## Theory
 
-In Matplotlib, distributions can be visualized with the [
+In Matplotlib, distributions can be visualized using the [
 `hist`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hist.html#matplotlib.axes.Axes.hist) function.
 
-It accepts two main arguments: `x` and `data`. We described them in detail in
+The function accepts two main arguments: `x` and `data`. We described them in detail in
 the "[Line and Scatter Plots](course://1_2_line_and_scatter_plots_matplotlib/1_theory/1_scatter)" section.
 
 ## Task
@@ -24,11 +24,11 @@ Note that we have preprocessed the data for you. To learn how we did this, pleas
 
 <div class="hint" title="How to run the code?">
    To run the code, click the green triangle next to the entry point.
-   In case of execution errors, they will be displayed in the console inside the IDE. 
+   If there are any execution errors, they will be displayed in the console inside the IDE. 
    <img src="../../../common/resources/images/common/entry_point.png" style="max-width: 500px">
 </div>
 
-<div class="hint" title="Where to find my figure?">
+<div class="hint" title="Where will I find my figure?">
    After running the code, the graph will be generated next to the `task.py` file.
    <img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
 </div>
