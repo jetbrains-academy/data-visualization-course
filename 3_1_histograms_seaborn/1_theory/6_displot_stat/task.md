@@ -1,12 +1,12 @@
 ## Theory
 
-When comparing distributions with different sample sizes, using raw counts can be misleading. For example, if one publisher has released significantly more games than another one, its bars will naturally be higher even if the distribution is the same.
+When comparing distributions with different sample sizes, using raw counts can be misleading. For example, if one publisher has released significantly more games than another, its bars will naturally be higher, even if the distributions are the same.
 
 To address this, we can normalize histograms so they show proportions (or probabilities) instead of raw counts. This ensures that differences in sample size do not affect the histograms.
 
-In Seaborn's `displot`, we can do this by setting the `stat` parameter to:
+In Seaborn's `displot` function, we can achieve this by setting the `stat` parameter to one of the following:
 - `count` (default) – Displays the number of observations in each bin.
-- `frequency` – Like `count`, but normalized by bin width.
+- `frequency` – Similar to `count` but normalized by bin width.
 - `probability` or `proportion` – Shows the proportion of observations in each bin (summing to `1`).
 - `percent` – Shows the percentage of observations in each bin (summing to `100`).
 - `density` – Similar to `probability`, but the total area under bars equals `1`.

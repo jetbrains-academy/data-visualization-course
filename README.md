@@ -1,184 +1,104 @@
-# JetBrains Academy Python Course Template
-
 [![official project](https://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **Note**
->
-> Click the <kbd>Use this template</kbd> button and clone it in IntelliJ IDEA.
+# Data Visualization in Python
 
-**JetBrains Academy Python course template** is a repository that provides a
-pure template to make it easier to create a new Python course with the [JetBrains Academy
-plugin][ref:plugin.marketplace] (check out the [Creating a repository from a template][gh:template] article).
+This course is designed for beginners in data visualization 
+and focuses on building visual representations using Python’s [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/index.html#) libraries.
 
-The main goal of this template is to speed up the setup phase
-of Python course development for both new and experienced educators
-by preconfiguring the project scaffold and CI,
-linking to the proper documentation pages, and keeping everything organized.
+It is a self-contained course, but basic Python knowledge 
+— such as working with variables, loops, and functions — is expected. 
+Familiarity with the [Pandas](https://pandas.pydata.org/docs/dev/index.html) library is helpful but not required: 
+data handling is mostly done behind the scenes to let you focus on the visual side.
 
-If you're still not quite sure what this is all about, read our introduction: [What is the JetBrains Academy plugin?][docs:intro]
+Each lesson is structured as a small hands-on project: 
+step by step, you’ll build real charts and develop practical visualization skills. 
+Theory is kept concise — most of the time, you’ll learn by doing.
 
-> **Note**
->
-> Click the <kbd>Watch</kbd> button on the top to be notified about releases containing new features and fixes.
+The course does not cover advanced statistics or machine learning. 
+Instead, it introduces the fundamental chart types,
+explains when to use them, and shows how to build them effectively.
 
-### Table of contents
+By the end of this course, you’ll be able to confidently choose, create,
+and customize charts to convey clear and insightful stories with your data.
 
-In this README, we will highlight the following elements of template-project creation:
+## Course modules
 
-- [Getting started](#getting-started)
-- [Course info configuration file](#course-info-configuration-file)
-- [Course ignore file](#course-ignore-file)
-- [Sample code](#sample-code)
-- [Testing](#testing)
-- [Useful links](#useful-links)
+The course includes one introductory module and three core modules, each focusing on a different type of chart:
+* Line and Scatter Plots.
+  This module introduces the basics of data visualization using line and scatter plots —
+  two fundamental chart types for exploring relationships between variables.
+
+* Bar and Pie Charts.
+  In this module, you’ll focus on visualizing categorical data and learn how to effectively compare groups.
+
+* Histograms. 
+  The third module centers on visualizing distributions —
+  a key step in understanding the shape, skewness, and spread of your data.
+
+## Technical requirements
+
+Before starting this course, ensure you meet the following requirements:
+
+1. Your computer has a stable internet connection.
+2. The [Git](https://git-scm.com/downloads) version control system is installed on your computer.
+3. [Python](https://www.python.org/downloads) version 3.9 or higher is installed on your computer.
+4. The path to the root folder of the course does not contain spaces, special characters, or non-Latin characters.
+5. You are using the latest version of [PyCharm](https://www.jetbrains.com/pycharm/download/).
+6. You are using the latest version of the [JetBrains Academy](https://plugins.jetbrains.com/plugin/10081-jetbrains-academy) plugin.
+
+The course is integrated with the [PyCharm IDE](https://www.jetbrains.com/pycharm/), which offers a free license for educational purposes.
+You can use this license to complete the course.
+If you encounter any issues with course installation, feel free to contact us via email at `education@jetbrains.com`.
 
 ## Getting started
 
-Before we dive into course development and everything related to it, it's worth mentioning the benefits of using GitHub Templates.
-By creating a new project with the current template, you start with no history or reference to this repository.
-This allows you to create a new repository easily, without copying and pasting previous content, cloning repositories, or clearing the history manually.
+This course is available on JetBrains Marketplace and can be installed directly from the
+[PyCharm](https://www.jetbrains.com/pycharm/) IDE. Alternatively, you can use it in
+Course Creator mode or generate a course archive from the source code.
 
-All you need to do is click the <kbd>Use this template</kbd> button (you must be logged in with your GitHub account).
+### Getting started: create a course preview from the source code
 
-![Use this template][file:use-template-blur]
+To create a [course preview](https://plugins.jetbrains.com/plugin/10081-edutools/docs/educator-start-guide.html#preview_course) from the source code:
 
-The most convenient way of getting your new project from GitHub is the <kbd>Get from VCS</kbd> action available on the Welcome Screen,
-where you can filter your GitHub  repository by its name.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jetbrains-academy/data-visualization-course.git
+   ```
 
-![Get from version control][file:get_from_vcs.png]
+2. Install the [JetBrains Academy](https://plugins.jetbrains.com/plugin/10081-jetbrains-academy) plugin from JetBrains Marketplace.
 
+3. Create a new [course preview](https://plugins.jetbrains.com/plugin/10081-edutools/docs/educator-start-guide.html#preview_course).
 
-## Course template structure
+### Getting started: create a course archive
 
-A generated JetBrains Academy Python Course Template repository contains the following content structure:
+To create a [course archive](https://plugins.jetbrains.com/plugin/10081-jetbrains-academy/docs/educator-start-guide.html#course_distribution) from the source code:
 
-```
-.
-├── LICENSE
-├── README.md                      README
-├── common                         Course sources common for all sections
-│   └── resources                  Resources - images, icons
-├── course-info.yaml               Course info configuration file
-└── course_section                 An example of the course section
-    ├── course_framework_lesson    An example of the course framework lesson
-    │   ├── lesson-info.yaml       Lesson config file
-    │   ├── programming_task       Example fo programming task
-    │   │   ├── main.py
-    │   │   ├── task-info.yaml     Task info
-    │   │   ├── task.md            Task text content
-    │   │   └── tests              Task tests
-    │   │       └── test.py
-    │   └── theory_task            Example fo theory task
-    │       ├── main.py
-    │       ├── task-info.yaml
-    │       └── task.md
-    ├── course_lesson              An example of the course lesson
-    │   ├── lesson-info.yaml  
-    │   ├── multi_file_task        Multiple file task example
-    │   │   ├── main.py
-    │   │   ├── task-info.yaml
-    │   │   ├── task.md
-    │   │   ├── task.py
-    │   │   └── tests
-    │   └── quiz_task              Quiz task example
-    │       ├── main.py
-    │       ├── task-info.yaml
-    │       └── task.md
-    └── section-info.yaml          Section information
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jetbrains-academy/data-visualization-course.git
+   ```
 
-## Course info configuration file
+2. Install the [JetBrains Academy](https://plugins.jetbrains.com/plugin/10081-jetbrains-academy) plugin from JetBrains Marketplace.
 
-The course info configuration file is the [course-info.yaml][file:course-info.yaml] file located in the root directory.
-It provides general information about the course, like description, language, etc.
+3. Create a new [course archive](https://plugins.jetbrains.com/plugin/10081-jetbrains-academy/docs/educator-start-guide.html#course_distribution).
 
-```yaml
-type: marketplace
-title: JetBrains Academy Python course template
-language: English
-summary: Here you can put the course description. You can use HTML tags inside the
-  description.
-programming_language: Python
-environment: unittest
-content:
-  - course_section
-```
+## Run tests
 
-## Course ignore file
+To run tests locally, you need to select the necessary tasks and go to `File | Course Creator | Check Selected Tasks`.
 
-The course ignore file is the [.courseignore][file:courseignore] file located in the root directory.
-It provides the list of files or directories that will be ignored in the final course preview or archive.
+## Want to know more?
 
-```text
-README.md
-```
+If you have any questions about the course or tasks, or if you encounter errors,
+you can ask questions and participate in discussions in the repository's [issues](https://github.com/jetbrains-academy/data-visualization-course/issues).
 
-You can find more information about the course preview in the [Course preview][ref:course.preview] section. Information
-about creating a course archive and uploading it to the marketplace is in the [Course distribution][ref:course.distribution] section.
+## Contribution
 
-## Sample code
+Please be sure to review the [project's contributing guidelines](./CONTRIBUTING.md) to learn how to help the project.
 
-The prepared template provides an example of a course with one section, two lessons, and five tasks in total.
+## Acknowledgements
 
-![Course structure in the course creator mode][file:course-structure-author]
-
-Each course may have an unlimited number of sections, lessons, and tasks.
-Students will see almost the same course structure as the educator (course author):
-
-![Course structure in the course student mode][file:course-structure-student]
-
-The main difference is in framework lessons, which display
-only task files, without intermediate steps.
-
-You can read more about framework lessons in the official documentation in the [Framework Lessons Creation][ref:framework.lessons.creation] section.
-
-> **Note**
->
-> Click <kbd>Course Creator</kbd> -> <kbd>Create Course Preview</kbd> in the context menu in the root of the repository to create a course preview.
-
-
-The JetBrains Academy plugin provides five different types of tasks,
-and you can combine them inside one lesson (whether regular or framework).
-You can read more about tasks in the official documentation in the [Task][ref:tasks] section.
-
-## Testing
-
-To check the programming exercises for [**edu**][ref:tasks] tasks, you need to write tests ungin [unittest](https://docs.python.org/3/library/unittest.html) framework.
-
-
-You can find little examples of programming tasks in the repository in the `test.py` files:
-in [course lesson][file:course.lesson.tests] and [course framework lesson][file:course.framework.lesson.tests].
-
-## Useful links
-
-- [JetBrains Academy plugin][ref:plugin.marketplace]
-- [Course creator start guide][ref:course.creator.start.guide]
-- [Courses on Marketplace][ref:marketplace]
-
-[gh:actions]: https://help.github.com/en/actions
-[gh:template]: https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template
-
-[ref:marketplace]: https://plugins.jetbrains.com/education
-[ref:course.creator.start.guide]: https://plugins.jetbrains.com/plugin/10081-jetbrains-academy/docs/educator-start-guide.html
-[ref:plugin.marketplace]: https://plugins.jetbrains.com/plugin/10081-jetbrains-academy
-[ref:course.preview]: https://plugins.jetbrains.com/plugin/10081-jetbrains-academy/docs/educator-start-guide.html#preview_course
-[ref:course.distribution]: https://plugins.jetbrains.com/plugin/10081-jetbrains-academy/docs/educator-start-guide.html#course_distribution
-[ref:framework.lessons.creation]: https://plugins.jetbrains.com/plugin/10081-jetbrains-academy/docs/framework-lessons-guide-for-course-creators.html#a81e8983
-[ref:tasks]: https://plugins.jetbrains.com/plugin/10081-jetbrains-academy/docs/framework-lessons-guide-for-course-creators.html#a81e8983
-[ref:java.reflection.api]: https://docs.oracle.com/javase/8/docs/technotes/guides/reflection/index.html
-[ref:junit5]: https://junit.org/junit5/
-
-[docs:intro]: https://plugins.jetbrains.com/plugin/10081-jetbrains-academy/docs/jetbrains-academy-plugin-faq.html#what_is_the_jetbrains_academy_plugin
-
-[file:course-info.yaml]: ./course-info.yaml
-[file:courseignore]: .courseignore
-[file:course.lesson.tests]: course_section/course_lesson/programming_task/tests/test.py
-[file:course.framework.lesson.tests]: course_section/course_framework_lesson/programming_task/tests/test.py
-
-[semver]: https://semver.org
-
-[file:get_from_vcs.png]: common/resources/images/get-from-version-control.png
-[file:course-structure-author]: common/resources/images/course-structure-author.png
-[file:course-structure-student]: common/resources/images/course-structure-student.png
-[file:use-template-blur]: common/resources/images/use_template_blur.jpg
+We would like to thank [Rush Kirubi](https://www.kaggle.com/rush4ratio) for providing the dataset used in this course. 
+The dataset is available on [Kaggle](https://www.kaggle.com/datasets/rush4ratio/video-game-sales-with-ratings/data), 
+and was instrumental in building real-world examples throughout the lessons. 
+All rights to the dataset belong to the original author.

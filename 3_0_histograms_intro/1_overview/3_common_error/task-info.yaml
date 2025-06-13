@@ -1,5 +1,5 @@
 type: theory
-custom_name: Truncated histogram
+custom_name: Common mistake
 files:
   - name: main.py
     visible: true
