@@ -1,9 +1,9 @@
-Not only does this data need to be quickly accounted for, 
-sometimes drastic measures or decisions need to be taken on its basis, and in this case, visualization is crucial. 
-Clear and accurate visualization enables stakeholders 
+Not only does this data need to be quickly analyzed, 
+but sometimes drastic measures or decisions must be based on it—and in such cases, visualization becomes crucial. 
+Clear and accurate visualizations enable stakeholders 
 to understand complex situations and make informed decisions quickly. 
-The previous example with a treemap of a stock market is a great one, but even more mundanely, 
-dashboards are crucial for monitoring the status and the availability of applications and websites.
+The earlier example of a stock market treemap is a great illustration, but even in more mundane scenarios, 
+dashboards are crucial for monitoring the status and availability of applications and websites.
 
 <figure style="display: block; margin-left: auto; margin-right: auto; width: 70%;">
     <img src="../../../common/resources/images/intro/wikimedia-status-dashboard.png">
