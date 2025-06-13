@@ -1,5 +1,5 @@
-Nowadays, no area of our life can function without some form of visualization.
-This includes finance, where exchange rate charts inform the modern economy...
+Nowadays, virtually every aspect of our lives relies on some form of visualization.
+This includes finance, where exchange rate charts play a crucial role in shaping the modern economy...
 
 <figure>
     <img src="../../../common/resources/images/intro/bitcoin.svg">
