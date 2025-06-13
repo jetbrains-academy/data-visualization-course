@@ -1,0 +1,5 @@
+type: theory
+custom_name: Distributions
+files:
+  - name: main.py
+    visible: true

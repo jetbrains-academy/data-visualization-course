@@ -52,8 +52,6 @@ def plot(votes: pd.DataFrame) -> plt.Figure:
     ax.set_xlabel("Respondents, %")
     ax.tick_params(top=True, labeltop=True, axis="x", which="both")
 
-    ax.get_legend()
-
     ax.set_title("Distribution of votes per category")
 
     handles, labels = ax.get_legend_handles_labels()

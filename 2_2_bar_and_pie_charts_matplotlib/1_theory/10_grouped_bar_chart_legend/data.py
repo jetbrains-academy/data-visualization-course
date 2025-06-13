@@ -1,5 +1,3 @@
-from typing import List
-
 import numpy as np
 import pandas as pd
 
@@ -77,5 +75,5 @@ def get_region_sales(data: pd.DataFrame, region: str) -> pd.Series:
     return data[data["region"] == region]["sales"]
 
 
-def get_all_regions(data: pd.DataFrame) -> List[str]:
+def get_all_regions(data: pd.DataFrame) -> list[str]:
     return data.groupby("region")["sales"].sum().sort_values(ascending=False).index.tolist()

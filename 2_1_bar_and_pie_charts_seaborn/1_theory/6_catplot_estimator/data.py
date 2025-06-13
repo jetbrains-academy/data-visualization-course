@@ -1,5 +1,3 @@
-from typing import List
-
 import pandas as pd
 
 from common.paths import GAMES_DATASET_PATH
@@ -37,5 +35,5 @@ def filter_platforms(data: pd.DataFrame) -> pd.DataFrame:
     return data[data["platform"].isin(["PS4", "XOne", "PC", "WiiU"])]
 
 
-def get_sorted_platforms(data: pd.DataFrame) -> List[str]:
+def get_sorted_platforms(data: pd.DataFrame) -> list[str]:
     return data.groupby(["platform"])["global_sales"].median().sort_values().index.tolist()

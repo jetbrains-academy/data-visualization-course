@@ -13,6 +13,9 @@ content:
   - 2_0_bar_and_pie_charts_intro
   - 2_1_bar_and_pie_charts_seaborn
   - 2_2_bar_and_pie_charts_matplotlib
+  - 3_0_histograms_intro
+  - 3_1_histograms_seaborn
+  - 3_2_histograms_matplotlib
 additional_files:
   - name: requirements.txt
   - name: LICENSE
@@ -28,66 +31,6 @@ additional_files:
     is_binary: true
   - name: common/resources/images/common/output_location_dark.png
     is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Distribution_a.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Distribution_b.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Outliers_a.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Outliers_b.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Outliers_c.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Outliers_d.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Relationship_a.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Relationship_b.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Relationship_c.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Trend_a.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Trend_b.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/1_Trend_c.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/Quiz_a.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/Quiz_b.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/Quiz_c.png
-    is_binary: true
-  - name: common/resources/images/line_and_scatter_plots/Quiz_d.png
-    is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_1.png
-    is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_2.png
-    is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_3.png
-    is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_4.png
-    is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
-    is_binary: true
-  - name: common/resources/datasets/experiment.csv
-  - name: common/resources/datasets/games.csv
-  - name: common/resources/datasets/food.csv
-  - name: common/__init__.py
-  - name: common/paths.py
-  - name: test_framework/__init__.py
-  - name: test_framework/base.py
-  - name: test_framework/chart_types/__init__.py
-  - name: test_framework/chart_types/bar.py
-  - name: test_framework/chart_types/pie.py
-  - name: test_framework/chart_types/line.py
-  - name: test_framework/chart_types/collection.py
-  - name: test_framework/figure_parts/__init__.py
-  - name: test_framework/figure_parts/title.py
-  - name: test_framework/figure_parts/axis.py
-  - name: test_framework/figure_parts/legend.py
-  - name: test_framework/figure_parts/spine.py
-  - name: test_framework/figure_parts/text.py
   - name: common/resources/images/intro/wikimedia-status-dashboard.png
     is_binary: true
   - name: common/resources/images/intro/tableau.png
@@ -127,4 +70,56 @@ additional_files:
     is_binary: true
   - name: common/resources/images/intro/napoleon-map.png
     is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Trend_analysis.svg
+  - name: common/resources/images/line_and_scatter_plots/Data_distribution.svg
+  - name: common/resources/images/line_and_scatter_plots/Outliers.svg
+  - name: common/resources/images/line_and_scatter_plots/Relationship_between_variables.svg
+  - name: common/resources/images/line_and_scatter_plots/Quiz_a.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_b.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_c.png
+    is_binary: true
+  - name: common/resources/images/line_and_scatter_plots/Quiz_d.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_1.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_2.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_3.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_4.png
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_A.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_B.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_C.png
+    is_binary: true
+  - name: common/resources/images/histograms/Quiz_D.png
+    is_binary: true
+  - name: common/resources/datasets/experiment.csv
+  - name: common/resources/datasets/games.csv
+  - name: common/resources/datasets/food.csv
+  - name: common/resources/datasets/sales.csv
+  - name: common/__init__.py
+  - name: common/paths.py
+  - name: test_framework/__init__.py
+  - name: test_framework/base.py
+  - name: test_framework/chart_types/__init__.py
+  - name: test_framework/chart_types/bar.py
+  - name: test_framework/chart_types/pie.py
+  - name: test_framework/chart_types/line.py
+  - name: test_framework/chart_types/collection.py
+  - name: test_framework/figure_parts/__init__.py
+  - name: test_framework/figure_parts/title.py
+  - name: test_framework/figure_parts/axis.py
+  - name: test_framework/figure_parts/legend.py
+  - name: test_framework/figure_parts/spine.py
+  - name: test_framework/figure_parts/text.py
+  - name: test_framework/chart_types/hist.py
+  - name: test_framework/figure_parts/figure.py
+  - name: test_framework/figure_parts/orthogonal_line.py
 yaml_version: 2

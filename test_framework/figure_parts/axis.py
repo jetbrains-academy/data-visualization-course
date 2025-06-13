@@ -1,4 +1,4 @@
-from typing import List, Literal, Optional, Tuple
+from typing import Literal, Optional
 
 import matplotlib.pyplot as plt
 
@@ -27,7 +27,7 @@ class AxisTestMixin(BaseTestMixin):
             f"The {axis}-axis should be labeled as <samp>{expected_label}</samp>.",
         )
 
-    def checkTicks(self, ax: plt.Axes, *, expected_ticks: List[float], axis: Literal["x", "y"], minor: bool = False):
+    def checkTicks(self, ax: plt.Axes, *, expected_ticks: list[float], axis: Literal["x", "y"], minor: bool = False):
         if axis == "x":
             actual_ticks = ax.get_xticks(minor=minor)
         elif axis == "y":
@@ -45,7 +45,7 @@ class AxisTestMixin(BaseTestMixin):
         self,
         ax: plt.Axes,
         *,
-        expected_tick_labels: List[str],
+        expected_tick_labels: list[str],
         axis: Literal["x", "y"],
         minor: bool = False,
         where: Literal["primary", "secondary"] = "primary",
@@ -77,7 +77,7 @@ class AxisTestMixin(BaseTestMixin):
             msg=f"The expected {axis}-axis tick values do not match the actual values.",
         )
 
-    def checkLim(self, ax: plt.Axes, *, expected_lim: Tuple[float, float], axis: Literal["x", "y"]):
+    def checkLim(self, ax: plt.Axes, *, expected_lim: tuple[float, float], axis: Literal["x", "y"]):
         if axis == "x":
             actual_lim = ax.get_xlim()
         elif axis == "y":
@@ -104,4 +104,18 @@ class AxisTestMixin(BaseTestMixin):
             expected_right_bound,
             actual_right_bound,
             msg=msg,
+        )
+
+    def checkAxisScale(self, ax: plt.Axes, *, expected_scale: Literal["log", "linear"], axis: Literal["x", "y"]):
+        if axis == "x":
+            actual_scale = ax.get_xscale()
+        elif axis == "y":
+            actual_scale = ax.get_yscale()
+        else:
+            raise ValueError("Unknown axis name.")
+
+        self.assertEqual(
+            expected_scale,
+            actual_scale,
+            msg=f"The {axis}-axis scale should be <samp>{expected_scale}</samp>.",
         )

@@ -52,7 +52,8 @@ Note that these changes will not be tested and might break existing tests.
 </div>
 
 <div class="hint" title="How to add the inset axes?">
-    To add inset axes, you can use the <code>inset_axes</code> method of the <code>Axes</code> object:
+    To add inset axes, you can use the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.inset_axes.html"><code>inset_axes</code></a>
+    method of the <code>Axes</code> object:
     <code>ax.inset_axes([0.1, 0.5, 0.4, 0.4])</code>.
 </div>
 

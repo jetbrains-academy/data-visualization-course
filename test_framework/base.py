@@ -1,5 +1,5 @@
 import itertools
-from typing import Any, ClassVar, Dict, List, Optional, Type, Union
+from typing import Any, ClassVar, Optional, Union
 from unittest import TestCase
 
 import matplotlib.colors as mcolors
@@ -18,7 +18,7 @@ class BaseTestMixin(TestCase):
     # We don't want default messages to be included along with our custom ones
     longMessage = False
 
-    __named_colors: ClassVar[Dict[ColorName, RGBColor]] = {
+    __named_colors: ClassVar[dict[ColorName, RGBColor]] = {
         name: mcolors.to_rgb(name)
         for name in mcolors.CSS4_COLORS
         # We prefer to use "grey" instead of "gray",
@@ -48,7 +48,7 @@ class BaseTestMixin(TestCase):
             )
             raise self.failureException(error_string) from None
 
-    def assertColorList(self, expected_colors: List[ColorName], actual_colors: List[RGBColor], msg: str):
+    def assertColorList(self, expected_colors: list[ColorName], actual_colors: list[RGBColor], msg: str):
         actual_colors_names = [self._rgb_to_name(color) for color in actual_colors]
 
         if expected_colors is None:
@@ -116,7 +116,7 @@ class BaseTestMixin(TestCase):
             error_message,
         )
 
-    def checkNumberOfAxes(self, axes: List[plt.Axes], *, expected_number: int):
+    def checkNumberOfAxes(self, axes: list[plt.Axes], *, expected_number: int):
         self.assertEqual(
             expected_number,
             len(axes),
@@ -147,7 +147,7 @@ class BaseTestMixin(TestCase):
             f"The figure must have only <samp>{expected_number}</samp> containers.",
         )
 
-    def checkContainerType(self, ax: plt.Axes, *, expected_type: Type[Container], container_number: int = 0):
+    def checkContainerType(self, ax: plt.Axes, *, expected_type: type[Container], container_number: int = 0):
         container = ax.containers[container_number]
         self.assertIsInstance(
             container,
@@ -166,7 +166,7 @@ class BaseTestMixin(TestCase):
             f"The figure must have only <samp>{expected_number}</samp> patches.",
         )
 
-    def checkPatchType(self, ax: plt.Axes, *, expected_type: Type[Patch], patch_number: int = 0):
+    def checkPatchType(self, ax: plt.Axes, *, expected_type: type[Patch], patch_number: int = 0):
         patch = ax.patches[patch_number]
         self.assertIsInstance(
             patch,
