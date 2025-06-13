@@ -1,10 +1,10 @@
-Modern computing power has elevated visualization from a static art form into an interactive exploration tool.
+Modern computing power has transformed visualization from a static art form into an interactive exploration tool.
 
-Real-time processing of massive datasets is now possible, 
-enabling dynamic visualizations that can adjust and respond to user input.
-As a result, visualizations are no longer mere illustrations 
-but active environments where analysts can zoom, filter, and dive deep into data insights on demand. 
-This marks a significant shift from simple presentation to interactive exploration.
+Real-time processing of massive datasets 
+now enables dynamic visualizations that can adapt and respond to user input.
+As a result, visualizations have evolved from being mere illustrations 
+to becoming active environments where analysts can zoom, filter, and dive deep into data insights on demand. 
+This shift marks a significant transition from simple presentation to interactive exploration.
 
 <figure>
     <img src="../../../common/resources/images/intro/arxiv-ml-map.png">
