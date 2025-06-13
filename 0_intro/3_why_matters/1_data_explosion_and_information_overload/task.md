@@ -1,7 +1,7 @@
-Today’s world generates so much data that visualization matters as it never did before. 
-We mentioned before that visualization can allow seeing trends and patterns that might be hard to spot in the raw data, 
-but today there is also just too much raw data to see it all. 
-Visualizing this overwhelming volume of data is sometimes the only way to get meaningful insights from it.
+In today’s world, the sheer volume of data being generated makes visualization more critical than ever before. 
+Visualization not only helps us identify trends and patterns that might be difficult to spot in raw data, 
+but it also addresses the challenge of data overload—there is simply too much raw data to comprehend it all. 
+Visualizing this overwhelming volume of information is often the only way to extract meaningful insights.
 
 <figure>
     <img src="../../../common/resources/images/intro/sp500-treemap.svg">

@@ -1,11 +1,11 @@
 Data visualization is a crucial part of any data analysis.
-It allows us to transform complex multi-modal information into intuitive visual formats that we can comprehend quicker.
-This allows us to quickly see patterns and trends that might not be clear in raw data alone.
-While rigorous statistical analysis is very important in the full processing of the data,
-sometimes a quick glance at the visualization might be more revealing.
-Let’s see this on a famous example of [Asnsocmbe’s quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet).
+It enables us to transform complex, multi-modal information into intuitive visual formats that we can quickly understand.
+This allows us to easily identify patterns and trends that might be hidden in raw data.
+While rigorous statistical analysis is very important for thorough data processing,
+sometimes a quick glance at a visualization can be even more revealing.
+Let’s explore this concept using a famous example: [Asnsocmbe’s quartet](https://en.wikipedia.org/wiki/Anscombe%27s_quartet).
 
-Anscombe’s quartet consists of four datasets – sets of X-Y values – shown below:
+Anscombe’s quartet consists of four datasets – sets of X-Y values – which are shown below:
 <table style="margin: auto; border-collapse: collapse; border: 3px solid; text-align: center; ">
     <thead style="border-bottom: 2px solid">
         <tr>
@@ -139,9 +139,9 @@ Anscombe’s quartet consists of four datasets – sets of X-Y values – shown 
     </tbody>
 </table>
 
-If you try to apply basic statistical analysis to this data, you can see that for these sets,
-many metrics are equal or virtually equal – mean, variance, correlation, regression, etc.
-This can make you think that these datasets, although different, are fundamentally very similar.
+If you apply basic statistical analysis to this data,
+you’ll find that many metrics are identical or nearly identical across the sets: the mean, variance, correlation, regression, etc.
+This might lead you to believe that these datasets, while distinct, are fundamentally very similar.
 
 <table style="margin: auto; border-collapse: collapse; border: 3px solid; text-align: center;">
     <thead style="border-bottom: 2px solid;">
@@ -182,12 +182,12 @@ This can make you think that these datasets, although different, are fundamental
     </tbody>
 </table>
 
-However, as soon as you visualize them, a different picture emerges.
-It can be seen that these datasets are very different,
-and not for all of them the idea of a linear regression even makes sense.
-Look carefully at these plots and think about how different they are,
-how differently you would interpret or analyze them –
-and realize that you gained all this knowledge from a mere look at four basic scatter plots.
+However, as soon as you visualize them, a completely different picture emerges.
+It can be seen that these datasets are, in fact, very different,
+and the concept of linear regression does not even apply to all of them.
+Take a close look at these plots and observe how unique they are
+and how differently you might interpret or analyze each one.
+Remarkably, all of this insight comes from just a simple glance at four basic scatter plots.
 
 <figure>
     <img src="../../../common/resources/images/intro/anscombe.svg">
