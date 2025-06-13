@@ -1,0 +1,5 @@
+type: theory
+custom_name: Decision-Making in the Digital Age
+files:
+  - name: main.py
+    visible: true

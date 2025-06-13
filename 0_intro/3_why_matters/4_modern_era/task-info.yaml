@@ -1,0 +1,5 @@
+type: theory
+custom_name: Modern Era and Career Opportunities
+files:
+  - name: main.py
+    visible: true

@@ -1,0 +1,5 @@
+type: theory
+custom_name: Famous Examples
+files:
+  - name: main.py
+    visible: true

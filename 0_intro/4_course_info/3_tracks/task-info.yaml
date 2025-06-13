@@ -1,0 +1,5 @@
+type: theory
+custom_name: Tracks
+files:
+  - name: main.py
+    visible: true

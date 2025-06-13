@@ -1,0 +1,5 @@
+type: theory
+custom_name: Early Visualization Methods
+files:
+  - name: main.py
+    visible: true

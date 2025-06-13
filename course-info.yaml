@@ -31,6 +31,45 @@ additional_files:
     is_binary: true
   - name: common/resources/images/common/output_location_dark.png
     is_binary: true
+  - name: common/resources/images/intro/wikimedia-status-dashboard.png
+    is_binary: true
+  - name: common/resources/images/intro/tableau.png
+    is_binary: true
+  - name: common/resources/images/intro/sport-2.png
+    is_binary: true
+  - name: common/resources/images/intro/sport-1.png
+    is_binary: true
+  - name: common/resources/images/intro/sp500-treemap.svg
+  - name: common/resources/images/intro/snow-cholera.png
+    is_binary: true
+  - name: common/resources/images/intro/prim9-tukey.jpg
+    is_binary: true
+  - name: common/resources/images/intro/prim9-demo.gif
+    is_binary: true
+  - name: common/resources/images/intro/playfair-2.png
+    is_binary: true
+  - name: common/resources/images/intro/playfair-1.png
+    is_binary: true
+  - name: common/resources/images/intro/dollar-euro-parity.jpeg
+    is_binary: true
+  - name: common/resources/images/intro/coronavirus.svg
+  - name: common/resources/images/intro/causes-of-mortality.png
+    is_binary: true
+  - name: common/resources/images/intro/budget.svg
+  - name: common/resources/images/intro/brexit.jpeg
+    is_binary: true
+  - name: common/resources/images/intro/boston-map.png
+    is_binary: true
+  - name: common/resources/images/intro/bitcoin.svg
+  - name: common/resources/images/intro/arxiv-ml-map_dark.png
+    is_binary: true
+  - name: common/resources/images/intro/arxiv-ml-map.png
+    is_binary: true
+  - name: common/resources/images/intro/anscombe.svg
+  - name: common/resources/images/intro/toledo-rome-distance.png
+    is_binary: true
+  - name: common/resources/images/intro/napoleon-map.png
+    is_binary: true
   - name: common/resources/images/line_and_scatter_plots/Trend_analysis.svg
   - name: common/resources/images/line_and_scatter_plots/Data_distribution.svg
   - name: common/resources/images/line_and_scatter_plots/Outliers.svg
