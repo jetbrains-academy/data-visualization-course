@@ -1,9 +1,9 @@
-Not less importantly, the data is not only voluminous, it is also available. 
-People have more access to data than they ever did in history, 
-and this also means that the data has to be made understandable not just to professional stockholders, 
-but also to non-technical users. For the same example of the stock market, 
-while it sometimes needs to be visualized fully for the CEOs and big banks, it also requires much simpler, 
-more straightforward visualizations for people who just care about their moderate investments.
+Equally important, the challenge isn’t just the volume of data—it’s also its accessibility. 
+People today have more access to data than ever before in history. 
+This means that data must be made understandable not only to professional stakeholders 
+but also to non-technical users. Take the example of the stock market: 
+while it may need to be visualized in detail for CEOs and big banks, 
+simpler and more straightforward visualizations are often required for individuals managing moderate investments.
 
 <figure>
     <img src="../../../common/resources/images/intro/dollar-euro-parity.jpeg">
@@ -12,7 +12,7 @@ more straightforward visualizations for people who just care about their moderat
     </figcaption>
 </figure>
 
-Similarly, data visualization allows for political campaigning that explains the issues to the voters more clearly than it was possible before.
+Similarly, data visualization enhances political campaigning by presenting issues to voters more clearly than ever before.
 
 <figure>
     <img src="../../../common/resources/images/intro/brexit.jpeg">
