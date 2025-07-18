@@ -1,9 +1,13 @@
 type: marketplace
 title: Data Visualization in Python
 language: English
-summary: |-
-  <p>In this course, you'll dive into the world of data visualization — not just as a technical skill, but as a powerful tool for understanding data and communicating meaningful stories. You'll start with line and scatter plots to explore relationships between variables, identify trends, and detect outliers. Then, you’ll move on to bar and pie charts for comparing categories, and histograms to analyze data distributions and uncover patterns.</p>
-  <p>Each module guides you step by step: first, you'll learn when, why, and how to use a specific type of chart, and then you'll build and customize it yourself. You don’t need advanced Python skills — just the basics like variables, loops, and functions. We’ll use Seaborn for quick and attractive visuals, and Matplotlib when more control and flexibility are needed. By the end of the course, you won’t just be plotting charts — you’ll be thinking visually.</p>
+summary: "<p>Learn to visualize data and present it with confidence. Build charts\
+  \ using Python, Matplotlib, and Seaborn—from line plots to heatmaps. Beginner-friendly,\
+  \ hands-on, and career-relevant.</p>"
+vendor:
+  name: JetBrains
+  email: support@jetbrains.com
+  url: https://www.jetbrains.com/
 programming_language: Python
 environment: unittest
 content:
@@ -123,4 +127,12 @@ additional_files:
   - name: test_framework/chart_types/hist.py
   - name: test_framework/figure_parts/figure.py
   - name: test_framework/figure_parts/orthogonal_line.py
-yaml_version: 3
+  - name: .venv/bin/fonttools
+  - name: .venv/bin/numpy-config
+  - name: .venv/bin/pyftsubset
+  - name: .venv/bin/ttx
+  - name: .venv/bin/f2py
+  - name: .venv/bin/pyftmerge
+  - name: .venv/lib/python3.10/site-packages/six.py
+  - name: .venv/lib/python3.10/site-packages/pylab.py
+yaml_version: 4
