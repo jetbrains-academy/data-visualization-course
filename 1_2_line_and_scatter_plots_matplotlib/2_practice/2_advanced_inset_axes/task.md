@@ -7,7 +7,7 @@ First of all, researchers asked us to limit `x` axis view to the interval from `
 interval from `-2` to `2`.
 You can do it
 using the [`set_xlim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html)
-or [`set_ylim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html) functions.
+or [`set_ylim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html) methods.
 
 They also noticed a small spike in our data and asked us to plot this detail more closely on the same figure, so let's do that.
 

@@ -27,11 +27,11 @@ If you prefer, you can sort the platforms manually. Please refer to the correspo
 
 <div class="hint" title="How should I sort the platforms?">
     To sort the platforms, you can use
-    the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts</code></a> function
+    the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html"><code>value_counts</code></a> method
     on the <code>platform</code> column:
     <ol>
         <li>Pass the <code>sort</code> argument, along with <code>ascending</code>.</li>
         <li>Then, use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.index.html"><code>index</code></a> property to retrieve the sorted platform names.</li>
-        <li>Finally, convert the <code>Index</code> object to a list using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Index.to_list.html"><code>to_list</code></a> function.</li>
+        <li>Finally, convert the <code>Index</code> object to a list using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Index.to_list.html"><code>to_list</code></a> method.</li>
     </ol>
 </div>

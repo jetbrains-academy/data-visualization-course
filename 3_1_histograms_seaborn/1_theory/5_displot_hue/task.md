@@ -25,7 +25,7 @@ If you prefer, you can filter the dataset manually. Please refer to the correspo
 
 <div class="hint" title="How should I filter the data?">
     To filter the data by publisher, 
-    you can use boolean indexing and the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html#pandas.Series.isin"><code>isin</code></a> function on the <code>publisher</code> column.
+    you can use boolean indexing and the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html#pandas.Series.isin"><code>isin</code></a> method on the <code>publisher</code> column.
 </div>
 
 <div class="hint" title="What should the figure look like?">

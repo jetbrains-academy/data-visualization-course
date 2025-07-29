@@ -12,7 +12,7 @@ If you prefer, you can get all regions manually. Please refer to the correspondi
 ## Hints
 
 <div class="hint" title="How to get all region?">
-  To get all regions, you can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.unique.html"><code>unique</code></a> function on the <code>region</code> column.
+  To get all regions, you can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.unique.html"><code>unique</code></a> method on the <code>region</code> column.
 </div>
 
 <div class="hint" title="What should the figure look like?">

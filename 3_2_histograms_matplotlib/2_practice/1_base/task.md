@@ -40,17 +40,17 @@ like.
 </div>
 
 <div class="hint" title="How to plot two histograms on the same plot?">
-    To plot two histograms on the same figure, call the <code>hist</code> function separately for each city, 
+    To plot two histograms on the same figure, call the <code>hist</code> method separately for each city, 
     ensuring both plots share the same <code>ax</code> object.
 </div>
 
 <div class="hint" title="How to normalize the histogram?">
-   To normalize the histogram, set the <code>weights</code> parameter of the <code>hist</code> function to 
+   To normalize the histogram, set the <code>weights</code> parameter of the <code>hist</code> method to 
    \(\frac{1}{n}\) for each city, where <code>n</code> is the number of observations in that city.
 </div>
 
 <div class="hint" title="How to make the histogram an unfilled line plot?">
-   Use <code>histtype='step'</code> in the <code>hist</code> function. This will create an outline-only version of the
+   Use <code>histtype='step'</code> in the <code>hist</code> method. This will create an outline-only version of the
    histogram, without any fill.
 </div>
 
@@ -59,7 +59,7 @@ like.
 </div>
 
 <div class="hint" title="How to change the number of bins?">
-   To change the number of bins, specify the <code>bins</code> parameter in the <code>hist</code> function.
+   To change the number of bins, specify the <code>bins</code> parameter in the <code>hist</code> method.
 </div>
 
 <div class="hint" title="How to add axis labels?">
@@ -76,7 +76,7 @@ like.
 </div>
 
 <div class="hint" title="How to add a legend?">
-    First, specify the <code>label</code> parameter in the <code>hist</code> function for each city.
+    First, specify the <code>label</code> parameter in the <code>hist</code> method for each city.
     Then, call the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html">
     <code>ax.legend</code></a> method.
 </div>

@@ -36,7 +36,7 @@ If you prefer, you can aggregate the data yourself. Please refer to the correspo
 
    <ol>
    <li>Group the data by the <code>user_score</code> column.</li>
-   <li>Use the mean function to aggregate the <code>critic_score</code> column. </li>
+   <li>Use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.mean.html"><code>mean</code></a> method to aggregate the <code>critic_score</code> column. </li>
    <li>Reset the index to convert the series into a DataFrame.</li>
    </ol>
 

@@ -46,7 +46,7 @@ Be aware of the difference between `Axes` and [`Axis`](https://matplotlib.org/st
 an `Axes` object can contain several `Axis` objects (usually the x-axis and y-axis).
 
 As we mentioned earlier, the actual plotting is done within the `Axes`. 
-To plot something in the figure, you should call functions from the `Axes` instance.
+To plot something in the figure, you should call methods from the `Axes` instance.
 For example, to create a scatter plot, you would write something like this: `ax.scatter('x', 'y', data=my_data)`.
 
 Now, let's do some practice!
