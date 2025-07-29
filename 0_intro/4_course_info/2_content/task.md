@@ -19,3 +19,6 @@ Each module includes an overview part explaining when and why to use a particula
 There are also theory and practice lessons. 
 In the theory lessons, we explore new plotting techniques and build charts step by step. 
 In the practice lessons, you’ll apply your knowledge by creating charts on your own.
+
+Each module's overview is based on a particular story from Jonsi's life. He is a data analyst who faces a lot of
+challenges in his work.
