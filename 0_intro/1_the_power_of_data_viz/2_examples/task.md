@@ -14,7 +14,7 @@ she made a case for better sanitation, and the clear data visualization made her
 </figure>
 
 For a modern example, consider not just a single chart but an entire category of charts
-that became ubiquitous: visualizations of coronavirus caseses.
+that became ubiquitous: visualizations of coronavirus cases.
 While keeping track of the numbers in the case of a pandemic is crucial,
 numbers quickly became overwhelming, especially given their tragic nature.
 However, simple and clear visualizations allowed people to see trends, realize the seriousness of the situation, 
