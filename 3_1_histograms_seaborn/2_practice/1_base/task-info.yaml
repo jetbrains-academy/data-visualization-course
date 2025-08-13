@@ -6,7 +6,7 @@ files:
     placeholders:
       - offset: 43
         length: 31
-        placeholder_text: "from data import read"
+        placeholder_text: from data import read
         is_visible: false
       - offset: 129
         length: 109
