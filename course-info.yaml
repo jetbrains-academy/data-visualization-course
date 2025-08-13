@@ -127,12 +127,4 @@ additional_files:
   - name: test_framework/chart_types/hist.py
   - name: test_framework/figure_parts/figure.py
   - name: test_framework/figure_parts/orthogonal_line.py
-  - name: .venv/bin/fonttools
-  - name: .venv/bin/numpy-config
-  - name: .venv/bin/pyftsubset
-  - name: .venv/bin/ttx
-  - name: .venv/bin/f2py
-  - name: .venv/bin/pyftmerge
-  - name: .venv/lib/python3.10/site-packages/six.py
-  - name: .venv/lib/python3.10/site-packages/pylab.py
 yaml_version: 4
