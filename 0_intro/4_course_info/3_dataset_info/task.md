@@ -9,3 +9,8 @@ You can explore the dataset directly on Kaggle using [this](https://www.kaggle.c
 Throughout the course, you’ll use this dataset to create meaningful visualizations and uncover interesting patterns,
 such as which platforms dominated sales in different regions, how ratings relate to sales, and how trends shifted over
 time.
+
+As mentioned earlier, this course focuses on data visualization, so we won’t cover data processing.
+Instead, you’ll use hidden functions that automatically convert the dataset into the required format.
+If you wish, you can still view the resulting dataset 
+— either by printing it with the basic `print` function or by inspecting it with the IDE’s built-in debugger.
