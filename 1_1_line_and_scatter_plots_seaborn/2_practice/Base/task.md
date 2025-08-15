@@ -8,7 +8,7 @@ Let's assist them!
 Our figure should consist of two traces: a line and a scatter plot.
 The line trace should represent a regression line, while the scatter trace should display the actual data points.
 
-You should also make several visual adjustments:
+We should also make several visual adjustments:
 
 1. The line trace should bе `navy` blue.
 2. The scatter trace should be `grey` and almost transparent (`0.05`).

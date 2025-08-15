@@ -19,13 +19,13 @@ If you prefer, you can sort the platforms manually. Please refer to the correspo
 
 <div class="hint" title="How should I sort the regions?">
     To sort the platforms, you can use
-    the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_values.html"><code>sort_values</code></a> function
+    the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_values.html"><code>sort_values</code></a> method
     on the <code>platform</code> column:
     <ol>
         <li>Group the data by the <code>region</code> column.</li>
-        <li>Calculate the sum of the <code>sales</code> column using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.sum.html"><code>sum</code></a> function.</li>
-        <li>Sort the values using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_values.html"><code>sort_values</code></a> function</li>
+        <li>Calculate the sum of the <code>sales</code> column using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.sum.html"><code>sum</code></a> method.</li>
+        <li>Sort the values using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.sort_values.html"><code>sort_values</code></a> method.</li>
         <li>Use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.index.html"><code>index</code></a> property to retrieve the sorted platform names.</li>
-        <li>Finally, convert the <code>Index</code> object to a list using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Index.to_list.html"><code>to_list</code></a> function.</li>
+        <li>Finally, convert the <code>Index</code> object to a list using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Index.to_list.html"><code>to_list</code></a> method.</li>
     </ol>
 </div>

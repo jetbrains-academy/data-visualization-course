@@ -57,7 +57,7 @@ If you prefer, you can filter the dataset manually. Please refer to the correspo
     To filter the data, you need to:
     <ol>
     <li> Calculate the threshold using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.quantile.html"><code>quantile</code></a>
-    method on the <code>global_sales</code> column. Please note that the function requires a quantile, not a percentile.
+    method on the <code>global_sales</code> column. Please note that the method requires a quantile, not a percentile.
     To convert a percentile to a quantile, divide it by <code>100</code>. 
     For example, the 95th percentile corresponds to a quantile of <code>0.95</code>.</li>
     <li> Filter the data by the <code>global_sales</code> column using boolean indexing.</li>

@@ -4,7 +4,7 @@ At this point, our histogram looks quite unusual — a large square with a small
 expected. This happens because applying a logarithmic scale only stretches the axis but does not modify the bins
 themselves. The bin sizes remain unchanged, leading to a distorted visualization.
 
-To fix this, we need to manually configure the bins using the `bins` argument in the `hist` function. This argument accepts the following:
+To fix this, we need to manually configure the bins using the `bins` argument in the `hist` method. This argument accepts the following:
 
 - An integer: The number of bins to use.
 - A collection: The edges of the bins (supports non-uniform widths).

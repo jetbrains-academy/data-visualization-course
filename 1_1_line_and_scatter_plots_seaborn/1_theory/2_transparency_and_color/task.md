@@ -4,7 +4,7 @@ We can now see how the scores are distributed,
 but the points are too closely packed to understand their density clearly.
 To better visualize the density, we can adjust the plot's transparency.
 
-In Seaborn, you can use the `alpha` parameter to control transparency.
+In Seaborn, we can use the `alpha` parameter to control transparency.
 This parameter accepts a float value between 0 and 1.
 
 Let's also explore another useful parameter, `color`,

@@ -15,7 +15,8 @@ This makes them especially useful for identifying patterns, skewness, and densit
 We recommend completing the modules in order, without skipping, 
 as later modules often build on concepts introduced in earlier ones.
 
-Each module includes an overview part explaining when and why to use a particular type of chart. 
-There are also theory and practice lessons. 
+Each module includes an overview part, theory and practice lessons. 
+In the overview, we explain when and why to use a particular type of chart, using a story from the life of Jonsi 
+— a data analyst who faces many challenges in his work and life.
 In the theory lessons, we explore new plotting techniques and build charts step by step. 
 In the practice lessons, you’ll apply your knowledge by creating charts on your own.

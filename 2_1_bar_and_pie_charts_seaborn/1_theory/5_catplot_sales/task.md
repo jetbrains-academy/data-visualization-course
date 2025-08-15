@@ -27,6 +27,6 @@ and that the bar chart should now use the vertical layout.
 
 <div class="hint" title="How should I filter the platforms?">
     To filter out the unnecessary platforms, you can use
-    the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html"><code>is_in</code></a> function
+    the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html"><code>isin</code></a> method
     on the <code>platform</code> column.
 </div>

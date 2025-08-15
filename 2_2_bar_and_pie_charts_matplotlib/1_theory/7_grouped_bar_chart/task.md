@@ -3,7 +3,7 @@
 So far, we have only built simple bar charts, but sometimes it is necessary to plot several traces on the same chart.
 For example, we may want to compare total sales over decades for different regions.
 
-The `bar` function allows you to manually place bars where needed.
+The `bar` method allows you to manually place bars where needed.
 For example, if we pass `range(3)` as the x-axis and `[5, 4, 3]` as the heights, the result would look something like this:
 
 <img src="../../../common/resources/images/bar_and_pie_charts/grouped_bar_chart_1.png" alt="What the figure should look like" style="max-height: 500px">
@@ -37,15 +37,15 @@ Let's start with a simple task!
    <ol>
       <li>Use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.cut.html"><code>cut</code></a> function to convert the year of release into decades.</li>
       <li>Use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.melt.html"><code>melt</code></a> function to extract sales regions.</li>
-      <li>Group the data by the decade and region columns using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code>groupby</code></a> function,
-      and calculate total sales using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.sum.html"><code>sum</code></a> function.</li>
+      <li>Group the data by the decade and region columns using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code>groupby</code></a> method,
+      and calculate total sales using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.sum.html"><code>sum</code></a> method.</li>
    </ol>
 
    Note that your custom function will not be tested.
 </div>
 
 <div class="hint" title="How to calculate the number of decades?">
-   To calculate the number of decades, you can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html"><code>nunique</code></a> function on the <code>decade</code> column.
+   To calculate the number of decades, you can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html"><code>nunique</code></a> method on the <code>decade</code> column.
 
    Note that your custom function will not be tested.
 </div>

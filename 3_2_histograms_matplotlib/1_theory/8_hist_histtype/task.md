@@ -3,7 +3,7 @@
 Our histogram now looks better, but there are still some refinements we can make.
 
 1. Ensure equal bins for both distributions – This allows for a more accurate comparison.
-2. Improve visual clarity by adjusting the `histtype` parameter in the `hist` function.
+2. Improve visual clarity by adjusting the `histtype` parameter in the `hist` method.
 3. Add axis labels, a legend, and a title to the plot.
 
 By default, `histtype` is set to `bar`, which fills the bars with color. However, we can change it to `step`, which
@@ -30,8 +30,8 @@ If you prefer, you can find these values manually. Please refer to the correspon
 ## Hints
 
 <div class="hint" title="How to add a legend with labels to the plot?">
-    First, pass the <code>label</code> parameter to the <code>hist</code> function for each dataset. 
-    Then, call the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html"><code>ax.legend()</code></a> function to display the legend.
+    First, pass the <code>label</code> parameter to the <code>hist</code> method for each dataset. 
+    Then, call the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html"><code>ax.legend()</code></a> method to display the legend.
 </div>
 
 <div class="hint" title="How can I generate the bins collection for both distributions?">

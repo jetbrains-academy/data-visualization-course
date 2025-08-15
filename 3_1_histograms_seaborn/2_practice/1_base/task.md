@@ -63,7 +63,7 @@ Note that these modifications will not be tested and may potentially break exist
     <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.min.html#pandas.Series.min"><code>min</code></a>
     and 
     <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.max.html#pandas.Series.max"><code>max</code></a>
-    functions, respectively. Then,
+    methods, respectively. Then,
     round the minimum value down and the maximum value up to the nearest hundred. Finally, generate an array of bin edges with a 
     step size of <code>100</code>, for example, by using the built-in <code>range</code> function to ensure evenly spaced 
     intervals.

@@ -11,10 +11,10 @@ A good approach is to apply a logarithmic scale to the x-axis. This transformati
 while compressing the extreme ones, making the distribution clearer. With this view, we can define a meaningful sales
 cutoff.
 
-The `hist` function does not allow us to set a logarithmic scale for the x-axis directly. Instead, we can apply logarithmic scaling to
+The `hist` method does not allow us to set a logarithmic scale for the x-axis directly. Instead, we can apply logarithmic scaling to
 the axis by calling the
 [`ax.set_xscale()`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xscale.html#matplotlib.axes.Axes.set_xscale)
-function with the `log` argument.
+method with the `log` argument.
 
 ## Task
 

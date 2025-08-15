@@ -1,10 +1,10 @@
 ## Theory
 
 Now we can distinguish the traces, but the decade labels are missing.
-To add them, we can use the familiar [`ax.set_xticks`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xticks.html) function.
+To add them, we can use the familiar [`ax.set_xticks`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xticks.html) method.
 
 Previously we only passed the positions where the ticks should be located. However,
-we can also pass a second argument to this function — the labels for these ticks.
+we can also pass a second argument to this method — the labels for these ticks.
 These labels will replace the numeric ones.
 
 So let's go back to our example.
@@ -42,7 +42,7 @@ Also, let's add labels for the x-axis and y-axis, a title, and tighten the layou
 </div>
 
 <div class="hint" title="How to tighten the layout?">
-   To tighten the layout, you can use the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.tight_layout.html"><code>tight_layout</code></a> method: <code>fig.tight_layout()</code> method.
+   To tighten the layout, you can use the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.tight_layout.html"><code>tight_layout</code></a> method: <code>fig.tight_layout()</code>.
 </div>
 
 <div class="hint" title="What should the figure look like?">

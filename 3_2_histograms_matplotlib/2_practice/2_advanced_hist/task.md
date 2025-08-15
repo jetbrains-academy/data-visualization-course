@@ -38,7 +38,7 @@ text labels indicating the median sales value for each city:
 5. Do not include the medians in the legend.
 6. Remove the axes' title and instead add a super title to the figure using the [
    `fig.suptitle`](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.suptitle.html#matplotlib.figure.Figure.suptitle)
-   function.
+   method.
 
 Please consult the corresponding documentation pages to figure out how to do it.
 

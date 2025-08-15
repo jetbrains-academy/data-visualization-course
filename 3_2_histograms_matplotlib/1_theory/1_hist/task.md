@@ -8,15 +8,15 @@ The main goal of this lesson is to **explore the distribution of video game sale
 ## Theory
 
 In Matplotlib, distributions can be visualized using the [
-`hist`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hist.html#matplotlib.axes.Axes.hist) function.
+`hist`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html#matplotlib.pyplot.hist) function.
 
 The function accepts two main arguments: `x` and `data`. We described them in detail in
 the "[Line and Scatter Plots](course://1_2_line_and_scatter_plots_matplotlib/1_theory/1_scatter)" section.
 
 ## Task
 
-Create a histogram to visualize the distribution of global sales using the `hist` function. Use `games` as
-the `data` argument and `global_sales` as the x-axis.
+Create a histogram to visualize the distribution of global sales using the `hist` method called on `Axes` object. Use 
+`games` as the `data` argument and `global_sales` as the x-axis.
 
 Note that we have preprocessed the data for you. To learn how we did this, please see the corresponding hint below.
 

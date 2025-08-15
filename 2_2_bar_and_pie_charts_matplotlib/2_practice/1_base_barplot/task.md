@@ -55,12 +55,12 @@ like.
    <ol>
       <li>Calculate the number of votes for each category and product using
       the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html"><code>groupby</code></a>
-      and <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.count.html"><code>count</code></a> functions.</li>
+      and <a href="https://pandas.pydata.org/docs/reference/api/pandas.core.groupby.DataFrameGroupBy.count.html"><code>count</code></a> methods.</li>
       <li>Normalize the data by dividing it by the number of participants, then multiply it by 100 to get the percentage.
-      We can find the number of participants using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html"><code>nunique</code></a> function.</li>
+      We can find the number of participants using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html"><code>nunique</code></a> method.</li>
       <li>Rename the <code>participants</code> column to <code>votes</code> using
-      the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html"><code>rename</code></a> function.</li>
-      <li>Reset the index using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html"><code>reset_index</code></a> function.</li>
+      the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rename.html"><code>rename</code></a> method.</li>
+      <li>Reset the index using the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html"><code>reset_index</code></a> method.</li>
    </ol>
 </div>
 

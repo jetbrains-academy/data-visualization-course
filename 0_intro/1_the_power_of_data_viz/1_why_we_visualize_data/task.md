@@ -141,7 +141,7 @@ Anscombe’s quartet consists of four datasets – sets of X-Y values – which 
 
 If you apply basic statistical analysis to this data,
 you’ll find that many metrics are identical or nearly identical across the sets: the mean, variance, correlation, regression, etc.
-This might lead you to believe that these datasets, while distinct, are fundamentally very similar.
+This might lead you to believe that although these datasets are distinct, they are fundamentally very similar.
 
 <table style="margin: auto; border-collapse: collapse; border: 3px solid; text-align: center;">
     <thead style="border-bottom: 2px solid;">

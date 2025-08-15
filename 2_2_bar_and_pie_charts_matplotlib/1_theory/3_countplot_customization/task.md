@@ -32,16 +32,10 @@ Lastly, it would be great to add captions for axes and the figure itself.
 
 <div class="hint" title="How should I filter the platforms?">
     To filter out unnecessary platforms, you can use
-    the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html"><code>is_in</code></a> function
+    the <a href="https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html"><code>isin</code></a> method
     on the <code>platform</code> column.
 
    Note that your custom function will not be tested.
-</div>
-
-<div class="hint" title="How to import hidden functions?">
-    To import it, you can place the cursor on the underlined hidden function name in your code, then press &shortcut:ShowIntentionActions;, and
-    select <samp>Import 'function_name from data'</samp>:
-   <img src="../../../common/resources/images/common/hidden_function_import.gif" alt="How to import hidden functions" style="max-height: 500px">
 </div>
 
 <div class="hint" title="How to set a label for an axis?">

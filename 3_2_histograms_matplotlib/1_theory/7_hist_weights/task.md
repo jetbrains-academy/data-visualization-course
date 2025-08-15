@@ -7,7 +7,7 @@ distributions are the same.
 To address this, we can normalize histograms so they show proportions (or probabilities) instead of raw counts. This
 ensures that differences in sample size do not affect the histograms.
 
-In Matplotlib's `hist` function, we can achieve this by setting the `weights` parameter, which accepts a collection of values.
+In Matplotlib's `hist` method, we can achieve this by setting the `weights` parameter, which accepts a collection of values.
 This parameter
 specifies the weight assigned to each data point:
 

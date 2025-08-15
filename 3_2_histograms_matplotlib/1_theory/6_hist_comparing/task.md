@@ -34,7 +34,7 @@ If you prefer, you can filter the dataset manually. Please refer to the correspo
 </div>
 
 <div class="hint" title="How to set transparency?">
-    Specify the <code>alpha</code> parameter in the <code>hist</code> function.
+    Specify the <code>alpha</code> parameter in the <code>hist</code> method.
 </div>
 
 <div class="hint" title="What should the figure look like?">

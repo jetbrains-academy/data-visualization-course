@@ -32,7 +32,7 @@ If you prefer, you can get all regions manually. Please refer to the correspondi
 ## Hints
 
 <div class="hint" title="How to calculate the number of regions?">
-   To calculate the number of regions, you can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html"><code>nunique</code></a> function on the <code>region</code> column.
+   To calculate the number of regions, you can use the <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html"><code>nunique</code></a> method on the <code>region</code> column.
 </div>
 
 <div class="hint" title="What should the figure look like?">
