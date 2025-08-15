@@ -13,7 +13,7 @@ Previously, we used only one type of visualization, but what if we want to build
 With Matplotlib, we can easily do this—just
 call another method from `Axes`, and it will be plotted on top of the previous ones.
 
-For example, you can do it something like this:
+For example, we can do it something like this:
 ```python
 ax.plot("x1", "y1", data=my_data)
 ax.scatter("x2", "y2", data=my_data)

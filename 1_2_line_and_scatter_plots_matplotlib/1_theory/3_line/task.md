@@ -4,7 +4,7 @@ This visualization is much better, as we can now identify the big dense cluster 
 a potential linear relationship between the two scores. To explore this further, let's attempt a linear approximation of the
 data.
 
-As mentioned before, `plot` can help you to build a linear plot. So let's try to apply it here.
+As mentioned before, `plot` can help us to build a linear plot. So let's try to apply it here.
 
 ## Task
 

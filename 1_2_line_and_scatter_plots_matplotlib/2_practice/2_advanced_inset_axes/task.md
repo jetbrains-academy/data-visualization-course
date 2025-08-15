@@ -5,7 +5,7 @@ few adjustments to the figure.
 
 First of all, researchers asked us to limit `x` axis view to the interval from `-4` to `4`, and `y` axis view to the
 interval from `-2` to `2`.
-You can do it
+We can do it
 using the [`set_xlim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_xlim.html)
 or [`set_ylim`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.set_ylim.html) methods.
 

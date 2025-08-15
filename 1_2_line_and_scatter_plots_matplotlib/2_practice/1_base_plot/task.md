@@ -9,12 +9,12 @@ Let's assist them!
 Our figure should consist of two traces: a line trace and a scatter trace.
 The line trace should plot the approximated data, while the scatter trace should plot the actual data.
 
-You should make several visual adjustments to the figure:
+We should make several visual adjustments to the figure:
 1. The line trace should bе `navy`.
 2. The scatter trace should be `grey` and almost transparent (`0.05`).
 3. Remove the top and right spines.
 
-You should also make some modifications to the x-axis:
+We should also make some modifications to the x-axis:
 1. The x-axis should have only three ticks: `-4`, `0`, and `4`.
 2. Label the x-axis as `x`.
 

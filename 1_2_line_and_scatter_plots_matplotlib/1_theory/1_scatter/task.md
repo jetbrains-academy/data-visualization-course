@@ -21,9 +21,9 @@ Every plotting function in Matplotlib accepts three main arguments:
 
 There are a few important things to note:
 
-1. `data` is optional. If you do not provide it, `x` and `y` must be collections containing data.
-2. You can only specify the `data` parameter as a keyword argument.
-3. You must specify the `x` and `y` parameters as positional arguments.
+1. `data` is optional. If we do not provide it, `x` and `y` must be collections containing data.
+2. We can only specify the `data` parameter as a keyword argument.
+3. We must specify the `x` and `y` parameters as positional arguments.
 
 While using Matplotlib, we recommend passing any other arguments as keyword arguments.
 For example: `plt.scatter("column_x", "column_y", data=my_data, some_argument="some_value")`.
@@ -33,9 +33,9 @@ For example: `plt.scatter("column_x", "column_y", data=my_data, some_argument="s
 To start building plots with Matplotlib, you need
 to create a [`Figure`](https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html) object and
 at least one [`Axes`](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes) object.
-You can think of the `Figure` as a container for several `Axes`, where the actual plotting is done.
+We can think of the `Figure` as a container for several `Axes`, where the actual plotting is done.
 
-To create a `Figure` and a single `Axes`, you can use
+To create a `Figure` and a single `Axes`, we can use
 the [`subplots`](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html)
 function: `fig, ax = plt.subplots()`.
 Here, we use the common abbreviations for `Figure` (`fig`) and `Axes` (`ax`).
@@ -46,8 +46,8 @@ Be aware of the difference between `Axes` and [`Axis`](https://matplotlib.org/st
 an `Axes` object can contain several `Axis` objects (usually the x-axis and y-axis).
 
 As we mentioned earlier, the actual plotting is done within the `Axes`. 
-To plot something in the figure, you should call methods from the `Axes` instance.
-For example, to create a scatter plot, you would write something like this: `ax.scatter('x', 'y', data=my_data)`.
+To plot something in the figure, we should call methods from the `Axes` instance.
+For example, to create a scatter plot, we would write something like this: `ax.scatter('x', 'y', data=my_data)`.
 
 Now, let's do some practice!
 

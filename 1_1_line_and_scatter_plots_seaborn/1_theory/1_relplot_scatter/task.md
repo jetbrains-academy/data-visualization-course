@@ -49,7 +49,7 @@ Please see the corresponding hint below.
 </div>
 
 <div class="hint" title="Where to find my figure?">
-   After running the code, the graph will be generated next to the `task.py` file.
+   After running the code, the graph will be generated next to the <code>task.py</code> file.
    <img src="../../../common/resources/images/common/output_location.png" style="max-width: 500px">
 </div>
 
