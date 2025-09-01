@@ -87,15 +87,21 @@ additional_files:
     is_binary: true
   - name: common/resources/images/line_and_scatter_plots/Quiz_d.png
     is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_1.png
+  - name: common/resources/images/bar_and_pie_charts/grouped-bar-chart-1.svg
     is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_2.png
+  - name: common/resources/images/bar_and_pie_charts/grouped-bar-chart-2.svg
     is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_3.png
+  - name: common/resources/images/bar_and_pie_charts/grouped-bar-chart-3.svg
     is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_4.png
+  - name: common/resources/images/bar_and_pie_charts/grouped-bar-chart-4.svg
     is_binary: true
-  - name: common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png
+  - name: common/resources/images/bar_and_pie_charts/grouped-bar-chart-5.svg
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/comparison-of-categories.svg
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/proportion-of-the-whole.svg
+    is_binary: true
+  - name: common/resources/images/bar_and_pie_charts/change-over-time.svg
     is_binary: true
   - name: common/resources/images/histograms/Quiz_A.png
     is_binary: true

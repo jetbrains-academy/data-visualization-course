@@ -7,13 +7,13 @@ To fix this, we need to increase the distance between decades to fit each region
 
 For example, if we have 3 groups, each of size 4,
 we would need a distance of 4 to fit the data for all regions:
-<img src="../../../common/resources/images/bar_and_pie_charts/grouped_bar_chart_2.png" alt="What the figure should look like" style="max-height: 500px">
+<img src="../../../common/resources/images/bar_and_pie_charts/grouped-bar-chart-2.svg" style="max-height: 500px">
 
 However, if we do this, there will be no space between the groups:
-<img src="../../../common/resources/images/bar_and_pie_charts/grouped_bar_chart_3.png" alt="What the figure should look like" style="max-height: 500px">
+<img src="../../../common/resources/images/bar_and_pie_charts/grouped-bar-chart-3.svg" style="max-height: 500px">
 
 To fix this, we should artificially increase the size of each group by 1 unit:
-<img src="../../../common/resources/images/bar_and_pie_charts/grouped_bar_chart_4.png" alt="What the figure should look like" style="max-height: 500px">
+<img src="../../../common/resources/images/bar_and_pie_charts/grouped-bar-chart-4.svg" style="max-height: 500px">
 
 As a result, the total distance will be 5.
 

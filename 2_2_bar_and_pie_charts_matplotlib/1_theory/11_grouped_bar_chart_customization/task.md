@@ -11,7 +11,7 @@ So let's go back to our example.
 We need to place the labels at the center of each group.
 As we can see from the picture, the center of the first group is located at `1.5`.
 It is not hard to calculate other centers, as they are equally spaced apart by a distance of `group_size + 1`. 
-<img src="../../../common/resources/images/bar_and_pie_charts/grouped_bar_chart_5.png" alt="What the figure should look like" style="max-height: 500px">
+<img src="../../../common/resources/images/bar_and_pie_charts/grouped-bar-chart-5.svg" style="max-height: 500px">
 
 Also, let's add labels for the x-axis and y-axis, a title, and tighten the layout.
 
