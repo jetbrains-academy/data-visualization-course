@@ -1,6 +1,6 @@
 # What this repository is
 
-This repository contains the source materials for the Data Visualization in Python course.
+This repository contains the source materials for the Data Visualization with Python course.
 
 # Contributing
 

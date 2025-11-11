@@ -1,7 +1,7 @@
 [![official project](https://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-# Data Visualization in Python
+# Data Visualization with Python
 
 This course is designed for beginners in data visualization 
 and focuses on building visual representations using Python’s [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/index.html#) libraries.
