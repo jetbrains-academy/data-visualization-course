@@ -133,5 +133,8 @@ additional_files:
   - name: test_framework/chart_types/hist.py
   - name: test_framework/figure_parts/figure.py
   - name: test_framework/figure_parts/orthogonal_line.py
+  - name: common/resources/images/histograms/common-mistake.svg
+  - name: common/resources/images/histograms/distribution.svg
+  - name: common/resources/images/histograms/histograms-vs-bar.svg
   - name: .aiignore
 yaml_version: 5

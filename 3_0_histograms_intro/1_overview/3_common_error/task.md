@@ -10,3 +10,5 @@ This made small variations in croissant sales appear large and significant.
 Jonsi noticed the issue, corrected the Y-axis scale,
 and demonstrated that the sales data actually showed no substantial differences.
 His adjustment helped the company avoid unnecessary business decisions.
+
+<img src="../../../common/resources/images/histograms/common-mistake.svg">
