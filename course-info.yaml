@@ -1,5 +1,5 @@
 type: marketplace
-title: Data Visualization in Python
+title: Data Visualization with Python
 language: English
 summary: "<p>Learn to visualize data and present it with confidence. Build charts\
   \ using Python, Matplotlib, and Seaborn—from line plots to heatmaps. Beginner-friendly,\
@@ -128,4 +128,4 @@ additional_files:
   - name: test_framework/figure_parts/figure.py
   - name: test_framework/figure_parts/orthogonal_line.py
   - name: .aiignore
-yaml_version: 4
+yaml_version: 5
