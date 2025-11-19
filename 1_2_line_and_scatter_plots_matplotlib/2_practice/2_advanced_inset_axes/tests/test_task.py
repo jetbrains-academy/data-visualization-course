@@ -1,6 +1,6 @@
 from typing import ClassVar
 
-from matplotlib.patches import ConnectionPatch, Rectangle
+from matplotlib.inset import InsetIndicator
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -125,18 +125,13 @@ class PlotTestCase(CollectionTestMixin, LineTestMixin, SpineTestMixin, AxisTestM
         self.checkLabel(self.fig.axes[0].child_axes[0], expected_label=None, axis="y")
 
     def test_12_1_inset_axes_zoom(self):
-        patches = self.fig.axes[0].patches
+        inset_indicators = [artist for artist in self.fig.axes[0].artists if isinstance(artist, InsetIndicator)]
 
-        self.assertNotEqual(len(patches), 0, "Add an inset zoom")
-
-        rectangles = [patch for patch in patches if isinstance(patch, Rectangle)]
-        self.assertEqual(len(rectangles), 1, "There must be exactly one inset zoom")
-
-        connections = [patch for patch in patches if isinstance(patch, ConnectionPatch)]
-        self.assertEqual(len(connections), 4, "There must be exactly one inset zoom")
+        self.assertNotEqual(len(inset_indicators), 0, "Add an inset zoom")
+        self.assertEqual(len(inset_indicators), 1, "There must be exactly one inset zoom")
 
     def test_12_2_inset_axes_zoom_parent_rectangle_position(self):
-        rectangle = next(patch for patch in self.fig.axes[0].patches if isinstance(patch, Rectangle))
+        rectangle = next(artist for artist in self.fig.axes[0].artists if isinstance(artist, InsetIndicator)).rectangle
 
         actual_x0, actual_y0 = rectangle.get_xy()
         actual_x1 = actual_x0 + rectangle.get_width()
@@ -148,10 +143,14 @@ class PlotTestCase(CollectionTestMixin, LineTestMixin, SpineTestMixin, AxisTestM
         self.assertEqual(actual_y1, 1.1, "The inset zoom must must correspond to the area from y = 0.6 to y = 1.1")
 
     def test_12_3_inset_axes_zoom_parent_connection_positions(self):
-        connections = [patch for patch in self.fig.axes[0].patches if isinstance(patch, ConnectionPatch)]
+        inset_indicator = next(artist for artist in self.fig.axes[0].artists if isinstance(artist, InsetIndicator))
+        connectors = inset_indicator.connectors
 
         expected_xys = [(0.5, 0.6), (0.5, 1.1), (1.5, 0.6), (1.5, 1.1)]
-        for connection, expected_xy in zip(connections, expected_xys):
+
+        self.assertEqual(len(connectors), len(expected_xys), f"There must be exactly {len(expected_xys)} connections")
+
+        for connection, expected_xy in zip(connectors, expected_xys):
             actual_x, actual_y = connection.xy2
             expected_x, expected_y = expected_xy
 
