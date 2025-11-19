@@ -18,3 +18,5 @@ which struck him as unusual.
 He then recalled that histograms are better suited for this kind of analysis. 
 After plotting a histogram, he realized the data wasn’t uniform at all: it clustered around specific rainfall levels.
 This insight exposed the critical thresholds where the drainage system would fail.
+
+<img src="../../../common/resources/images/histograms/distribution.svg">

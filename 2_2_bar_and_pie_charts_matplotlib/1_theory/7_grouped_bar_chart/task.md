@@ -6,7 +6,7 @@ For example, we may want to compare total sales over decades for different regio
 The `bar` method allows you to manually place bars where needed.
 For example, if we pass `range(3)` as the x-axis and `[5, 4, 3]` as the heights, the result would look something like this:
 
-<img src="../../../common/resources/images/bar_and_pie_charts/grouped_bar_chart_1.png" alt="What the figure should look like" style="max-height: 500px">
+<img src="../../../common/resources/images/bar_and_pie_charts/grouped-bar-chart-1.svg">
 
 As we can see, `bar` placed the first bar at 0, the second at 1, and the third at 2.
 

@@ -9,3 +9,5 @@ At first, he tried a bar chart, but it quickly became cluttered with individual 
 Realizing his mistake, he switched to a histogram, grouping spending into price ranges. 
 This revealed clear patterns in customer behavior — spending tended to cluster around specific price points. 
 These insights highlighted popular item combinations and helped the café adjust its menu and pricing strategy more effectively.
+
+<img src="../../../common/resources/images/histograms/histograms-vs-bar.svg">
