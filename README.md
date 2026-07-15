@@ -1,7 +1,10 @@
+# Data Visualization with Python
 [![official project](https://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-# Data Visualization with Python
+<a href="https://academy.jetbrains.com/course/27941?=fromGitHub" target="_blank">
+<img src="https://img.shields.io/static/v1?logo=jetbrains&logoColor=1bd58e&label=&message=Course%20catalog&color=5a5a5a&style=flat" alt="Course%20catalog"></a>
+<a href="https://plugins.jetbrains.com/plugin/27941/versions" target="_blank">
+<img src="https://img.shields.io/badge/dynamic/yaml?query=%24.course_version&url=https://raw.githubusercontent.com/jetbrains-academy/data-visualization-course/refs/heads/main/course-remote-info.yaml&logo=jetbrains&logoColor=FC801D&label=Marketplace&color=6b59fe&style=flat&prefix=v" alt="Marketplace"></a>
 
 This course is designed for beginners in data visualization 
 and focuses on building visual representations using Python’s [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/index.html#) libraries.
