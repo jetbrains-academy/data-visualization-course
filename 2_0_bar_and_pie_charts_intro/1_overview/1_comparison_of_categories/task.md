@@ -1,5 +1,3 @@
-# Comparison of categories
-
 When working with discrete or qualitative variables,
 bar or pie charts are effective tools for visualizing differences or similarities between categories.
 They work best with a limited number of categories to prevent clutter and enhance interpretability.

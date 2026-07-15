@@ -1,5 +1,3 @@
-# Data distribution
-
 If you want to visualize overall patterns or the distribution of data, a scatterplot is more suitable.
 It allows you to see the spread, clusters, and concentration of data points.
 Line plots, on the other hand, are more focused on displaying changes and trends in the data over time.
