@@ -1,5 +1,3 @@
-# Proportions of a whole
-
 Pie charts are best used to show proportions or percentages of a whole.
 If the goal is to emphasize the individual contribution of each category rather than directly compare categories,
 a pie chart can effectively highlight those proportions.

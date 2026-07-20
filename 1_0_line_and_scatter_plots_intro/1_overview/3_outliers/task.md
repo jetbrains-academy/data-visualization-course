@@ -1,5 +1,3 @@
-# Outliers
-
 If you suspect the presence of outliers in your data, a scatterplot is better suited for identifying them.
 Outliers often appear as data points that significantly deviate from the general trend.
 Conversely, line plots may not clearly exhibit outliers, as they continuously connect data points.
